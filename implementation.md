@@ -12,6 +12,11 @@ https://github.com/SmithSamuelM/keri/blob/master/implementation.md
 
 smith.samuel.m@gmail.com
 
+https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf
+
+https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview_IIW_2020_A.pdf
+
+
 
 
 ## Things ToDo
@@ -20,7 +25,10 @@ smith.samuel.m@gmail.com
     Anchors hash links not data format. Keep KERI pure (qua standard, and the logs it produces)
     Only define tags in KERI
     
-    Tags:  delegate
+    Tags:  
+      a) delegate: KERI delegated identifier prefix
+      b) diddoc:  did doc update?
+      c) vc:  verifiable credential (issuance, revocation)
     
     Discussion notes:
     - Mitwicki (HCF): we use VCs this way, to contain a minimal payload (hashlink). secure data storage or more public data hubs can be linked this way.
@@ -29,7 +37,8 @@ smith.samuel.m@gmail.com
         - Nader: Here's the reference for that hashlink standard https://tools.ietf.org/html/draft-sporny-hashlink-04
         - Sam: Tag-dependent level of correlatability/lock-in to one encoding or dereferencing dependency
         - Robert: [In our usage of VCs?], we have been thinking about the discovery mechanism via DID Resolution (going from DID to DID:Doc to Service Endpoint [to agent and thus to vault/storage and returned resource]
-    - 	Sam: Payloads should be encoding agnostic, mixing and matching should work;
+    - 	Sam: Payloads should be encoding agnostic, mixing and matching should work This is because KERI only cares about the anchor/digest format. The anchored data is not transported in the KERI event so the anchored data can be any encoding.
+    - 	
     - 	Mark L Smartopia: Kantara Initiative has been working on consent receipts along these lines, and standardizing on these [essentially legal] events across ontologies has been difficult; we're been able to standardize this and present it at ISO. A consent state record would be a notification and a receipt, and I think this could line up well; we have a GDPR delegation (in close dialogue w/w3c data privacy WG on ontology for this). In the last year, lots of standards have been completed and we're working towards a common record format (legally required to be open).
         - 	Sam: anchor/tag structure and tag-specific link out to data works with your logging needs?
         - 	Sam: a parser needs to know what is anchored by the anchor and how to consume/interpret the digest; the "tag name" is just for a KERI-level categorization of event types
@@ -131,10 +140,21 @@ did:un:AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE/path?kkey=me#flab
 10) KERI DID method: DID:UN-method (universal but also undoer and destroyer of worlds)
 
     - Charles: un-conference friendly!
-    - 
+
+
+11) Delegation Permissions
+    What sort of stuff do we need to permission?
+    Nested delegation of new delegated identifiers?
+    Delegation of only some data tags?
+
+## Collaboration
 
 COLLAB LOGISTICS: SEE KERI GITHUB REPO on DIF
 - attend ID & Discovery meetings of DIF!
+- Next Meeting May 11, 2020 11 a.m. PDT
+- https://zoom.us/j/801382311
+- 
+- 
 
 ## Old Notes
 KERI JS Scope
@@ -242,7 +262,7 @@ Controller and Validator
   "verison": "KERI 0.0.1",
   "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
   "sn": 2,
-  "ilk": "icx",
+  "ilk": "ixn",
   "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw=",
   "threshold": 2,
   "signers": 
@@ -262,6 +282,7 @@ Controller and Validator
 
 ### Data
 
+#### Delegate Tag
 ```json
 
 "data":
@@ -283,16 +304,227 @@ Controller and Validator
     }
   }
 ]
-
-
 ```
 
 ### Delegation
 
+![](https://i.imgur.com/QzBtfnb.png)
+
+
+
+#### Delegating Interaction
+
+![](https://i.imgur.com/bNrHhsu.png)
+
+```json
+{
+  "verison": "KERI 0.0.1",
+  "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+  "sn": 2,
+  "ilk": "ixn",
+  "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw=",
+  "threshold": 2,
+  "signers": 
+  [
+    "AWoNZsa88VrTkep6HQt27fTh-4HA8tr54sHON1vWl6FE",
+    "A8tr54sHON1vWVrTkep6H-4HAl6FEQt27fThWoNZsa88",
+    "AVrTkep6HHA8tr54sHON1Qt27fThWoNZsa88-4vWl6FE"
+  ],
+  "data": 
+  [
+    {
+      "delegate": 
+      {
+        "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+        "sn": 0,
+        "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
+      }
+    }
+  ],
+  "signatures": [0,2]
+}
+\r\n\r\n
+"0AAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8KFFgf8i0tDq8XGizaCg"
+\r\n\r\n
+"0AKFFgf8i0tDq8XGizaCgAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8"
+```
+
+#### Delegating Rotation
+
+
+
+![](https://i.imgur.com/mipTTUr.png)
+
+
+```json
+{
+  "version": "KERI 0.0.1",
+  "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+  "sn": 1,
+  "ilk": "rot",
+  "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw=",
+  "threshold": 2,
+  "signers": 
+  [
+    "AWoNZsa88VrTkep6HQt27fTh-4HA8tr54sHON1vWl6FE",
+    "A8tr54sHON1vWVrTkep6H-4HAl6FEQt27fThWoNZsa88",
+    "AVrTkep6HHA8tr54sHON1Qt27fThWoNZsa88-4vWl6FE"
+  ],
+  "next": "EWoNZsa88VrTkep6HQt27fTh-4HA8tr54sHON1vWl6FE",
+  "tally": 2,
+  "prune": 
+  [
+    "AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE",
+  ],
+  "graft": 
+  [
+    "AHA8tr54sHON1vWl6FEVrTkep6H-Qt27fThWoNZsa884",
+  ],
+  "data": 
+  [
+    {
+      "delegate": 
+      {
+        "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+        "sn": 0,
+        "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
+      }
+    }
+  ],
+  "signatures": [0,2]
+}
+\r\n\r\n
+"0AAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8KFFgf8i0tDq8XGizaCg"
+\r\n\r\n
+"0AKFFgf8i0tDq8XGizaCgAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8"
+```
+
+
 
 ### Delegated Inception
 
+![](https://i.imgur.com/EaKLgLW.png)
+
+![](https://i.imgur.com/JiAyeH5.png)
+
+
+```json
+{
+  "version": "KERI 0.0.1",
+  "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+  "sn": 0,
+  "ilk": "dip",
+  "digest": "EGEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw",
+  "threshold": 2,
+  "signers": 
+  [
+    "AWoNZsa88VrTkep6HQt27fTh-4HA8tr54sHON1vWl6FE",
+    "A8tr54sHON1vWVrTkep6H-4HAl6FEQt27fThWoNZsa88",
+    "AVrTkep6HHA8tr54sHON1Qt27fThWoNZsa88-4vWl6FE"
+  ],
+  "next": "EWoNZsa88VrTkep6HQt27fTh-4HA8tr54sHON1vWl6FE",
+  "tally": 2,
+  "witnesses": 
+  [
+    "AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE",
+    "AHON1vWl6FEQt27fThWoNZsa88VrTkep6H-4HA8tr54s",
+    "AThWoNZsa88VrTkeQt27fp6H-4HA8tr54sHON1vWl6FE",
+  ],
+  "data": 
+  [
+    {
+      "delegate": 
+      {
+        "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+        "sn": 0,
+        "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
+      }
+    }
+  ],
+  "signatures": [0,1]
+}
+\r\n\r\n
+"0AAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8KFFgf8i0tDq8XGizaCg"
+\r\n\r\n
+"0AHot0pmdWAcgTo5sKFFgf8i0tDq8XGizaCgAeYbsD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8"
+```
 
 ### Delegated Rotation
 
+![](https://i.imgur.com/3T4h8Pu.png)
 
+![](https://i.imgur.com/81nzRTt.png)
+
+
+```json
+{
+  "version": "KERI 0.0.1",
+  "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+  "sn": 1,
+  "ilk": "rot",
+  "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw=",
+  "threshold": 2,
+  "signers": 
+  [
+    "AWoNZsa88VrTkep6HQt27fTh-4HA8tr54sHON1vWl6FE",
+    "A8tr54sHON1vWVrTkep6H-4HAl6FEQt27fThWoNZsa88",
+    "AVrTkep6HHA8tr54sHON1Qt27fThWoNZsa88-4vWl6FE"
+  ],
+  "next": "EWoNZsa88VrTkep6HQt27fTh-4HA8tr54sHON1vWl6FE",
+  "tally": 2,
+  "prune": 
+  [
+    "AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE",
+  ],
+  "graft": 
+  [
+    "AHA8tr54sHON1vWl6FEVrTkep6H-Qt27fThWoNZsa884",
+  ],
+  "data": 
+  [
+    {
+      "delegate": 
+      {
+        "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+        "sn": 0,
+        "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
+      }
+    }
+  ],
+  "signatures": [0,2]
+}
+\r\n\r\n
+"0AAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8KFFgf8i0tDq8XGizaCg"
+\r\n\r\n
+"0AKFFgf8i0tDq8XGizaCgAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8"
+```
+
+
+### Delegated Interaction
+
+
+![](https://i.imgur.com/U3uqrZh.png)
+
+
+```json
+{
+  "verison": "KERI 0.0.1",
+  "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+  "sn": 2,
+  "ilk": "ixn",
+  "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw=",
+  "threshold": 2,
+  "signers": 
+  [
+    "AWoNZsa88VrTkep6HQt27fTh-4HA8tr54sHON1vWl6FE",
+    "A8tr54sHON1vWVrTkep6H-4HAl6FEQt27fThWoNZsa88",
+    "AVrTkep6HHA8tr54sHON1Qt27fThWoNZsa88-4vWl6FE"
+  ],
+  "data": [],
+  "signatures": [0,2]
+}
+\r\n\r\n
+"0AAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8KFFgf8i0tDq8XGizaCg"
+\r\n\r\n
+"0AKFFgf8i0tDq8XGizaCgAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8"
+```
