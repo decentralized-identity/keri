@@ -2,6 +2,12 @@
 
 https://github.com/decentralized-identity/keri
 
+https://github.com/decentralized-identity/keripy
+
+https://github.com/decentralized-identity/kerijs
+
+https://github.com/decentralized-identity/keriox
+
 https://github.com/decentralized-identity/keri/blob/master/implementation.md
 
 https://github.com/SmithSamuelM/keri
