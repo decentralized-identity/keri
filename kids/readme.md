@@ -3,8 +3,10 @@
 
 ## Standard
 
-KID-0001
-KID-0002
+KID0001
+
+
+KID0002
 
 
 ## Proposed
