@@ -188,6 +188,7 @@ did:un:AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE/path?kkey=me#flab
     
 12  KIDs  KERI Implementation/Improvement Documents
     added kids directory to keri repo.
+    
 
 ## Collaboration
 
@@ -195,8 +196,12 @@ COLLAB LOGISTICS: SEE KERI GITHUB REPO on DIF
 - attend ID & Discovery meetings of DIF!
 - Next Meeting May 11, 2020 11 a.m. PDT
 - https://zoom.us/j/801382311
+
+- In process to add DIF slack channel for KERI
+- In meantime can reach on this slack channel  keriworld.slack.com
 - 
-- 
+- DIF ID and Discovery Agenda
+    - https://docs.google.com/document/d/1gV99R7G2bUlRerxznyd0ucwWPfc1v2F2gQVaTawIPYI/edit#
 
 ## Old Notes
 KERI JS Scope
