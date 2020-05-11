@@ -1,3 +1,8 @@
+---
+tags: KERI
+email: sam@samuelsmith.org
+---
+
 # Implementation Notes for KERI
 
 https://github.com/decentralized-identity/keri
@@ -27,14 +32,33 @@ https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview_
 
 ## Things ToDo
 
-1) data element format:
-    Anchors hash links not data format. Keep KERI pure (qua standard, and the logs it produces)
-    Only define tags in KERI
+1) Seal (Anchors) for arbitrary data:
+
+  The interpretation of the data  associated with the digest or hash tree root in the seal is independent of KERI. This allows KERI to be agnostic about anchored data semantics. Another way of saying this is that seals are data agnostic; they don’t care about the semantics of its associated data. This better preserves privacy because the seal itself does not leak any information about the purpose or specific content of the associated data. Furthermore, because digests are a type of content address, they are self-discoverable. This means there is no need to provide any sort of context or content specific tag or label for the digests. Applications that use KERI may provide discovery of a digest via a hash table (mapping) whose indexes (hash keys) are the digests and the values in the table are the location of the digest in a specific event. To restate, the semantics of the digested data are not needed for discovery of  the digest within a key event sequence.
+  
+To elaborate, the provider of the data understands the purpose and semantics and may disclose those as necessary, but the act of verifying authoritative control does not depend on the data semantics merely the inclusion of the seal in an event. It’s up to the provider of the data to declare or disclose the semantics when used in an application. This may happen independently of verifying the authenticity of the data via the seal. This declaration may be provided by some external application programmer interface (API) that uses KERI. In this way, KERI provides support to applications that satisfies the spanning layer maxim of minimally sufficient means. Seals merely provide evidence of authenticity of the associated (anchored) data whatever that may be. 
+
+This approach follows the design principle of context independent extensibility. Because the seals are context agnostic, the context is external to KERI. Therefore the context extensibility is external to and hence independent of KERI. This is in contrast to context dependent extensibility or even independently extensible contexts that use extensible context mechanisms such as linked data or tag registries [84; 101; 105; 135]. Context independent extensibility means that KERI itself is not a locus of coordination between contexts for anchored data. This maximizes decentralization and portability. Extensibility is provided instead at the application layer above KERI though context specific external APIs that reference KERI seals in order to establish control authority and hence authenticity of the anchored (digested) data. Each API provides the context not KERI. This means that interoperability within KERI is focused solely on interoperability of control establishment. But that interoperability is total and complete and is not dependent on anchored data context. This approach further reflects KERI’s minimally sufficient means design aesthetic. 
+
+
+   A seal is a self-describing data structure. Abstractly this means each element of the seal has a tag or label that describes the associated element’s value. A minimal seal must have an element whose label indicates that the value is either a digest or the root of a hash tree. In either case (digest or root) the value is fully qualified Base64 with a prepended derivation code that indicates the type of hash algorithm used to create the digest or hash root. When the seal is referring to another event it must also include the sequence number (sn) and identifier prefix  elements in order to indicate the location of the sealed event in its key event sequence. These element labels  (digest, root, prefix, sn) are so far the only normative labels needed to process a KERI seal. 
+   
+   Currently, three types of seals, digest, hash tree root (Merkle tree) and event.
+ Both or fully qualified Base64 with prepended derivation code for hash algorithm
+ 
+ 
+Anchors hash links not data format. Keep KERI pure (qua standard, and the logs it produces) no need to define tags in KERI
     
-    Tags:  
-      a) delegate: KERI delegated identifier prefix
-      b) diddoc:  did doc update?
-      c) vc:  verifiable credential (issuance, revocation)
+ Seals have labeled elements.
+ Must have digest or root (hash tree root)element
+ Event seal may also have sn and prefix elements.
+ 
+ 
+ Hash trees are sparse trees with finite tree depth using depth prefix on internal hash nodes. These prevents 2nd preimage attacks. Similar to certificate transparency.
+ 
+ Hyperledger Indy uses sparse Merkle tree library for revocation registry. Is that a good library to use for KERI Seal Merkle Trees?
+ 
+
     
     Discussion notes:
     - Mitwicki (HCF): we use VCs this way, to contain a minimal payload (hashlink). secure data storage or more public data hubs can be linked this way.
@@ -102,6 +126,11 @@ did:un:AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE/path?kkey=me#flab
     
     Other codes
     
+    See latest table in slide deck and paper
+    Need to cread markdown table as reference
+    
+    Create KID for it
+    
    
 4) Languages: Python, Javascript (nodejs), Rust, Python +rust
     keripy, kerijs, keriox,
@@ -110,6 +139,8 @@ did:un:AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE/path?kkey=me#flab
     - Sam: Py
     - Spherity (hi!): nodeJS
     - Rust? JOLOCOM ftw (or at least Charles) "KeriOX"
+
+    What about WASM rust version?
 
 5) Derivation Extraction Library
 
@@ -141,7 +172,9 @@ did:un:AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE/path?kkey=me#flab
     https://symas.com/lmdb/
 
 8) Controller, Validator, Witness, Watcher, Juror, Judge
-9) Clients: web, cmd, python, etc
+9) 
+10) Clients: web, cmd, python, etc
+    WASM rust library for web clients?
 
 10) KERI DID method: DID:UN-method (universal but also undoer and destroyer of worlds)
 
@@ -152,6 +185,9 @@ did:un:AVrTkep6H-Qt27fThWoNZsa884HA8tr54sHON1vWl6FE/path?kkey=me#flab
     What sort of stuff do we need to permission?
     Nested delegation of new delegated identifiers?
     Delegation of only some data tags?
+    
+12  KIDs  KERI Implementation/Improvement Documents
+    added kids directory to keri repo.
 
 ## Collaboration
 
@@ -249,7 +285,7 @@ Controller and Validator
   [
     "AHA8tr54sHON1vWl6FEVrTkep6H-Qt27fThWoNZsa884",
   ],
-  "data": [],
+  "seals": [],
   "signatures": [0,2]
 }
 \r\n\r\n
@@ -277,7 +313,7 @@ Controller and Validator
     "A8tr54sHON1vWVrTkep6H-4HAl6FEQt27fThWoNZsa88",
     "AVrTkep6HHA8tr54sHON1Qt27fThWoNZsa88-4vWl6FE"
   ],
-  "data": [],
+  "seals": [],
   "signatures": [0,2]
 }
 \r\n\r\n
@@ -286,28 +322,22 @@ Controller and Validator
 "0AKFFgf8i0tDq8XGizaCgAeYbsHot0pmdWAcgTo5sD8iAuSQAfnH5U6wiIGpVNJQQoYKBYrPPxAoIc1i5SHCIDS8"
 ```
 
-### Data
+### Seals
 
-#### Delegate Tag
+
 ```json
 
-"data":
+"seals":
 [
   {
-    "delegate": 
-    {
-      "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
-      "sn": 0,
-      "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
-    }
+    "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+    "sn": 0,
+    "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
   },
   {
-    "delegate": 
-    {
-      "prefix": "AY25YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn139",
-      "sn": 0,
-      "digest": "GFj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
-    }
+    "prefix": "AY25YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn139",
+    "sn": 0,
+    "digest": "GFj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
   }
 ]
 ```
@@ -336,15 +366,12 @@ Controller and Validator
     "A8tr54sHON1vWVrTkep6H-4HAl6FEQt27fThWoNZsa88",
     "AVrTkep6HHA8tr54sHON1Qt27fThWoNZsa88-4vWl6FE"
   ],
-  "data": 
-  [
+  "seals": 
+  [ 
     {
-      "delegate": 
-      {
-        "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
-        "sn": 0,
-        "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
-      }
+      "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+      "sn": 0,
+      "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
     }
   ],
   "signatures": [0,2]
@@ -386,15 +413,12 @@ Controller and Validator
   [
     "AHA8tr54sHON1vWl6FEVrTkep6H-Qt27fThWoNZsa884",
   ],
-  "data": 
+  "seals":
   [
     {
-      "delegate": 
-      {
-        "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
-        "sn": 0,
-        "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
-      }
+      "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+      "sn": 0,
+      "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
     }
   ],
   "signatures": [0,2]
@@ -436,17 +460,12 @@ Controller and Validator
     "AHON1vWl6FEQt27fThWoNZsa88VrTkep6H-4HA8tr54s",
     "AThWoNZsa88VrTkeQt27fp6H-4HA8tr54sHON1vWl6FE",
   ],
-  "data": 
-  [
-    {
-      "delegate": 
-      {
-        "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
-        "sn": 0,
-        "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
-      }
-    }
-  ],
+  "seal": 
+  {
+    "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+    "sn": 0,
+    "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
+  },
   "signatures": [0,1]
 }
 \r\n\r\n
@@ -486,17 +505,12 @@ Controller and Validator
   [
     "AHA8tr54sHON1vWl6FEVrTkep6H-Qt27fThWoNZsa884",
   ],
-  "data": 
-  [
-    {
-      "delegate": 
-      {
-        "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
-        "sn": 0,
-        "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
-      }
-    }
-  ],
+ "seal": 
+  {
+    "prefix": "AXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148",
+    "sn": 0,
+    "digest": "GEj6YfRWmGViKAesa08UkNWukUkPGsdFPPboBAsjRBw"
+  },
   "signatures": [0,2]
 }
 \r\n\r\n
@@ -526,7 +540,7 @@ Controller and Validator
     "A8tr54sHON1vWVrTkep6H-4HAl6FEQt27fThWoNZsa88",
     "AVrTkep6HHA8tr54sHON1Qt27fThWoNZsa88-4vWl6FE"
   ],
-  "data": [],
+  "seals": [],
   "signatures": [0,2]
 }
 \r\n\r\n
