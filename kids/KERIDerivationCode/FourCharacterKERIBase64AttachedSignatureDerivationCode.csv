@@ -1,0 +1,13 @@
+Four Character KERI Base64 Attached Signature Derivation Code
+"Derivation
+Code",Prefix Description,"Data
+Length
+Bytes","Pad
+Length","Derivation
+Code Length","Qual Sig
+Length
+Base64","Qual Sig
+Length Bytes"
+0AXX,Ed448 signature,114,0,4,156,117
+0BXX,,,,,,
+0CXX,,,,,,

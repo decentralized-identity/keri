@@ -1,0 +1,12 @@
+Four Character KERI Base64 Count Code for Attached Signatures
+"Derivation
+Code",Prefix Description,"Data
+Length
+Bytes","Pad
+Length","Count
+Code Length","Qual
+Length
+Base64","Code
+Length Bytes"
+-AXX,Count of Attached Qualified Base64 Signatures,0,0,4,4,3
+-BXX,Count of Attached Qualified Base2 Signatures,0,0,4,4,3

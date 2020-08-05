@@ -1,0 +1,26 @@
+Four Character KERI Base64 Prefix Derivation Code-1
+"Derivation
+Code",Prefix Description,"Data
+Length
+Bytes","Pad
+Length","Derivation
+Code Length","Prefix
+Length
+Base64","Prefix
+Length Bytes"
+1AAA,ECDSA secp256k1 non-transferable prefix public signing verification key. Basic derivation.,33,0,4,48,36
+1AAB,ECDSA secp256k1 public signing verification or encryption key. Basic derivation.,33,0,4,48,36
+1AAC,Ed448 non-transferable prefix public signing verification key. Basic derivation.,57,0,4,80,60
+1AAD,Ed448 public signing verification key. Basic derivation.,57,0,4,80,60
+1AAE,Ed448 signature. Self-signing derivation.,114,0,4,156,117
+1AAF,,,,,,
+1AAG,,,,,,
+1AAH,,,,,,
+1AAI,,,,,,
+1AAJ,,,,,,
+1AAK,,,,,,
+1AAL,,,,,,
+1AAM,,,,,,
+1AAN,,,,,,
+1AAO,,,,,,
+1AAP,,,,,,

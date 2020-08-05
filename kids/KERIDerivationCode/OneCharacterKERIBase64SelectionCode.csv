@@ -1,0 +1,22 @@
+One Character KERI Base64 Selection Code
+"Selection
+Code",Selector Description,"Data
+Length
+Bytes","Pad
+Length","Derivation
+Code Length","Prefix
+Length
+Base64","Prefix
+Length Bytes"
+0,Two character derivation code. Use two character table.,,,,,
+1,Four character derivation code. Use four character table.,,,,,
+2,Five character derivation code. Use five character table.,,,,,
+3,Six character derivation code. Use six character table.,,,,,
+4,Eight character derivation code. Use eight character table.,,,,,
+5,Nine character derivation code. Use nine character table.,,,,,
+6,Ten character derivation code. Use ten character table.,,,,,
+7,,,,,,
+8,,,,,,
+9,,,,,,
+-,,,,,,
+_,,,,,,
