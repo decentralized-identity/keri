@@ -1,0 +1,36 @@
+Two Character KERI Base64 Prefix Derivation Code
+"Derivation
+Code",Prefix Description,"Data
+Length
+Bytes","Pad
+Length","Derivation
+Code Length","Prefix
+Length
+Base64","Prefix
+Length Bytes"
+0A,Random seed or private key of length 128 bits,16,2,2,24,18
+0B,Ed25519 signature. Self-signing derivation.,64,2,2,88,66
+0C,ECDSA secp256k1 signature. Self-signing derivation.,64,2,2,88,66
+0D,Blake3-512 Digest. Self-addressing derivation.,64,2,2,88,66
+0E,SHA3-512 Digest. Self-addressing derivation.,64,2,2,88,66
+0F,Blake2b-512 Digest. Self-addressing derivation.,64,2,2,88,66
+0G,SHA2-512 Digest. Self-addressing derivation.,64,2,2,88,66
+0H,,,,,,
+0I,,,,,,
+0J,,,,,,
+0K,,,,,,
+0L,,,,,,
+0M,,,,,,
+0N,,,,,,
+0O,,,,,,
+0P,,,,,,
+0Q,,,,,,
+0R,,,,,,
+0S,,,,,,
+0T,,,,,,
+0U,,,,,,
+0V,,,,,,
+0W,,,,,,
+0X,,,,,,
+0Y,,,,,,
+0Z,,,,,,

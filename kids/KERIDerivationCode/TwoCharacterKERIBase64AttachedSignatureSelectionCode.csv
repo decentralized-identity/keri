@@ -1,0 +1,16 @@
+Two Character KERI Base64 Attached Signature Selection Code
+"Selection
+Code",Selector Description,"Data
+Length
+Bytes","Pad
+Length","Derivation
+Code Length","Prefix
+Length
+Base64","Prefix
+Length Bytes"
+0,Four character attached signature code. Use four character table,,,,,
+1,Five character attached signature code. Use five character table,,,,,
+2,Six character attached signature code. Use six character table,,,,,
+,,,,,,
+-,Count code for attached signatures. Use count code table(s),,,,,
+_,Op code for attached signatures. Use op code table  | - | opcode | opmod | #quadlets |,,,,,

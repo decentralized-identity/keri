@@ -1,0 +1,36 @@
+One Character KERI Base64 Prefix Derivation Code
+"Derivation
+Code",Prefix Description,"Data
+Length
+Bytes","Pad
+Length","Derivation
+Code Length","Prefix
+Length
+Base64","Prefix
+Length Bytes"
+A,Ed25519 private key seed of length 256 bits,32,1,1,44,33
+B,Ed25519 non-transferable prefix public signing verification key. Basic derivation.,32,1,1,44,33
+C,X25519 public encryption key. May be converted from Ed25519 public signing verification key.,32,1,1,44,33
+D,Ed25519 public signing verification key. Basic derivation.,32,1,1,44,33
+E,Blake3-256 Digest. Self-addressing derivation.,32,1,1,44,33
+F,Blake2b-256 Digest. Self-addressing derivation.,32,1,1,44,33
+G,Blake2s-256 Digest. Self-addressing derivation.,32,1,1,44,33
+H,SHA3-256 Digest. Self-addressing derivation.,32,1,1,44,33
+I,SHA2-256 Digest. Self-addressing derivation.,32,1,1,44,33
+J,Random seed of ECDSA secp256k1 private key of length 256 bits,32,1,1,44,33
+K,Random seed of Ed448 private key of length 448 bits,56,1,1,76,57
+L,X448 public encryption key. May be converted from Ed448 public signing verification key.,56,1,1,76,57
+M,,,,,,
+N,,,,,,
+O,,,,,,
+P,,,,,,
+Q,,,,,,
+R,,,,,,
+S,,,,,,
+T,,,,,,
+U,,,,,,
+V,,,,,,
+W,,,,,,
+X,,,,,,
+Y,,,,,,
+Z,,,,,,
