@@ -3,12 +3,24 @@
 
 ## Standard
 
-KID0001
+KID0000 - glossary, overview, how to use
 
+KID0001 - data model
 
-KID0002
+KID0002 - derivation and derivation reference tables 
 
-[KID0003](https://github.com/decentralized-identity/keri/blob/master/kids/kid0003.md
+[KID0003](https://github.com/decentralized-identity/keri/blob/master/kids/kid0003.md - Serialization 
 
+KID0004 - 
 
-## Proposed
+KID0005 - 
+
+KID0005 - 
+
+KID0005 - 
+
+## Proposed (to be extracted from whitepaper and expanded)
+
+* Recovery/consensus Algorithm (KAACE) 
+* Extracting an event from an HTTP header? appendix 
+* Transport details 
