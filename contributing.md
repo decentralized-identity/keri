@@ -1,6 +1,11 @@
 # Addendum to Identifier & Discovery WG Work Item: KERI
 
+[![hackmd-github-sync-badge](https://hackmd.io/XfYk4FucSdSjq04XKWhXIw/badge)](https://hackmd.io/XfYk4FucSdSjq04XKWhXIw)
+
+
 [NON-NORMATIVE/NON-BINDING] Guidelines for Repository Process
+
+
 
 # IPR protection
 
