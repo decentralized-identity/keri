@@ -51,7 +51,11 @@ the Draft Development Process goes through a three-state lightweight lifecycle
 tracked on GitHub by the Maintainers to signal the current status of each 
 section.
 
-The three stages of the lifecycle are: 
+Early in the development of code or specifications, work can be done in so-called
+EXPERIMENTAL mode, meaning that chairs may push commits without discussion to arrive at a PROPOSED 
+status for each segment and core components. After that, a more disciplined process can begin.
+
+The three stages of this lifecycle are: 
 * PROPOSED
 * REFINING
 * STABLE
