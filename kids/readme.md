@@ -7,9 +7,9 @@ KID0000 - glossary, overview, how to use
 
 KID0001 - data model
 
-KID0002 - derivation and derivation reference tables 
+[KID0002](https://github.com/decentralized-identity/keri/blob/master/kids/kid0002.md) - derivation and derivation reference tables 
 
-[KID0003](https://github.com/decentralized-identity/keri/blob/master/kids/kid0003.md - Serialization 
+[KID0003](https://github.com/decentralized-identity/keri/blob/master/kids/kid0003.md) - Serialization 
 
 KID0004 - 
 
