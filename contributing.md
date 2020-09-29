@@ -139,3 +139,7 @@ as a group or in a rechartered smaller group
 Once all expected sections of the Scope reach the STABLE stage the Working 
 Group commences the work carried out during the Draft stage to Working Group
 Approved stage as described in DIF’s Charter.
+
+#### Additional comments
+
+Commented code appreciated! Particularly around function definitions and data structures. 
