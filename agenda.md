@@ -25,11 +25,66 @@ Time: Every Tuesday, 10 am ET / 8 am MT
 * ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589
 Password: 293152
 
+## Agenda 11 Nov
+
+* Shedule API KERI Conference
+    * Topics
+        *   Web Adoptability. Should KERI events be JSONable Web consumable or at some other layer above?
+        *   Should field labels be more compact 2 char max
+
 ## Agenda 3 Nov
 
-*
+* Attendees
+    * Sam Smith
+    * Juan Caballero
+    * Shivam Sethi
+    * Charles Cunningham
+    * Robert Mitwicki
+    * Edyta (HCF)
+    * Seth Back (HearRo) - Go 
+    * Steve Todd () - Java
 
-## Agenda Oct 27
+* Minutes
+    * Introductions
+        * Seth Back (HearRo) - Go implementation coming along? Almost ready for direct-mode 
+        * Steve 
+    * Updates:
+        * Robert: Testing Env - Travis CI/CD might be unnecessary, if github actions works?
+        * Charles: OX updates 
+            * partial progress on last few event types
+        * eventDB: discuss 2 alternatives? 
+            * approach 1: closely follows KeriPy https://github.com/decentralized-identity/keriox/compare/feat/14/db_traits#diff-23b4c110a535fa6df354073bab85cf1645400d08a9a202311db1d2898dc406bb
+            * approach 2: follows usage from Kever and Kevery https://github.com/decentralized-identity/keriox/compare/feat/14/db#diff-23b4c110a535fa6df354073bab85cf1645400d08a9a202311db1d2898dc406bb
+        * Sam: Discuss approaches to asynch/flow-based programming/architecture (can be scheduled, nonurgent) - halfhour session or full hour deep dive
+            * helpful for understanding KERI as whitepapered; useful in implementing in bigger systems
+            * Charles: my understanding of kevery seems timely
+            * Seth: me too, it would help me understanding what I'm reading in the existing implementations
+        * "Leaked" Data Governance Act draft (ping Juan on DIF Slack for a copy) - aggregation limits and "altruistic" carte blanche... there are some devils in these details!
+    * 
+
+* Action items 
+    * Add Go and Java repos  KeriGo JKeri
+    * Confirms GitHub actions will work (and has permissions) to run test environment in each repository
+
+**
+
+-   Seth Back Hearo  Go Implementation
+    
+-   Java implementation Steve Todd
+    
+-   Add Go and Java repos  KeriGo JKeri
+    
+-   GitHub actions to run test environment in each repository
+    
+
+**
+
+## Older notes on [google drive](https://docs.google.com/document/d/1UVgMKGOjU_5bbgZH2WazNxUMRI0ucwDISrixd8WFxYc/edit?ts=5f034380#)
+
+(garbled/malformed copy follows in case of google fail:)
+
+Agenda Oct 27
+
 Memorable quotes
 Private keys should never “come into” KERI or be used or seen by it at all
 Exception: private keys in derivation codes, for use by imagined external components - never used inside of KERI; “self-documenting” crypto material generally good practice, for the low price of a few more entries in the derivation code table
