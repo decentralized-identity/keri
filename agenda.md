@@ -25,12 +25,47 @@ Time: Every Tuesday, 10 am ET / 8 am MT
 * ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589
 Password: 293152
 
-## Agenda 11 Nov
+## Agenda 10 Nov
 
-* Shedule API KERI Conference
+* Attendees
+    * Sam Smith
+    * Juan Caballero
+    * Shivam Sethi
+    * Charles Cunningham
+    * Robert Mitwicki
+    * Edyta (HCF)
+    * Seth Back (HearRo) - Go 
+    * Steve Todd () - Java
+    * Ned Smith (Intel, DICE)
+    
+* Schedule API KERI Conference
     * Topics
         *   Web Adoptability. Should KERI events be JSONable Web consumable or at some other layer above?
         *   Should field labels be more compact 2 char max
+ * Change Next digest computation to increase security in the case of multi-sig among distributed entities
+     * Instead of concatenating values and then Digest the serialization. Digest the raw binary of each element seperately then XOR the result and then attach code.
+     * Ned: Architecture Framework approach : map stakeholders and interfaces, then flows, before designing APIs for each interface
+     * Scheduling topic calls- for most, the hour before the dev meetings better than after
+         * Gather use cases and/or business cases (Juan prefers use-cases for SDO-friendly spec docs!) in extra topic calls with whomever wants to discuss
+     * Extended Workshop presenting possible/strawmen APIs = Dec 8&9
+         * 3-5 CET/6-8 PT Tues AND WED
+         * Goal: 2 or more proposed APIs to share with external stakeholders after Wed
+     * Extra Meetings - use cases and/or spec-authoring issues (attendance optional for all devs!)
+ * multisignature design question
+     * set of digests of each public key rather than full public keys needed for commitment to rotate
+         * digest functions CANNOT vary - here the spec needs to be super normative
+         * XOR + [digest of] threshold - 
+             * Charles: if it's an XOR not a digest, should we use a diff derivation code?
+             * Sam: No, it's contextual; context informs what the code means; saves us exploding the array and keeps the tables smaller
+        * currently, threshold digest + concat of all pub keys, BUT instead this new XOR system allows controllers to each contribute multiple signatures and performantly deduplicating
+    * Sidebar: hash algo agility?
+        * Ned: Verifier decides which is strong enough; Sam: Actually, event decides and everyone else 
+        * Ned: Could event be broadcast in multiple hashes? Sam: Not exactly, each event can only have one, BUT identifiers, rotations, and other types could use different hashes
+        * Ned: TPMs and constrained environments are likely to only use one! Verifier needs to be able to support many, but policies/subnets will likely have to work in parallel? Won't there be implementations where multiple hash algos need to run simultaneously?
+        * Robert: Windows Hello anecdote: each TPM only worked with certain suites, was too hard to find common ground hardware wise. bridges/translations possible?
+        * Ned: I don't see bridges working here, tho-- Sam: yes, the commitments' portability and value only work if they're never translated! "changing even one bit in the commitment would result in a different identifier", the root of trust's lifecycle is limited by inception-event algorithmic commitments
+    * BREAKING CHANGE ALERT
+        * new KID: multisig support without a new protocol, if it's avoidable; to avoid the multisig bolt-on syndrome (common in the wild), we need to put 
 
 ## Agenda 3 Nov
 
