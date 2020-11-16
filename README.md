@@ -7,3 +7,7 @@ Key Event Receipt Infrastructure - the spec and implementation of the KERI proto
 * Contributor guidelines can be found [here](contributing.md).
 * As the first experimental prototype is developed in [python](https://github.com/decentralized-identity/keripy), updates to the white paper's concepts and new implementation guidance alike are being moved into "KERI implementation documents" (KIDs), which are the building blocks of the spec being refined in dialogue with the first implementations done through the group. ALL of this work (implementation and specs alike) are in PROPOSED stage at best, and in some cases even in EXPERIMENTAL mode (some code commits not even discussed).
 * There are separate repositories for [Python](https://github.com/decentralized-identity/keripy/), [Rust](https://github.com/decentralized-identity/keriox/), [JavaScript](https://github.com/decentralized-identity/kerijs/), and the newest addition, [Go](https://github.com/decentralized-identity/kerigo/).
+
+## Ways to contribute
+* We are gathering inputs and working on a skeleton for a spec in the hours BEFORE our weekly developer sync meetings
+* Feel free to open an issue here if you have use-case ideas!
