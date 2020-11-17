@@ -7,29 +7,36 @@ KIDs = sections of a spec?
 
 Differences between KIDs and RFCs
 * Purely chronological versus heirachy
+    * Directory structure - allow subtopics & commentary "fork"
+    * i.e. 1-datamodel/events.md, 1-datamodel/events-commentary.md, 1-datamodel/state ... 
+    * Thomas: Why not a spec tree? One-page diagram showing the dependencies
+    * Steve: how do we collect implementation hiccups and discussions to generation from them an implementation FAQ and/or implementers' guide?
+        * Sam: PR and Issues --> can be combed/revisited systematically later when an FAQ or guide needs to be written
+        * Sam: Pulling out commentary helps-- update commentary in parallel when you merge a PR? 
+        * Thomas: TCG documents? - non-normative sidebars as place for [condensed] commentary!
+    * Seth: I too have multiple instances open of different implementations and multiple copies of the whitepaper PDF open to different sections... I like the separate files for KIDs while it's in flux!
 * Original schema
-    * 0 = index
-    * 1 = data model ...& what events do?
-    * 2 = derivation
+    * Directory readme?
+    * 0 = index (or spec tree?)
+        * glossary
+        * Steve will take a stab at an overview!
+    * 1 = data model & events structure
+        * structure
+        * types
+        * semantics
+        * state machine
+        * rules
+        * ordering
+    * 2 = derivation & prefixes
+        * tables from whitepaper --> markdown tables
+        * SETH VOLUNTEERED I HEARD HIM
     * 3 = serialization
+        * CHARLES VOLUNTEERED hehe
     * 4 = state machine?
-    * 5 = 
+    * 5 = Direct mode
+    * 6 = KAACE & Indirect Mode topography
 
-KIDs
-* prefixes
-* events and state
-    * structure
-    * types
-    * semantics
-    * state machine
-    * rules
-    * ordering
-* direct mode
-* indirect mode
-    * validators
-    * witnesses
-* split out event structure and contents and versioning from KID3?
-    * focusing on serialization
+Additional KIDs needed? Glossary or sidebar for all KID-specific terms?
 * key config next creation
     * secure multi-party key distribution
 * delegation
@@ -40,7 +47,7 @@ KIDs
 * implementation guidance
     * non-normative appendix on test scripts?
     * known/reviewed implementations
-
+    * glossary
 
 ### Supply Chain discussion at Decentralized Semantic WG (ToIP) - 10/Nov/20 (Readout from Robert's notes)
 
