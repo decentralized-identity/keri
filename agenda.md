@@ -25,6 +25,21 @@ Time: Every Tuesday, 10 am ET / 8 am MT
 * ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589
 Password: 293152
 
+## Agenda 17 Nov
+
+* Attendees
+    - Sam Smith
+    - Juan Caballero
+    - Robert Mitwicki
+    - Charles Cunningham
+    - Thomas Hardjono
+    - Seth Back
+    - Steve Todd
+    - Regrets: Shivam
+
+Agenda
+* Use cases - notes being collected here for future use-cases section of spec, and for spec organization itself [here](https://github.com/decentralized-identity/keri/blob/master/usecase_notes.md)
+
 ## Agenda 10 Nov
 
 * Attendees
