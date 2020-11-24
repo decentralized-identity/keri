@@ -1,0 +1,23 @@
+[
+    {
+        "raw": "{\"vs\":\"KERI10JSON0000fb_\",\"pre\":\"DeHOZ0nTz4nL7KJINjt3u2yo2u4vRRyJBJOctArZh2e4\",\"sn\":\"0\",\"ilk\":\"icp\",\"sith\":\"1\",\"keys\":[\"DeHOZ0nTz4nL7KJINjt3u2yo2u4vRRyJBJOctArZh2e4\"],\"nxt\":\"EhKvYViDWwrs2B7E66B0nU6VYrqWweU-q4_-TY6DC6oY\",\"toad\":\"0\",\"wits\":[],\"cnfg\":[]}-AABAAxraqwbDZyAAU25B-XeXVbPBAO1w06K_xXiqbX8NoafDWXgth2DOxMrrx-RQs3YPCBI5NZW8NYcjMJTYXzaojCQ",
+        "event": {
+            "vs": "KERI10JSON0000fb_",
+            "pre": "DeHOZ0nTz4nL7KJINjt3u2yo2u4vRRyJBJOctArZh2e4",
+            "sn": "0",
+            "ilk": "icp",
+            "sith": "1",
+            "keys": [
+                "DeHOZ0nTz4nL7KJINjt3u2yo2u4vRRyJBJOctArZh2e4"
+            ],
+            "nxt": "EhKvYViDWwrs2B7E66B0nU6VYrqWweU-q4_-TY6DC6oY",
+            "toad": "0",
+            "wits": [],
+            "cnfg": []
+        },
+        "sig_count": "-AAB",
+        "signatures": [
+            "AAxraqwbDZyAAU25B-XeXVbPBAO1w06K_xXiqbX8NoafDWXgth2DOxMrrx-RQs3YPCBI5NZW8NYcjMJTYXzaojCQ"
+        ]
+    }
+]
