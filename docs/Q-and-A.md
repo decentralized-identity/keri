@@ -52,7 +52,7 @@ We've done our best to protect the privacy of the Github by investigating the im
   * [Why use KERI?](#why-use-keri-)
   * [Who is KERI? Is it a company or a not for profit?](#who-is-keri--is-it-a-company-or-a-not-for-profit-)
   * [In what programming languages is KERI available?](#in-what-programming-languages-is-keri-available-)
-  * [How KERI fit in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?](#how-keri-fit-in--the-10-principles-of-ssi--https---mediumcom-metadium-self-sovereign-identity-principle-6-portability-4a7105dd0381--by-christopher-allen-)
+  * [How KERI fit in the 10 principles of SSI by Christopher Allen?](#how-keri-fit-in--the-10-principles-of-ssi--https---mediumcom-metadium-self-sovereign-identity-principle-6-portability-4a7105dd0381--by-christopher-allen-)
 - [Q&A section KERI operational](#q-a-section-keri-operational)
   * [Where can I download KERI?](#where-can-i-download-keri-)
   * [Where can we find the code and how could a coder get started?](#where-can-we-find-the-code-and-how-could-a-coder-get-started-)
