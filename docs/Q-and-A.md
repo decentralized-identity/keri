@@ -57,7 +57,7 @@ We've done our best to protect the privacy of the Github by investigating the im
   * [Where can I download KERI?](#where-can-i-download-keri)
   * [Where can we find the code and how could a coder get started?](#where-can-we-find-the-code-and-how-could-a-coder-get-started)
   * [What would you see as the main drawback of KERI?](#what-would-you-see-as-the-main-drawback-of-keri)
-  * [How can it be one solution, fit for all SSI problems?](#how-can-it-be-one-solution--fit-for-all-ssi-problems)
+  * [How can it be one solution, fit for all SSI problems?](#how-can-it-be-one-solution-fit-for-all-ssi-problems)
   * [Where you would need something quite different than KERI?](#where-you-would-need-something-quite-different-than-keri)
 - [Q&A section Userinterface](#qa-section-userinterface)
   * [What does KERI look like?](#what-does-keri-look-like)
