@@ -22,12 +22,12 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 - [Definitions](#definitions)<br/>
 - [Q&A section General](#q-a-section-general)
-  * [What is Keri?](#what-is-keri-)
-  * [Why use Keri?](#why-use-keri-)
-  * [In what programming languages is Keri available?](#In-what-programming-languages-is-keri-available-)
+  * [What is Keri?](#what-is-keri)
+  * [Why use Keri?](#why-use-keri)
+  * [In what programming languages is Keri available?](#In-what-programming-languages-is-keri-available)
 - [Q&A section Userinterface](#q-a-section-userinterface)
 - [Q&A section Keri operational](#q-a-section-keri-operational)
-  * [Where can I download Keri?](#where-can-i-download-keri-)
+  * [Where can I download Keri?](#where-can-i-download-keri)
 - [Q&A section KEL and KELR](#q-a-section-kel-and-kerl)
 - [Q&A section Wallets](#q-a-section-wallets)
 - [Q&A section Private Key Management](#q-a-section-private-key-management)
