@@ -107,6 +107,7 @@ The controller of an `autonomous identifier` is the entity (person, organization
 
 #### Decentralized Identity
 DID; {TBW}
+
 #### Duplicity
 In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe external inconsistency. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
@@ -148,6 +149,8 @@ Seals deliver authenticity proofs in KERI.
 #### Self Sovereign Identity
 
 #### Spanning layer
+An all encompassing layer horizontal layer in a software architecture. Each trust layer only spans platform specific applications. It bifurcates the internet trust map. There is no spanning trust layer.
+<img src="../images/spanning_layer.png" alt="spanning layer" border="0" width="800">
 
 #### Validator
 
@@ -223,6 +226,24 @@ For people in blockchain this is a bit hard to grasp, but we don’t need hash c
 And so I defend myself against `duplicity`.
 
 # Q&A section Why the internet is broken
+
+## Why would the internet be broken?
+The Internet Protocol (IP) is bro-ken because it has no security layer.<br/>
+<img src="../images/internet_broken.png" alt="Internet stack shows omissions" border="0" width="600">
+
+## How can the internet be fixed?
+Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](){TBW} in presentation.<br/>
+<img src="../images/identity_system_security_overlay.png" alt="identity system security overlay" border="0" width="800">
+
+## What's wrong with SSL certificate intermediairies?
+Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more]() {TBW} in presentation.<br/>
+
+## What's DNS Hijacking
+A DNS hijacking wave is targeting companies at an almost unprecedented scale. Clever trick allows attackers to obtain valid TLS certificate for hijacked domains. [more](https://arstechnica.com/information-technology/2019/01/a-dns-hijacking-wave-is-targeting-companies-at-an-almost-unprecedented-scale/).
+
+## How to repair the internet trust layer?
+With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="400" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="400" style="float:right">
+
 # Q&A section Identifiers
 # Q&A section Event logs
 # Q&A section Inconsistency and duplicity
