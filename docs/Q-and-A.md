@@ -1,7 +1,7 @@
 # Q&A about KERI
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
-- [Q&A about KERI](#q-a-about-keri)
+- [Q&A about KERI](#qa-about-keri)
     + [Disclaimer](#disclaimer)
     + [List of questions and definitions](#list-of-questions-and-definitions)
   * [Knowledge you should be confidently applying](#knowledge-you-should-be-confidently-applying)
@@ -24,20 +24,20 @@ We've done our best to protect the privacy of the Github by investigating the im
 ### List of questions and definitions
 
 - [Definitions](#definitions)<br/>
-- [Q&A section General](#q-a-section-general)
+- [Q&A section General](#qa-section-general)
   * [What is KERI?](#what-is-keri)
   * [Why use KERI?](#why-use-keri)
   * [In what programming languages is KERI available?](#In-what-programming-languages-is-keri-available)
-- [Q&A section Userinterface](#q-a-section-userinterface)
-- [Q&A section KERI operational](#q-a-section-keri-operational)
+- [Q&A section Userinterface](#qa-section-userinterface)
+- [Q&A section KERI operational](#qa-section-keri-operational)
   * [Where can I download KERI?](#where-can-i-download-keri)
-- [Q&A section KEL and KERL](#q-a-section-kel-and-kerl)
-- [Q&A section Wallets](#q-a-section-wallets)
-- [Q&A section Private Key Management](#q-a-section-private-key-management)
-- [Q&A section Blockchain](#q-a-blockchain)
-- [Q&A section Agencies](#q-a-key-agencies)
-- [Q&A section Witness](#q-a-section-Witness)
-- [Q&A section Watchers](#q-a-section-watcher)
+- [Q&A section KEL and KERL](#qa-section-kel-and-kerl)
+- [Q&A section Wallets](#qa-section-wallets)
+- [Q&A section Private Key Management](#qa-section-private-key-management)
+- [Q&A section Blockchain](#qa-blockchain)
+- [Q&A section Agencies](#qa-key-agencies)
+- [Q&A section Witness](#qa-section-Witness)
+- [Q&A section Watchers](#qa-section-watcher)
 
 ## Knowledge you should be confidently applying
 - The definitions above
@@ -53,24 +53,24 @@ We've done our best to protect the privacy of the Github by investigating the im
 - sweep to a new wallet
 
 # Jump table to categories
-- [General](#q-a-section-general)
-- [KERI operational](#q-a-section-keri-operational)
-- [Userinterface](#q-a-section-userinterface)
-- [Root of trust](#q-a-section-root-of-trust)
-- [Why the internet is broken](#q-a-section-why-the-internet-is-broken)
-- [Identifiers](#q-a-section-identifiers)
-- [Event logs](#q-a-section-event-logs)
-- [Inconsistency and duplicity](#q-a-inconsistency-and-duplicity)
-- [Key rotation](#q-a-key-rotation)
-- [KEL and KELR](#q-a-section-kel-and-kerl)
-- [Wallets](#q-a-section-wallets)
-- [Signatures](#q-a-section-signatures)
-- [Proofs](#q-a-section-proofs)
-- [Private Key Management](#q-a-section-private-key-management)
-- [Blockchain](#q-a-key-blockchain)
-- [Agencies](#q-a-key-agencies)
-- [Witness](#q-a-section-Witness)
-- [Watchers](#q-a-section-watcher)
+- [General](#qa-section-general)
+- [KERI operational](#qa-section-keri-operational)
+- [Userinterface](#qa-section-userinterface)
+- [Root of trust](#qa-section-root-of-trust)
+- [Why the internet is broken](#qa-section-why-the-internet-is-broken)
+- [Identifiers](#qa-section-identifiers)
+- [Event logs](#qa-section-event-logs)
+- [Inconsistency and duplicity](#qa-inconsistency-and-duplicity)
+- [Key rotation](#qa-key-rotation)
+- [KEL and KELR](#qa-section-kel-and-kerl)
+- [Wallets](#qa-section-wallets)
+- [Signatures](#qa-section-signatures)
+- [Proofs](#qa-section-proofs)
+- [Private Key Management](#qa-section-private-key-management)
+- [Blockchain](#qa-key-blockchain)
+- [Agencies](#qa-key-agencies)
+- [Witness](#qa-section-Witness)
+- [Watchers](#qa-section-watcher)
 
 # Definitions
 
