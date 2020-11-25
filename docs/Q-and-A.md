@@ -1,4 +1,6 @@
 # Q&A about KERI
+<img src="./images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
+
 - [Q&A about KERI](#q-a-about-keri)
     + [Disclaimer](#disclaimer)
     + [List of questions and definitions](#list-of-questions-and-definitions)
@@ -76,6 +78,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 In alphabetic order:<br/>
 AID = [Autonomous Identifier](#autonomous-identifier)<br/>
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.<br/>
+DIF = Decentralized Identity Foundation, https://identity.foundation
 KEL = [Key Event Log](#key-event-log)<br/>
 KERL = [Key Event Receipt Log](#key-event-receipt-log)<br/>
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)<br/>
@@ -153,6 +156,16 @@ KERI is not a DID method. The related DID method is [`did:un`](https://github.co
 ## Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).
 
+## Who is KERI? Is it a company or a not for profit?
+KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and within that in the *Identity and Discovery* Workgroup.
+Due to its licensing structure, KERI isn't owned by anyone and everyone at the same time. The Intellectual Property Right of KERI is hosted with DIF. It is an open source project.
+
+On github KERI is - and will become even more - a thickening bunch of repositories:<br/>
+ 1. https://github.com/decentralized-identity/keri 
+ 2. https://github.com/decentralized-identity/keripy
+ 3. etc.
+ Lastly, the important man, who founded KERI is *Samuel M. Smith Ph.D.*, operationing from his firm [prosapien.com](https://www.prosapien.com). 
+
 ## In what programming languages is KERI available?
 In Python. It will be available in the coming year in Rust, Javascript and Go (2020).
 
@@ -163,7 +176,6 @@ Christopher Allen is talking about *portability of information* related to the i
 
 ##### Addition to point 1: example
 Example image
-<img src="./Images/FinalSolutionGW.png" alt="Final multisig solution" border="0" width="600">
 <br/>
 
 Example reference outside KERI github:
