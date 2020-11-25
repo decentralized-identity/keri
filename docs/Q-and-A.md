@@ -42,7 +42,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - Public private key pairs
 - Bitcoin Improvement Protocols: BIP32, BIP39, BIP44, BIP47, BIP49, BIP84, BIP174
 - hierarchical deterministic derivation paths
-- Base 58
+- Base58
 - Eliptic curves
 ## Actions you should be comfortable with
 - Amend knowledge and keep existing knowledge up to date
@@ -73,6 +73,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 # Definitions
 
 ## Abbreviations
+DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.<br/>
 KEL = [Key Event Log](#key-event-log)<br/>
 KERL = [Key Event Receipt Log](#key-event-receipt-log)<br/>
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)<br/>
@@ -80,6 +81,9 @@ PR = Pull Request; github terminology<br/>
 
 #### Agency
 Agents can be people, edge computers and the functionality within [`wallets`](#digital-identity-wallet). The service an agent offers is agency.
+
+#### Decentralized Identity
+DID; {TBW}
 #### Duplicity
 
 #### External consistency
@@ -101,6 +105,9 @@ In our context it is software and sometimes hardware that serves as a key store 
 
 ## What is KERI?
 Key Event Receipt Infrastructure; a secure identifier overlay for the internet.
+
+## Is KERI a DID?
+KERI is not a DID method. The related DID method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Cunningham* examines overlap between data models of DID documents and KERI identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).
 
 ## Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).
