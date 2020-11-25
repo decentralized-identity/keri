@@ -96,6 +96,7 @@ Agents can be people, edge computers and the functionality within [`wallets`](#d
 #### Decentralized Identity
 DID; {TBW}
 #### Duplicity
+In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe external inconsistency. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
 #### Establishment Event
 
@@ -133,6 +134,8 @@ Seals deliver authenticity proofs in KERI.
 #### Self Sovereign Identity
 
 #### Spanning layer
+
+#### Validator
 
 #### (Digital Identity) Wallet
 In our context it is software and sometimes hardware that serves as a key store and functionality. Keys can be private keys and public keys, hashes and pointers. Functionality can be signing, invoices (receive), send, virtual credentials, delegation, etc. This is the [`agency`](#agency) part of a wallet. <br/>
@@ -191,6 +194,9 @@ Currently `KERI` is just code, that can be tested and executed in a terminal on 
 ## Is there a KERI course or webinar available?
 The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.
 
+## Could Keri work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
+Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/keri/issues/54) key and identifier management with `KERI` that answers this question profoundly.
+
 # Q&A section Root of trust
 ## What do I need to trust in KERI?
 Primary root of trust is KEL not secondary  (starts with self cert ID but then after first rotation if any must have KEL)
@@ -222,11 +228,29 @@ No, but KERI uses the same cryptographical building blocks
 3. In `KERI` proofs are cryptographically derived from the root of trust, being the autonomous controller, in blockchains the root-of-trust is a transaction on a ledger; that means the Identifier gets locked on the ledger.
 
 # Q&A section Agencies
+
+## How can KERI offer consistent services and truth?
+A. In a pair-wise setting  each party only needs to be consistent with the other party. Witnesses are not used. It doesn't matter if they lie to each other as long as they lie consistently. KERI does not
+enable someone to proof the *veracity* of a statement only the *authenticity* of the statement.
+
+B. If 3 parties are involved in a transaction all they need do is query each other for the copy of the `KEL` that each is using for each other to ensure that there is no duplicity.
+
+C. To **guarantee *undetectable* duplicity** requires a successful eclipse attack* on all the parties. `KERI` merely requires that there be sufficient duplicity detection in the ecosystem. <br/>
+This would be a set of `watchers` that the validators trust that record any and all copies of key event logs (`KEL`) that they see.  Because these `watchers` can be anyone and anywhere, any controller of a public identifier is at peril should they choose to publish inconsistent copies of their `KEL`. This removes the incentive to be duplicitous.<br/>
+'* Any blockchain system is also vulnerable to such an eclipse attack.
+
 # Q&A section Witness
 ## Witnesses have no skin in the game, it’s a `nothing at stake` situation, no?
-The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) has a section called the Duplicity Game.  I suggest reading through that first. Or see the [part of the SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/)webinar that tackles this.
+The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) has a section called the Duplicity Game.  I suggest reading through that first. Or see the [part of the SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar that tackles this.
 
 {TBW}
 ## As long as witnesses keep lying together no one will ever be able to prove them wrong? 
-Witnesses do not make any statement about the content of what is being proved. {TBW}
+Witnesses do not make any statement about the content of what is being proved. KERI does not
+enable someone to proof the *veracity* of a statement only the *authenticity* of the statement. {TBW}
+
 # Q&A section Watchers
+
+## How can we detect duplicity? Suppose controller has power over witnesses.
+In a Public setting `duplicity detection` protects the validator from any duplicity on the part of the controller and any resources such as witness that are controlled by the controller.
+
+Since a given controller in a public setting may not know who all a given validator is using for duplicity detection (watchers etc), the controller can't ensure that they will not be detected. And once detected any value that their public identifier had is now imperiled because *any entity with both copies can proof irrefutably to any other entity that the controller is duplicitous (i.e. not trustable)*.
