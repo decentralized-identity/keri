@@ -23,7 +23,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 ### List of questions and definitions
 
-- [Definitions](#definitions)\
+- [Definitions](#definitions)
 - [Q&A section General](#qa-section-general)
   * [What is KERI?](#what-is-keri)
   * [Why use KERI?](#why-use-keri)
@@ -94,7 +94,7 @@ PKI = [Public Key Infrastructure]()\
 PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
-SSI = [Self Sovereign Identity](#self-sovereign-identity)\
+SSI = [Self Sovereign Identity](#self-sovereign-identity)
 
 
 #### Agency
@@ -136,7 +136,7 @@ Replace human basis-of-trust with cryptographic root-of-trust. With verifiable d
 The root-of-trust is consistent attribution via verifiable integral non-repudiable statements.
 
 #### Seal
-A seal is cryptographic anchor; we have:\
+A seal is cryptographic anchor; we have:
 1. Digist Event Seal
 2. Hash tree root Seal
 3. Event Seal
@@ -232,7 +232,8 @@ The Internet Protocol (IP) is bro-ken because it has no security layer.\
 <img src="../images/internet_broken.png" alt="Internet stack shows omissions" border="0" width="600">
 
 ## How can the internet be fixed?
-Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](){TBW} in presentation.\
+Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](){TBW} in presentation.
+
 <img src="../images/identity_system_security_overlay.png" alt="identity system security overlay" border="0" width="800">
 
 ## What's wrong with SSL certificate intermediairies?
@@ -264,7 +265,7 @@ We may build trust over time in what was said via histories of verifiably attrib
 No, but KERI uses the same cryptographical building blocks as blockchains do.
 
 ## What's the difference between KERI and blockchain?
-`KERI` is a unordered hash-linked list of signed Key Event logs and blockchain is a timestamped ordered list of hash-linked blocks of signed transactions. What this means:\
+`KERI` is a unordered hash-linked list of signed Key Event logs and blockchain is a timestamped ordered list of hash-linked blocks of signed transactions. What this means:
 1. we don't need ordering in `KERI` and that frees us from consensus protocols in blockchains
 2. Hash-linking is done on a lower level in `KERI` and preserves consistency and fuels revealance of duplicity.
 3. In `KERI` proofs are cryptographically derived from the root of trust, being the autonomous controller, in blockchains the root-of-trust is a transaction on a ledger; that means the Identifier gets locked on the ledger.
