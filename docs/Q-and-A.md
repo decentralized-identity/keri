@@ -1,5 +1,5 @@
 # Q&A about KERI
-<img src="./images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
+<img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
 - [Q&A about KERI](#q-a-about-keri)
     + [Disclaimer](#disclaimer)
@@ -173,14 +173,6 @@ In Python. It will be available in the coming year in Rust, Javascript and Go (2
 KERI is not primarily about self-sovereign identity. KERI is primarily about autonomic identifiers, AIDs. That is identifiers that are self managing. KERI provides proof of control authority over the identifier. What one does with the identifier is not constrained by KERI. But because the primary root of trust of an AID is a KEL which can be hosted by any infrastructure, any identity system (SSI or otherwise) built on top of KERI may also be portable.  So in my opnion portability of the associated identifiers is essential to any truly self-sovereign identity system. That portability, as such, is not one of the principles is a defect in the principles.
 
 Christopher Allen is talking about *portability of information* related to the identity, not the *portability of the identifier itself* with respect to its supporting infrastructure (aka spanning layer).  Indeed, most `DID` methods, including those  that publicly claim to be `SSI` in accordance with the principles do not have portable identifiers. They are locked to a given ledger.
-
-##### Addition to point 1: example
-Example image
-<br/>
-
-Example reference outside KERI github:
-
-<small><i>[Answer provided in FullyNoded Q&A too](https://github.com/Fonta1n3/FullyNoded/blob/master/Docs/Q-and-A.md#question--gordian-wallet-there-is-no-add-manually-like-in-fullynoded) </i></small>
 
 # Q&A section KERI operational
 
