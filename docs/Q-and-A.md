@@ -14,7 +14,7 @@ Beware: A Q&A is always *work in progress*. Tips & help welcome.
 
 
 ### Disclaimer
-None of the respondents in the **open** repo and presentations have been explicitly named as a source, except for ***Samuel M. Smith Ph.D.*** and ***@henkvancann***. If there is no reference added to the answers, then it's Samuel M. Smith who answered the question. Most of the editing is done by @henkvancann, which might have introduced ommission, errors, language glitches and such. Sorry for that, feel free to correct by submitting a pull request (PR).<br/>
+None of the respondents in the **open** repo and presentations have been explicitly named as a source, except for ***Samuel M. Smith Ph.D.*** and ***@henkvancann***. If there is no reference added to the answers, then it's Samuel M. Smith who answered the question. Most of the editing is done by @henkvancann, which might have introduced ommission, errors, language glitches and such. Sorry for that, feel free to correct by submitting a pull request (PR).\
 For practical reasons educational images uploaded by Github members have been downloaded. We de-personalised them by giving images a new name. Under these new names these images have been uploaded to github and used in the Q&A to clarify the questions and answers.
 
 Keri's content is licensed under the [CC by SA 4.0. license](https://creativecommons.org/licenses/by-sa/4.0/). Parts of the video offered on SSI Meetup webinar 58 have been captured and uploaded to Github to support the answers to general questions about digital identity and more in depth answers to question about Keri.
@@ -23,7 +23,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 ### List of questions and definitions
 
-- [Definitions](#definitions)<br/>
+- [Definitions](#definitions)\
 - [Q&A section General](#qa-section-general)
   * [What is KERI?](#what-is-keri)
   * [Why use KERI?](#why-use-keri)
@@ -83,18 +83,18 @@ We've done our best to protect the privacy of the Github by investigating the im
 # Definitions
 
 ## Abbreviations
-In alphabetic order:<br/>
-AID = [Autonomous Identifier](#autonomous-identifier)<br/>
-DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.<br/>
+In alphabetic order:\
+AID = [Autonomous Identifier](#autonomous-identifier)\
+DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DIF = Decentralized Identity Foundation, https://identity.foundation
-KEL = [Key Event Log](#key-event-log)<br/>
-KERL = [Key Event Receipt Log](#key-event-receipt-log)<br/>
-KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)<br/>
-PKI = [Public Key Infrastructure]()<br/>
-PR = Pull Request; github terminology<br/>
-SAI = [Self Addressing Identifier](#self-addressing-identifier)<br/>
-SCI = [Self Certifying Identifier](#self-certifying-identifier)<br/>
-SSI = [Self Sovereign Identity](#self-sovereign-identity)<br/>
+KEL = [Key Event Log](#key-event-log)\
+KERL = [Key Event Receipt Log](#key-event-receipt-log)\
+KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
+PKI = [Public Key Infrastructure]()\
+PR = Pull Request; github terminology\
+SAI = [Self Addressing Identifier](#self-addressing-identifier)\
+SCI = [Self Certifying Identifier](#self-certifying-identifier)\
+SSI = [Self Sovereign Identity](#self-sovereign-identity)\
 
 
 #### Agency
@@ -132,11 +132,11 @@ In KERI we are protected against Internal inconsistency by the hash chain datast
 A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
 #### Root of trust
-Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key crypto we may not trust in “what” was said, but we may trust in “who” said it.<br/>
+Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key crypto we may not trust in “what” was said, but we may trust in “who” said it.\
 The root-of-trust is consistent attribution via verifiable integral non-repudiable statements.
 
 #### Seal
-A seal is cryptographic anchor; we have:<br/>
+A seal is cryptographic anchor; we have:\
 1. Digist Event Seal
 2. Hash tree root Seal
 3. Event Seal
@@ -155,8 +155,8 @@ An all encompassing layer horizontal layer in a software architecture. Each trus
 #### Validator
 
 #### (Digital Identity) Wallet
-In our context it is software and sometimes hardware that serves as a key store and functionality. Keys can be private keys and public keys, hashes and pointers. Functionality can be signing, invoices (receive), send, virtual credentials, delegation, etc. This is the [`agency`](#agency) part of a wallet. <br/>
-[More about digital ID Wallets](https://www.thalesgroup.com/en/markets/digital-identity-and-security/government/identity/digital-identity-services/digital-id-wallet)<br/>
+In our context it is software and sometimes hardware that serves as a key store and functionality. Keys can be private keys and public keys, hashes and pointers. Functionality can be signing, invoices (receive), send, virtual credentials, delegation, etc. This is the [`agency`](#agency) part of a wallet. \
+[More about digital ID Wallets](https://www.thalesgroup.com/en/markets/digital-identity-and-security/government/identity/digital-identity-services/digital-id-wallet)\
 [More about cryto Wallets](https://cryptocurrencyfacts.com/what-is-a-cryptocurrency-wallet/).
 
 # Q&A section General
@@ -174,7 +174,7 @@ Because there is no secure universal trust layer for the internet, currently (20
 KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and within that in the *Identity and Discovery* Workgroup.
 Due to its licensing structure, KERI isn't owned by anyone and everyone at the same time. The Intellectual Property Right of KERI is hosted with DIF. It is an open source project.
 
-On github KERI is - and will become even more - a thickening bunch of repositories:<br/>
+On github KERI is - and will become even more - a thickening bunch of repositories:\
  1. https://github.com/decentralized-identity/keri 
  2. https://github.com/decentralized-identity/keripy
  3. etc.
@@ -184,7 +184,7 @@ On github KERI is - and will become even more - a thickening bunch of repositori
 In Python. It will be available in the coming year in Rust, Javascript and Go (2020).
 
 ## How KERI fit in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?
-KERI is not primarily about self-sovereign identity. KERI is primarily about autonomic identifiers, AIDs. That is identifiers that are self managing. KERI provides proof of control authority over the identifier. What one does with the identifier is not constrained by KERI. But because the primary root of trust of an AID is a KEL which can be hosted by any infrastructure, any identity system (SSI or otherwise) built on top of KERI may also be portable. <br/>So in my opnion portability of the associated identifiers is essential to any truly self-sovereign identity system. That portability, as such, is not one of the principles is a defect in the principles.
+KERI is not primarily about self-sovereign identity. KERI is primarily about autonomic identifiers, AIDs. That is identifiers that are self managing. KERI provides proof of control authority over the identifier. What one does with the identifier is not constrained by KERI. But because the primary root of trust of an AID is a KEL which can be hosted by any infrastructure, any identity system (SSI or otherwise) built on top of KERI may also be portable. \So in my opnion portability of the associated identifiers is essential to any truly self-sovereign identity system. That portability, as such, is not one of the principles is a defect in the principles.
 
 Christopher Allen is talking about *portability of information* related to the identity, not the *portability of the identifier itself* with respect to its supporting infrastructure (aka spanning layer).  Indeed, most `DID` methods, including those  that publicly claim to be `SSI` in accordance with the principles do not have portable identifiers. They are locked to a given ledger.
 
@@ -220,23 +220,23 @@ Delegation could be used. There is an [issue about IoT](https://github.com/decen
 Primary root of trust is KEL not secondary  (starts with self cert ID but then after first rotation if any must have KEL)
 
 ## KERI does not need a blockchain, but how does it establish the root of trust that we need for SSI? How does the data persist?
-The KELs are what establishes the root of trust in KERI. So you have a SCI and a KEL. The KEL is ordered with respect to the SCI by the controller. You don't need total ordering with respect to other identifiers to establish the root of trust in KERI.<br/>
-In blockchains you need total ordering, which you need for double spend protecting in cryptocurrencies, but not in KERI.<br/>
-For people in blockchain this is a bit hard to grasp, but we don’t need hash chain data structure of events on single identifier nor the *ordering* those, I just need logs, I need *append-only logs of events* to establish the authority.<br/>
+The KELs are what establishes the root of trust in KERI. So you have a SCI and a KEL. The KEL is ordered with respect to the SCI by the controller. You don't need total ordering with respect to other identifiers to establish the root of trust in KERI.\
+In blockchains you need total ordering, which you need for double spend protecting in cryptocurrencies, but not in KERI.\
+For people in blockchain this is a bit hard to grasp, but we don’t need hash chain data structure of events on single identifier nor the *ordering* those, I just need logs, I need *append-only logs of events* to establish the authority.\
 And so I defend myself against `duplicity`.
 
 # Q&A section Why the internet is broken
 
 ## Why would the internet be broken?
-The Internet Protocol (IP) is bro-ken because it has no security layer.<br/>
+The Internet Protocol (IP) is bro-ken because it has no security layer.\
 <img src="../images/internet_broken.png" alt="Internet stack shows omissions" border="0" width="600">
 
 ## How can the internet be fixed?
-Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](){TBW} in presentation.<br/>
+Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](){TBW} in presentation.\
 <img src="../images/identity_system_security_overlay.png" alt="identity system security overlay" border="0" width="800">
 
 ## What's wrong with SSL certificate intermediairies?
-Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more]() {TBW} in presentation.<br/>
+Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more]() {TBW} in presentation.\
 
 ## What's DNS Hijacking
 A DNS hijacking wave is targeting companies at an almost unprecedented scale. Clever trick allows attackers to obtain valid TLS certificate for hijacked domains. [more](https://arstechnica.com/information-technology/2019/01/a-dns-hijacking-wave-is-targeting-companies-at-an-almost-unprecedented-scale/).
@@ -264,7 +264,7 @@ We may build trust over time in what was said via histories of verifiably attrib
 No, but KERI uses the same cryptographical building blocks as blockchains do.
 
 ## What's the difference between KERI and blockchain?
-`KERI` is a unordered hash-linked list of signed Key Event logs and blockchain is a timestamped ordered list of hash-linked blocks of signed transactions. What this means:<br/>
+`KERI` is a unordered hash-linked list of signed Key Event logs and blockchain is a timestamped ordered list of hash-linked blocks of signed transactions. What this means:\
 1. we don't need ordering in `KERI` and that frees us from consensus protocols in blockchains
 2. Hash-linking is done on a lower level in `KERI` and preserves consistency and fuels revealance of duplicity.
 3. In `KERI` proofs are cryptographically derived from the root of trust, being the autonomous controller, in blockchains the root-of-trust is a transaction on a ledger; that means the Identifier gets locked on the ledger.
@@ -277,8 +277,8 @@ enable someone to proof the *veracity* of a statement only the *authenticity* of
 
 B. If 3 parties are involved in a transaction all they need do is query each other for the copy of the `KEL` that each is using for each other to ensure that there is no duplicity.
 
-C. To **guarantee *undetectable* duplicity** requires a successful eclipse attack* on all the parties. `KERI` merely requires that there be sufficient duplicity detection in the ecosystem. <br/>
-This would be a set of `watchers` that the validators trust that record any and all copies of key event logs (`KEL`) that they see.  Because these `watchers` can be anyone and anywhere, any controller of a public identifier is at peril should they choose to publish inconsistent copies of their `KEL`. This removes the incentive to be duplicitous.<br/>
+C. To **guarantee *undetectable* duplicity** requires a successful eclipse attack* on all the parties. `KERI` merely requires that there be sufficient duplicity detection in the ecosystem. \
+This would be a set of `watchers` that the validators trust that record any and all copies of key event logs (`KEL`) that they see.  Because these `watchers` can be anyone and anywhere, any controller of a public identifier is at peril should they choose to publish inconsistent copies of their `KEL`. This removes the incentive to be duplicitous.\
 '* Any blockchain system is also vulnerable to such an eclipse attack.
 
 # Q&A section Witness

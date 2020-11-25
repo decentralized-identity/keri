@@ -1,9 +1,7 @@
 # KERI
 Key Event Receipt Infrastructure - the spec and implementation of the KERI protocol
 
-[//]: # "<img src="./images/KERI_image_by_CChunningham.png" alt="KERI image by CChunningham" border="0" width="600">"
-
-![](./images/KERI_image_by_CChunningham.png =600)
+<img src="./images/KERI_image_by_CChunningham.png" alt="KERI image by CChunningham" border="0" width="600">
 
 ## Starting Points
 * For an overview and introduction, see the explanatory **slideshow** [here](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf)
