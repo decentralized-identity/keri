@@ -135,6 +135,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 In alphabetic order:\
 AID = [Autonomous Identifier](#autonomous-identifier)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
+DDO = DID Document, look up W3D DID standardization for more info
 DIF = Decentralized Identity Foundation, https://identity.foundation\
 KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
@@ -143,7 +144,9 @@ PKI = [Public Key Infrastructure]()\
 PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
-SSI = [Self Sovereign Identity](#self-sovereign-identity)
+SSI = [Self Sovereign Identity](#self-sovereign-identity)\
+VC = Verifiable Credential, look up W3D DID standardization for more info
+
 
 Definitions in alphabetic order:
 #### Agency
@@ -222,9 +225,27 @@ In our context it is software and sometimes hardware that serves as a key store 
 
 ## What is KERI?
 Key Event Receipt Infrastructure; a secure identifier overlay for the internet.
+## Why use KERI?
+Because there is no secure universal trust layer for the internet, currently (2020).\
+_(@henkvancann)_
 
 ## Is KERI a DID?
-KERI is not a DID method. The related DID method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and KERI identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).
+`KERI` is not a `DID` method. The related `DID` method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).
+
+## How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
+[Trust-over-IP]():\
+- Its goal is to be the missing authentication layer of the internet. That's a pretty well matching objective.
+- Layer 1 (settlement layer): Where other `DID`s use blockchains or databases to register identities and settle 'transactions' between between, `DDO`s, and `VC`s, KERI uses homegrown native structures: `KEL` and `KERL`.
+_(@henkvancann)_
+- Layer 2 (communication layer): Non existing in KERI, because KERI is end-verifiable. KERI can use any other means of communication between actors in the ecosystem
+- Layer 3 (transaction layer): Since KERI focuses on the more fundamental part of authentication for the internet, you won't find match functionality for usual trust-over-IP transaction like VCs or money.
+- Layer 4 (application layer): {TBW}
+_(@henkvancann)_
+
+[W3C DID]():\
+1. The KERI developers provisionally design DID:UN, which might become a mixture of DID:KEY, DID:PEER, and DID:WEB, combinable with more functional DIDs in the Identity spectrum DID:SOV, DID:ETHR, etc.
+2. No verifiable credentials
+_(@henkvancann)_
 
 ## Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).
