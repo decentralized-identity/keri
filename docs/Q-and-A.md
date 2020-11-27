@@ -233,7 +233,7 @@ _(@henkvancann)_
 `KERI` is not a `DID` method. The related `DID` method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).
 
 ## How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
-[Trust-over-IP]():\
+[Trust-over-IP]():
 - Its goal is to be the missing authentication layer of the internet. That's a pretty well matching objective.
 - Layer 1 (settlement layer): Where other `DID`s use blockchains or databases to register identities and settle 'transactions' between between, `DDO`s, and `VC`s, KERI uses homegrown native structures: `KEL` and `KERL`.
 _(@henkvancann)_
@@ -242,7 +242,7 @@ _(@henkvancann)_
 - Layer 4 (application layer): {TBW}
 _(@henkvancann)_
 
-[W3C DID]():\
+[W3C DID]():
 1. The KERI developers provisionally design DID:UN, which might become a mixture of DID:KEY, DID:PEER, and DID:WEB, combinable with more functional DIDs in the Identity spectrum DID:SOV, DID:ETHR, etc.
 2. No verifiable credentials
 _(@henkvancann)_
@@ -258,10 +258,12 @@ On github KERI is - and will become even more - a thickening bunch of repositori
  1. https://github.com/decentralized-identity/keri 
  2. https://github.com/decentralized-identity/keripy
  3. etc.
- Lastly, the important man, who founded KERI is *Samuel M. Smith Ph.D.*, operationing from his firm [prosapien.com](https://www.prosapien.com). 
+ Lastly, the important man, who founded KERI is *Samuel M. Smith Ph.D.*, operationing from his firm [prosapien.com](https://www.prosapien.com).
+ _(@henkvancann)_
 
 ## In what programming languages is KERI available?
 In Python. It will be available in the coming year in Rust, Javascript and Go (2020).
+_(@henkvancann)_
 
 ## How KERI fit in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?
 KERI is not primarily about self-sovereign identity. KERI is primarily about autonomic identifiers, AIDs. That is identifiers that are self managing. KERI provides proof of control authority over the identifier. What one does with the identifier is not constrained by KERI. But because the primary root of trust of an AID is a KEL which can be hosted by any infrastructure, any identity system (SSI or otherwise) built on top of KERI may also be portable.
@@ -289,6 +291,8 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 
 ## How does KERI scale
 
+## How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?
+
 ## How to handle multiple formats of KEL and KERL through time. Will they be backwards compatible?
 
 ## Could a KEL or KERL be pruned or charded?
@@ -298,7 +302,8 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 # Q&A section Userinterface
 ## What does KERI look like?
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
-Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.
+Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
+_(@henkvancann)_
 
 ## Is there a KERI course or webinar available?
 The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.
@@ -415,6 +420,7 @@ We may build trust over time in what was said via histories of verifiably attrib
 
 ## Does KERI use a blockchain?
 No, but KERI uses the same cryptographical building blocks as blockchains do.
+_(@henkvancann)_
 
 ## What's the difference between KERI and blockchain?
 `KERI` is a unordered hash-linked list of signed Key Event logs and blockchain is a timestamped ordered list of hash-linked blocks of signed transactions. What this means:
