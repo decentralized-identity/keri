@@ -177,6 +177,13 @@ In KERI we are protected against Internal inconsistency by the hash chain datast
 
 #### Non-Establishment Event
 
+#### Payload
+The payload of an item in an `Event Log` is one the following cryptographical building blocks in KERI:
+- a content digest hash 
+- a root hash of a Merkletree
+- a public key
+Note that the KERI never puts raw data or privacy sensitive data in a `KEL` or `KERL`.
+
 #### Public Key Infrastructure
 A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
@@ -301,19 +308,78 @@ A DNS hijacking wave is targeting companies at an almost unprecedented scale. Cl
 With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="400" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="400" style="float:right">
 
 # Q&A section Identifiers
+
+## How is a KERI identifier different than a regaular identifier in DID methods?
+
+## Is my KERI identifier public?
+
+## Is a KERI identifier GPDR proof?
+
 # Q&A section Event logs
+
+## What is a Key Event Log?
+
+## Why is a Key Event Log crucially important?
+
+## How do I create a KEL?
+
+## How can I trust a KEL?
+
 # Q&A section Inconsistency and duplicity
+
+## What kind of Inconsistencies do we have?
+
+## What is Duplicity?
+
+## Why should we care about Duplicity?
+
 # Q&A section Key rotation
+
+## What is Key Rotation?
+
+## Why bother about key rotation?
+
 # Q&A section KEL and KERL
+
+## What the difference between KEL and KERL?
+
 # Q&A section Wallets
+
+## Why do I need a wallet for KERI?
+
+## How can I backup the KERI identifiers in my wallet?
+
+## Can I receive crypto money in my KERI wallet?
+
+## Does a KERI wallet store virtual credentials connect to my identifiers?
+
 # Q&A section Signatures
+
+## Who can sign off my proofs and identifiers?
+
+## What is the practical use of signatures?
+
+## Do verifiers, validators, witnesses and watcher sign off `payloads`?
+
 # Q&A section Proofs
-## How can we verify that a statement by a controller is valid
+
+## What does KERI proof?
+
+## Does KERI know whether any message in the Event Logs are valid or true?
+
+## How can we verify that a statement by a controller is valid?
 We may verify that the controller of a private key, (the who), made a statement but not the `validity` of the statement itself.
 ## How can we trust what was said or written?
 We may build trust over time in what was said via histories of verifiably attributable (to whom) consistent statements, i.e. `reputation`.
 
 # Q&A section Private Key Management
+
+## Not your keys, not your identity?
+
+## The wallet is there to store my KERI private keys safely, no?
+
+## Are compound private keys (Shamir Secret Sharing)
+
 # Q&A section Blockchain
 
 ## Does KERI use a blockchain?
