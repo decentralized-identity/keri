@@ -378,7 +378,9 @@ We may build trust over time in what was said via histories of verifiably attrib
 
 ## The wallet is there to store my KERI private keys safely, no?
 
-## Are compound private keys (Shamir Secret Sharing)
+## Are compound private keys (Shamir Secret Sharing) and multisignature schemes possible to incept identifiers?
+
+## How to delegate control over my private keys that control my identifiers?
 
 # Q&A section Blockchain
 
