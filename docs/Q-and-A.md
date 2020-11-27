@@ -287,6 +287,14 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 ## Where you would need something quite different than KERI?
 `KERI` does one thing, it establishes control authority using verifiable portable proofs that are `KEL`s. 
 
+## How does KERI scale
+
+## How to handle multiple formats of KEL and KERL through time. Will they be backwards compatible?
+
+## Could a KEL or KERL be pruned or charded?
+
+## How to bootstrap KERI on the internet? Is it like fax machine; the more there are the more effective it is?
+
 # Q&A section Userinterface
 ## What does KERI look like?
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
