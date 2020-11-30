@@ -133,9 +133,10 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 ## Abbreviations
 In alphabetic order:\
-AID = [Autonomous Identifier](#autonomous-identifier)\
+AID = [Autonomic Identifier](#autonomic-identifier)\
+AN = [Autonomic Namespace](#autonomic-namespace)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
-DDO = DID Document, look up W3D DID standardization for more info
+DDO = DID Document, look up W3D DID standardization for more info\
 DIF = Decentralized Identity Foundation, https://identity.foundation\
 IPv4 = standard Internet Protocol, version 4\
 KEL = [Key Event Log](#key-event-log)\
@@ -153,7 +154,18 @@ Definitions in alphabetic order:
 #### Agency
 Agents can be people, edge computers and the functionality within [`wallets`](#digital-identity-wallet). The service an agent offers is agency.
 
-#### Autonomous Identifier
+#### Autonomic Identifier
+An identifier that is self-certifying and self-sovereign
+
+#### Autonomic Namespace
+A namespace that is self-certifying and hence self-administrating. ANs are therefore portable = truly self sovereign.
+
+#### Autonomic Idenity system
+In the design of an identity system you need to answer a few questions.
+
+<img src="../images/ais.png" alt="Autonomic Identity System" border="0" width="600">
+
+There's nobody that can intervene with the establishment of the authenticity of a control operation because you can verify all the way back to the root-of-trust.
 
 #### Content-addressable hash
 {TBW}
@@ -200,7 +212,7 @@ Note that the KERI never puts raw data or privacy sensitive data in a `KEL` or `
 A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
 #### Root of trust
-Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key crypto we may not trust in “what” was said, but we may trust in “who” said it.\
+Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key cryptography we may not trust in “what” was said, but we may trust in “who” said it.\
 The root-of-trust is consistent attribution via verifiable integral non-repudiable statements.
 
 #### Seal
@@ -341,7 +353,7 @@ Primary root of trust is KEL not secondary (starts with self cert ID but then af
 (_SamMSmith_)
 
 ## KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?
-The `KELs` are what establishes the root of trust in `KERI`. So you have a `SCI` and a `KEL`. The `KEL` is ordered with respect to the SCI by the controller. You don't need total ordering with respect to other identifiers to establish the root of trust in `KERI`.\
+The `KELs` are what establishes the root of trust in `KERI`. So you have a `SCI` and a `KEL`. The `KEL` is ordered with respect to the SCI by the controller. You don't need total ordering with respect to other identifiers to establish the root of trust in `KERI`, because the controller is the one and only, who order events.\
 In blockchains you need total ordering, which you need for double spend protecting in cryptocurrencies, but not in `KERI`.\
 For people in blockchain this is a bit hard to grasp, but we don’t need hash chain data structure of events on single identifier nor the *ordering* those, I just need logs, I need *append-only logs of events* to establish the authority.\
 And so I defend myself against `duplicity`.\
@@ -401,7 +413,8 @@ To be able to horizontally scale your identifier system, that consists of a root
 (_SamMSmith_)
 
 ## What do I need a self-signing identifier for?
-Often it is an efficiecy measure where the identifier includes the signature as your `content-addressable hash`
+Often it is an efficiecy measure where the identifier includes the signature as your `content-addressable hash`.\
+(_SamMSmith_)
 
 # Q&A section Event logs
 
@@ -438,7 +451,8 @@ Often it is an efficiecy measure where the identifier includes the signature as 
 ## How can I backup the KERI identifiers in my wallet?
 
 ## Can I receive crypto money in my KERI wallet?
-
+We don't need a crypto currency embedded in the KERI system, we can use any other crypto currency system for payment. So the design of the KERI system has left crypto token control out.\
+_(@henkvancann)_
 ## Does a KERI wallet store virtual credentials connect to my identifiers?
 
 # Q&A section Signatures
@@ -484,6 +498,14 @@ _(@henkvancann)_
 2. Hash-linking is done on a lower level in `KERI` and preserves consistency and fuels revealance of duplicity.
 3. In `KERI` proofs are cryptographically derived from the root of trust, being the autonomous controller, in blockchains the root-of-trust is a transaction on a ledger; that means the Identifier gets locked on the ledger.\
 _(@henkvancann)_
+
+## Why not register identities on an open public ledger like bitcoin, ethereum or soverin?
+Because for our purposes we don't need to. Consider two distinct identifier to totally ordered, distributed consensus ledger:
+1. the access identifier that allows you to access the ledger. This one is ussually a `SCI`. E.g. on bitcoin your bitcoin address is cryptographically derived from the public key from your keypair.
+2. the register identifier that allows you to register an identifier on the ledger. The ledger transaction is validated registering of your identifier, not the cryptographic root-of-trust that the access identifier is using.
+
+The identifier is now locked to that ledger. We want identifiers to be portable accross ledgers, so we don't want to use registration as the root-of-trust, we want to be self-certified all the way.
+(_SamMSmith_)
 
 # Q&A section Agencies
 
