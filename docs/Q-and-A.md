@@ -230,7 +230,8 @@ Because there is no secure universal trust layer for the internet, currently (20
 _(@henkvancann)_
 
 ## Is KERI a DID?
-`KERI` is not a `DID` method. The related `DID` method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).
+`KERI` is not a `DID` method. The related `DID` method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).\
+_(@henkvancann)_
 
 ## How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
 [Trust-over-IP]():
@@ -268,9 +269,11 @@ _(@henkvancann)_
 ## How KERI fit in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?
 KERI is not primarily about self-sovereign identity. KERI is primarily about autonomic identifiers, AIDs. That is identifiers that are self managing. KERI provides proof of control authority over the identifier. What one does with the identifier is not constrained by KERI. But because the primary root of trust of an AID is a KEL which can be hosted by any infrastructure, any identity system (SSI or otherwise) built on top of KERI may also be portable.
 
-So in my opnion portability of the associated identifiers is essential to any truly self-sovereign identity system. That portability, as such, is not one of the principles is a defect in the principles.
+So in my opnion portability of the associated identifiers is essential to any truly self-sovereign identity system. That portability, as such, is not one of the principles is a defect in the principles.\
+(_SamMSmith_)
 
-Christopher Allen is talking about *portability of information* related to the identity, not the *portability of the identifier itself* with respect to its supporting infrastructure (aka spanning layer).  Indeed, most `DID` methods, including those  that publicly claim to be `SSI` in accordance with the principles do not have portable identifiers. They are locked to a given ledger.
+Christopher Allen is talking about *portability of information* related to the identity, not the *portability of the identifier itself* with respect to its supporting infrastructure (aka spanning layer).  Indeed, most `DID` methods, including those  that publicly claim to be `SSI` in accordance with the principles do not have portable identifiers. They are locked to a given ledger.\
+(_SamMSmith_)
 
 # Q&A section KERI operational
 
@@ -284,10 +287,12 @@ The homepage on github [README.md](../README.md) pretty much sums up all the pos
 Its main drawback is that it's nascent.
 
 ## How can it be one solution, fit for all SSI problems? 
-KERI uses plain old digital signatures from `PKI`, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. `KERI` solves that problem. 
+KERI uses plain old digital signatures from `PKI`, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. `KERI` solves that problem.\
+(_SamMSmith_)
 
 ## Where you would need something quite different than KERI?
-`KERI` does one thing, it establishes control authority using verifiable portable proofs that are `KEL`s. 
+`KERI` does one thing, it establishes control authority using verifiable portable proofs that are `KEL`s.\
+(_SamMSmith_)
 
 ## How does KERI scale
 
@@ -299,6 +304,11 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 
 ## How to bootstrap KERI on the internet? Is it like fax machine; the more there are the more effective it is?
 
+## Why does KERI demand signing and digesting the full over-the-wire serialization of a message?
+The discussion of `KERI`s approach to *serializing messages and signing and digesting the full over-the-wire serialization* is inconvenient for implementers. The motivation for this approach I am calling Zero Message Malleability as a property of `KERI`. 
+This is a "best practices" security first approach that prevents semantic leakage over time that becomes a transaction malleability vulnerability. Indeed `KERI` approach trades off some inconvenience in serialization for better security and reduces the inconvenience of needed to have tightly specified semantics to prevent transaction malleability.\
+(_SamMSmith_)
+
 # Q&A section Userinterface
 ## What does KERI look like?
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
@@ -306,40 +316,49 @@ Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of
 _(@henkvancann)_
 
 ## Is there a KERI course or webinar available?
-The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.
+The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.\
+_(@henkvancann)_
 
 ## Could Keri work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
-Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/keri/issues/54) key and identifier management with `KERI` that answers this question profoundly.
+Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/keri/issues/54) key and identifier management with `KERI` that answers this question profoundly.\
+(_SamMSmith_)
 
 # Q&A section Root of trust
 ## What do I need to trust in KERI?
-Primary root of trust is KEL not secondary  (starts with self cert ID but then after first rotation if any must have KEL.
+Primary root of trust is KEL not secondary (starts with self cert ID but then after first rotation if any must have KEL.\
+(_SamMSmith_)
 
 ## KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?
 The `KELs` are what establishes the root of trust in `KERI`. So you have a `SCI` and a `KEL`. The `KEL` is ordered with respect to the SCI by the controller. You don't need total ordering with respect to other identifiers to establish the root of trust in `KERI`.\
 In blockchains you need total ordering, which you need for double spend protecting in cryptocurrencies, but not in `KERI`.\
 For people in blockchain this is a bit hard to grasp, but we don’t need hash chain data structure of events on single identifier nor the *ordering* those, I just need logs, I need *append-only logs of events* to establish the authority.\
-And so I defend myself against `duplicity`.
+And so I defend myself against `duplicity`.\
+(_SamMSmith_)
 
 # Q&A section Why the internet is broken
 
 ## Why would the internet be broken?
 The Internet Protocol (IP) is bro-ken because it has no security layer.\
 <img src="../images/internet_broken.png" alt="Internet stack shows omissions" border="0" width="600">
+(_SamMSmith_)
 
 ## How can the internet be fixed?
 Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](){TBW} in presentation.
 
 <img src="../images/identity_system_security_overlay.png" alt="identity system security overlay" border="0" width="800">
+(_SamMSmith_)
 
 ## What's wrong with SSL certificate intermediairies?
-Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more]() {TBW} in presentation.
+Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more]() {TBW} in presentation.\
+_(@henkvancann)_
 
 ## What's DNS Hijacking
-A DNS hijacking wave is targeting companies at an almost unprecedented scale. Clever trick allows attackers to obtain valid TLS certificate for hijacked domains. [more](https://arstechnica.com/information-technology/2019/01/a-dns-hijacking-wave-is-targeting-companies-at-an-almost-unprecedented-scale/).
+A DNS hijacking wave is targeting companies at an almost unprecedented scale. Clever trick allows attackers to obtain valid TLS certificate for hijacked domains. [more](https://arstechnica.com/information-technology/2019/01/a-dns-hijacking-wave-is-targeting-companies-at-an-almost-unprecedented-scale/).\
+_(@henkvancann)_
 
 ## How to repair the internet trust layer?
 With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="400" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="400" style="float:right">
+_(@henkvancann)_
 
 # Q&A section Identifiers
 
@@ -402,9 +421,11 @@ With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Pla
 ## Does KERI know whether any message in the Event Logs are valid or true?
 
 ## How can we verify that a statement by a controller is valid?
-We may verify that the controller of a private key, (the who), made a statement but not the `validity` of the statement itself.
+We may verify that the controller of a private key, (the who), made a statement but not the `validity` of the statement itself.\
+(_SamMSmith_)
 ## How can we trust what was said or written?
-We may build trust over time in what was said via histories of verifiably attributable (to whom) consistent statements, i.e. `reputation`.
+We may build trust over time in what was said via histories of verifiably attributable (to whom) consistent statements, i.e. `reputation`.\
+(_SamMSmith_)
 
 # Q&A section Private Key Management
 
@@ -426,32 +447,38 @@ _(@henkvancann)_
 `KERI` is a unordered hash-linked list of signed Key Event logs and blockchain is a timestamped ordered list of hash-linked blocks of signed transactions. What this means:
 1. we don't need ordering in `KERI` and that frees us from consensus protocols in blockchains
 2. Hash-linking is done on a lower level in `KERI` and preserves consistency and fuels revealance of duplicity.
-3. In `KERI` proofs are cryptographically derived from the root of trust, being the autonomous controller, in blockchains the root-of-trust is a transaction on a ledger; that means the Identifier gets locked on the ledger.
+3. In `KERI` proofs are cryptographically derived from the root of trust, being the autonomous controller, in blockchains the root-of-trust is a transaction on a ledger; that means the Identifier gets locked on the ledger.\
+_(@henkvancann)_
 
 # Q&A section Agencies
 
 ## How can KERI offer consistent services and truth?
 A. In a pair-wise setting  each party only needs to be consistent with the other party. Witnesses are not used. It doesn't matter if they lie to each other as long as they lie consistently. KERI does not
-enable someone to proof the *veracity* of a statement only the *authenticity* of the statement.
+enable someone to proof the *veracity* of a statement only the *authenticity* of the statement.\
+(_SamMSmith_)
 
-B. If 3 parties are involved in a transaction all they need do is query each other for the copy of the `KEL` that each is using for each other to ensure that there is no duplicity.
+B. If 3 parties are involved in a transaction all they need do is query each other for the copy of the `KEL` that each is using for each other to ensure that there is no duplicity.\
+(_SamMSmith_)
 
 C. To **guarantee *undetectable* duplicity** requires a successful eclipse attack* on all the parties. `KERI` merely requires that there be sufficient duplicity detection in the ecosystem. \
 This would be a set of `watchers` that the validators trust that record any and all copies of key event logs (`KEL`) that they see.  Because these `watchers` can be anyone and anywhere, any controller of a public identifier is at peril should they choose to publish inconsistent copies of their `KEL`. This removes the incentive to be duplicitous.\
-'* Any blockchain system is also vulnerable to such an eclipse attack.
+'* Any blockchain system is also vulnerable to such an eclipse attack.\
+(_SamMSmith_)
 
 # Q&A section Witness
 ## Witnesses have no skin in the game, it’s a `nothing at stake` situation, no?
-The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) has a section called the Duplicity Game.  I suggest reading through that first. Or see the [part of the SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar that tackles this.
+The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) has a section called the Duplicity Game.  I suggest reading through that first. Or see the [part of the SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar that tackles this.\
+(_SamMSmith_)
 
 {TBW}
 ## As long as witnesses keep lying together no one will ever be able to prove them wrong? 
 Witnesses do not make any statement about the content of what is being proved. KERI does not
-enable someone to proof the *veracity* of a statement only the *authenticity* of the statement. {TBW}
-
+enable someone to proof the *veracity* of a statement only the *authenticity* of the statement. {TBW} \
+(_SamMSmith_)
 # Q&A section Watchers
 
 ## How can we detect duplicity? Suppose controller has power over witnesses.
 In a Public setting `duplicity detection` protects the validator from any duplicity on the part of the controller and any resources such as witness that are controlled by the controller.
 
-Since a given controller in a public setting may not know who all a given validator is using for duplicity detection (watchers etc), the controller can't ensure that they will not be detected. And once detected any value that their public identifier had is now imperiled because *any entity with both copies can proof irrefutably to any other entity that the controller is duplicitous (i.e. not trustable)*.
+Since a given controller in a public setting may not know who all a given validator is using for duplicity detection (watchers etc), the controller can't ensure that they will not be detected. And once detected any value that their public identifier had is now imperiled because *any entity with both copies can proof irrefutably to any other entity that the controller is duplicitous (i.e. not trustable)*. \
+(_SamMSmith_)
