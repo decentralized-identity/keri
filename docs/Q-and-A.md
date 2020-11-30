@@ -161,6 +161,9 @@ The controller of an `autonomous identifier` is the entity (person, organization
 #### Decentralized Identity
 DID; Decentralized identity is a technology that uses cryptography to allow individuals to create and control their own unique identifiers. They can use these identifiers to obtain `Verifiable Credentials` from trusted organisations and, subsequently, present elements of these credentials as proof of claims about themselves. In this model, the individual takes ownership of their own identity and need not cede control to centralized service providers or companies.
 
+#### Derivation code
+{TBW}
+
 #### Duplicity
 In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe external inconsistency. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
@@ -182,7 +185,9 @@ In KERI we are protected against Internal inconsistency by the hash chain datast
 #### Non-Establishment Event
 
 #### Payload
-The payload of an item in an `Event Log` is one the following cryptographical building blocks in KERI:
+The term 'payload' is used to distinguish between the 'interesting' information in a chunk of data or similar, and the overhead to support it. It is borrowed from transportation, where it refers to the part of the load that 'pays': for example, a tanker truck may carry 20 tons of oil, but the fully loaded vehicle weighs much more than that - there's the vehicle itself, the driver, fuel, the tank, etc. It costs money to move all these, but the customer only cares about (and pays for) the oil, hence, 'pay-load'. [source](https://softwareengineering.stackexchange.com/questions/158603/what-does-the-term-payload-mean-in-programming).
+
+Now payload in `KERI`. The payload of an item in an `Event Log` is one the following cryptographical building blocks in KERI:
 - a content digest hash 
 - a root hash of a Merkletree
 - a public key
@@ -203,6 +208,9 @@ A seal is cryptographic anchor; we have:
 Seals deliver authenticity proofs in KERI.
 
 #### Self Addressing Identifier
+`SAI`, This a self certfifying identifier (`SCI`) that has been attached to a certain context or infrastructure at the time of its inception. The inception configuration together with public key and it's `derivation` forms a digest (hash) plus it's own `derivation code` that constitutes the Prefix of a self-addressing ID.
+
+<img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="600">
 
 #### Self Certifying Identifier
 A controller of issues an own Identifier by binding a generated public private keypair to an identifier. After this a controller is able to sign the identifier and create a certificate.
@@ -359,7 +367,7 @@ _(@henkvancann)_
 
 ## What is 'platform locked trust' and why should we bother?
 The `IPv4 layer` was become a standard internet transport layers over the years. It is a very strong structure. The transport layer has no security build into it. So the trust layer has to be something higher in the stack. However in the Support Application layers that sit on top of that IPv4, no standardization has taken place yet. It is a highly segmented layer and trust is therefore *locked* in those segments or platforms; it's not interoperable accross the internet. E.g. platform `Facebook` provides an identity system that only works within their domain. That's the same with for example `Google` or any number of blockchain.\
-We don't have a trustable interoperability. And that leads to the idea that the internet is broken. We want to fix that, we don't want a domain segmented internet trust map, a bifurcated internet, we want to have a single trust map.\
+We don't have a trustable interoperability. And that leads to the idea that the internet is broken. We want to fix that, we don't want a domain segmented internet trust map, a bifurcated internet, we want to have a single trust map. This is the motivation for `KERI`.\
 (_SamMSmith_)
 
 ## How to repair the internet trust layer?
