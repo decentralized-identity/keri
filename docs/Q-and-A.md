@@ -151,6 +151,10 @@ VC = Verifiable Credential, look up W3D DID standardization for more info
 
 
 Definitions in alphabetic order:
+
+#### Ambient verifiability
+Verifiable by anyone, anywhere, at anytime
+
 #### Agency
 Agents can be people, edge computers and the functionality within [`wallets`](#digital-identity-wallet). The service an agent offers is agency.
 
@@ -163,7 +167,7 @@ A namespace that is self-certifying and hence self-administrating. ANs are there
 #### Autonomic Idenity system
 In the design of an identity system you need to answer a few questions.
 
-<img src="../images/ais.png" alt="Autonomic Identity System" border="0" width="600">
+<img src="../images/ais.png" alt="Autonomic Identity System" border="0" width="400">
 
 There's nobody that can intervene with the establishment of the authenticity of a control operation because you can verify all the way back to the root-of-trust.
 
@@ -183,6 +187,9 @@ DID; Decentralized identity is a technology that uses cryptography to allow indi
 In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe external inconsistency. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
 #### Establishment Event
+
+#### End verifiable log
+End verifiable logs on ambient infrastructure enables `ambient verifiability` (verifiable by anyone, anywhere, at anytime). We don't need the intermediate states of the log.
 
 #### External consistency
 
