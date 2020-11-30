@@ -155,6 +155,9 @@ Agents can be people, edge computers and the functionality within [`wallets`](#d
 
 #### Autonomous Identifier
 
+#### Content-addressable hash
+{TBW}
+
 #### Controller
 The controller of an `autonomous identifier` is the entity (person, organization, or autonomous software) that has the capability, as defined by derivation, to make changes to an `Event Log`. This capability is typically asserted by the control of a single inception key. In DIDs this is typically asserted by the control of set of cryptographic keys used by software acting on behalf of the controller, though it may also be asserted via other mechanisms. In KERI an AID has one single controller. Note that a DID may have more than one controller, and the DID subject can be the DID controller, or one of them.
 
@@ -208,9 +211,9 @@ A seal is cryptographic anchor; we have:
 Seals deliver authenticity proofs in KERI.
 
 #### Self Addressing Identifier
-`SAI`, This a self certfifying identifier (`SCI`) that has been attached to a certain context or infrastructure at the time of its inception. The inception configuration together with public key and it's `derivation` forms a digest (hash) plus it's own `derivation code` that constitutes the Prefix of a self-addressing ID.
+`SAI`, This is a self certfifying identifier (`SCI`) that has been attached to a certain context or infrastructure at the time of its inception. The inception configuration together with public key and it's `derivation`, forms a digest (hash) plus it's own `derivation code` that constitutes the Prefix of a self-addressing ID.
 
-<img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="600">
+<img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="800">
 
 #### Self Certifying Identifier
 A controller of issues an own Identifier by binding a generated public private keypair to an identifier. After this a controller is able to sign the identifier and create a certificate.
@@ -381,6 +384,24 @@ _(@henkvancann)_
 ## Is my KERI identifier public?
 
 ## Is a KERI identifier GPDR proof?
+
+## What do I need a self-certifying identifier for?
+It is a cryptographically derived, strong binding between a controller, a keypair and an identifier. No weak bindings introduced by administration present.
+_(@henkvancann)_
+
+## What do I need a self-addressing identifier for?
+{TBW}
+
+## What do I need a multi-sig self-addressing identifier for?
+To get even more security in terms of your signing scheme.\
+(_SamMSmith_)
+
+## What do I need a delegated self-adressing identifier for?
+To be able to horizontally scale your identifier system, that consists of a root identifier that manages a bunch of other delegated identifier. Created with a cryptographically derived strong binding, all the way through your infrastructure. Not dependent on any administration at all. \
+(_SamMSmith_)
+
+## What do I need a self-signing identifier for?
+Often it is an efficiecy measure where the identifier includes the signature as your `content-addressable hash`
 
 # Q&A section Event logs
 
