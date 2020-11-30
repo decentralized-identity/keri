@@ -134,11 +134,14 @@ We've done our best to protect the privacy of the Github by investigating the im
 ## Abbreviations
 In alphabetic order:\
 AID = [Autonomic Identifier](#autonomic-identifier)\
+AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DDO = DID Document, look up W3D DID standardization for more info\
 DIF = Decentralized Identity Foundation, https://identity.foundation\
+DKMI = Decentralized Key Mangement Infrastructure\
 IPv4 = standard Internet Protocol, version 4\
+KAACE = [KERI Agreement Algorithm for Control Establishment](#keri-agreement-algorithm-for-control-establishment)
 KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
@@ -164,7 +167,7 @@ An identifier that is self-certifying and self-sovereign
 #### Autonomic Namespace
 A namespace that is self-certifying and hence self-administrating. ANs are therefore portable = truly self sovereign.
 
-#### Autonomic Idenity system
+#### Autonomic idenity system
 In the design of an identity system you need to answer a few questions.
 
 <img src="../images/ais.png" alt="Autonomic Identity System" border="0" width="400">
@@ -199,6 +202,9 @@ End verifiable logs on ambient infrastructure enables `ambient verifiability` (v
 
 #### Internal inconsistency
 In KERI we are protected against Internal inconsistency by the hash chain datastructure of the `KEL`, because the only authority that can sign the log is the controller itself. 
+
+#### KERI Agreement Algorithm for Control Establishment
+{TBW}
 
 #### Key Event Log
 
@@ -326,6 +332,7 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 (_SamMSmith_)
 
 ## How does KERI scale
+`KEL`, `KERL` and `KAACE` might well be very lean alternatives to blockchain based solutions. The hard part is the ambient verifiable architecture.
 
 ## How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?
 
@@ -357,6 +364,12 @@ Delegation could be used. There is an [issue about IoT](https://github.com/decen
 # Q&A section Root of trust
 ## What do I need to trust in KERI?
 Primary root of trust is KEL not secondary (starts with self cert ID but then after first rotation if any must have KEL.\
+(_SamMSmith_)
+
+### What the difference between a trust basis and a trust domain?
+A trust basis binds controllers, identifiers, and key-pairs.
+
+A trust domain is the ecosystem of interactions that rely on a trust basis.\
 (_SamMSmith_)
 
 ## KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?
