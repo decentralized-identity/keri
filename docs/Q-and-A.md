@@ -137,6 +137,7 @@ AID = [Autonomous Identifier](#autonomous-identifier)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DDO = DID Document, look up W3D DID standardization for more info
 DIF = Decentralized Identity Foundation, https://identity.foundation\
+IPv4 = standard Internet Protocol, version 4\
 KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
@@ -355,6 +356,11 @@ _(@henkvancann)_
 ## What's DNS Hijacking
 A DNS hijacking wave is targeting companies at an almost unprecedented scale. Clever trick allows attackers to obtain valid TLS certificate for hijacked domains. [more](https://arstechnica.com/information-technology/2019/01/a-dns-hijacking-wave-is-targeting-companies-at-an-almost-unprecedented-scale/).\
 _(@henkvancann)_
+
+## What is 'platform locked trust' and why should we bother?
+The `IPv4 layer` was become a standard internet transport layers over the years. It is a very strong structure. The transport layer has no security build into it. So the trust layer has to be something higher in the stack. However in the Support Application layers that sit on top of that IPv4, no standardization has taken place yet. It is a highly segmented layer and trust is therefore *locked* in those segments or platforms; it's not interoperable accross the internet. E.g. platform `Facebook` provides an identity system that only works within their domain. That's the same with for example `Google` or any number of blockchain.\
+We don't have a trustable interoperability. And that leads to the idea that the internet is broken. We want to fix that, we don't want a domain segmented internet trust map, a bifurcated internet, we want to have a single trust map.\
+(_SamMSmith_)
 
 ## How to repair the internet trust layer?
 With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="400" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="400" style="float:right">
