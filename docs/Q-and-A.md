@@ -158,6 +158,9 @@ Definitions in alphabetic order:
 #### Ambient verifiability
 Verifiable by anyone, anywhere, at anytime
 
+#### Agent
+A representative for an _identity_. MAY require the use of a_wallet_. MAY support _transfer_
+
 #### Agency
 Agents can be people, edge computers and the functionality within [`wallets`](#digital-identity-wallet). The service an agent offers is agency.
 
@@ -178,7 +181,15 @@ There's nobody that can intervene with the establishment of the authenticity of 
 {TBW}
 
 #### Controller
+The entity that has the ability to make changes to an _identity_, _cryptocurrency_ or v_erifiable credential_. 
+
 The controller of an `autonomous identifier` is the entity (person, organization, or autonomous software) that has the capability, as defined by derivation, to make changes to an `Event Log`. This capability is typically asserted by the control of a single inception key. In DIDs this is typically asserted by the control of set of cryptographic keys used by software acting on behalf of the controller, though it may also be asserted via other mechanisms. In KERI an AID has one single controller. Note that a DID may have more than one controller, and the DID subject can be the DID controller, or one of them.
+
+#### Correlation
+An identifier used to indicate that external parties have observed how wallet contents are related. For example, when a public key is reused, it conveys that some common entity is controlling both identifiers. Tracking correlation allows for software to warn when some new information might be about to be exposed, for example: "Looks like you are about to send crypo currency, from an account you frequently use to a new account you just created."
+
+#### Cryptocurrency
+A digital asset designed to work as a medium of exchange wherein individual coin ownership records are stored in a digital ledger or computerized database using strong cryptography to secure transaction record entries, to control the creation of additional digital coin records. See [more](https://en.wikipedia.org/wiki/Cryptocurrency)
 
 #### Decentralized Identity
 DID; Decentralized identity is a technology that uses cryptography to allow individuals to create and control their own unique identifiers. They can use these identifiers to obtain `Verifiable Credentials` from trusted organisations and, subsequently, present elements of these credentials as proof of claims about themselves. In this model, the individual takes ownership of their own identity and need not cede control to centralized service providers or companies.
@@ -188,6 +199,9 @@ DID; Decentralized identity is a technology that uses cryptography to allow indi
 
 #### Duplicity
 In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe external inconsistency. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
+
+#### Entropy
+Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm.[More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 
 #### Establishment Event
 
@@ -200,11 +214,17 @@ End verifiable logs on ambient infrastructure enables `ambient verifiability` (v
 
 #### Inconsistency
 
+#### Identity
+A unique entity. Typically represented with a unique identifier.
+
 #### Internal inconsistency
 In KERI we are protected against Internal inconsistency by the hash chain datastructure of the `KEL`, because the only authority that can sign the log is the controller itself. 
 
 #### KERI Agreement Algorithm for Control Establishment
 {TBW}
+
+#### Key
+A mechanism for granting or restricing access to something. MAY be used to issue and prove, MAY be used to transfer and control over _identity_ and _cryptocurrency_. [More](https://en.wikipedia.org/wiki/Key_(cryptography))
 
 #### Key Event Log
 
@@ -235,6 +255,9 @@ A seal is cryptographic anchor; we have:
 3. Event Seal
 Seals deliver authenticity proofs in KERI.
 
+#### Secret
+Information controlled by an identity. MAY be used to derive _key_s.
+
 #### Self Addressing Identifier
 `SAI`, This is a self certfifying identifier (`SCI`) that has been attached to a certain context or infrastructure at the time of its inception. The inception configuration together with public key and it's `derivation`, forms a digest (hash) plus it's own `derivation code` that constitutes the Prefix of a self-addressing ID.
 
@@ -251,7 +274,13 @@ A controller of issues an own Identifier by binding a generated public private k
 An all encompassing layer horizontal layer in a software architecture. Each trust layer only spans platform specific applications. It bifurcates the internet trust map. There is no spanning trust layer.
 <img src="../images/spanning_layer.png" alt="spanning layer" border="0" width="800">
 
+#### Transfer
+The process of changing the _controller_ of _cryptocurrency_, _identity_ or _verifiable credential_. MAY require the use of a _key_.
+
 #### Validator
+
+#### Verifiable Credential
+VC; A data model for conveying claims made by an issuer about a subject. See [vc-data-model](https://www.w3.org/TR/vc-data-model/) for more.
 
 #### (Digital Identity) Wallet
 In our context it is software and sometimes hardware that serves as a key store and functionality. Keys can be private keys and public keys, hashes and pointers. Functionality can be signing, invoices (receive), send, virtual credentials, delegation, etc. This is the [`agency`](#agency) part of a wallet. \
@@ -370,7 +399,7 @@ Primary root of trust is KEL not secondary (starts with self cert ID but then af
 A trust basis binds controllers, identifiers, and key-pairs.
 
 A trust domain is the ecosystem of interactions that rely on a trust basis.\
-(_SamMSmith_)
+
 
 ## KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?
 The `KELs` are what establishes the root of trust in `KERI`. So you have a `SCI` and a `KEL`. The `KEL` is ordered with respect to the SCI by the controller. You don't need total ordering with respect to other identifiers to establish the root of trust in `KERI`, because the controller is the one and only, who order events.\
