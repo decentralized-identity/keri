@@ -25,6 +25,246 @@ Time: Every Tuesday, 10 am ET / 8 am MT
 * ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589
 Password: 293152
 
+
+## Agenda 8 & 9 Dec - Use-Case and API Design Workshop
+
+Location: https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09
+
+Agenda - presentations on use-cases (15min max please) + Q&A
+* IoT 
+* Immunity Credential Chaining
+* Supply Chain 
+* Others: GitHub issues welcome! 
+
+Tues 8 7-9MT, 3-5CET 
+* 7.00: Confirm agenda, introductions
+* 7.30: IoT (Michael Shea & Sovrin IoT WG)
+* 8.00: 
+* 8.30: 
+
+Wed 9 7-9MT, 3-5CET
+* 7.00: 
+* 7.30: 
+* 8.00: IoT pt2?
+* 8.30: 
+
+## Agenda 1 Dec
+
+Announcement: Chained VC task force (still being chartered/convened in ToIP)
+- authorizations left out of KERI until now: may alter course or scope of KERI?
+- precedents/loose threads
+    - W3C VC-core GH issue: adding authorization to usecases for VCs
+    - chaining RFC in Aries that was discussed but was never implemented
+- WG autonomy discussion
+    - pros: maintenance, visibility, editor/chair approval of spec, sub-items
+    - cons: who has time for a charter?
+- 
+
+Use case/spec hour
+* Chained VC Semantic spec (updates to KERI spec?)
+* Robert - vaccination use case related to ^
+* Proposal for 2-char field name (Sam)
+* Steve: Spec question- how to propose commentary where there isn't already some in the whitepaper?
+* Thomas: use-case-independent "core spec" versus implementation and application-specific guidance (VCs, IoT/device ID, etc)
+
+
+<details>
+<summary>Notes</summary>
+
+* Charles: Opened PR to move Kid4
+* Thomas: what's the "core spec" of KERI? What's primary scope and what's secondary scope?
+    * Sam: Plenty of non-VC and non-DID use cases! We need to keep KERI agnostic on all things namespacey (to make sure we don't hardcode DID assumptions into the system)
+    * Sam: ephemeral, direct/p2p mode, witness/public mode (and hybrids); static versus rotatable keys
+    * IoT use case (no DIDs or VCs mentioned) & rotation (of controling device)
+    * Ned: is any key use case a KERI use case? what about a key exchange use case?
+        * Sam: a non-identifier key, i.e. an encryption key or a DH key exchange key, could be committed to KERI
+        * Sidenote: libsodium transforms between signing and encryption keys; Charles: KERI supports the x-Curves for this very reason, no? 
+        * Sam: KERLs containing diff kinds of key lets them all share root of trust/auditing basis
+* Robert: nagging question as I present KERI to cybersec experts: KERI versus PGP and early WoT thinking?
+    * Sam: Differences b/w
+        1. in WoT/PGP, there's nothing like a KEL to provenance derivations; each new key exchange required a new genesis key. Establishing AID each time is a lot of key-x partying. publishing KELs --> way less partying, persistent WoT
+        2. Generic SCID as opposed to "trivial" SCID of public key; public key not only source of SCID derivation; ID can be bound directly to Key Mgmt Infra with KERI, requiring attackers to compromise both to compromise an ID
+        3. Delegation for multivalent KM infras: transcends the classic security/performance tradeoff (in contexts with lots of signing), allowing smoother recovery from a compromised key
+            * Speaking of multi-surface attacks, even compromising a next key doesn't get you very far without also compromising the delegator and witnesses (hurrah for thresholds);
+            * Delegation also allows TEE/HSM integration
+* Robert: DHT resolution process: how to bootstrap comms starting from one ID?
+    * How's KERI sidestep DHT's classic sybil vulnerability? 
+        * Sam: an honest DHT node won't accept a registration that hasn't been verified (by a witness's ID); 
+        * Sam: DDoS attack is only real problem, but no one will accept an invalid IP anyways; signatures everywhere helps all of these surfaces be locked down by witnesses keeping each other honest
+    * Signing is way cheaper now than 20 yrs ago (ECC) - let's use it more, and harden more surfaces!
+        * SSL, for ex, skimped on signing (and went with authenticated/trusted encryption which was an achilles heel over time); signing after encryption allows attackers to probe/break the weaker crypto of the encryption;
+        * See also new Kid3 commentary [file](https://github.com/decentralized-identity/keri/blob/master/kids/kid0003Comment.md)
+
+Use case/spec hour
+* Chained VC Semantic spec (updates to KERI spec?)
+* Robert - vaccination use case related to ^
+* Steve: Spec question- how to propose commentary where there isn't already some in the whitepaper?
+    * editorial PRs welcome? Sam: issues a better place to start. 
+        * Hank van Cann's new [Q and A section](https://github.com/decentralized-identity/keri/blob/master/docs/Q-and-A.md) might also be a good place to open PRs directly
+    
+    
+* Thomas: use-case-independent "core spec" versus implementation and application-specific guidance (VCs, IoT/device ID, etc)
+
+GH minutae
+* Proposal for 2-char field name forthcoming - fairly benign (Sam) 
+    * github issue & PRs --> changing field names in kid3 (and elsewhere?)
+* Charles: PR to pull kid4 out of kid3 also forthcoming (unlikely to complicate each other)
+* Kid versioning?
+    * Charles: I assumed version numbers were not going to be very meaningful until combining
+    * Sam: but implementations 
+
+Agenda for next week's API mini-conference?
+* use-case slides? unconference-style?
+    
+
+</details>
+
+Dev Hour
+* [PR](https://github.com/decentralized-identity/keri/pull/72) on delegation mechanics in kid3
+
+
+<details>
+<summary>Notes</summary>
+
+PR on kid3 delegation tweaks - [PR](https://github.com/decentralized-identity/keri/pull/72) on delegation mechanics in kid3
+    * already implemented in keripy but wanted to discuss before pushing to core spec
+    * reasons 1 & 2 - delegating control authority of multi-valent keys-- authorization should happen at higher layers (i.e., in VCs...)
+    * no delegation - 
+    * reason 3 - multi-delegation use case?
+    * permissions element cut
+    * del rotation and del inc same as regular rot and inc, exc with a SEAL field
+    * Ned: is delegation semantic described? Sam: Yes, but not in any KIDs, just in whitepaper
+    * Major change: Delegated keys can't be used to delegate keys! nested delegation still possible, but only with interaction events, not rot/inc events.
+    * Ned: The classical problem of delegation is rescinding; Sam: in KERI, delegation is cooperative (witnesses participate); one-way delegation doesn't weaken security; recovering 
+    * Juan: Versus ZCaps and GNAP? Sam: Under the hood, this is sharing KMS, not creating new keys (??); this is cooperative, delegator/delegee need to cooperate for recovery and both need to be verified (via seals)
+    * Delegation is the last to-do for KERI-core, so in Python at least we're functionally complete (if this is approved by the group)
+* new semantics
+    * Data contains seals (array of maps with labels)
+    * config contains traits like "establishment only" or forthcoming "do not delegate"
+    * delegation requires both data (seals) and config (do not delegate)
+Key walkthough (test-delegating.py) 
+    * thorough explanation
+    * no real opinions or pushback-- no one had implemented delegation yet!
+    
+</details>
+
+
+## Agenda 24 Nov
+
+Spec and Use Case meeting
+
+<details>
+<summary>Notes</summary>
+
+* config field (currently just used for a few settings) dictionaries
+    * security feature - toggle to ignore interaction events & only log rotations & inceptions (that only locks down pre-rotated SCIDs)
+    * data fields - seals for rotation events, inception data for inception events
+        * Seth - this confused me when I was implementing-- better naming would help
+    * perm (permissions) - as yet undefined (only used for delegated IDs)
+    * Rename all three "payload" since no event needs more than 1 of the 3?
+        * inception event needs them 
+        * delegating with a seal 
+        * anchoring with a seal
+        * Seth: config felt like a placeholder to me? call it "attachments" (would imply a content-type)? (but perms seems important and separate)
+        * Charles: perms should include structural stuff like "cannot delegate" (might need to be specified, or even JSON-only)
+        * Arbitrary data - huge? digest/pointer?
+            * Seth: How specified or arbitrary open should it be? Config field is pretty specified, but attachment could be pretty big...
+        * Steve: Sam's Contract use case - can you bind
+        * Steve: I'm coming from static-typed languages...
+    * Sam: This sounds like DID-Core debates-- how extensible to be? Compromise: well-defined fields are defined, all else can be ignored by everyone else...
+        * Steve: But if we want KERI to be minimalist, secure infra...
+        * Sam: internal semantics get standardized and hard-coded into the code to avoid a fork... 
+* Charles: some partners have asked about binding attributes about each identity subject 
+* Charles: arbitrary key pairs are allowed, though, in other places?
+    * Sam: is this the catch-all field for extensible data.
+    * Steve: limit it to a blob structured per use case?
+* Sam: Add a top-level "name" field to allow customers to define their own namespace for the contents of this field?
+    * Steve: vendor prefix for labels
+    * Sam: but a vendor prefix requires a registry... and everyone worries about squatters...
+    * Sam: This protects the top-level namespace for KERI messaging-- contains all neologisms and 
+    * Charles: Custom content in KELs seems iffy... do we really want to let people put app-system data in here?
+    * Sam: Sure, but the point of using "seals" is to link data where it is (witness service can also be a data service)
+        * directmode - they come to you for the data anyways
+        * public mode - data lives with the witnesses
+        * Seth: but won't people sneak data in there if it validates?
+        * Sam: Not a URL/URI field-- only seals would validate, i.e. digests of data
+        * Sam: Instead, this would require a discovery mechanism for the IP of witnesses (passing query params helps extensibility)
+* Sam: we could lock down the spec not to allow arbitrary data, nothing except URIs in the URI fields and digests/seals in the d/s fields
+* Sam: are 4char field names even human-readable in the first place? why "pre" and not "pf"? why "cnfg" if it's not really a config anyways?
+    * Seth: But we're supporting binary and CBOR anyways, so it will never be all that human-readable...
+    * Sam: A days' work to update all the field names
+    * Charles: breaking change tho...
+    * Ned: Is there a data definition language (DDL) in the middle here? like CDDL ? A CDDL would help...
+        * Steve: We're kind of JSON-centric and need to be able to roundtrip JSON (in most cases)
+        * Ned: CDDL can output JSON or CBOR, tho
+        * Sam: Well, if someone wants to take on the work and open a PR...
+        * Sam: All data so far is strings, so we don't need much of the featureset of CDDL;
+        * Ned: I don't know offhand the differences between JSON and CBOR, but I'm pretty sure you can define "indices" in the CDDL that deterministically 
+        * Ned: CDDL can be fed into a validating parser - you could validate earlier (i.e. validate the schema before you even get to the data)
+* Practically - should we go to 2char field names? would CDDL help decode the field names?
+    * Thomas: the issue isn't so much the namespace as the semantic space of custom fields...
+    * Sam: Yes, semantic space could be bounded this way to just the protect top-level reserve words (global namespace)
+    * Ned: I'm confused about the extensibility and the collisions... in CDDL, each layer is its own namespace?
+        * I've seen semantics done this way in CDDL; there are still collisions and scoping...
+        * Semantics get you to OIDs, which still have to be protected from colliding with anyone else's -- there's no magic formula, but CDDL 
+* **Decision-time**
+    1. add an extensibility field? decide again later?
+        * Ned: But CDDL has a similar mechanism for extensibility? Should we check first if they're aligned or if there are corner cases?
+        * Sam: Not urgent for use-cases we've already discussed... Charles: But I can predict future use-cases will use this
+        * Sam: Keep people from using the spec-defined "semi-arbitrary" field for their own extensions
+            * Sam: List/map grows over time/versions of the spec; not really arbitrary, but mapped according to spec-defined list
+        * Steve: but why map? Sam: Perms and other fields that cluster and proliferate...
+        * Ned: Not sure I see the additional value of having a map, if you already need to refer to a chart in a spec for the CBOR use cases... Sam: But this community's got DID Docs as its guiding mental map... 
+        * Sam: labels for all non-crypto material contents
+    2. 2-character labels in JSON ?
+    </details>
+    
+Dev Hour - agenda
+* Sam's Private-Key Mgmt library (w/API) in [keripy](https://github.com/decentralized-identity/keripy/blob/master/src/keri/base/keeping.py) & Edyta's KMS controller in keriox
+* Test vectors - issue opened!
+* House-keeping & in-group comms - let's use GH issues for bigger conceptual issues! slack is not archival, but perfectly fine for "am i missing something" or "where in the spec is X defined?"
+* Continuing the 2char discussion
+
+<details>
+<Summary>Notes</Summary>
+
+* Seth: Test vectors when?
+    * Charles:
+    * By analogy to the Aries test suite of unit tests?
+    * So far, I've pointed my daemon at Sam's test scripts 
+    * Sam: We keep talking about doing it some time, but no deadline set :D We need to just **publish** the list of events as vectors that can be validated
+    * Sam: We've been waiting to finalize the list of event types (and thus message types to validate against)
+    * Sam: Volunteers to write out other vectors?
+    * Seth: Why not publish the dummy data from the test scripts? That's what I did to make unit tests for myself... push to KERI repo?
+        * Charles: Note: these events were made according to the old prerotation logic, but it isn't really tested either way
+        * Charles: 
+* Steve: Questions about in-group comms 
+* KMS extensions/API standardization 
+    * Seth: But I thought KERI didn't touch priv keys ever?
+    * Sam: it's not in the spec and KERI doesn't touch them, but it might need to standardize assumptions on what DOES touch them and how does it pass signatures to KERI :D
+    * Seth: Go code is currently passing a "function" [name?] to KERI which calls that function when it needs a signature
+        * Sam: Similar: Py and Ox versions are calling this a manager or controller
+    * Steve: Java ecosystem has a lot of this already hardened into APIs
+    * Sam: a well-written API would hide these details and divergences between languages and algos and libraries... abstracting to 
+* attached signatures - self-framing rather than framed (not even newline chars)
+    * receipts also structured (couplets and truples) and concatenated
+    * JSON code allows multiple contexts (framed and unframed); Steve: this makes these into the general-purpose identifier for anywhere base64 is accepted, or? Steve: table tells the length to expect/splice in advance per prefix; Sam: can be binary, not just base64
+    * Steve: codes a little cryptic to me as I was building - should we add something to help the devs?
+        * sidenote: there's one hash missing a code, for ex. (not in the table)
+        * Sam: Multicodec went that way, but it snowballs...
+        * Sam: For foreseeable future, no single crypto library will be wide enough for us
+        * Steve - we're reinventing x509 to some degree... let's not use ASN1 too
+        * Charles: fixed prefixes - but many post-quantum ciphers are variable length!
+        * Huseby's CCLang (signature verification language; // pay-to-hash in BTC); complex signature verification logic could be added later that verify variable-length keys
+        * Sam: collective signatures also variable-length; op codes would be needed to parse those;
+        * In summary, we're starting compact and limited subset, with lots of added complexity roadmapped for future versions...
+* Sam's tour of his KMS extension
+    * test_eventing.py manager object with 3 external methods: incept
+        * incept (lots of variables with defaults): counts and seeds passed; recoverable salted variety and unrecoverable unsalted variety; tier=crypto strength (argon2: best pw hashing algo acc to a contest)
+        
+
+</details>
+
 ## Agenda 17 Nov
 
 * Attendees
@@ -36,6 +276,7 @@ Password: 293152
     - Seth Back
     - Steve Todd
     - Regrets: Shivam
+    
 
 Agenda
 * Use cases - notes being collected here for future use-cases section of spec, and for spec organization itself [here](https://github.com/decentralized-identity/keri/blob/master/usecase_notes.md)
