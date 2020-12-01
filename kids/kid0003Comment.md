@@ -7,6 +7,8 @@ email: sam@samuelsmith.org
 
 [![hackmd-github-sync-badge](https://hackmd.io/LdDZLLQvSxml3k3ND7jFZg/badge)](https://hackmd.io/LdDZLLQvSxml3k3ND7jFZg)
 
+version 1.02
+
 
 The KERI approach is that the over-the-wire serialization of the key event message is completely encompassed by the attached signatures. Likewise digests that chain one key event message to another completely encompass the over-the-wire serializaton of the chained digested key event message. We call this property zero message malleability. Moreover, because each message is signed, the signature protects the embedded chaining digest.
 
@@ -22,4 +24,28 @@ Zero transaction malleability does not prevent a malicious or faulty conroller f
 KERI is opinionated about security. The best practice for locking down any semantic leakage is to fully encompass the over-the-wire key event message with the signatures and digests not some subset of the data. 
 
 Zero message malleability is somewhat inconvenient when generating and parsing the over-the-wire serializations but it is an intentional trade-off that reflects KERI's security first aesthetic.
+
+## Semantic Leakage
+
+We define semantic leakage to occur whan any part of an over the wire message that contributes any meaning or function that affects the behavior of the protocol but is not wrapped in a signature. Often this might be a header or some optional part of a message. A message with semantic leakage is inherently vulnerable to probing attacks. Its just asking for trouble.
+
+Zero Message Malleability, is a specific design feature that says completely wrap over the wire messages with a signature(s).  Many protocols employs MACs Hashes and Signatures but make optimizations that result in not wrapping the full over the wire message. This exposes them to semantic leakage. It is one of the most insidious and difficult to detect types of vulnerabilities. Bitcoin still suffers from new transaction malleability attacks as do many protocols such as SSL. Until those protocols achieve ZMM they will contintue to be vulnerable.
+
+## Probing Attacks
+
+In a protocol where some parts of the over the wire message (say a header or an optional block) is not wrapped by the signature, i.e. does not have ZMM, then a probe attack is enabled where an attacker can send different messages but whose signatures still verify. These different messages may elicit different responses. These become a means of discovering defects in an implementation without having to compromise keys. Compromizing keys is hard. Its not susceptible to probing attacks if those keys are full 128 bit cryptographic strength. KERI's ZMM makes such attacks, i.e. probing attacks without compromising signatures, impossible.
+
+
+ZMM does not protect against a malicious controller. In KERI the duplicity detection protects against malicious controllers. A malicious controller has access to the keys and may therefore create and sign messages at will. But that controller may not create duplicitous messages without risking detection.
+
+For example if a given validator's implementation of KERI has defects in it then a malicious controller can send messages that are fully wrapped in verifiable signatures but the contents somehow expose an error in the validators implementation. Typically incorrelty implemented validation logic. A trivial example would be non-sequential sequence numbers. If a validator's code did not check for sequential sequence numbers then it would create a malformed KEL that some other validator would reject.
+
+## Formal Schema
+
+One of the reasons that many protocols with flexible message structure use formal schema descriptions is to avoid vulnerabilities that may arise from inadvertent semantic leakage when the protocol does not have ZMM.  Inadvertent semantic leakage may arise over time as the protocol features are changed. We call this semantic drift.  ZMM means that inadvertent leakage is not possible, hence semantic drift is less dangerous. In spite of semantic drift a ZMM protocol is not vulnerable to external probing attack without compromise of keys.  
+
+
+
+
+
 
