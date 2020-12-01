@@ -1,5 +1,6 @@
 # KERI Implementation/Improvment Docs (KIDs)
 
+NOTE: implementation should track the versions of the KIDs against which they are written, ideally in commit messages 
 
 ## Standard
 
