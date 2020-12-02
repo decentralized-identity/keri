@@ -2,39 +2,25 @@
 
 [![hackmd-github-sync-badge](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ/badge)](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ)
 
-
-
-
 ## Weekly Meeting Page
 
+This page is for agendas and minutes of the weekly KERI-related work-item meetings of the Identifiers and Discovery (ID) Working Group, who are collaborating on topics related to DIDs and other identifiers. Meeting agendas are listed in reverse chronological order. Meetings will be recorded. This is an IPR-protected meeting, so please refrain from making substantial contributions orally on calls or on github before joining both DIF and the WG. You can get more information from the chairs or at [membership@identity.foundation](mailto:membership@identity.foundation). DIF membership info can be found [here](https://link.medium.com/PCtPmbHJV7).
 
-This page is for agendas of biweekly KERI-related work-item meetings of the Identifiers and Discovery (ID) Working Group, who are collaborating on topics related to DIDs and other identifiers. Meeting agendas are listed in reverse chronological order. Meetings will be recorded. This is an IPR protected meeting. To contribute, sign the relevant papers. More information from the charis or at membership@identity.foundation.
+Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https://bit.ly/dif-calendar))
 
-Open Participation: [medium](https://link.medium.com/PCtPmbHJV7)
-
-Web meeting Information (Computer or Phone)
-Time: Every Tuesday, 10 am ET / 8 am MT
-
-### useful links
-* For DIF members: Sign the ID WG Charter to contribute: https://bit.ly/DIF-WG-select1
-* DIF Calendar [entry](https://calendar.google.com/event?action=TEMPLATE&tmeid=M21lcDQ2bzF0cDdhdmNocmk0Zmk4NXZxOHRfMjAyMDA3MDdUMTYwMDAwWiBkZWNlbnRyYWxpemVkLmlkZW50aXR5QG0&tmsrc=decentralized.identity%40gmail.com&scp=ALL)
-* DIF Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD)
-* Github Repos: [ keri | keriox | keripy | kerijs | sam’s papers ]
-*  Public [website](https://keri.one/)
-* Helpful bibliography [ Wasm1 | Wasm2 | MSFT CQRS ]
-* ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589
-Password: 293152
+#### Links: 
+[ID WG Charter](https://bit.ly/DIF-WG-select1) | Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD) |
+ Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://keri.one/) | Helpful bibliography [ Wasm1 | Wasm2 | MSFT CQRS ] | ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589 Password: 293152
 
 
 ## Agenda 8 & 9 Dec - Use-Case and API Design Workshop
-
-Location: https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09
 
 Agenda - presentations on use-cases (15min max please) + Q&A
 * IoT 
 * Immunity Credential Chaining
 * Supply Chain 
 * Others: GitHub issues welcome! 
+* DID Method name: Un, Uni, Keri?
 
 Tues 8 7-9MT, 3-5CET 
 * 7.00: Confirm agenda, introductions
