@@ -30,7 +30,9 @@ Tues 8 7-9MT, 3-5CET
 
 Wed 9 7-9MT, 3-5CET
 * 7.00: 
+    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!
 * 7.30: 
+    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!
 * 8.00: IoT pt2?
 * 8.30: 
 
