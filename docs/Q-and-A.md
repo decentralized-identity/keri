@@ -24,6 +24,49 @@ We've done our best to protect the privacy of the Github by investigating the im
 ### List of questions and definitions
 
 - [Definitions:](#definitions)
+      - [Ambient verifiability](#ambient-verifiability)
+      - [Agent](#agent)
+      - [Agency](#agency)
+      - [Autonomic Identifier](#autonomic-identifier)
+      - [Autonomic Namespace](#autonomic-namespace)
+      - [Autonomic idenity system](#autonomic-idenity-system)
+      - [Content-addressable hash](#content-addressable-hash)
+      - [Controller](#controller)
+      - [Correlation](#correlation)
+      - [Cryptocurrency](#cryptocurrency)
+      - [Decentralized Identity](#decentralized-identity)
+      - [Derivation code](#derivation-code)
+      - [Duplicity](#duplicity)
+      - [Entropy](#entropy)
+      - [Establishment Event](#establishment-event)
+      - [End verifiable log](#end-verifiable-log)
+      - [Entity](#entity)
+      - [External consistency](#external-consistency)
+      - [Inception Event](#inception-event)
+      - [Inconsistency](#inconsistency)
+      - [Identity](#identity)
+      - [Internal inconsistency](#internal-inconsistency)
+      - [KERI Agreement Algorithm for Control Establishment](#keri-agreement-algorithm-for-control-establishment)
+      - [Key](#key)
+      - [Key Event Log](#key-event-log)
+      - [Key Event Receipt Log](#key-event-receipt-log)
+      - [Non-Establishment Event](#non-establishment-event)
+      - [Payload](#payload)
+      - [Public Key Infrastructure](#public-key-infrastructure)
+      - [Root of trust](#root-of-trust)
+      - [Seal](#seal)
+      - [Secret](#secret)
+      - [Self Addressing Identifier](#self-addressing-identifier)
+      - [Self Certifying Identifier](#self-certifying-identifier)
+      - [Self Sovereign Identity](#self-sovereign-identity)
+      - [Spanning layer](#spanning-layer)
+      - [Transfer](#transfer)
+      - [Trust-over-IP](#trust-over-ip)
+      - [Validator](#validator)
+      - [Verifiable Credential](#verifiable-credential)
+      - [W3C DID](#w3c-did)
+      - [(Digital Identity) Wallet](#-digital-identity--wallet)
+
       - [Agency](#agency)
       - [Autonomous Identifier](#autonomous-identifier)
       - [Controller](#controller)
@@ -93,6 +136,99 @@ We've done our best to protect the privacy of the Github by investigating the im
   * [As long as witnesses keep lying together no one will ever be able to prove them wrong?](#as-long-as-witnesses-keep-lying-together-no-one-will-ever-be-able-to-prove-them-wrong)
 - [Q&A section Watchers](#qa-section-watchers)
   * [How can we detect duplicity? Suppose controller has power over witnesses.](#how-can-we-detect-duplicity--suppose-controller-has-power-over-witnesses)
+
+
+  - [Q&A section General](#q-a-section-general)
+  * [What is KERI?](#what-is-keri-)
+  * [Why use KERI?](#why-use-keri-)
+  * [Is KERI a DID?](#is-keri-a-did-)
+  * [How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?](#how-does-keri-match-the--trust-over-ip--model-and-in-the--w3c-did-standardization--)
+  * [Why use KERI?](#why-use-keri--1)
+  * [Who is KERI? Is it a company or a not for profit?](#who-is-keri--is-it-a-company-or-a-not-for-profit-)
+  * [In what programming languages is KERI available?](#in-what-programming-languages-is-keri-available-)
+  * [How KERI fit in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?](#how-keri-fit-in--the-10-principles-of-ssi--https---mediumcom-metadium-self-sovereign-identity-principle-6-portability-4a7105dd0381--by-christopher-allen-)
+- [Q&A section KERI operational](#q-a-section-keri-operational)
+  * [Where can I download KERI?](#where-can-i-download-keri-)
+  * [Where can we find the code and how could a coder get started?](#where-can-we-find-the-code-and-how-could-a-coder-get-started-)
+  * [What would you see as the main drawback of KERI?](#what-would-you-see-as-the-main-drawback-of-keri-)
+  * [How can it be one solution, fit for all SSI problems?](#how-can-it-be-one-solution--fit-for-all-ssi-problems-)
+  * [Where you would need something quite different than KERI?](#where-you-would-need-something-quite-different-than-keri-)
+  * [How does KERI scale](#how-does-keri-scale)
+  * [How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?](#how-are-keri-witnesses-and-watchers-incentived-to-spread-kels-and-kerls-and-make-them-available-)
+  * [How to handle multiple formats of KEL and KERL through time. Will they be backwards compatible?](#how-to-handle-multiple-formats-of-kel-and-kerl-through-time-will-they-be-backwards-compatible-)
+  * [Could a KEL or KERL be pruned or charded?](#could-a-kel-or-kerl-be-pruned-or-charded-)
+  * [How to bootstrap KERI on the internet? Is it like fax machine; the more there are the more effective it is?](#how-to-bootstrap-keri-on-the-internet--is-it-like-fax-machine--the-more-there-are-the-more-effective-it-is-)
+  * [Why does KERI demand signing and digesting the full over-the-wire serialization of a message?](#why-does-keri-demand-signing-and-digesting-the-full-over-the-wire-serialization-of-a-message-)
+- [Q&A section Userinterface](#q-a-section-userinterface)
+  * [What does KERI look like?](#what-does-keri-look-like-)
+  * [Is there a KERI course or webinar available?](#is-there-a-keri-course-or-webinar-available-)
+  * [Could Keri work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?](#could-keri-work-for-edge-computers-that-need-self-sovereign-identity--how-to--selectively--share-control-over-the--sci---sai--with-the-owners-of-the-device-)
+- [Q&A section Root of trust](#q-a-section-root-of-trust)
+  * [What do I need to trust in KERI?](#what-do-i-need-to-trust-in-keri-)
+    + [What the difference between a trust basis and a trust domain?](#what-the-difference-between-a-trust-basis-and-a-trust-domain-)
+  * [KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?](#keri-does-not-need-a-blockchain--but-how-does-it-establish-the-root-of-trust-that-we-need-for-ssi--how-does-the-data-persist-)
+- [Q&A section Why the internet is broken](#q-a-section-why-the-internet-is-broken)
+  * [Why would the internet be broken?](#why-would-the-internet-be-broken-)
+  * [How can the internet be fixed?](#how-can-the-internet-be-fixed-)
+  * [What's wrong with SSL certificate intermediairies?](#what-s-wrong-with-ssl-certificate-intermediairies-)
+  * [What's DNS Hijacking](#what-s-dns-hijacking)
+  * [What is 'platform locked trust' and why should we bother?](#what-is--platform-locked-trust--and-why-should-we-bother-)
+  * [How to repair the internet trust layer?](#how-to-repair-the-internet-trust-layer-)
+  * [What role does KERI play in the suggested "repair of the internet"?](#what-role-does-keri-play-in-the-suggested--repair-of-the-internet--)
+- [Q&A section Identifiers](#q-a-section-identifiers)
+  * [How is a KERI identifier different than a regular identifier in DID methods?](#how-is-a-keri-identifier-different-than-a-regular-identifier-in-did-methods-)
+  * [Is my KERI identifier public?](#is-my-keri-identifier-public-)
+  * [Is a KERI identifier GPDR proof?](#is-a-keri-identifier-gpdr-proof-)
+  * [What do I need a self-certifying identifier for?](#what-do-i-need-a-self-certifying-identifier-for-)
+  * [What do I need a self-addressing identifier for?](#what-do-i-need-a-self-addressing-identifier-for-)
+  * [What do I need a multi-sig self-addressing identifier for?](#what-do-i-need-a-multi-sig-self-addressing-identifier-for-)
+  * [What do I need a delegated self-adressing identifier for?](#what-do-i-need-a-delegated-self-adressing-identifier-for-)
+  * [What do I need a self-signing identifier for?](#what-do-i-need-a-self-signing-identifier-for-)
+- [Q&A section Event logs](#q-a-section-event-logs)
+  * [What is a Key Event Log?](#what-is-a-key-event-log-)
+  * [Why is a Key Event Log crucially important?](#why-is-a-key-event-log-crucially-important-)
+  * [How do I create a KEL?](#how-do-i-create-a-kel-)
+  * [How can I trust a KEL?](#how-can-i-trust-a-kel-)
+- [Q&A section Inconsistency and duplicity](#q-a-section-inconsistency-and-duplicity)
+  * [What kind of Inconsistencies do we have?](#what-kind-of-inconsistencies-do-we-have-)
+  * [What is Duplicity?](#what-is-duplicity-)
+  * [Why should we care about Duplicity?](#why-should-we-care-about-duplicity-)
+- [Q&A section Key rotation](#q-a-section-key-rotation)
+  * [What is Key Rotation?](#what-is-key-rotation-)
+  * [Why bother about key rotation?](#why-bother-about-key-rotation-)
+- [Q&A section KEL and KERL](#q-a-section-kel-and-kerl)
+  * [What the difference between KEL and KERL?](#what-the-difference-between-kel-and-kerl-)
+- [Q&A section Wallets](#q-a-section-wallets)
+  * [Why do I need a wallet for KERI?](#why-do-i-need-a-wallet-for-keri-)
+  * [How can I backup the KERI identifiers in my wallet?](#how-can-i-backup-the-keri-identifiers-in-my-wallet-)
+  * [Can I receive crypto money in my KERI wallet?](#can-i-receive-crypto-money-in-my-keri-wallet-)
+  * [Does a KERI wallet store virtual credentials connect to my identifiers?](#does-a-keri-wallet-store-virtual-credentials-connect-to-my-identifiers-)
+- [Q&A section Signatures](#q-a-section-signatures)
+  * [Who can sign off my proofs and identifiers?](#who-can-sign-off-my-proofs-and-identifiers-)
+  * [What is the practical use of signatures?](#what-is-the-practical-use-of-signatures-)
+  * [Do verifiers, validators, witnesses and watcher sign off `payloads`?](#do-verifiers--validators--witnesses-and-watcher-sign-off--payloads--)
+- [Q&A section Proofs](#q-a-section-proofs)
+  * [What does KERI proof?](#what-does-keri-proof-)
+  * [Does KERI know whether any message in the Event Logs are valid or true?](#does-keri-know-whether-any-message-in-the-event-logs-are-valid-or-true-)
+  * [How can we verify that a statement by a controller is valid?](#how-can-we-verify-that-a-statement-by-a-controller-is-valid-)
+  * [How can we trust what was said or written?](#how-can-we-trust-what-was-said-or-written-)
+- [Q&A section Private Key Management](#q-a-section-private-key-management)
+  * [Not your keys, not your identity?](#not-your-keys--not-your-identity-)
+  * [The wallet is there to store my KERI private keys safely, no?](#the-wallet-is-there-to-store-my-keri-private-keys-safely--no-)
+  * [Are compound private keys (Shamir Secret Sharing) and multisignature schemes possible to incept identifiers?](#are-compound-private-keys--shamir-secret-sharing--and-multisignature-schemes-possible-to-incept-identifiers-)
+  * [How to delegate control over my private keys that control my identifiers?](#how-to-delegate-control-over-my-private-keys-that-control-my-identifiers-)
+- [Q&A section Blockchain](#q-a-section-blockchain)
+  * [Does KERI use a blockchain?](#does-keri-use-a-blockchain-)
+  * [What's the difference between KERI and blockchain?](#what-s-the-difference-between-keri-and-blockchain-)
+  * [Why not register identities on an open public ledger like bitcoin, ethereum or soverin?](#why-not-register-identities-on-an-open-public-ledger-like-bitcoin--ethereum-or-soverin-)
+- [Q&A section Agencies](#q-a-section-agencies)
+  * [How can KERI offer consistent services and truth?](#how-can-keri-offer-consistent-services-and-truth-)
+- [Q&A section Witness](#q-a-section-witness)
+  * [Witnesses have no skin in the game, it’s a `nothing at stake` situation, no?](#witnesses-have-no-skin-in-the-game--it-s-a--nothing-at-stake--situation--no-)
+  * [As long as witnesses keep lying together no one will ever be able to prove them wrong?](#as-long-as-witnesses-keep-lying-together-no-one-will-ever-be-able-to-prove-them-wrong-)
+- [Q&A section Watchers](#q-a-section-watchers)
+  * [How can we detect duplicity? Suppose controller has power over witnesses.](#how-can-we-detect-duplicity--suppose-controller-has-power-over-witnesses)
+
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -178,8 +314,7 @@ In the design of an identity system you need to answer a few questions.
 There's nobody that can intervene with the establishment of the authenticity of a control operation because you can verify all the way back to the root-of-trust.
 
 #### Content-addressable hash
-{TBW}
-
+Content addressing is a way to find data in a network using its content rather than its location. The way we do is by taking the content of the content and hashing it. Try uploading an image to IPFS and get the hash using the below button. In the IPFS ecosystem, this hash is called Content Identifier, or CID.
 #### Controller
 The entity that has the ability to make changes to an _identity_, _cryptocurrency_ or v_erifiable credential_. 
 
@@ -193,6 +328,9 @@ A digital asset designed to work as a medium of exchange wherein individual coin
 
 #### Decentralized Identity
 DID; Decentralized identity is a technology that uses cryptography to allow individuals to create and control their own unique identifiers. They can use these identifiers to obtain `Verifiable Credentials` from trusted organisations and, subsequently, present elements of these credentials as proof of claims about themselves. In this model, the individual takes ownership of their own identity and need not cede control to centralized service providers or companies.
+
+`KERI`s definition of decentralization (centralization) is about _control_ not _spatial distribution_. In our definition _decentralized_ is not necessarily the same as _distributed_. By distributed we mean that activity happens at more than one site. Thus decentralization is about _control_ and distribution is about _place_. To elaborate, when we refer to decentralized infrastructure we mean infrastructure under decentralized (centralized) control no matter its spatial distribution. Thus _decentralized infrastructure_ is infrastructure sourced or controlled by more than one `entity`.
+
 
 #### Derivation code
 {TBW}
@@ -208,7 +346,13 @@ Unpredictable information. Often used as a _secret_ or as input to a _key_ gener
 #### End verifiable log
 End verifiable logs on ambient infrastructure enables `ambient verifiability` (verifiable by anyone, anywhere, at anytime). We don't need the intermediate states of the log.
 
+#### Entity
+Entities are not limited to natural persons but may include groups, organizations, software agents, things, and even data items. 
+
 #### External consistency
+Two or more logs are _externally consistent_ if they are both verfiable internally consistent, to begin with, and the reported copies of the logs that are the same. 
+
+External logs that are _inconsitent_, have at least two reported copies of the logs that are different. That means I have a duplicitous log. We need duplicity detection to be able to garantuee _external consistency_ or put in an different way: duplicity detection protects against external inconsistency.
 
 #### Inception Event
 
@@ -249,7 +393,7 @@ Replace human basis-of-trust with cryptographic root-of-trust. With verifiable d
 The root-of-trust is consistent attribution via verifiable integral non-repudiable statements.
 
 #### Seal
-A seal is cryptographic anchor; we have:
+A seal is a cryptographic anchor that provides evidence of authenticity; we have:
 1. Digist Event Seal
 2. Hash tree root Seal
 3. Event Seal
@@ -268,6 +412,8 @@ A controller of issues an own Identifier by binding a generated public private k
 
 <img src="../images/sci_issue_bind.png" alt="Self Certifying Identifier issuance and binding" border="0" width="400">
 
+The root-of-trust is fully cryptographic, there is no infrastructure associated with it. If we start there we can build a secure system on top of that. It means SCI gives us strong bindings between the keypair, the controller and the identifier. And so it fixes the main weakness of any administratively issued identifier asserting the binding between the keypair and the identifier and between the controller and the identifier, replacing them with all cryptographically strong bindings.
+
 #### Self Sovereign Identity
 
 #### Spanning layer
@@ -277,10 +423,17 @@ An all encompassing layer horizontal layer in a software architecture. Each trus
 #### Transfer
 The process of changing the _controller_ of _cryptocurrency_, _identity_ or _verifiable credential_. MAY require the use of a _key_.
 
+#### Trust-over-IP
+It's a term related to the effort of a foundation. The Trust over IP Foundation is an independent project hosted at Linux Foundation to enable the trustworthy exchange and verification of data between any two parties on the Internet. [More](https://trustoverip.org/about/faq/).
+
 #### Validator
+During validation, a `verifier` checks to see if a `verifiable credential` (VC) has been signed by the controller of this VC using the applicable verification method.
 
 #### Verifiable Credential
 VC; A data model for conveying claims made by an issuer about a subject. See [vc-data-model](https://www.w3.org/TR/vc-data-model/) for more.
+
+#### W3C DID
+The W3C consortium Decentralized ID standardization. [More](https://w3c.github.io/did-core/).
 
 #### (Digital Identity) Wallet
 In our context it is software and sometimes hardware that serves as a key store and functionality. Keys can be private keys and public keys, hashes and pointers. Functionality can be signing, invoices (receive), send, virtual credentials, delegation, etc. This is the [`agency`](#agency) part of a wallet. \
@@ -293,6 +446,7 @@ In our context it is software and sometimes hardware that serves as a key store 
 Key Event Receipt Infrastructure; a secure identifier overlay for the internet.
 ## Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).\
+KEI is both privacy preserving and context-independent extensible. That means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means. 
 _(@henkvancann)_
 
 ## Is KERI a DID?
@@ -300,7 +454,7 @@ _(@henkvancann)_
 _(@henkvancann)_
 
 ## How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
-[Trust-over-IP]():
+[Trust-over-IP](#trust-over-ip):
 - Its goal is to be the missing authentication layer of the internet. That's a pretty well matching objective.
 - Layer 1 (settlement layer): Where other `DID`s use blockchains or databases to register identities and settle 'transactions' between between, `DDO`s, and `VC`s, KERI uses homegrown native structures: `KEL` and `KERL`.
 _(@henkvancann)_
@@ -438,9 +592,16 @@ We don't have a trustable interoperability. And that leads to the idea that the 
 With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="400" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="400" style="float:right">
 _(@henkvancann)_
 
+## What role does KERI play in the suggested "repair of the internet"?
+Much of the operation of internet infrastructure is inherently decentralized, but control over the value transported across this infrastructure may be much less so.\
+Centralized value capture systems concentrate value and power and thereby provide both strong temptations for malicious administrators to wield that concentrated power to extract value from participants. \
+We believe that _decentralization of value transfer_ is essential to building trust. Consequently a key compo- nent for a decentralized foundation of trust is an interoperable decentralized identity system. [Source: whitepaper page 7](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+
 # Q&A section Identifiers
 
-## How is a KERI identifier different than a regaular identifier in DID methods?
+## How is a KERI identifier different than a regular identifier in DID methods?
+A self-sovereign identifier that is not self-certifying is dependent of infrastructure and is not fully autonomous and not fully porteable. KERI uses autonomic identifiers, fully cryptographically derivable and portable.
+_(@henkvancann)_
 
 ## Is my KERI identifier public?
 
@@ -538,8 +699,10 @@ We may build trust over time in what was said via histories of verifiably attrib
 # Q&A section Blockchain
 
 ## Does KERI use a blockchain?
-No, but KERI uses the same cryptographical building blocks as blockchains do.
-_(@henkvancann)_
+No, but KERI uses the same cryptographical building blocks as blockchains do. \
+_(@henkvancann)_ \
+However, KERI may be augmented with distributed consensus ledgers but does not require them. [Source: section conclusion in whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+
 
 ## What's the difference between KERI and blockchain?
 `KERI` is a unordered hash-linked list of signed Key Event logs and blockchain is a timestamped ordered list of hash-linked blocks of signed transactions. What this means:
