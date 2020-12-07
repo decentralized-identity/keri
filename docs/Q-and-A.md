@@ -203,11 +203,13 @@ DID = [Decentralized Identity](#decentralized-identity) or Digital Identity depe
 DDO = DID Document, look up W3D DID standardization for more info\
 DIF = Decentralized Identity Foundation, https://identity.foundation\
 DKMI = Decentralized Key Mangement Infrastructure\
+HSM = Hardware Security Module\
 IPv4 = standard Internet Protocol, version 4\
 KAACE = [KERI Agreement Algorithm for Control Establishment](#keri-agreement-algorithm-for-control-establishment)
 KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
+LOA = [Levels Of Assurance](#levels-of-assurance)\
 PKI = [Public Key Infrastructure]()\
 PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
@@ -258,7 +260,6 @@ DID; Decentralized identity is a technology that uses cryptography to allow indi
 
 `KERI`s definition of decentralization (centralization) is about _control_ not _spatial distribution_. In our definition _decentralized_ is not necessarily the same as _distributed_. By distributed we mean that activity happens at more than one site. Thus decentralization is about _control_ and distribution is about _place_. To elaborate, when we refer to decentralized infrastructure we mean infrastructure under decentralized (centralized) control no matter its spatial distribution. Thus _decentralized infrastructure_ is infrastructure sourced or controlled by more than one `entity`.
 
-
 #### Derivation code
 {TBW}
 
@@ -269,7 +270,7 @@ In `KERI` consistency is is used to described data that is internally consistent
 Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm.[More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 
 #### Establishment Event
-
+{TBW}
 #### End verifiable log
 End verifiable logs on ambient infrastructure enables `ambient verifiability` (verifiable by anyone, anywhere, at anytime). We don't need the intermediate states of the log.
 
@@ -282,9 +283,9 @@ Two or more logs are _externally consistent_ if they are both verfiable internal
 External logs that are _inconsitent_, have at least two reported copies of the logs that are different. That means I have a duplicitous log. We need duplicity detection to be able to garantuee _external consistency_ or put in an different way: duplicity detection protects against external inconsistency.
 
 #### Inception Event
-
+{TBW}
 #### Inconsistency
-
+{TBW}
 #### Identity
 A unique entity. Typically represented with a unique identifier.
 
@@ -298,11 +299,15 @@ In KERI we are protected against Internal inconsistency by the hash chain datast
 A mechanism for granting or restricing access to something. MAY be used to issue and prove, MAY be used to transfer and control over _identity_ and _cryptocurrency_. [More](https://en.wikipedia.org/wiki/Key_(cryptography))
 
 #### Key Event Log
-
+{TBW}
 #### Key Event Receipt Log
+{TBW}
+#### Level of Assurance
+LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
+KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
 
 #### Non-Establishment Event
-
+{TBW}
 #### Payload
 The term 'payload' is used to distinguish between the 'interesting' information in a chunk of data or similar, and the overhead to support it. It is borrowed from transportation, where it refers to the part of the load that 'pays': for example, a tanker truck may carry 20 tons of oil, but the fully loaded vehicle weighs much more than that - there's the vehicle itself, the driver, fuel, the tank, etc. It costs money to move all these, but the customer only cares about (and pays for) the oil, hence, 'pay-load'. [source](https://softwareengineering.stackexchange.com/questions/158603/what-does-the-term-payload-mean-in-programming).
 
@@ -342,6 +347,10 @@ A controller of issues an own Identifier by binding a generated public private k
 The root-of-trust is fully cryptographic, there is no infrastructure associated with it. If we start there we can build a secure system on top of that. It means SCI gives us strong bindings between the keypair, the controller and the identifier. And so it fixes the main weakness of any administratively issued identifier asserting the binding between the keypair and the identifier and between the controller and the identifier, replacing them with all cryptographically strong bindings.
 
 #### Self Sovereign Identity
+SSI is a new model for Internet-scale digital identity based on an emerging set of protocols, cutting edge cryptography and open standards. Technological and social movements have come together that make SSI possible.\
+[Source](https://livebook.manning.com/book/self-sovereign-identity/chapter-1/v-8/14).\
+Decentralisation of the `root-of-trust` and `verifiable credentials` come into play and delivers  “user-centric identity”: more control and self-determination of individuals, individuals machines and combinations of these, that identify as one.\
+_(@henkvancann)_
 
 #### Spanning layer
 An all encompassing layer horizontal layer in a software architecture. Each trust layer only spans platform specific applications. It bifurcates the internet trust map. There is no spanning trust layer.
@@ -445,13 +454,13 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 `KEL`, `KERL` and `KAACE` might well be very lean alternatives to blockchain based solutions. The hard part is the ambient verifiable architecture.
 
 ## How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?
-
+{TBW}
 ## How to handle multiple formats of KEL and KERL through time. Will they be backwards compatible?
-
+{TBW}
 ## Could a KEL or KERL be pruned or charded?
-
+{TBW}
 ## How to bootstrap KERI on the internet? Is it like fax machine; the more there are the more effective it is?
-
+{TBW}
 ## Why does KERI demand signing and digesting the full over-the-wire serialization of a message?
 The discussion of `KERI`s approach to *serializing messages and signing and digesting the full over-the-wire serialization* is inconvenient for implementers. The motivation for this approach I am calling Zero Message Malleability as a property of `KERI`. 
 This is a "best practices" security first approach that prevents semantic leakage over time that becomes a transaction malleability vulnerability. Indeed `KERI` approach trades off some inconvenience in serialization for better security and reduces the inconvenience of needed to have tightly specified semantics to prevent transaction malleability.\
@@ -531,9 +540,9 @@ A self-sovereign identifier that is not self-certifying is dependent of infrastr
 _(@henkvancann)_
 
 ## Is my KERI identifier public?
-
+{TBW}
 ## Is a KERI identifier GPDR proof?
-
+{TBW}
 ## What do I need a self-certifying identifier for?
 It is a cryptographically derived, strong binding between a controller, a keypair and an identifier. No weak bindings introduced by administration present.
 _(@henkvancann)_
@@ -556,56 +565,57 @@ Often it is an efficiecy measure where the identifier includes the signature as 
 # Q&A section Event logs
 
 ## What is a Key Event Log?
-
+{TBW}
 ## Why is a Key Event Log crucially important?
-
+{TBW}
 ## How do I create a KEL?
-
+{TBW}
 ## How can I trust a KEL?
-
+{TBW}
 # Q&A section Inconsistency and duplicity
 
 ## What kind of Inconsistencies do we have?
-
+{TBW}
 ## What is Duplicity?
-
+{TBW}
 ## Why should we care about Duplicity?
-
+{TBW}
 # Q&A section Key rotation
 
 ## What is Key Rotation?
-
+{TBW}
 ## Why bother about key rotation?
-
+{TBW}
 # Q&A section KEL and KERL
 
 ## What the difference between KEL and KERL?
-
+{TBW}
 # Q&A section Wallets
 
 ## Why do I need a wallet for KERI?
-
+{TBW}
 ## How can I backup the KERI identifiers in my wallet?
-
+{TBW}
 ## Can I receive crypto money in my KERI wallet?
 We don't need a crypto currency embedded in the KERI system, we can use any other crypto currency system for payment. So the design of the KERI system has left crypto token control out.\
 _(@henkvancann)_
 ## Does a KERI wallet store virtual credentials connect to my identifiers?
+{TBW}
 
 # Q&A section Signatures
 
 ## Who can sign off my proofs and identifiers?
-
+{TBW}
 ## What is the practical use of signatures?
-
+{TBW}
 ## Do verifiers, validators, witnesses and watcher sign off `payloads`?
-
+{TBW}
 # Q&A section Proofs
 
 ## What does KERI proof?
-
+{TBW}
 ## Does KERI know whether any message in the Event Logs are valid or true?
-
+{TBW}
 ## How can we verify that a statement by a controller is valid?
 We may verify that the controller of a private key, (the who), made a statement but not the `validity` of the statement itself.\
 (_SamMSmith_)
@@ -616,13 +626,13 @@ We may build trust over time in what was said via histories of verifiably attrib
 # Q&A section Private Key Management
 
 ## Not your keys, not your identity?
-
+{TBW}
 ## The wallet is there to store my KERI private keys safely, no?
-
+{TBW}
 ## Are compound private keys (Shamir Secret Sharing) and multisignature schemes possible to incept identifiers?
-
+{TBW}
 ## How to delegate control over my private keys that control my identifiers?
-
+{TBW}
 # Q&A section Blockchain
 
 ## Does KERI use a blockchain?
@@ -648,6 +658,37 @@ The identifier is now locked to that ledger. We want identifiers to be portable 
 
 # Q&A section Agencies
 
+## What does the governance framework of KERI look like?
+> Decentralized systems must coordinate across multiple parties, all acting independently in their own self-interest. This means that the rules of engagement and interaction must be spelled out and agreed to ahead of time, with incentives, disincentives, consequences, processes, and procedures made clear.
+
+{TBW}
+DRAFT BY _(@henkvancann)_
+
+KERI is self-administered, self-governed. What aspects of KERI need governance?
+
+Purist permissionless network proponents will argue that a real decentralized network does not need a governance framework since mathematics and cryptography make sure that proper governance is in place.
+
+The Trust over IP stack includes both a governance stack and technology stack.\
+KERI governance roles at *Layer 1* can include: 
+- Controller, Entropy hardware and software, KEL, KERL
+*Layer 2: Provider governance frameworks*
+- Governance of capabilities of digital wallets, agents, and agencies. So the need is primarily to establish baseline security, privacy, and data protection requirements, plus interoperability testing and certification programs, for the following roles:
+- Hardware Developers: hardware security modules (HSMs)
+- Software Developers: duplicity verification and internal consistency checks
+- Agency: ambient availability of KELs and KERLs
+*Layer 3: Credential governance frameworks*\
+KERI is not an outspoken credential issuance and verification framework. Having said that:
+- Controller: inception proof, revocation, delegation proof
+- Holders: availability
+- Verfifier: external inconsistency proofs
+Layer 4: Ecosystem governance framework
+- KERIs objective  is to be the spanning trust infrastructure of the whole internet
+- Portability of the identities and KERI interoperability between platforms is cryptographically secured
+- Inconsistencies "reported" by meercats-like alert governance system
+
+
+ }
+
 ## How can KERI offer consistent services and truth?
 A. In a pair-wise setting  each party only needs to be consistent with the other party. Witnesses are not used. It doesn't matter if they lie to each other as long as they lie consistently. KERI does not
 enable someone to proof the *veracity* of a statement only the *authenticity* of the statement.\
@@ -667,6 +708,10 @@ The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/present
 (_SamMSmith_)
 
 {TBW}
+
+## What the difference between Key Event Receipt Infrastructure (KERI), and distributed hash tables (DHTs)?
+{TBW}
+
 ## As long as witnesses keep lying together no one will ever be able to prove them wrong? 
 Witnesses do not make any statement about the content of what is being proved. KERI does not
 enable someone to proof the *veracity* of a statement only the *authenticity* of the statement. {TBW} \
