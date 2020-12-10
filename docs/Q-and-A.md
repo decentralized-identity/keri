@@ -597,13 +597,22 @@ Often it is an efficiecy measure where the identifier includes the signature as 
 # Q&A section Event logs
 
 ## What is a Key Event Log?
-{TBW}
+It's the basis of the source of truth for KERI identifiers. KERI enables cryptographic proof-of-control-authority (provenance) for each identifier. A proof is in the form of an identifier’s key event receipt log (KERL), after a validator verified the registered events, in the chain of events: the key event log (KEL).\
+_(@henkvancann)_
+
 ## Why is a Key Event Log crucially important?
-{TBW}
+Without KELs, we wouldn't have a chain of registered and signed key events for an identifier. The availability and consistency of the KEL is crucial for next steps: verification of events and duplicity checks. Without verified KELs there will be no KERL for identifiers at hand.\
+_(@henkvancann)_
+
 ## How do I create a KEL?
-{TBW}
+By a key inception event. A controller creates a key pair and binds this to his/her KERI identifier.
+There will be wallet software and an API available in the course of code development and also a DID scheme (DID:UN) that invokes calls to those APIs during resolution of the DID.
+_(@henkvancann)_
+
 ## How can I trust a KEL?
-{TBW}
+It is secured by a `Distributed Hash Table`. Internal inconsistencies are cryptographically provable. Furthermore a KEL is end-verifiable to the root-of-trust. You don't need the whole KEL at all times [Read more why](). Together with the external consistency (duplicity check)
+_(@henkvancann)_
+
 # Q&A section Inconsistency and duplicity
 
 ## What kind of Inconsistencies do we have?
@@ -621,7 +630,11 @@ Often it is an efficiecy measure where the identifier includes the signature as 
 # Q&A section KEL and KERL
 
 ## What the difference between KEL and KERL?
-{TBW}
+The word 'Receipt' explains it all: the sender signs off the verification of the KEL done by the recipient. That Receipt is hosted in the KERL and the root-of-trust for KERI.
+
+The analogy is the difference between a _two-way_ - and a _three-way handshake_: Did I, the recepient, only verify that the sender's message was valid (two-way using KEL) or did the sender _sign off the receipt_ of that verification by the recipient (three-way in KERL)
+_(@henkvancann)_
+
 # Q&A section Wallets
 
 ## Why do I need a wallet for KERI?
