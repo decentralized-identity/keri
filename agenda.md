@@ -15,26 +15,141 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 
 ## Agenda 8 & 9 Dec - Use-Case and API Design Workshop
 
-Agenda - presentations on use-cases (15min max please) + Q&A
+Agenda propsals: bring your presentations on use-cases (15min max please) + Q&A
 * IoT 
 * Immunity Credential Chaining
 * Supply Chain 
+* KERI - DRI platform - reputation system in science ecosystem 
 * Others: GitHub issues welcome! 
-* DID Method name: Un, Uni, Keri?
+* DID Method name: Un, Uni, Keri? - Transition from existing systems to true DID
+* DID - how KERI defines new generation of decentralized identifier (DID)
 
 Tues 8 7-9MT, 3-5CET 
 * 7.00: Confirm agenda, introductions
+* 7.20: DID Method Name :D
 * 7.30: IoT (Michael Shea & Sovrin IoT WG)
-* 8.00: 
-* 8.30: 
+* 8.00: Supply chain + DID/SCID? + DRI (Robert)
+* 8.30: API for KEL access - filling in gaps in KELs or historical queries
+    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!
 
 Wed 9 7-9MT, 3-5CET
-* 7.00: 
-    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!
-* 7.30: 
-    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!
-* 8.00: IoT pt2?
-* 8.30: 
+* 7.00: Gossip interface - witness/watcher channel (i.e. for reputation comparison/consensus?)
+    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!]
+* 7.30: <tbd for last-minute people or followup on yesterday's sessions>
+* 8.00: Ryan West (DHT/Kademia)
+* 8.30: Rebase (W3C CG), DIDComm-Git (Mattr), Well-known (DIF), PGP/Web-of-trust keyparty (Blockchain Commons) & Other AID Bootstraps (Juan?)
+    * multi-factor associations / voluntary correlation 
+    * multi-factor interactive proof/update structures
+
+<details>
+<summary>Notes</summary>
+
+Tues 8 7-9MT, 3-5CET 
+* 7.00: Confirm agenda, introductions
+
+### 7.20: DID Method Name :D
+    * Poll on name?
+    * Drummond Reed has pushed no-namechange, Charles' experience confirms this
+    * Robert: the GREAT UNDOING IS UPON US!!!!
+        * Sam: It would work equally well registered twice...
+        * Charles: literally, already works that way...
+    * without objections, the motion carries
+    
+### 7.30: IoT (Michael Shea & Sovrin IoT WG)
+    * Update on WG - currently rechartering in Sovrin Foundation (draft charter [here](https://docs.google.com/document/d/1GvUX3ZEhZOyh2USmd-vww3FZ9OOmbU94E_yt8sEVkfk/))
+    * Primary question- how should IoT WG engage with KERI? Does anyone here want to contribute to that community's efforts to understand, specify, and align IOT usage with VC/SSI outputs?
+        * Ned, Thomas
+    * Old GH [issue](https://github.com/decentralized-identity/keri/issues/53)
+        * KMS for IOT?
+    * Ned Smith: [DICE](https://trustedcomputinggroup.org/work-groups/dice-architectures/) (MSFT is a main driver)
+        * Additional [reading](https://trustedcomputinggroup.org/wp-content/uploads/TCG-DICE-Arch-Implicit-Identity-Based-Device-Attestation-v1-rev93.pdf)
+        * Non-IOT use cases as well-- even server-class machines are interested in hardened roots of trust
+            * $5 keypair generator chip can 
+            * MSFT [PLUTON](https://www.microsoft.com/security/blog/2020/11/17/meet-the-microsoft-pluton-processor-the-security-chip-designed-for-the-future-of-windows-pcs/) press [blitz](https://www.theverge.com/2020/11/17/21571069/microsoft-pluton-processor-security-windows-pc)
+    * Sam: KERI can help structure and secure any Autonomic/SC namespaces-- not just DID-like ones, 
+    * Sam: What are Sovrin's (or in this case, IOT WG's) reqs for a KERI API?
+        * Let's go through the use case, shall we?
+    * IOT use case
+        * mapping table = site and scope of the security problem
+        * hard-code a KERI-compat key 
+    * Ned: DICE doesn't specify signing algos/curves; more of a recipe or formula (interop needs of each imple determines crypto)
+        * PUF can be used to rely on entropy in the platform, altho u still need a pseudo-random generator
+    * IoT use case walkthru: a Rasp Pi and a(ny device with a built in) DICE, for example: rotatable gateway, nonrotatable IoT device (indirection mapping)
+        * tamperproof DICE-ware chip hard-codes a non-rotatable priv key (and thus KERI identifier) into the device; 
+        * Ned: Tradeoffs are around lifecycle of device: IoT devices used in SC tracking-- you want the identifier to never change for a long career
+            * Thus DICE "layering" - one permanent key, and one changeable layer (firmware or flashROM) to detect tampering, one ephemeral, etc.
+            * Michael: can devices be resold or repurposed? Does the device remain traceable from owner to owner?
+            * Ned: Yes, you have to make sure anything owner-specific is on the changeable layer! Otherwise you've got a confidentiality/privacy issue
+            * Michael: Medical use cases... yowza
+        * Ned: DICE :: Keri in that pre-rotation exists to prepare for a rotated/rotating future :D
+    * Reqs for IoT?
+        * Sam: Nontransferable identifier should have their conception event stored in the KEL hosted on the gateway, right? does the gateway-device connection need to be public or known? is the event log the place for that?
+            * Robert: does gateway claim control over identifier? Can one ask the device (or the KEL where it is registered) who its current gateway is?
+            * Sam: KERI doesn't want to know, but the API/users might!
+            * Rob: Sounds useful to my use cases and clients...
+            * Sam: Sidetree oracles do that kind of tracking
+        * Sam: Seals and digests are kept free of semantics by design-- API might have semantics built into queries but meaning of seals and digests should always be kept at a higher layer
+        * Ned: DICE layering (TCB component) - each layer can do a layer transition by creating a key (?!?) - if TCB included KERI functionality...it would have to include the API and transport, although that would be diff
+        * Ned: Important Implementation choice is to use a boundary crossing or not when moving to from Trusted Computing Block to/from KERI  for example key creation , storage and event signing could be in TCB with boundary crossing to KERI 
+            * API (or API "logic")
+        
+
+### 8.00: Supply chain + DID/SCID? + DRI (Robert)
+    * DID per se (not the spec but the idea) - easily grasped idea of IDrs without lookups or centralized tables
+        * KERI useful for all kinds of DIDs: transferible or not, ephemeral or not, etc
+        * no methods: universal namespace
+    * topic 1: where and how do we convince people to kill did methods and namespaces?
+        * Sam: even if that's our ultimate goal, ledger-agnostic DIDs in namespaces are a better adoption vector- middle-term goal should probably be hybrid solution 
+    * topic 2: hybrid solutions: 
+        * Sam: "tunneling" rather than encapsulating ledger-specific-- you could lookup a did:ledger:did and find out it's a KERI did, so "short circuit" the resolution and use KERI to find KEL instead of going to ledger to find DID Doc *if that's all you need* 
+            * Sam: Any ledger could be host for portable/secure KERI identifiers; 
+    * Supply chain topic: car resale use case
+        * Steve: Ownership sounds more like a VC to me; Sam: smart cars need KELs for assertions, but dumb cars are fine with a passive identifier... 
+        * Sam: VCs ; keys needed for attribution of assertions, but cars don't assert their owners
+    * Me: timebox! come back after API for KEL access? Where are APIs in this diagram?
+        * Robert: witnesses, for example: what options are available to resold car's buyer? Can non-transferable ID mentioned in ownership VC be searched? What APIs can she query?
+
+### 8.30: API for KEL access - filling in gaps in KELs or historical queries
+    * Layering assumptions for APIs
+    
+    
+    * A) GET KeyState (Duplicity Detection)
+        * KeyState Message optionally signed by holder KEL that keystate belongs too
+        * All keystates returned include the key of the returner, which can be used to check their signature FOR DUPLICITY (doesn't validate the KELs themselves)
+    * B) Managing KEY Events logs: 
+        Getting events 
+        Replaying logs
+        Getting receipt etc.
+        Notification of changes and new events (watch for events from XXX)
+            Steve: PubSub-style push notifications?
+            Robert: How do I find out who is watcher for a given witness?
+                Sam: But watchers can be anonymous (or else "eclipse attacks" would be a risk) - all the world is a potential watcher
+                Robert: What's the difference between that and making witnesses broadcasters?
+                Sam: Well, more like watchers could use Onion routing-- unauthenticated KEL requesting needs to be a requirement or else we need to architect against eclipse attacks; sidenote: that may require loadbalancers;
+        N-wise requirement: //DID:Peer, group privacy in direct-mode;            
+    
+    C) Duplicity Detection
+       Notifications of
+
+    * Resolutions/API reqs
+        * No authentication req for watchers checking witnesses;
+        * Witness-list check for establishing N-wise direct group (//DID:peer) - each node in group of N is a witness to all the others (and watcher); mini-network, where one of the N needs to sign all events
+            * Access Control *could* required for this N-group, but that might be another spec unto itself... might be orthogonal what enterprises or trust perimeters do with this N-group/mini-network functionality.
+        * Steve: Authn shouldn't be OUT OF SCOPE for all APIs, just for parts of it.
+
+Wed 9 7-9MT, 3-5CET
+### 7.00: Gossip interface - witness/watcher channel (i.e. for reputation comparison/consensus?)
+    * Continue spitballing API reqs before building out implementations of witnesses and watchers (and message types and fields/schemata)
+    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!]
+### 7.30: <tbd for last-minute people or followup on yesterday's sessions>
+    * Possibly return to "Microledger approach" or DID-core use cases doc ?
+### 8.00: Ryan West "KERI-demlia
+ (DHT/Kademlia) - Discovery and indexing
+### 8.30: Rebase ([W3C CG](https://www.w3.org/community/rebase/)), DIDComm-Git (Mattr), Well-known (DIF), PGP/Web-of-trust keyparty (Blockchain Commons) & Other AID Bootstraps (Juan?)
+    * multi-factor associations / voluntary correlation 
+    * multi-factor interactive proof/update structures
+
+</details>
 
 ## Agenda 1 Dec
 
@@ -287,7 +402,7 @@ Agenda
         *   Web Adoptability. Should KERI events be JSONable Web consumable or at some other layer above?
         *   Should field labels be more compact 2 char max
  * Change Next digest computation to increase security in the case of multi-sig among distributed entities
-     * Instead of concatenating values and then Digest the serialization. Digest the raw binary of each element seperately then XOR the result and then attach code.
+     * Instead of concatenating values and then Digest the serialization. Digest the raw binary of each element separately then XOR the result and then attach code.
      * Ned: Architecture Framework approach : map stakeholders and interfaces, then flows, before designing APIs for each interface
      * Scheduling topic calls- for most, the hour before the dev meetings better than after
          * Gather use cases and/or business cases (Juan prefers use-cases for SDO-friendly spec docs!) in extra topic calls with whomever wants to discuss

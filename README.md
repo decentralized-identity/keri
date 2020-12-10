@@ -1,7 +1,7 @@
 # KERI
 Key Event Receipt Infrastructure - the spec and implementation of the KERI protocol
 
-<a href=https://keri.one><img src="./images/KERI_image_by_CChunningham.png" alt="KERI image by CChunningham" border="0" width="600"></a>
+![KERI Logo](images/Keri_logo_color_on_white.png)
 
 ## Starting Points
 * For an overview and introduction, see the explanatory **slideshow** [here](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) or the public-facing <a href=https://keri.one>website</a>.
