@@ -201,6 +201,7 @@ AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DDO = DID Document, look up W3D DID standardization for more info\
+DHT = Distributed Hash Table\
 DIF = Decentralized Identity Foundation, https://identity.foundation\
 DKMI = Decentralized Key Mangement Infrastructure\
 HSM = Hardware Security Module\
@@ -221,7 +222,7 @@ VC = Verifiable Credential, look up W3D DID standardization for more info
 Definitions in alphabetic order:
 
 #### Ambient verifiability
-Verifiable by anyone, anywhere, at anytime
+Verifiable by anyone, anywhere, at anytime. E.g. Ambient Duplicity Detection describes the possibility of detecting duplicity by anyone, anywhere, anytime.
 
 #### Agent
 A representative for an _identity_. MAY require the use of a_wallet_. MAY support _transfer_
@@ -264,7 +265,7 @@ DID; Decentralized identity is a technology that uses cryptography to allow indi
 {TBW}
 
 #### Duplicity
-In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe external inconsistency. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
+In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe **external inconsistency**. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
 #### Entropy
 Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm.[More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
@@ -276,6 +277,10 @@ End verifiable logs on ambient infrastructure enables `ambient verifiability` (v
 
 #### Entity
 Entities are not limited to natural persons but may include groups, organizations, software agents, things, and even data items. 
+
+#### Event sourced architecture
+It is an Event driven architecture. However in Event Driven you can't ever replay an event
+In the Event Sourced architecture you recreate states in an asynchronous way. That has in general great scaleability and resiliance characteristics. However, in KERI the driver for event sourcing is security.
 
 #### External consistency
 Two or more logs are _externally consistent_ if they are both verfiable internally consistent, to begin with, and the reported copies of the logs that are the same. 
@@ -295,6 +300,10 @@ In KERI we are protected against Internal inconsistency by the hash chain datast
 #### KERI Agreement Algorithm for Control Establishment
 {TBW}
 
+#### Keridemlia
+It is a contraction of KERI and [Kademlia](https://en.wikipedia.org/wiki/Kademlia). It's the distributed database of Witness IP-addresses based on a Distributed Hash Tabel. It also does the CNAME - stuff that DNS offers for KERI: the mapping between an identifier and it's controller AID stored in the KEL to its current wittness AID and the wittness AID to the IP address.\
+(_@henkvancann_)
+
 #### Key
 A mechanism for granting or restricing access to something. MAY be used to issue and prove, MAY be used to transfer and control over _identity_ and _cryptocurrency_. [More](https://en.wikipedia.org/wiki/Key_(cryptography))
 
@@ -302,6 +311,11 @@ A mechanism for granting or restricing access to something. MAY be used to issue
 {TBW}
 #### Key Event Receipt Log
 {TBW}
+#### Key Event State
+Includes the mapping CNAME like, it also contain the witness data\
+The KES is never signed by the controller of the AID\
+{TBW}
+
 #### Level of Assurance
 LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
@@ -319,6 +333,9 @@ Note that the KERI never puts raw data or privacy sensitive data in a `KEL` or `
 
 #### Public Key Infrastructure
 A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
+
+#### Race condition
+A race condition or race hazard is the condition of an electronics, software, or other system where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. It becomes a bug when one or more of the possible behaviors is undesirable. [Source](https://en.wikipedia.org/wiki/Race_condition).
 
 #### Root of trust
 Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key cryptography we may not trust in “what” was said, but we may trust in “who” said it.\
@@ -363,7 +380,9 @@ The process of changing the _controller_ of _cryptocurrency_, _identity_ or _ver
 It's a term related to the effort of a foundation. The Trust over IP Foundation is an independent project hosted at Linux Foundation to enable the trustworthy exchange and verification of data between any two parties on the Internet. [More](https://trustoverip.org/about/faq/).
 
 #### Validator
-During validation, a `verifier` checks to see if a `verifiable credential` (VC) has been signed by the controller of this VC using the applicable verification method.
+a _validator_ is anybody that wants to estblish control-authority over an identifier, created by the controller of the identifier. Validators verify the log, they apply duplicity detection or they leverage somebody else's duplicity detection or apply any other logic so they can say "Yes these are events I can trust".
+
+During validation of virtual credentials for example, a `verifier` checks to see if a `verifiable credential` (VC) has been signed by the controller of this VC using the applicable verification method.
 
 #### Verifiable Credential
 VC; A data model for conveying claims made by an issuer about a subject. See [vc-data-model](https://www.w3.org/TR/vc-data-model/) for more.
@@ -452,6 +471,19 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 
 ## How does KERI scale
 `KEL`, `KERL` and `KAACE` might well be very lean alternatives to blockchain based solutions. The hard part is the ambient verifiable architecture.
+
+## How does KERI keep identifiers secure?
+By the mechanism of availability, consistency, and duplicity.\
+We have to handle `race conditions` too, just like any other distributed database or blockchain. 
+
+## What are the security risks of KERI with regard to the identity protocol?
+Harm that can be done to the a `controller`: Unavailability, loss of control authority, externally forced duplicity\
+Harm that can be done to a `validator`: _Inadvertent acceptance_ of verifiable - but forged or duplicitous events 
+
+Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.
+
+## What happens if I or other people are offline?
+Any controller can install a Service/Agent Log, controlled by them.
 
 ## How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?
 {TBW}
@@ -615,12 +647,17 @@ _(@henkvancann)_
 ## What does KERI proof?
 {TBW}
 ## Does KERI know whether any message in the Event Logs are valid or true?
-{TBW}
+No, KERI is data-agnostic. KERI does make no statement about the validity of the payload data.
+_(@henkvancann)_
 ## How can we verify that a statement by a controller is valid?
 We may verify that the controller of a private key, (the who), made a statement but not the `validity` of the statement itself.\
 (_SamMSmith_)
 ## How can we trust what was said or written?
 We may build trust over time in what was said via histories of verifiably attributable (to whom) consistent statements, i.e. `reputation`.\
+(_SamMSmith_)
+
+## Do I need to show the full log (KEL) to anybody I transact with, even though I'd only like to show a part of it, for example a virtual credential?
+Yes, because they can't verify the root of trust. They have to have access to the full log at some point in time. Once they verfied to the root of trust, once, they don't have to keep a copy of the full log. They have to keep the event they've seen and any event since, that they need to verify as they go.
 (_SamMSmith_)
 
 # Q&A section Private Key Management
