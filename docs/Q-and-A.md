@@ -211,7 +211,7 @@ KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
 LOA = [Levels Of Assurance](#levels-of-assurance)\
-PKI = [Public Key Infrastructure]()\
+PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
@@ -418,7 +418,7 @@ _(@henkvancann)_
 - Layer 4 (application layer): {TBW}
 _(@henkvancann)_
 
-[W3C DID]():
+[W3C DID](https://www.w3.org/TR/did-core/):
 1. The KERI developers provisionally design DID:UN, which might become a mixture of DID:KEY, DID:PEER, and DID:WEB, combinable with more functional DIDs in the Identity spectrum DID:SOV, DID:ETHR, etc.
 2. No verifiable credentials
 _(@henkvancann)_
@@ -538,13 +538,13 @@ The Internet Protocol (IP) is bro-ken because it has no security layer.\
 (_SamMSmith_)
 
 ## How can the internet be fixed?
-Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](){TBW} in presentation.
+Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) in presentation.
 
 <img src="../images/identity_system_security_overlay.png" alt="identity system security overlay" border="0" width="800">
 (_SamMSmith_)
 
 ## What's wrong with SSL certificate intermediairies?
-Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more]() {TBW} in presentation.\
+Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) in presentation.\
 _(@henkvancann)_
 
 ## What's DNS Hijacking
@@ -610,7 +610,7 @@ There will be wallet software and an API available in the course of code develop
 _(@henkvancann)_
 
 ## How can I trust a KEL?
-It is secured by a `Distributed Hash Table`. Internal inconsistencies are cryptographically provable. Furthermore a KEL is end-verifiable to the root-of-trust. You don't need the whole KEL at all times [Read more why](). Together with the external consistency (duplicity check)
+It is secured by a `Distributed Hash Table`, so internal inconsistencies are cryptographically provable. If they they are internal consistent the first level of trust is established. Furthermore a KERL is end-verifiable to the root-of-trust. You don't need the whole KERL at all times [Read more why](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#do-i-need-to-show-the-full-log-kel-to-anybody-i-transact-with-even-though-id-only-like-to-show-a-part-of-it-for-example-a-virtual-credential). Together with the external consistency (duplicity check)
 _(@henkvancann)_
 
 # Q&A section Inconsistency and duplicity
