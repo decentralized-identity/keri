@@ -630,10 +630,14 @@ _(@henkvancann)_
 ## What is Key Rotation?
 Changing the key, i.e., replacing it by a new key. The places that use the key or keys derived from it (e.g., authorized keys derived from an identity key, legitimate copies of the identity key, or certificates granted for a key) typically need to be correspondingly updated.
 
-the main purpose of key rotation it to either prevent or recover from a successful compromise of one or more private keys by an exploiter.
+the main purpose of key rotation it to either prevent or recover from a successful compromise of one or more private keys by an exploiter.\
+[Source](https://csrc.nist.gov/glossary/term/Key_Rotation).
 
 ## Why bother about key rotation?
-{TBW}
+The primary purpose of rotating encryption keys is not to decrease the probability of a key being broken, but to reduce the amount of content encrypted with that key so that the amount of material leaked by a single key compromise is less.
+
+However, for _signing keys_ there is a concrete reason: say it takes X months of computation (expected value given your threat model) to crack a key, and you rotate your signing key every 𝑋−1 months and revoke the old one, then by the time an attacker has cracked the key, any new signatures produced by the attacker will either be A) rejected by clients because of key expiry, or B) back-dated to before the key revocation (which should also raise warning in clients).\
+[Source](https://crypto.stackexchange.com/questions/41796/whats-the-purpose-of-key-rotation).
 
 ## Wat is Pre-rotation?
 Pre-rotation is a _cryptographical commitment (a hash)_ to the _next_ private key in the rotation-scheme. (_@henkvancann_)\
