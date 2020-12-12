@@ -200,6 +200,7 @@ AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
+DIF = Decentralized Identity Foundation\
 DDO = DID Document, look up W3D DID standardization for more info\
 DHT = Distributed Hash Table\
 DIF = Decentralized Identity Foundation, https://identity.foundation\
@@ -428,7 +429,7 @@ Because there is no secure universal trust layer for the internet, currently (20
 
 ## Who is KERI? Is it a company or a not for profit?
 KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and within that in the *Identity and Discovery* Workgroup.
-Due to its licensing structure, KERI isn't owned by anyone and everyone at the same time. The Intellectual Property Right of KERI is hosted with DIF. It is an open source project.
+Due to its licensing structure, KERI isn't owned by anyone and everyone at the same time. The Intellectual Property Right of KERI is hosted with `DIF`. It is an open source project.
 
 On github KERI is - and will become even more - a thickening bunch of repositories:
  1. https://github.com/decentralized-identity/keri 
@@ -450,6 +451,9 @@ So in my opnion portability of the associated identifiers is essential to any tr
 Christopher Allen is talking about *portability of information* related to the identity, not the *portability of the identifier itself* with respect to its supporting infrastructure (aka spanning layer).  Indeed, most `DID` methods, including those  that publicly claim to be `SSI` in accordance with the principles do not have portable identifiers. They are locked to a given ledger.\
 (_SamMSmith_)
 
+## Does KERI cooperate with other projects in the self-sovereign Identity field?
+Yes, KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and is part of the *Identity and Discovery* Workgroup. There are also non-formal relation with the newly launched trust-over-ip foundation, and there's good reasons to fit KERI into trust-over-ip.\
+(_SamMSmith_)
 # Q&A section KERI operational
 
 ## Where can I download KERI?
@@ -499,6 +503,7 @@ This is a "best practices" security first approach that prevents semantic leakag
 (_SamMSmith_)
 
 # Q&A section Userinterface
+
 ## What does KERI look like?
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
 Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
@@ -521,7 +526,6 @@ Primary root of trust is KEL not secondary (starts with self cert ID but then af
 A trust basis binds controllers, identifiers, and key-pairs.
 
 A trust domain is the ecosystem of interactions that rely on a trust basis.\
-
 
 ## KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?
 The `KELs` are what establishes the root of trust in `KERI`. So you have a `SCI` and a `KEL`. The `KEL` is ordered with respect to the SCI by the controller. You don't need total ordering with respect to other identifiers to establish the root of trust in `KERI`, because the controller is the one and only, who order events.\
@@ -624,9 +628,22 @@ _(@henkvancann)_
 # Q&A section Key rotation
 
 ## What is Key Rotation?
-{TBW}
+Changing the key, i.e., replacing it by a new key. The places that use the key or keys derived from it (e.g., authorized keys derived from an identity key, legitimate copies of the identity key, or certificates granted for a key) typically need to be correspondingly updated.
+
+the main purpose of key rotation it to either prevent or recover from a successful compromise of one or more private keys by an exploiter.
+
 ## Why bother about key rotation?
 {TBW}
+
+## Wat is Pre-rotation?
+Pre-rotation is a _cryptographical commitment (a hash)_ to the _next_ private key in the rotation-scheme. (_@henkvancann_)\
+The pre-rotation scheme provides secure verifiable rotation that mitigates successful exploit of a given set of signing private keys from a set of (public, private) key-pairs when that exploit happens sometime **after** its creation _and_ its first use to issue a `self-certifying identifier`. In other words, it assumes that the private keys remains private **until after** issuance of the associated identifier.\
+[Source: chapter Pre-rotation in whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+
+## Why hasn't pre-rotation or forward chaining been done before?
+I first wrote about in 2018, it's been public knowledge ever since. I guess people just don't read.\
+(_SamMSmith_)
+
 # Q&A section KEL and KERL
 
 ## What the difference between KEL and KERL?
@@ -675,8 +692,32 @@ Yes, because they can't verify the root of trust. They have to have access to th
 
 # Q&A section Private Key Management
 
+## How secure is the KERI infrastructure?
+KERI changes the discussion about security. From a discussion about the security of _infrastructure_ to a discussion about the security of your _key management infrastructure_. Most people when they think security, the think "oh, blockchain!": permissioned or permissionless, how hard is it to get 51% attack, etc.Non of that matters for KERI. KERI is all about "are your private keys private?!" And if _yes_, that drastically slims down the security discussion to brute force attacks to public keys. And because the next public keys are in fact protected by a hash, you have to brute force the hash algorithm, that is post-quantum secure.
+So that is a very high level of infrastructural security.
+
+So private key management and protection is the root of your security in KERI.
+
+## How multi-tasking is the key infrastructure?
+KERI has univalent, bivalent and multivalent infrastructures.\
+<img src="../images/key-infra-valence.png" alt="Key Infrastruction Valence levels" border="0" width="600">
+You need Key-pair Generation and Key Event Signing Infrastructure. And KERI doesn't care how you do it.
+From bivalent delegation comes into play. But in fact you can have multivalent infrastructures, all with their own security garantuees and its own key management policies.\
+It's all one KERI codebase to do all these infrastructures.\
+(_SamMSmith_)
+
+## Does your public-private-key format matter in KERI?
+No, because the derivation code allows you to use whichever format you want. So anyone that sees an identifier looks at the first byte or two bytes prepended, it's a derived code, and you can tell exactly what type of public-private-key format we have, e.g. ecdsa.
+
+When you rotate keys, you can always rotate to a different format.
+
+## Can I use BIP32 Hierarchical deterministic keys in KERI to rotate?
+Yes, you can derive your keys from that scheme. But KERI is agnostic about it, it wouldn't know.
+
 ## Not your keys, not your identity?
-{TBW}
+{Samuel, could you shine a light on wether it is as binary as stated? If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
+_(@henkvancann)_
+
 ## The wallet is there to store my KERI private keys safely, no?
 {TBW}
 ## Are compound private keys (Shamir Secret Sharing) and multisignature schemes possible to incept identifiers?
