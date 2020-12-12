@@ -217,7 +217,8 @@ PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
 SSI = [Self Sovereign Identity](#self-sovereign-identity)\
-VC = Verifiable Credential, look up W3D DID standardization for more info
+VC = Verifiable Credential, look up W3D DID standardization for more info\
+WASM = [WebAssembly](#WebAssembly)
 
 
 Definitions in alphabetic order:
@@ -391,6 +392,10 @@ VC; A data model for conveying claims made by an issuer about a subject. See [vc
 #### W3C DID
 The W3C consortium Decentralized ID standardization. [More](https://w3c.github.io/did-core/).
 
+#### WebAssembly
+WASM, or just WA) is an _open standard_ that defines a portable binary-code format for executable programs, and a corresponding textual assembly language, as well as interfaces for facilitating interactions between such programs and their host environment.\
+The main goal of WebAssembly is to enable high-performance applications on web pages, but the format is designed to be executed and integrated in other environments as well, including standalone ones. [More info](https://en.wikipedia.org/wiki/WebAssembly).
+
 #### (Digital Identity) Wallet
 In our context it is software and sometimes hardware that serves as a key store and functionality. Keys can be private keys and public keys, hashes and pointers. Functionality can be signing, invoices (receive), send, virtual credentials, delegation, etc. This is the [`agency`](#agency) part of a wallet. \
 [More about digital ID Wallets](https://www.thalesgroup.com/en/markets/digital-identity-and-security/government/identity/digital-identity-services/digital-id-wallet)\
@@ -404,15 +409,18 @@ Key Event Receipt Infrastructure; a secure identifier overlay for the internet.
 Because there is no secure universal trust layer for the internet, currently (2020).\
 KEI is both privacy preserving and context-independent extensible. That means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means. 
 _(@henkvancann)_
-
 ## Is KERI a DID?
-`KERI` is not a `DID` method. The related `DID` method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).\
+`KERI` is not a `DID` method. The proposed related `DID` method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).\
+However there are also votes for `did:keri`: _Drummond Reed_ (Dec 2 2020): "at IIW we asked that question and  feedback overwhelmingly favored did:keri. Furthermore, I’ve proposed that the keri namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the keri namespace in the Indy DID method."\
 _(@henkvancann)_
-
 ## Is it possible to create a KERI DID that is permanently locked to the "did:key" style / ephemeral?
 It is. Sections 2.2.3 - 2.3.1 of the [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains transferrability and the "basic"-type identifier, which always represents a public key and may be either transferrable (can be updated) or non-transferrable (ephemeral/did:key style). section 14.2 actually details how these are encoded, basically check the first few chars of the identifier.\
 _(CharlesCunningham)_
+## Could we see a `WASM` module in the near future?
+ _....so that we get a binding for so that it runs in web browsers / nodejs / goland / python / java / etc..._
 
+WASM is certainly on the roadmap, but for the main issue of Sidetree and did:peer interop, see the [core KERI spec repo issue](https://github.com/decentralized-identity/keri/issues/79) for more info.
+_(CharlesCunningham)_
 
 ## How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
 [Trust-over-IP](#trust-over-ip):
