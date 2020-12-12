@@ -409,6 +409,11 @@ _(@henkvancann)_
 `KERI` is not a `DID` method. The related `DID` method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).\
 _(@henkvancann)_
 
+## Is it possible to create a KERI DID that is permanently locked to the "did:key" style / ephemeral?
+It is. Sections 2.2.3 - 2.3.1 of the [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains transferrability and the "basic"-type identifier, which always represents a public key and may be either transferrable (can be updated) or non-transferrable (ephemeral/did:key style). section 14.2 actually details how these are encoded, basically check the first few chars of the identifier.\
+_(CharlesCunningham)_
+
+
 ## How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
 [Trust-over-IP](#trust-over-ip):
 - Its goal is to be the missing authentication layer of the internet. That's a pretty well matching objective.
@@ -596,7 +601,7 @@ To be able to horizontally scale your identifier system, that consists of a root
 
 ## What do I need a self-signing identifier for?
 Often it is an efficiecy measure where the identifier includes the signature as your `content-addressable hash`.\
-(_SamMSmith_)
+_(SamMSmith)_
 
 # Q&A section Event logs
 
