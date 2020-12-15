@@ -12,6 +12,18 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 [ID WG Charter](https://bit.ly/DIF-WG-select1) | Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD) |
  Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://keri.one/) | Helpful bibliography [ Wasm1 | Wasm2 | MSFT CQRS ] | ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589 Password: 293152
 
+## Agenda 15 - Last 2-hour meeting for 2020 :D 
+
+7am Mtn Time - API & Spec power hour
+- KIDs issue/PR review
+    - Michael Shea's proposed editoral overhaul of KIDs and Commentaries (i.e. which sections of the white paper aren't KIDs yet?)
+- 7.30 Steve Todd confirmed to continue talking about APIs
+8am Mtn Time - 
+- GH Issue Review
+    - 2char resolution urgent
+    - digest agility - please leave comments 
+- Development Progress and implementation comparisons
+
 
 ## Agenda 8 & 9 Dec - Use-Case and API Design Workshop
 
@@ -30,14 +42,19 @@ Tues 8 7-9MT, 3-5CET
 * 7.30: IoT (Michael Shea & Sovrin IoT WG)
 * 8.00: Supply chain + DID/SCID? + DRI (Robert)
 * 8.30: API for KEL access - filling in gaps in KELs or historical queries
-    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!
 
 Wed 9 7-9MT, 3-5CET
 * 7.00: Gossip interface - witness/watcher channel (i.e. for reputation comparison/consensus?)
-    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!]
-* 7.30: <tbd for last-minute people or followup on yesterday's sessions>
-* 8.00: Ryan West (DHT/Kademia)
-* 8.30: Rebase (W3C CG), DIDComm-Git (Mattr), Well-known (DIF), PGP/Web-of-trust keyparty (Blockchain Commons) & Other AID Bootstraps (Juan?)
+    * nlogn
+    * 
+
+* 7.30: API discussion continued
+    * DRI's for identifying objects and things, how KERI can be used for such
+    * event sourcing: security, scalability, resilience
+        * Database replay
+* 8.00: Ryan West KERIDemlia (DHT)
+* 8.30: Rebase ([W3C CG](https://www.w3.org/community/rebase/
+)), DIDComm-Git (Mattr), Well-known (DIF), PGP/Web-of-trust keyparty (Blockchain Commons) & Other AID Bootstraps (Juan?)
     * multi-factor associations / voluntary correlation 
     * multi-factor interactive proof/update structures
 
@@ -140,15 +157,119 @@ Tues 8 7-9MT, 3-5CET
 Wed 9 7-9MT, 3-5CET
 ### 7.00: Gossip interface - witness/watcher channel (i.e. for reputation comparison/consensus?)
     * Continue spitballing API reqs before building out implementations of witnesses and watchers (and message types and fields/schemata)
-    * Note: Juan will not be here and another volunteer will need to scribe on hackmd!]
-### 7.30: <tbd for last-minute people or followup on yesterday's sessions>
+    * Note: Juan will not be here and another volunteer will need to scribe on hackmd! - Charles Scribing
+    * simplest protocol for witness usage in whitepaper is round-robin of controller sending event to witness and witness returning receipt (almost like direct mode twice, so all witnesses get all receipts)
+        * alternative: a gossip system between controller <-> witnesses and witnesses <-> witnesses
+            1. pick a random node and gossip to it
+            2. if you know they've gossiped, dont repeat
+            3. if unsure, gossip
+            scales n*log(n) for n nodes
+            everything signed in KERI so no concerns about authz/n or security
+        * watchers during KAACE can use a similar mechanism to share KERLs, where each of them contact the witnesses and share results among eachother
+            * enables watchers to quickly detect duplicity without a lot of setup
+            * again no worry about security due to KERI data authn/security model
+        * another: trusted setup with authentication for closed systems
+        * methods have a latency-bandwidth tradeoff, a multicast to all nodes would have lower latency but require higher bandwidth
+        * a selection of methods can be used by deployers depending on their infrastructure needs
+        * can be made to conform to a REST interface (service sent event interface "SSE") or other pub-sub interfaces (e.g. firebase-style)
+        * there are a few examples of ready-made gossip algorithms, e.g. Ethereum and other chains for block distribution, the devil is in the security details (MitM). KERI provides some security properties which can be used to prevent some classes of attacks
+        * gossip should be an option but perhaps not the default
+            * they're very efficient though
+        * should witnesses have some autonomy here?
+            * maybe not, the controller designates the witnesses but they do/should not know details about eachother
+    * proposal: two default options:
+        1. controller talks to witnesses and witnesses are "dumb", they simply verify and respond (e.g. REST, TCP, push-notification). also provides event request interface for watchers to use for retrieving KERLs (easiest for people to overlay on existing infrastructure)
+            * a Push interface could support watchers who are listening for new events
+            * watchers could also poll for updates from witnesses via req-response interface
+        2. controller sets up a gossip system for witnesses to use for event  and receipt distribution (perhaps more performant)
+    * can gossip setups allow nodes to filter for traffic?
+        * default is gossiping everything for all (Public) identifiers/traffic, but can throttle bandwidth for load management concerns. using as much traffic with Push or REST would require a large amount of resources (provides public/global resolvability/discoverability)
+        * public gossip allows all nodes to perform duplicity detection and makes eclipse/interdiction attacks impractical
+    * KERI nodes can perform/be configured for different roles within the protocols (e.g. Controller, witness + watcher, etc)
+        * similar to BTC nodes (wallet, miner, validator, routing)
+        * routing can/should also be configured to prevent super high amounts of traffic
+            * can be improved with gossip via limiting gossip "paths" to strongly connected paths with minimal edges
+        * scaling is much easier due to the non-crossover between "chains" and the closedness of controller domains
+### 7:30: <tbd for last-minute people or followup on yesterday's sessions>
     * Possibly return to "Microledger approach" or DID-core use cases doc ?
+    * design feature of KERI: event-sourcing model for architecture
+        * event-driven: reacting to events
+        * event sourcing: replay of events to recreate state, extends event-driven arch and allows for asynchronous architecture to recreate state without conflict (much more resilient + reliably auditable) (think: state time-travel)
+            * systems like Kafka/Storm add event database for storage to allow replaying and event-sourcing
+            * provides a stronger security guarantee by preventing a class of exploits which take advantage of R/W partitions. because the state recreatable only by reading, a node can secure their DB in a read-only partition (which is always fully validatable)
+            * DB's can be snapshotted if desired to reduce weight of nodes and increase reliabiltiy
+    * Steves Strawman API
+        * Request-Response/RPC API
+            * KERI NODE (WITNESS, WATCHER, VERIFIER)
+                * GET_STATE(Prefix) --> IdentifierState \
+                  Retrieves the computed state of the identifier. A node behind the scenes \
+                  may go contact other nodes to see if more Events are available for the \
+                  Prefix. Returns an error message if there is unresolved duplicituous behavior.    
+                * GET_EVENTS(prefix:Prefix, from:SerialNumber?, to:SerialNumber?) --> Event\[\]\
+                  Retrives events for a `prefix` with optional start (from) or end (to).
+                * SUBSCRIBE_EVENTS(prefix:Prefix, subscriber:Prefix, from:SerialNumber?) --> OK\
+                  Sets up a subscription for `subscriber` to receive Events about `prefix`, \
+                  optionally sending previous events from `from` SerialNumber onward.
+                * UNSUBSCRIBE_EVENTS(prefix:Prefix, subscriber:Prefix) --> OK\
+                  Terminates a subscription for Events about a `prefix`.
+                * NOTIFY_EVENT (Event...) --> OK\
+                  Provides the receiver a new event, which it may propagate to subscribers if\
+                  there are enough signatures and witnesses.
+                * NOTIFY_RECEIPT (Event)
+            * CONTROLLER
+                * RECEIVE_RECEIPT (EventReceipt)
+            * SIGNER
+                * SIGN_EVENT (Event) --> Signature\
+                  Sent to holders of signing keys to get signatures for new events.
+        * STREAMING API
+            * CLIENT --> SERVER
+              * Events go from CLIENT to SERVER
+              * Receipts go from SERVER to CLIENT
+        * GOSSIP 
+            * TBD
+
+
 ### 8.00: Ryan West "KERI-demlia
  (DHT/Kademlia) - Discovery and indexing
+ * in indirect mode: not yet a way to map AID => IP address
+ * KERIdemlia provides this mapping of controller AID => replication provider (witnesses) IP addresses
+ * all requests and responses to/from KERIdemlia are signed
+ * vs DNS, KERIdemlia is:
+     * secure by default
+     * fault tolerant and resistant to network attacks
+     * decentralized
+     * provides a cryptographic mapping with AID instead of CNAME
+ * options:
+     * heirachical systems are easy to set up but vulnerable to a number of issues
+     * flooding systems are fast but scale poorly with increased nodes
+     * DHTs map keys to values with constant time lookup for hints about storage in the network (data -> hash -> key -> address)
+         * is log(n) scaleable and highly decentralized and redundant
+ * keridemlia design steps:
+     1. integrate KERI with kademlia
+         * Kademlia relies on a K-V store
+         * replace Kademlia backend with storage impls from KERI libraries
+     2. design/build API
+         * want to map transferable controller AID to current witness AID\
+         * and map witness AID to witness IP address
+             * 2 calls necessary for finding ip address (get wits and get ip addr of wits)
+         * want to verify all published data (CNAME and ANAME records)
+     3. integrate data authentication for all published and returned info
+         * a dishonest node can publish garbage, but honest nodes can refuse to replicate/store garbage
+         * CNAME record == KERL/key state
+         * ANAME record == witness ip address
+         * witness IPs are signed by the witness => always verifiable
+         * DNS cache poisening is not possible undetectably
+         * malicious nodes can only drop data or deny service
+ * repo: github.com/ryanwwest/kademlia
+ * design steps 1 & 2 are done, 3 in progress
+ * design doc: https://docs.google.com/presentation/d/1hknEsGJlP5blETmPOw91FZyaOPwer6wnmnIWMlVUHKc/edit#slide=id.gb05ac86ce3_0_148
+ 
 ### 8.30: Rebase ([W3C CG](https://www.w3.org/community/rebase/)), DIDComm-Git (Mattr), Well-known (DIF), PGP/Web-of-trust keyparty (Blockchain Commons) & Other AID Bootstraps (Juan?)
     * multi-factor associations / voluntary correlation 
     * multi-factor interactive proof/update structures
-
+    * postponed until next tuesday at 8.30?
+    
+    
 </details>
 
 ## Agenda 1 Dec
