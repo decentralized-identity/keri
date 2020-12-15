@@ -324,6 +324,14 @@ KERI has the same LOAs for entropy and trust in human behaviour preservering the
 
 #### Non-Establishment Event
 {TBW}
+
+#### Normative
+In general, we call a theory “normative” if it, in some sense, tells you what you should do - what action you should take. If it includes a usable procedure for determining the optimal action in a given scenario. [Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
+
+#### Non-normative
+A theory is called non-normative if it does not do that. In general, the purpose of non-normative theories is not to give answers, but rather to describe possibilities or predict what might happen as a result of certain actions.
+[Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
+
 #### Payload
 The term 'payload' is used to distinguish between the 'interesting' information in a chunk of data or similar, and the overhead to support it. It is borrowed from transportation, where it refers to the part of the load that 'pays': for example, a tanker truck may carry 20 tons of oil, but the fully loaded vehicle weighs much more than that - there's the vehicle itself, the driver, fuel, the tank, etc. It costs money to move all these, but the customer only cares about (and pays for) the oil, hence, 'pay-load'. [source](https://softwareengineering.stackexchange.com/questions/158603/what-does-the-term-payload-mean-in-programming).
 
@@ -405,21 +413,25 @@ In our context it is software and sometimes hardware that serves as a key store 
 
 ## What is KERI?
 Key Event Receipt Infrastructure; a secure identifier overlay for the internet.
+
 ## Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).\
-KEI is both privacy preserving and context-independent extensible. That means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means. 
+KEI is both privacy preserving and context-independent extensible. That means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.\
 _(@henkvancann)_
+
 ## Is KERI a DID?
 `KERI` is not a `DID` method. The proposed related `DID` method is [`did:un`](https://github.com/decentralized-identity/keri/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-keri/).\
 However there are also votes for `did:keri`: _Drummond Reed_ (Dec 2 2020): "at IIW we asked that question and  feedback overwhelmingly favored did:keri. Furthermore, I’ve proposed that the keri namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the keri namespace in the Indy DID method."\
 _(@henkvancann)_
+
 ## Is it possible to create a KERI DID that is permanently locked to the "did:key" style / ephemeral?
 It is. Sections 2.2.3 - 2.3.1 of the [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains transferrability and the "basic"-type identifier, which always represents a public key and may be either transferrable (can be updated) or non-transferrable (ephemeral/did:key style). section 14.2 actually details how these are encoded, basically check the first few chars of the identifier.\
 _(CharlesCunningham)_
+
 ## Could we see a `WASM` module in the near future?
  _....so that we get a binding for so that it runs in web browsers / nodejs / goland / python / java / etc..._
 
-WASM is certainly on the roadmap, but for the main issue of Sidetree and did:peer interop, see the [core KERI spec repo issue](https://github.com/decentralized-identity/keri/issues/79) for more info.
+WASM is certainly on the roadmap, but for the main issue of Sidetree and did:peer interop, see the [core KERI spec repo issue](https://github.com/decentralized-identity/keri/issues/79) for more info.\
 _(CharlesCunningham)_
 
 ## How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
@@ -467,6 +479,10 @@ Christopher Allen is talking about *portability of information* related to the i
 ## Does KERI cooperate with other projects in the self-sovereign Identity field?
 Yes, KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and is part of the *Identity and Discovery* Workgroup. There are also non-formal relation with the newly launched trust-over-ip foundation, and there's good reasons to fit KERI into trust-over-ip.\
 (_SamMSmith_)
+
+## What's the diffrence between a `normative` and `non-normative` description or theory?
+See the [definitions](#normative) section for what both are. For example, theories of ethics are generally `normative` - you should not kill, you should help that person, etc. Economics is most commonly `non-normative` - instead of asking “how should this person choose which goods to buy?”, we are often more interested in “how does this person choose which commodities they buy?”.
+
 # Q&A section KERI operational
 
 ## Where can I download KERI?
