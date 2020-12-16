@@ -1,17 +1,21 @@
 ---
 tags: KERI
 email: sam@samuelsmith.org
+version: 1.01
 ---
 
 # KID0003  Subsection Compact Labels
 
+v1.01
+
+[![hackmd-github-sync-badge](https://hackmd.io/fiVGtKxlT5-6Kf00pYvJGw/badge)](https://hackmd.io/fiVGtKxlT5-6Kf00pYvJGw)
+
+This is the compact label specification extracted from https://github.com/decentralized-identity/keri/issues/75. This is to be merged into KID0003.md
 
 
-There does not seem to be any objection to 1 char labels when it is clear from context. Although it does create more friction in picking labels due to the limited choices.  Here is a revised version of Steve's list.  
+ 
 
-The revised Table does not use the same label for more than one type of value. This completely avoids ambiguity. 
-
-## Tables of Element Labels from all messages and seals
+## Prior Table of Element Labels from all messages and seals
 
 |Label|Description|Proposed|Notes|
 |---|---|---|---|
@@ -33,12 +37,51 @@ The revised Table does not use the same label for more than one type of value. T
 |trait|Configuration Trait|ct| may not need if adopt change in structure of  cnfg list|
 |seal| Seal | a | a for anchor, seals are a type of anchor, seal  type is clear from context
 |root|Merkle Tree Root Digest|rd|  only context where digest type is not clear |
-|EstOnly|Establishment Only| eo | 
+|EstOnly|Establishment Only| EO | 
 || Last received Event in key state | e|
 ||Last Establishment Event in key state| ee |
 ||Delegator Identifier  Prefix key state| di |
 || Delegatore Location Seal Anchor. | da |
 || Version Number | vn |  only the major.minor version number from version string |
+
+## New Compact Table of Element Labels from all messages and seals
+
+|Label|Description|Notes|
+|---|---|---|
+|v| Version String| |
+|i| Identifier Prefix|  |
+|s| Sequence Number|  |
+|t| Message Type| |  
+|d| Event Digest (Seal or Receipt) ||
+|p| Prior Event Digest | | 
+|kt| Keys Signing Threshold || 
+|k| List of Signing Keys (ordered key set)| |
+|n| Next Key Set Commitment |   |
+|wt| Witnessing Threshold ||
+|w| List of Witnesses  (ordered witness set) | |
+|wr| List of Witnesses to Remove (ordered witness set) | |  
+|wa| List of Witnesses to Add (ordered witness set) | | 
+|c| List of Configuration Traits/Modes |  |
+|a| List of Anchors (seals) ||
+|da| Delegator Anchor Seal in Delegated Event (Location Seal) | |
+|di| Delegator Identifier Prefix in Key State | |
+|rd| Merkle Tree Root Digest || 
+|e| Last received Event Map in Key State | |
+|ee| Last Establishment Event Map in Key State| |
+|vn| Version Number ("major.minor")  | for future | 
+
+
+The table above does not use the same label for more than one type of value. This completely avoids ambiguity with respect to types and labels. A label may have different values in different contexts but not different value types.
+
+## Configuration Traits/Modes
+
+The "c" element in inception and delegated inception events is a list strings specifying optional configuration data/traits/modes/options  . The presence of a string in this list indicates a configuration option for the Key Events. The string values are provided in the following table.
+
+|Option|Description|Notes|
+|---|---|---|
+| EO | Establishment Only | Only establishment events are allowed for this identifier prefix |
+| DND |  Do Not Delegate | This identifier prefix does not allow delegations to other identifier prefixes |
+
 
 
 ## Seal Usages of Labels
@@ -50,14 +93,14 @@ Event Digest
 Event location Digest
 Last Event
 
-|Label|Description|Proposed|Notes|
-|---|---|---|---|
-| pre | identifier prefix of KEL for event | i|
-| sn |  sequence number of event | s |
-| ilk |  message type  of event | t |
-| dig | digest depends on context | d |
-| dig | prior event digest depends on context | p |
-| root |  merkle tree root digest  | rd |
+|Label|Description|Notes|
+|---|---|---|
+| i | identifier prefix of KEL for event | |
+| s |  sequence number of event |  |
+| t |  message type  of event |  |
+| d | digest depends on context |  |
+| p | prior event digest depends on context |  |
+| rd |  merkle tree root digest  |  |
 
 Digest Seal has only one element
 ```JSON
@@ -124,7 +167,7 @@ Last  Establishment Event Reference in KeyState has 2 elements
     "n" :  "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
     "wt":  "1",
     "w" : ["DTNZH3ULvaU6JR2nmwyYAfSVPzhzS6bZ-i0d8JZAo5CM"],
-    "c" :  ["eo"]
+    "c" :  ["EO"]
 }
 ```
 
@@ -187,7 +230,7 @@ Last  Establishment Event Reference in KeyState has 2 elements
     "n" :  "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
     "wt":  "1",
     "w" : ["DTNZH3ULvaU6JR2nmwyYAfSVPzhzS6bZ-i0d8JZAo5CM"],
-    "c" :  [],
+    "c" :  ["DND"],
     "da" :  
            {
              "i":  "EZAoTNZH3ULvaU6Z-i0d8JJR2nmwyYAfSVPzhzS6b5CM",
