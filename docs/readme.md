@@ -1,0 +1,1 @@
+Please note: while in development, working drafts of separate sections of the draft spec are being edited as distinct "KERI Improvement Documents" (KIDs), which can be seen [here](https://github.com/decentralized-identity/keri/tree/master/kids).
