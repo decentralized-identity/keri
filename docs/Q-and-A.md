@@ -319,6 +319,7 @@ A mechanism for granting or restricing access to something. MAY be used to issue
 #### Key Event
 A data structure that consist of a header (Key Event header), a configuration section (Key Event Data spans Header and configuration) and signatures (Key event Message spans Data and signatures)\
 (_@henkvancann_)
+
 <img src="../images/Key-Event.png" alt="Key Event (message)" border="0" width="400">
 
 #### Key Event Log
@@ -326,7 +327,9 @@ Hash-chained Key Events, these are blockchains in a narrow definition, but not i
 _(SamMSmith)_
 
 #### Key Event Receipt Log
-Signed Key Events, keeping track of establishment events. To begin with the inception event and any number of rotation events.
+Signed Key Events, keeping track of establishment events. To begin with the inception event and any number of rotation events. We call that the _establishment subsequence_. \
+(_@henkvancann_)
+
 <img src="../images/inception-rotation.png" alt="inception and any number of rotation events" border="0" width="400">
 
 
@@ -342,7 +345,7 @@ LOA; Identity and other trust decisions are often not binary. They are judgement
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
 
 #### Non-Establishment Event
-To be able to do something with the identifier, it anchors data to the key event sequence.
+To be able to do something with the identifier, it anchors data to the key event sequence. So you can so things like issue or revoke a verifiable credential or engage in a transaction in which you give a commitment of some form to some other entity and you can anchor that commitment to the KER log and make it verifiable that way.
 
 #### Normative
 In general, we call a theory “normative” if it, in some sense, tells you what you should do - what action you should take. If it includes a usable procedure for determining the optimal action in a given scenario. [Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
