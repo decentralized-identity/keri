@@ -272,11 +272,14 @@ DID; Decentralized identity is a technology that uses cryptography to allow indi
 #### Duplicity
 In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe **external inconsistency**. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
+In common language 'duplicity' has a slightly different connotation: 'two-facedness', 'dishonesty', 'deceitfulness', 'deviousness,'two-facedness', 'falseness'.
+
 #### Entropy
 Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm.[More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 
 #### Establishment Event
-{TBW}
+An event that establishes control authority. What are the authoritative key-pairs in any point in time. For a trivial system this is one authoritative keypair and it never changes. However, if we need persistance in our identifier and we want to be able to for example overcome compromise of our keys, we need to be able to do something like rotate keys.
+
 #### End verifiable log
 End verifiable logs on ambient infrastructure enables `ambient verifiability` (verifiable by anyone, anywhere, at anytime). We don't need the intermediate states of the log.
 
@@ -284,7 +287,7 @@ End verifiable logs on ambient infrastructure enables `ambient verifiability` (v
 Entities are not limited to natural persons but may include groups, organizations, software agents, things, and even data items. 
 
 #### Event sourced architecture
-It is an Event driven architecture. However in Event Driven you can't ever replay an event
+It is an Event driven architecture. However in Event Driven you can't ever replay an event.\
 In the Event Sourced architecture you recreate states in an asynchronous way. That has in general great scaleability and resiliance characteristics. However, in KERI the driver for event sourcing is security.
 
 #### External consistency
@@ -293,7 +296,8 @@ Two or more logs are _externally consistent_ if they are both verfiable internal
 External logs that are _inconsitent_, have at least two reported copies of the logs that are different. That means I have a duplicitous log. We need duplicity detection to be able to garantuee _external consistency_ or put in an different way: duplicity detection protects against external inconsistency.
 
 #### Inception Event
-{TBW}
+Is a type of Establishment Event, it's the first event that establishes an identifier. \
+(_SamMSmith_)
 #### Inconsistency
 {TBW}
 #### Identity
@@ -312,10 +316,22 @@ It is a contraction of KERI and [Kademlia](https://en.wikipedia.org/wiki/Kademli
 #### Key
 A mechanism for granting or restricing access to something. MAY be used to issue and prove, MAY be used to transfer and control over _identity_ and _cryptocurrency_. [More](https://en.wikipedia.org/wiki/Key_(cryptography))
 
+#### Key Event
+A data structure that consist of a header (Key Event header), a configuration section (Key Event Data spans Header and configuration) and signatures (Key event Message spans Data and signatures)\
+(_@henkvancann_)
+<img src="../images/Key-Event.png" alt="Key Event (message)" border="0" width="400">
+
 #### Key Event Log
-{TBW}
+Hash-chained Key Events, these are blockchains in a narrow definition, but not in the sense of ordering (not ordered) or global consensus mechanisms (not needed).
+_(SamMSmith)_
+
 #### Key Event Receipt Log
-{TBW}
+Signed Key Events, keeping track of establishment events. To begin with the inception event and any number of rotation events.
+<img src="../images/inception-rotation.png" alt="inception and any number of rotation events" border="0" width="400">
+
+
+_(SamMSmith)_
+
 #### Key Event State
 Includes the mapping CNAME like, it also contain the witness data\
 The KES is never signed by the controller of the AID\
@@ -326,7 +342,7 @@ LOA; Identity and other trust decisions are often not binary. They are judgement
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
 
 #### Non-Establishment Event
-{TBW}
+To be able to do something with the identifier, it anchors data to the key event sequence.
 
 #### Normative
 In general, we call a theory “normative” if it, in some sense, tells you what you should do - what action you should take. If it includes a usable procedure for determining the optimal action in a given scenario. [Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
@@ -354,6 +370,9 @@ A race condition or race hazard is the condition of an electronics, software, or
 Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key cryptography we may not trust in “what” was said, but we may trust in “who” said it.\
 The root-of-trust is consistent attribution via verifiable integral non-repudiable statements.
 
+#### Rotation Event
+A type of `Establishment event` that allows to change to authoritative public key. So we start with a `root-of-trust` in public private key pair that get down to the identifier, and then we can rotate authoritatively to other keypairs given signed rotation messages. The infrastructure that we need, keeps track of these rotations, or `Key Event Receipt Infrastructure`.
+_(SamMSmith)_
 #### Seal
 A seal is a cryptographic anchor that provides evidence of authenticity; we have:
 1. Digist Event Seal
