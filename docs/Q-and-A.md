@@ -1,6 +1,9 @@
 # Q&A about KERI
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
+```
+{TBW} means: to be written
+```
 - [Q&A about KERI](#qa-about-keri)
     + [Disclaimer](#disclaimer)
     + [List of questions and definitions](#list-of-questions-and-definitions)
@@ -267,7 +270,15 @@ DID; Decentralized identity is a technology that uses cryptography to allow indi
 `KERI`s definition of decentralization (centralization) is about _control_ not _spatial distribution_. In our definition _decentralized_ is not necessarily the same as _distributed_. By distributed we mean that activity happens at more than one site. Thus decentralization is about _control_ and distribution is about _place_. To elaborate, when we refer to decentralized infrastructure we mean infrastructure under decentralized (centralized) control no matter its spatial distribution. Thus _decentralized infrastructure_ is infrastructure sourced or controlled by more than one `entity`.
 
 #### Derivation code
-{TBW}
+To properly extract and use the `public key` embedded in a self-certifying identifier we need to know the cryptographic _signing scheme_ used by the key pair. KERI includes this very compactly in the identifier, by replacing the pad character (a character used to fill a void to able to always end up with a fixed length public key) with a special character that encodes the derivation process. Call this the derivation code.
+```
+For example suppose that the 44 character Base-64 with trailing pad charac- ter for the public key is as follows:
+_F5pxRJP6THrUtlDdhh07hJEDKrJxkcR9m5u1xs33bhp=_
+If B is the value of the derivation code then the resultant self-contained string is as follows:
+_BF5pxRJP6THrUtlDdhh07hJEDKrJxkcR9m5u1xs33bhp_
+```
+All crypto material appears in `KERI` in a fully qualified representation that includes a derivation code prepended to the crypto-material.
+<img src="../images/derivation-code.png" alt="Derivation Code" border="0" width="400">
 
 #### Duplicity
 In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe **external inconsistency**. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
@@ -331,7 +342,6 @@ Signed Key Events, keeping track of establishment events. To begin with the ince
 (_@henkvancann_)
 
 <img src="../images/inception-rotation.png" alt="inception and any number of rotation events" border="0" width="400">
-
 
 _(SamMSmith)_
 
