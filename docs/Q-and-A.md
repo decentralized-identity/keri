@@ -381,6 +381,15 @@ Now payload in `KERI`. The payload of an item in an `Event Log` is one the follo
 - a public key
 Note that the KERI never puts raw data or privacy sensitive data in a `KEL` or `KERL`.
 
+#### Prefix
+A prefix that is composed of a basic Base-64 (URL safe) derivation code prepended to Base-64 encoding of a basic public digital signing key.\
+Including the derivation code in the prefix binds the derivation process along with the public key to the resultant identifier. 
+```
+An example of the prefix with a one character derivation code and a 32 byte public key encoded into a 44 character Based-64 string follows:
+BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0.
+```
+<img src="../images/prefix.png" alt="Prefix derivation" border="0" width="600">
+
 #### Public Key Infrastructure
 A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
@@ -669,9 +678,14 @@ A self-sovereign identifier that is not self-certifying is dependent of infrastr
 _(@henkvancann)_
 
 ## Is my KERI identifier public?
-{TBW}
+In the direct mode (peer to peer) KERI can be used to keep identifiers private to the peers or group involved. In the indirect mode all identifiers are public. The privacy of the individual, group or object described by the identifier is weak because anyone can bind and indentifier to a subject anytime and anywhere. Fortunately, this binding is weak too, As soon as controllers and verfiers sign statements / events related to an identifier, that's when the binding gets strong and subjects publicly exposed.\
+_(@henkvancann)_
+
 ## Is a KERI identifier GPDR proof?
-{TBW}
+KERI enables support for GDPR’s right to be forgotten.\
+{TBW}\
+_(@henkvancann)_
+
 ## What do I need a self-certifying identifier for?
 It is a cryptographically derived, strong binding between a controller, a keypair and an identifier. No weak bindings introduced by administration present.
 _(@henkvancann)_
