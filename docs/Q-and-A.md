@@ -360,6 +360,11 @@ KERI has the same LOAs for entropy and trust in human behaviour preservering the
 #### Non-Establishment Event
 To be able to do something with the identifier, it anchors data to the key event sequence. So you can so things like issue or revoke a verifiable credential or engage in a transaction in which you give a commitment of some form to some other entity and you can anchor that commitment to the KER log and make it verifiable that way.
 
+#### Non-transferable identifier
+And identifier of which you can't rotate its controlling private key. When the private key for a non-transferable identifier become exposed to potential compromise then the identifier must be abandoned by the controller as it is no longer secure.  
+
+The main innovation of KERI is that it provides a universal decentralized mechanism that supports *both* non-transferable and more importantly transferable self-certifying identifiers.
+
 #### Normative
 In general, we call a theory “normative” if it, in some sense, tells you what you should do - what action you should take. If it includes a usable procedure for determining the optimal action in a given scenario. [Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
 
@@ -426,6 +431,11 @@ A digital subject: A person or thing represented or existing in the digital real
 
 #### Transfer
 The process of changing the _controller_ of _cryptocurrency_, _identity_ or _verifiable credential_. MAY require the use of a _key_.
+
+#### Transferable identifier
+And identifier of which you can rotate its controlling private key. When the private key for a transferable identifier become exposed to potential compromise then control over the identifier may be transferred to a new key-pair to maintain security.
+
+The main innovation of KERI is that it provides a universal decentralized mechanism that supports *both* non-transferable and more importantly transferable self-certifying identifiers.
 
 #### Trust-over-IP
 It's a term related to the effort of a foundation. The Trust over IP Foundation is an independent project hosted at Linux Foundation to enable the trustworthy exchange and verification of data between any two parties on the Internet. [More](https://trustoverip.org/about/faq/).
@@ -680,6 +690,13 @@ To be able to horizontally scale your identifier system, that consists of a root
 ## What do I need a self-signing identifier for?
 Often it is an efficiecy measure where the identifier includes the signature as your `content-addressable hash`.\
 _(SamMSmith)_
+
+## What do I need a non-transferable identifier for, as KERI supports transferable identifiers?
+Its use is different. Many applications of self-certifying identifiers only require temporary use after which the identifier is abandoned. These are called ephemeral identifiers. Other applications may only attach a limited amount of value to the identifier such that replacing the identifier is not onerous.\
+Because a non-transferable (ephemeral) identifier is not recoverable in the event of compromise, the only recourse is to replace the identifier with another identifier. In some applications this may be preferable, given the comparable simplicity of maintaining key state.\
+In either of these cases a non-transferable self-certifying identifier is sufficient.
+
+
 
 # Q&A section Event logs
 
