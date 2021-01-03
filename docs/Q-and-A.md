@@ -310,7 +310,8 @@ External logs that are _inconsitent_, have at least two reported copies of the l
 Is a type of Establishment Event, it's the first event that establishes an identifier. \
 (_SamMSmith_)
 #### Inconsistency
-{TBW}
+If a reason, idea, opinion, etc. is inconsistent, different parts of it do not agree, or it does not agree with something else. Data inconsistency occurs when similar data is kept in different formats in more than onFBTe file. When this happens, it is important to match the data between files. 
+
 #### Identity
 A unique entity. Typically represented with a unique identifier.
 
@@ -552,6 +553,13 @@ Harm that can be done to the a `controller`: Unavailability, loss of control aut
 Harm that can be done to a `validator`: _Inadvertent acceptance_ of verifiable - but forged or duplicitous events 
 
 Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.
+
+## Is KERI post-quantum secure?
+In brief: yes, pre-rotation with hashed public keys and strong one-way hash functions are post-quantum secure.
+
+Post-quantum cryptography deals with techniques that maintain their cryptographic strength despite attack from quantum computers. Because it is currently assumed that practical quantum computers do not yet exist, _post_-quantum techniques are forward looking to some future time when they do exist. A one-way function that is post- quantum secure will not be any less secure (resistant to inversion) in the event that practical quantum computers suddenly or unexpectedly become available. One class of post-quantum secure one-way functions are some cryptographic strength hashes. The analysis of D.J. Bernstein with regards the collision resistance of cryptographic one-way hashing functions concludes that quantum computation provides no advantage over non-quantum techniques.\
+Strong one-way hash functions, such as 256 bit (32 byte) Blake2, Blake3 and SHA3, with 128 bits of pre-quantum strength maintain that strength post-quantum.\
+[Source: whitepaper page 65](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
 
 ## What happens if I or other people are offline?
 Any controller can install a Service/Agent Log, controlled by them.
