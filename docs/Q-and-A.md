@@ -284,6 +284,8 @@ All crypto material appears in `KERI` in a fully qualified representation that i
 In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe **external inconsistency**. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
 In common language 'duplicity' has a slightly different connotation: 'two-facedness', 'dishonesty', 'deceitfulness', 'deviousness,'two-facedness', 'falseness'.
+#### End verifiable
+If a log is end verifiable, this means that the log may be verified by any end user that receives a copy. No trust in intervening infrastructure is needed to verify the log and validate the content. 
 
 #### Entropy
 Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm.[More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
@@ -593,6 +595,7 @@ Delegation could be used. There is an [issue about IoT](https://github.com/decen
 (_SamMSmith_)
 
 # Q&A section Root of trust
+
 ## What do I need to trust in KERI?
 Primary root of trust is KEL not secondary (starts with self cert ID but then after first rotation if any must have KEL.\
 (_SamMSmith_)
@@ -608,6 +611,11 @@ In blockchains you need total ordering, which you need for double spend protecti
 For people in blockchain this is a bit hard to grasp, but we don’t need hash chain data structure of events on single identifier nor the *ordering* those, I just need logs, I need *append-only logs of events* to establish the authority.\
 And so I defend myself against `duplicity`.\
 (_SamMSmith_)
+
+## Why is end-verifiability such a big thing in KERI?
+In brief: with end-verifiability anyone can verify anywhere at anytime, without the need to trust anyone or anything in between.
+
+Because any copy of an `end-verifiable` record or log is sufficient, any infrastructure providing a copy is replaceable by any other infrastructure that provides a copy, that is, any infrastructure may do. Therefore the infrastructure used to maintain a log of transfer statements is merely a `secondary root-of-trust` for control establishment over the identifier. This enables the use of ambient infrastructure to provide a copy of the log. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, anyone can verify anywhere at anytime. This approach exhibits some of the features of certificate transparency and key transparency with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a self-certifying identifier.
 
 # Q&A section Why the internet is broken
 
