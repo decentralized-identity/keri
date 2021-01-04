@@ -290,6 +290,8 @@ If a log is end verifiable, this means that the log may be verified by any end u
 #### Entropy
 Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm.[More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 
+The term entropy is also used to describe the degree of unpredictability of a message. Entropy is then measured in bits. The degree or strength of randomness determines how difficult it would be for someone else to reproduce the same large random number. This is called _collision resistance_. 
+
 #### Establishment Event
 An event that establishes control authority. What are the authoritative key-pairs in any point in time. For a trivial system this is one authoritative keypair and it never changes. However, if we need persistance in our identifier and we want to be able to for example overcome compromise of our keys, we need to be able to do something like rotate keys.
 
@@ -419,7 +421,8 @@ Information controlled by an identity. MAY be used to derive _key_s.
 <img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="800">
 
 #### Self Certifying Identifier
-A controller of issues an own Identifier by binding a generated public private keypair to an identifier. After this a controller is able to sign the identifier and create a certificate.
+In brief: A self-certifying identifier cryptographically binds an identifier to a key-pair.\
+A controller issues an own Identifier by binding a generated public private keypair to an identifier. After this a controller is able to sign the identifier and create a certificate. Also called a _cryptonym_. The simplest form of a self-certifying identifier includes either the public key or a unique fingerprint of the public key as a `prefix` in the identifier.
 
 <img src="../images/sci_issue_bind.png" alt="Self Certifying Identifier issuance and binding" border="0" width="400">
 
