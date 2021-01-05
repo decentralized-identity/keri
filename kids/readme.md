@@ -12,7 +12,7 @@ KID0001 - data model
 
 [KID0003](https://github.com/decentralized-identity/keri/blob/master/kids/kid0003.md) - Serialization 
 
-KID0004 - 
+[KID0005](https://github.com/decentralized-identity/keri/blob/master/kids/kid0003.md) - Next Key Configuration Commitment
 
 KID0005 - 
 
