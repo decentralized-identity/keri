@@ -199,6 +199,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 ## Abbreviations
 In alphabetic order:\
+ACDC = Authentic Chained Data Container Task Force
 AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
@@ -226,6 +227,9 @@ WASM = [WebAssembly](#WebAssembly)
 
 
 Definitions in alphabetic order:
+
+#### Authentic Chained Data Container Task Force
+The purpose of the Authentic Chained Data Container (ACDC) Task Force  is to draft a TSS (ToIP Standard Specification) that defines the standard requirements for the semantics of Authentic Provenance Chaining of Authentic Data Containers. [See more](https://wiki.trustoverip.org/display/HOME/ACDC+%28Authentic+Chained+Data+Container%29+Task+Force)
 
 #### Ambient verifiability
 Verifiable by anyone, anywhere, at anytime. E.g. Ambient Duplicity Detection describes the possibility of detecting duplicity by anyone, anywhere, anytime.
@@ -783,7 +787,12 @@ _(@henkvancann)_
 # Q&A section Wallets
 
 ## Why do I need a wallet for KERI?
-{TBW}
+Yes. [Universal wallet](https://w3c-ccg.github.io/universal-wallet-interop-spec/) - would do - with a thin layer on top of it. \
+A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
+{TBW}\
+(_SamMSmith_) / _(CharlesCunningham)_
+
+
 ## How can I backup the KERI identifiers in my wallet?
 {TBW}
 ## Can I receive crypto money in my KERI wallet?
