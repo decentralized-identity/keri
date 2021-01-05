@@ -214,6 +214,7 @@ KAACE = [KERI Agreement Algorithm for Control Establishment](#keri-agreement-alg
 KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
+KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-docs)
 LOA = [Levels Of Assurance](#levels-of-assurance)\
 PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PR = Pull Request; github terminology\
@@ -354,6 +355,9 @@ _(SamMSmith)_
 Includes the mapping CNAME like, it also contain the witness data\
 The KES is never signed by the controller of the AID\
 {TBW}
+
+#### KERI Implementation/Improvement Docs
+Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
 #### Level of Assurance
 LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
@@ -546,6 +550,11 @@ Yes, KERI sits under the *Decentralized Identity Foundation*, [DIF](https://iden
 ## What's the diffrence between a `normative` and `non-normative` description or theory?
 See the [definitions](#normative) section for what both are. For example, theories of ethics are generally `normative` - you should not kill, you should help that person, etc. Economics is most commonly `non-normative` - instead of asking “how should this person choose which goods to buy?”, we are often more interested in “how does this person choose which commodities they buy?”.
 
+## What's the difference between the whitepaper and the KIDs
+The [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) is the historically grown and expanded design document of `KERI`.
+
+[KID](../kids) is focussed on Implementation; "this is how we do it"  We add commentary to the indivudual KIDs that elaborate on the why. It has been split from the _how_ to not bother implementors with the _why_)
+
 # Q&A section KERI operational
 
 ## Where can I download KERI?
@@ -712,8 +721,6 @@ _(SamMSmith)_
 Its use is different. Many applications of self-certifying identifiers only require temporary use after which the identifier is abandoned. These are called ephemeral identifiers. Other applications may only attach a limited amount of value to the identifier such that replacing the identifier is not onerous.\
 Because a non-transferable (ephemeral) identifier is not recoverable in the event of compromise, the only recourse is to replace the identifier with another identifier. In some applications this may be preferable, given the comparable simplicity of maintaining key state.\
 In either of these cases a non-transferable self-certifying identifier is sufficient.
-
-
 
 # Q&A section Event logs
 
@@ -897,8 +904,6 @@ Layer 4: Ecosystem governance framework
 - KERIs objective  is to be the spanning trust infrastructure of the whole internet
 - Portability of the identities and KERI interoperability between platforms is cryptographically secured
 - Inconsistencies "reported" by meercats-like alert governance system
-
-
  }
 
 ## How can KERI offer consistent services and truth?
