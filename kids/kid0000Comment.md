@@ -1,5 +1,8 @@
 # KID0000 - Glossary, overview, how to use - Commentary
 
+[![hackmd-github-sync-badge](https://hackmd.io/epilQIUSSjKB5s0MLLpgyw/badge)](https://hackmd.io/epilQIUSSjKB5s0MLLpgyw)
+
+
 
 ## Navigation
 
