@@ -27,7 +27,6 @@ For more detailed editorial notes, see [agenda](../agenda.md) minutes for januar
 |0010|Database & Storage Considerations|on hold|tbd
 |0010Comment|tbd|on hold|tbd|
 |0097|**Non-Normative** Implementation Guidance|on hold|tbd|
-|0097Comment|tbd|on hold|tbd|
 |0098|Use Cases|incoming|(Michael, Robert, Charles, and GLEIF?)|
 |0099|Test Vectors and Normative Statement Index|on hold for final editorial review|tbd|
 
