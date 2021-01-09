@@ -19,7 +19,7 @@ For more detailed editorial notes, see [agenda](../agenda.md) minutes for januar
 |[0007](kid0007.md)|Delegation (pending PR by Sam)|strawman|juan|
 |[0007Comment](kid0007Comment.md)|tbd|tbd|tbd|
 |[0008](kid0008.md)|Key-Event State Machine|tbd|tbd|
-|[0008Comment]|tbd|tbd|tbd|
+|0008Comment|tbd|tbd|tbd|
 |[0009](kid0009.md)|Indirect Mode & Witnesses|incomplete strawman|tbd|
 |[0009Comment](kid0009Comment.md)|Indirect Mode & Witnesses|incomplete strawman|tbd|
 |0010|Recovery/consensus Algorithm (KAACE)|on hold|tbd|
