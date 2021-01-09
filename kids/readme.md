@@ -15,9 +15,9 @@ For more detailed editorial notes, see [agenda](../agenda.md) minutes for januar
 |[0005](kid0005.md)|Next Key Commitment (Pre-Rotation)|strawman|juan|
 |0005Comment|nextkey implementation guidance?|tbd|tbd|
 |[0006](kid0006.md)|Seals|strawman (pending PR by Sam)|juan|
-|0006Comment|tbd|tbd|tbd|
+|[0006Comment](kid0006Comment.md)|tbd|tbd|tbd|
 |[0007](kid0007.md)|Delegation (pending PR by Sam)|strawman|juan|
-|0007Comment|tbd|tbd|tbd|
+|[0007Comment](kid0007Comment.md)|tbd|tbd|tbd|
 |[0008](kid0008.md)|Key-Event State Machine|tbd|tbd|
 |[0008Comment]|tbd|tbd|tbd|
 |[0009](kid0009.md)|Indirect Mode & Witnesses|incomplete strawman|tbd|
