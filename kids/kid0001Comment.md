@@ -1,5 +1,8 @@
 # KID0001 - Prefixes, Derivation and derivation reference tables - Commentary
 
+[![hackmd-github-sync-badge](https://hackmd.io/QBp-0nvKTq2CC7KYkmrBaw/badge)](https://hackmd.io/QBp-0nvKTq2CC7KYkmrBaw)
+
+
 
 
 ## Navigation
