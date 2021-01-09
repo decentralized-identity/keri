@@ -5,24 +5,24 @@
 
 ## Navigation
 
-[Back to table of contents](/readme.md)
-|Link|Section|Commentary|
+[Back to table of contents](readme.md)
+|Link|Commentary|Section
 |---|---|---|
-|[0000](kid0000.md)|Glossary, overview, how to use||[0000Comment](kid0000Comment.md)|
-|[0001](kid0001.md)|Prefixes, Derivation and derivation reference tables||[0001Comment](kid0001Comment.md)|
-|[0002](kid0002.md)|Data model (field & event concepts and semantics)|0002Comment|
-|[0003](kid0003.md)|Serialization|0003Comment|
-|[0004](kid0004.md)|Key Configuration (Signing threshold & key set)|0004Comment|
-|[0005](kid0005.md)|Next Key Commitment (Pre-Rotation)|0005Comment|
-|[0006](kid0006.md)|Seals|[0006Comment](kid0006Comment.md)|
-|[0007](kid0007.md)|Delegation (pending PR by Sam)|[0007Comment](kid0007Comment.md)|
-|[0008](kid0008.md)|Key-Event State Machine|0008Comment|
-|[0009](kid0009.md)|Indirect Mode & Witnesses|[0009Comment](kid0009Comment.md)|
-|0010|Recovery/consensus Algorithm (KAACE)|0010Comment|
-|0010|Database & Storage Considerations|0010Comment|
-|0097|**Non-Normative** Implementation Guidance|n/a|
-|0098|Use Cases|n/a|
-|0099|Test Vectors and Normative Statement Index|n/a|
+|[0000](kid0000.md)|[X](kid0000Comment.md)|Glossary, overview, how to use|
+|[0001](kid0001.md)|[X](kid0001Comment.md)|Prefixes, Derivation and derivation reference tables|
+|[0002](kid0002.md)||Data model (field & event concepts and semantics)|
+|[0003](kid0003.md)|X|Serialization|
+|[0004](kid0004.md)||Key Configuration (Signing threshold & key set)|
+|[0005](kid0005.md)||Next Key Commitment (Pre-Rotation)|
+|[0006](kid0006.md)|[X](kid0006Comment.md)|Seals|
+|[0007](kid0007.md)|[X](kid0007Comment.md)|Delegation (pending PR by Sam)|
+|[0008](kid0008.md)||Key-Event State Machine|
+|[0009](kid0009.md)|[X](kid0009Comment.md)|Indirect Mode & Witnesses|
+|0010||Recovery/consensus Algorithm (KAACE)|
+|0010||Database & Storage Considerations|
+|0097|n/a|**Non-Normative** Implementation Guidance|
+|0098|n/a|Use Cases|
+|0099|n/a|Test Vectors and Normative Statement Index|
 
 ### Further rationale for serialization approach
 
