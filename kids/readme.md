@@ -5,9 +5,7 @@
 |[0000](kid0000.md)|[X](kid0000Comment.md)|Glossary, overview, how to use|on hold|henk+juan|
 |[0001](kid0001.md)|[X](kid0001Comment.md)|Prefixes, Derivation and derivation reference tables|incoming|seth|
 |[0002](kid0002.md)|[X](kid0002Comment.md)|Data model (field & event concepts and semantics)|incoming|tbd|
-
 |[0003](kid0003.md)|[X](kid0003Comment.md)|Serialization|strawman but PRs incoming (sam+charles)|charles|
-
 |[0004](kid0004.md)|[X](kid0004Comment.md)|Key Configuration (Signing threshold & key set)|strawman|michael|
 |[0005](kid0005.md)|[X](kid0005Comment.md)|Next Key Commitment (Pre-Rotation)|strawman|juan|
 |[0006](kid0006.md)|[X](kid0006Comment.md)|Seals|strawman (pending PR by Sam)|juan|
