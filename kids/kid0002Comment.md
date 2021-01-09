@@ -1,0 +1,25 @@
+
+# KID0002 - Data model (field & event concepts and semantics) - Commentary
+
+## Navigation
+
+[Back to table of contents](readme.md)
+|Link|Commentary|Section
+|---|---|---|
+|[0000](kid0000.md)|[X](kid0000Comment.md)|Glossary, overview, how to use|
+|[0001](kid0001.md)|[X](kid0001Comment.md)|Prefixes, Derivation and derivation reference tables|
+|[0002](kid0002.md)|X|Data model (field & event concepts and semantics)|
+|[0003](kid0003.md)|[X](kid0003Comment.md)|Serialization|
+|[0004](kid0004.md)|[X](kid0004Comment.md)|Key Configuration (Signing threshold & key set)|
+|[0005](kid0005.md)|[X](kid0005Comment.md)|Next Key Commitment (Pre-Rotation)|
+|[0006](kid0006.md)|[X](kid0006Comment.md)|Seals|
+|[0007](kid0007.md)|[X](kid0007Comment.md)|Delegation (pending PR by Sam)|
+|[0008](kid0008.md)|[X](kid0008Comment.md)|Key-Event State Machine|
+|[0009](kid0009.md)|[X](kid0009Comment.md)|Indirect Mode & Witnesses|
+|0010||Recovery/consensus Algorithm (KAACE)|
+|0010||Database & Storage Considerations|
+|0097|n/a|**Non-Normative** Implementation Guidance|
+|0098|n/a|Use Cases|
+|0099|n/a|Test Vectors and Normative Statement Index|
+
+### TBD
