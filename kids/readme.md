@@ -16,7 +16,7 @@ For more detailed editorial notes, see [agenda](../agenda.md) minutes for januar
 |0005Comment|nextkey implementation guidance?|tbd|tbd|
 |[0006](kid0006.md)|Seals|strawman (pending PR by Sam)|juan|
 |0006Comment|tbd|tbd|tbd|
-|[0007](kid0007.md)|Delegation (pending PR by Sam)|juan|
+|[0007](kid0007.md)|Delegation (pending PR by Sam)|strawman|juan|
 |0007Comment|tbd|tbd|tbd|
 |[0008](kid0008.md)|Key-Event State Machine|tbd|tbd|
 |[0008Comment]|tbd|tbd|tbd|
