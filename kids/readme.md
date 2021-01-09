@@ -12,11 +12,11 @@
 |[0007](kid0007.md)|[X](kid0007Comment.md)|Delegation (pending PR by Sam)|strawman|juan|
 |[0008](kid0008.md)|[X](kid0008Comment.md)|Key-Event State Machine|tbd|tbd|
 |[0009](kid0009.md)|[X](kid0009Comment.md)|Indirect Mode & Witnesses|incomplete strawman|tbd|
-|0010|Recovery/consensus Algorithm (KAACE)|on hold|tbd|
-|0011|Database & Storage Considerations|on hold|tbd
-|0097|**Non-Normative** Implementation Guidance|on hold|tbd|
-|0098|Use Cases|incoming|(Michael, Robert, Charles, and GLEIF?)|
-|0099|Test Vectors and Normative Statement Index|on hold for final editorial review|tbd|
+|0010|tbd|Recovery/consensus Algorithm (KAACE)|on hold|tbd|
+|0011|tbd|Database & Storage Considerations|on hold|tbd
+|0097|n/a|**Non-Normative** Implementation Guidance|on hold|tbd|
+|0098|n/a|Use Cases|incoming|(Michael, Robert, Charles, and GLEIF?)|
+|0099|n/a|Test Vectors and Normative Statement Index|on hold for final editorial review|tbd|
 
 ## Further Documentation waiting on stable code development 
 - KID0011 - Recovery/consensus Algorithm (KAACE)
