@@ -820,8 +820,12 @@ A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
 ## Can I receive crypto money in my KERI wallet?
 We don't need a crypto currency embedded in the KERI system, we can use any other crypto currency system for payment. So the design of the KERI system has left crypto token control out.\
 _(@henkvancann)_
+
 ## Does a KERI wallet store virtual credentials connect to my identifiers?
-{TBW}
+The KERI whitepaper has little about virtual credentials and KERI's place in the W3C SSI space for DIDs and VCs. The reason is that KERI is mainly a level 1 and level 2 solution in the trust-over-ip framework.\
+_(@henkvancann)_
+
+In this presenation of Sam, there's a lot about the relation between KERI and VCs: https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf
 
 # Q&A section Signatures
 
@@ -874,7 +878,12 @@ When you rotate keys, you can always rotate to a different format.
 Yes, you can derive your keys from that scheme. But KERI is agnostic about it, it wouldn't know.
 
 ## Not your keys, not your identity?
-{Samuel, could you shine a light on wether it is as binary as stated? If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
+In KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.
+
+If 
+
+Pre rotated keys are best practise to keep control of your identifiers. 
+If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
 _(@henkvancann)_
 
 ## The wallet is there to store my KERI private keys safely, no?
