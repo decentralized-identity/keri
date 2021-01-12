@@ -12,6 +12,73 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 [ID WG Charter](https://bit.ly/DIF-WG-select1) | Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD) |
  Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://keri.one/) | Helpful bibliography [ Wasm1 | Wasm2 | MSFT CQRS ] | ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589 Password: 293152
 
+## Agenda 12Jan
+
+- Spec & Use-Case Hour
+    - f2f presentations - 15min progress report out + side session(s) on interop
+    - Rust panel?
+    - Thumbs up on editorial pass to fix 
+        1. [2char](https://github.com/decentralized-identity/kerigo/pull/4) issue in the strawmen?
+        2. [charles' diagrams](https://github.com/decentralized-identity/keri/pull/85)
+- TechTalk hour
+    - Enhanced recovery rules for cooperatively delegated identifiers. See additional language in WP 2.57  Sections 7.25 Cooperative delegation and Section 11.6 Recovery
+    - direct-mode interop updates post breaking changes
+
+## Agenda 5Jan
+
+- Spec time
+    - hackmd badges on each KID
+    - whitepaper changes over vacation - seal events, new math diagram  
+
+- dev time
+    - Ox updates
+    - Issue review on /keri/
+    - Layering/scoping discussion - things above the spec but may make sense for future specs and work items:
+        - ACDC TF at [ToIP Technical Stack WG](https://wiki.trustoverip.org/display/HOME/ACDC+%28Authentic+Chained+Data+Container%29+Task+Force) - TF chartered and meetings already live
+        - VC Issuance against KERI SCIDs? Might need a later spec
+        - Wallet Assumptions? Does that require a spec?
+            - Charles - Universal Wallet spec could easily be extended to make a new API - I could write something up eventually
+
+<details>
+<summary>Detailed Minutes</summary>
+    - 
+</details>
+
+## Agenda 22Dec - optional developer meeting
+
+KID/ToC update
+
+
+<details>
+<summary>Notes</summary>
+
+* Expanding on logic of event handling for threshold signatures (there's 1 paragraph in the whitepaper but let's discuss)
+    - Updates re: DID:Peer's "three modes of operating" - 1-to-1 directmode, N-wise directmode, and Any-wise
+        * N-wise requires gathering of signatures / multisig
+            - allows MPC/multisig KMS or replication across multiple devices controlled by same party (replicate key events across devices by XOR escrow, not a more complex protocol)
+            - eth multisig, stellar multisig, BTCR/pay2hash multisig... not quite a first-class feature, never works as a bolt-on
+                - sidebar: BFT? Sam: key event state can't fall out of sync or Byz Fault if the escrow is shared
+                - **default** should be majority-threshold to avoid key event state consensus faults or other design footguns
+                    - "M of N" versus fractional/ratio-weight representations rather than real numbers (standard libraries abstract out this issue and avoid floating point/math/mechanics errors)
+                    - 2 types of threshold in the whitepaper: integer or list [of lists]
+                    - threshold object SHOULD have a method to apply its threshold rather than manually doing the math
+                    - currently, all the implementations are using integer so far; even if 90% of traffic will be integer, the "non-uniform threshold" (aka N-wise mode, **expressed fractionally**) will be crucial to enterprise use cases and should thus be normative and specified in details 
+    - Henk: How are escrow splits different from BTC forks? Does the longest chain win? What happens to the events on the wrong chain?
+        * for starters, sub-majority thresholds are BAD and to be avoided to avoid this corner case
+        * whenever there are two different sets of signatures that reach the threshold, the oldest/first "wins"
+        * Sam: BTC and other BF algos require liveness- but KERI allows dead state (a dumb controller footguns, KERI rolls right over them)
+        * latency is not a major issue; escrow has space limits (oldest escrows abandoned when enough newer ones come in); each KEL-holding participants controls the size of their buffer
+    - Discussion: breaches, phishing, PII risks...
+        + Confidential Keychain whitepaper (referenced in [Nonconformist Keynote](https://www.youtube.com/watch?v=L82O9nqHjRE&feature=youtu.be) on its and bits)
+        + Phishing risk
+        + Rebase & Federation (adds phishing/PII surfaces...)
+    - DID-Rubric
+        + Security section needs a KERI question?
+        + Should developers (much less end-users) know what a DID Method is? It's an infrastructure-layer thing, at most devops people should know what it is...
+        + Warring Kingdoms stage of protocol competition: "hourglass theorem" (the [Micah Beck one](https://arxiv.org/ftp/arxiv/papers/1607/1607.07183.pdf)?)
+
+</details>
+
 ## Agenda 15 - Last 2-hour meeting for 2020 :D 
 
 7am Mtn Time - API & Spec power hour
