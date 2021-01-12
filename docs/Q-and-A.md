@@ -633,6 +633,12 @@ _(@henkvancann)_
 Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/keri/issues/54) key and identifier management with `KERI` that answers this question profoundly.\
 (_SamMSmith_)
 
+## Delegations in many systems are unilateral. KERI has cooperative delegation. What is that and why is it better?
+In many system unilateral delegation is a single point of failure. if a delegated key's delegator gets compromised, you have no way to recover. 
+
+Keys are in different infrastructures in KERI. Both the delegator and the delegatee have keys they manage. If one of them get compromised or lost, we still can recover. Each level of delegation allows delegation of the level above.
+_(@henkvancann)_
+
 # Q&A section Root of trust
 
 ## What do I need to trust in KERI?
