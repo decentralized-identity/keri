@@ -1,6 +1,11 @@
 # Q&A about KERI
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
+**The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**
+
+Why should you read or step through the Q&A? To get a different angle to the same topic: KERI.
+
+
 ```
 {TBW} means: to be written
 ```
@@ -761,7 +766,7 @@ _(@henkvancann)_
 An internally inconsistent KEL, this simply won't verify. 
 External inconsistency: two versions of the key event log (KEL).
 
-## How can it be garantueed than an identifier represents a certain identity and ?
+## How can it be garantueed than an identifier represents a certain identity and not another one?
 KERI takes advantage of its cryptographic root of trust with strong bindings, to get an inviable guarantee, based on both internal consistency for the cryptographic root of trust and external consistency using ambient duplicity detection.
 
 ## What is Duplicity?
