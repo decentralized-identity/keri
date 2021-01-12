@@ -203,6 +203,7 @@ ACDC = Authentic Chained Data Container Task Force
 AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
+DEL = [Duplicitous Event Log](#duplicitous-event-log)
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DIF = Decentralized Identity Foundation\
 DDO = DID Document, look up W3D DID standardization for more info\
@@ -273,6 +274,9 @@ A digital asset designed to work as a medium of exchange wherein individual coin
 DID; Decentralized identity is a technology that uses cryptography to allow individuals to create and control their own unique identifiers. They can use these identifiers to obtain `Verifiable Credentials` from trusted organisations and, subsequently, present elements of these credentials as proof of claims about themselves. In this model, the individual takes ownership of their own identity and need not cede control to centralized service providers or companies.
 
 `KERI`s definition of decentralization (centralization) is about _control_ not _spatial distribution_. In our definition _decentralized_ is not necessarily the same as _distributed_. By distributed we mean that activity happens at more than one site. Thus decentralization is about _control_ and distribution is about _place_. To elaborate, when we refer to decentralized infrastructure we mean infrastructure under decentralized (centralized) control no matter its spatial distribution. Thus _decentralized infrastructure_ is infrastructure sourced or controlled by more than one `entity`.
+
+#### A duplicitous event log 
+Or DEL. This is a record of _inconsistent_ event messages produced by a given controller or witness with respect to a given `KERL`. The duplicitous events are indexed to the corresponding event in a KERL. A duplicitous event is represented by a set of two or more provably mutually inconsistent event messages with respect to a KERL. Each `juror` keeps a duplicitous event log (DEL) for each controller and all designated witness with respect to a KERL. Any validator may confirm duplicity by examining a DEL.
 
 #### Derivation code
 To properly extract and use the `public key` embedded in a self-certifying identifier we need to know the cryptographic _signing scheme_ used by the key pair. KERI includes this very compactly in the identifier, by replacing the pad character (a character used to fill a void to able to always end up with a fixed length public key) with a special character that encodes the derivation process. Call this the derivation code.
@@ -748,11 +752,23 @@ _(@henkvancann)_
 # Q&A section Inconsistency and duplicity
 
 ## What kind of Inconsistencies do we have?
-{TBW}
+An internally inconsistent KEL, this simply won't verify. 
+External inconsistency: two versions of the key event log (KEL).
+
+## How can it be garantueed than an identifier represents a certain identity and ?
+KERI takes advantage of its cryptographic root of trust with strong bindings, to get an inviable guarantee, based on both internal consistency for the cryptographic root of trust and external consistency using ambient duplicity detection.
+
 ## What is Duplicity?
-{TBW}
+See the [definition](#duplicity). What it means is that we have a way to make judgements about trust in entities.\
+_(@henkvancann)_
+
+## What does duplicity look like?
+Duplicity takes two forms. In the first form, a `controller` may be deemed duplicitous whenever it produces an event message that is inconsistent with another event message it previously produced. In the second form, a witness may be deemed duplicitous when it produces an event _receipt_ that is in- consistent with another event receipt it previously produced.\
+_(SamMSmith)_
+
 ## Why should we care about Duplicity?
-{TBW}
+Duplicity becomes a basis for distrust in a controller or its witnesses. _(SamMSmith)_
+
 # Q&A section Key rotation
 
 ## What is Key Rotation?
