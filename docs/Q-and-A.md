@@ -445,6 +445,9 @@ A controller issues an own Identifier by binding a generated public private keyp
 
 The root-of-trust is fully cryptographic, there is no infrastructure associated with it. If we start there we can build a secure system on top of that. It means SCI gives us strong bindings between the keypair, the controller and the identifier. And so it fixes the main weakness of any administratively issued identifier asserting the binding between the keypair and the identifier and between the controller and the identifier, replacing them with all cryptographically strong bindings.
 
+<img src="../images/sci_ssi_book.png" alt="Self Certifying Identifier Generation and Publishing" border="0" width="400">
+[Source](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/141) is #SSI book.
+
 #### Self Sovereign Identity
 SSI is a new model for Internet-scale digital identity based on an emerging set of protocols, cutting edge cryptography and open standards. Technological and social movements have come together that make SSI possible.\
 [Source](https://livebook.manning.com/book/self-sovereign-identity/chapter-1/v-8/14).\
@@ -606,6 +609,11 @@ In brief: yes, pre-rotation with hashed public keys and strong one-way hash func
 Post-quantum cryptography deals with techniques that maintain their cryptographic strength despite attack from quantum computers. Because it is currently assumed that practical quantum computers do not yet exist, _post_-quantum techniques are forward looking to some future time when they do exist. A one-way function that is post- quantum secure will not be any less secure (resistant to inversion) in the event that practical quantum computers suddenly or unexpectedly become available. One class of post-quantum secure one-way functions are some cryptographic strength hashes. The analysis of D.J. Bernstein with regards the collision resistance of cryptographic one-way hashing functions concludes that quantum computation provides no advantage over non-quantum techniques.\
 Strong one-way hash functions, such as 256 bit (32 byte) Blake2, Blake3 and SHA3, with 128 bits of pre-quantum strength maintain that strength post-quantum.\
 [Source: whitepaper page 65](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+
+## According to the SSI Book KERI will never be able to substitute the internet conventional PKI infra. Right?
+[SSI Book](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/144): "As powerful as this (read KERI-like) solution appears, completely self-certifying identifiers have _one major Achilles heel_: the controller’s identifier needs to change every time the public key is rotated. As we will explain further in Chapter 10 on decentralized key management, key rotation—switching from one public/private key pair to a different one—is a fundamental security best practice in all types of PKI. Thus the inability for self-certifying identifiers alone to support key rotation has effectively prevented their adoption as an alternative to conventional PKI.
+
+{TBW prio 1}
 
 ## What happens if I or other people are offline?
 Any controller can install a Service/Agent Log, controlled by them.
