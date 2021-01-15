@@ -525,7 +525,7 @@ _(CharlesCunningham)_
 - Layer 1 (settlement layer): Where other `DID`s use blockchains or databases to register identities and settle 'transactions' between between, `DDO`s, and `VC`s, KERI uses homegrown native structures: `KEL` and `KERL`.
 _(@henkvancann)_
 - Layer 2 (communication layer): Non existing in KERI, because KERI is end-verifiable. KERI can use any other means of communication between actors in the ecosystem
-- Layer 3 (transaction layer): Since KERI focuses on the more fundamental part of authentication for the internet, you won't find match functionality for usual trust-over-IP transaction like VCs or money.
+- Layer 3 (transaction layer): Since KERI focuses on the more fundamental part of authentication for the internet, you won't find matching functionality for usual trust-over-IP transaction like VCs or money.
 - Layer 4 (application layer): {TBW}
 _(@henkvancann)_
 
@@ -544,7 +544,8 @@ Due to its licensing structure, KERI isn't owned by anyone and everyone at the s
 On github KERI is - and will become even more - a thickening bunch of repositories:
  1. https://github.com/decentralized-identity/keri 
  2. https://github.com/decentralized-identity/keripy
- 3. etc.
+ 3. etc
+
  Lastly, the important man, who founded KERI is *Samuel M. Smith Ph.D.*, operationing from his firm [prosapien.com](https://www.prosapien.com).
  _(@henkvancann)_
 
@@ -552,9 +553,8 @@ On github KERI is - and will become even more - a thickening bunch of repositori
 In Python. It will be available in the coming year in Rust, Javascript and Go (2020).
 _(@henkvancann)_
 
-## How KERI fit in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?
-KERI is not primarily about self-sovereign identity. KERI is primarily about autonomic identifiers, AIDs. That is identifiers that are self managing. KERI provides proof of control authority over the identifier. What one does with the identifier is not constrained by KERI. But because the primary root of trust of an AID is a KEL which can be hosted by any infrastructure, any identity system (SSI or otherwise) built on top of KERI may also be portable.
-
+## How KERI fits in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?
+KERI is not primarily about self-sovereign identity. KERI is primarily about autonomic identifiers, AIDs. That is: identifiers that are self managing. KERI provides proof of control authority over the identifier. What one does with the identifier is not constrained by KERI. But because the primary root of trust of an AID is a KEL which can be hosted by any infrastructure, any identity system (SSI or otherwise) built on top of KERI may also be portable.\
 So in my opnion portability of the associated identifiers is essential to any truly self-sovereign identity system. That portability, as such, is not one of the principles is a defect in the principles.\
 (_SamMSmith_)
 
@@ -565,13 +565,13 @@ Christopher Allen is talking about *portability of information* related to the i
 Yes, KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and is part of the *Identity and Discovery* Workgroup. There are also non-formal relation with the newly launched trust-over-ip foundation, and there's good reasons to fit KERI into trust-over-ip.\
 (_SamMSmith_)
 
-## What's the diffrence between a `normative` and `non-normative` description or theory?
-See the [definitions](#normative) section for what both are. For example, theories of ethics are generally `normative` - you should not kill, you should help that person, etc. Economics is most commonly `non-normative` - instead of asking “how should this person choose which goods to buy?”, we are often more interested in “how does this person choose which commodities they buy?”.
+## What's the difference between a `normative` and `non-normative` description or theory?
+See the [definitions](#normative) section for what both terms mean. For example, theories of ethics are generally `normative` - you should not kill, you should help that person, etc. Economics is most commonly `non-normative` - instead of asking “how should this person choose which goods to buy?”, we are often more interested in “how does this person choose which commodities they buy?”.
 
-## What's the difference between the whitepaper and the KIDs
+## What's the difference between the KERI whitepaper and the KIDs
 The [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) is the historically grown and expanded design document of `KERI`.
 
-[KID](../kids) is focussed on Implementation; "this is how we do it"  We add commentary to the indivudual KIDs that elaborate on the why. It has been split from the _how_ to not bother implementors with the _why_)
+A [KID](../kids) is focussed on Implementation; "this is how we do it"  We add commentary to the indivudual KIDs that elaborate on the why. It has been split from the _how_ to not bother implementors with the _why_.
 
 ## KERI has invented its own key representation and signature format. Why not conforn to current standards already available?
 {TBW prio 1}
@@ -579,13 +579,15 @@ The [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/
 # Q&A section KERI operational
 
 ## Where can I download KERI?
-On (sub)page(s of) [github](https://github.com/decentralized-identity/keri)
+On (sub)page(s of) [github](https://github.com/decentralized-identity/keri).
 
 ## Where can we find the code and how could a coder get started?
-The homepage on github [README.md](../README.md) pretty much sums up all the possibilities to download the available code and how developers can engage in the development process currently. We welcome all help we can get.
+The homepage on github [README.md](../README.md) pretty much sums up all the possibilities to download the available code and how developers can currently engage in the development process. We welcome all help we can get.
 
 ## What would you see as the main drawback of KERI?
-Its main drawback is that it's nascent.
+Its main drawback is that it's nascent. (_SamMSmith_)\
+KERI is inventing its own lowest level building blocks. That will prevent a lot of potential code reuse. (@OR13)
+
 
 ## How can it be one solution, fit for all SSI problems? 
 KERI uses plain old digital signatures from `PKI`, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. `KERI` solves that problem.\
@@ -599,37 +601,35 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 `KEL`, `KERL` and `KAACE` might well be very lean alternatives to blockchain based solutions. The hard part is the ambient verifiable architecture.
 
 ## Will KERI be interoperable with DID;peer and Sidetree?
-(@OR13) argues the following:\
+**(@OR13) argues the following:**\
 Afaik this ship sailed when KERI decided to define its own event format. I don't think KERI shares any commonality with sidetree or did peer, and it's no longer possible to align them, so while you can start with the same key material, doing similar operations will very quickly result in totally different event structures.
 
 I don't see a way for KERI events to be used by anything but KERI for now, certainly not Sidetree. In the future did:peer might use KERI events directly, but then did:peer would not be Sidetree compatible...
 
 In order to share code / we would need shared building blocks. Sidetree is built on JWS / JWK. KERI is inventing its own key representation and signature format. These are the lowest level building blocks, so them being different will prevent a lot of potential code reuse.
 
-The upside is that KERI could be much better than things built on JOSE.... the down side is KERI won't be possible to implement with off the shelf JOSE crypto.
-
-Having spent a lot of time with linked data, it looks like KERI is setup to feel all the same kind of pain, regarding reinventing the wheel instead of starting with compatibility with JOSE.
+The upside is that KERI could be much better than things built on JOSE. The down side is KERI won't be possible to implement with off the shelf JOSE crypto. Having spent a lot of time with linked data, It looks like KERI is setup to feel all the same kind of pain, regarding reinventing the wheel instead of starting with compatibility with JOSE.
 
 There was also a potential for KERI to align with Ceramic / IPFS / IPLD, but that door closed when the KERI WG decided to reinvent multicodec.
 
 I predict a few years from now we will have:
 
-A. JOSE / JWS / JWK / jose based DIDs
-B. Multicodec / IPFS / IPLD / DAG_CBOR / JWS / JWK / ipld based DIDs
-C. Linked Data / JSON-LD / CBOR-LD / linked data based DIDs
+A. JOSE / JWS / JWK / jose based DIDs\
+B. Multicodec / IPFS / IPLD / DAG_CBOR / JWS / JWK / ipld based DIDs\
+C. Linked Data / JSON-LD / CBOR-LD / linked data based DIDs\
 D. KERI / KERI keys / KERI signatures / keri event log based DIDs
 
-There will be some overlap, for example KERI based DID Documents will likely support JWKs if they want to be useful with any legacy system, but internally KERI will use a different key representation... similarly sidetree based dids will likely support linked data proofs but will only rely on JWS / JWK for internal operations.
+There will be some overlap, for example KERI based DID Documents will likely support JWKs if they want to be useful with any legacy system, but internally KERI will use a different key representation. Similarly sidetree based dids will likely support linked data proofs but will only rely on JWS / JWK for internal operations.
 
-as far as I know, the KERI design has specifically chosen not to build on JOSE, IPLD. or JSON-LD / CBOR-LD... so there won't be any opportunity for interop with KERI below the DID Document layer.... which is true of many other systems, including Ethereum , Bitcoin, Hyperledger based DIDs... many of which don't share event log interop.
+As far as I know, the KERI design has specifically chosen not to build on JOSE, IPLD. or JSON-LD / CBOR-LD. So there won't be any opportunity for interop with KERI below the DID Document layer. Which is true of many other systems, including Ethereum, Bitcoin, Hyperledger based DIDs. Many of which don't share event log interopability.
 
-Imo, if KERI used IPLD / JSON-LD / CBOR-LD it would be better... because not using them means reinventing the parts of them that are needed... which comes with the potential for better performance at the cost of inventing a faster wheel, and failing to pull developers / tooling from those established communities.
+Imo, if KERI used IPLD / JSON-LD / CBOR-LD, it would be better. Because not using them means reinventing the parts of them that are needed... which comes with the potential for better performance at the cost of inventing a faster wheel, and failing to pull developers / tooling from those established communities. However I can understand the desire to control the entire stack, and not use anyone else's tooling.
 
-However I can understand the desire to control the entire stack, and not use anyone else's tooling.
+From an engineering management and interopability perspective, I would have decided to break compatibility after the whole system was built and working, and only in the areas where JWS / JWK or IPLD performance, documentation or library support was so bad it was justified.
 
-From an engineering management and interop perspective, I would have decided to break compatibility after the whole system was built and working, and only in the areas where JWS / JWK or IPLD performance, documentation or library support was so bad it was justified.
+...  We should target interop between KERI and Sidetree at the DID Core and VC Data Model layer.\
+**End of (@OR13)'s plea.**
 
-As is I think this issue can be closed, and we should target interop between KERI and Sidetree at the DID Core and VC Data Model layer.
 The DID and VC layers are the appopriate layers for interopability. The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling.\
 (_SamMSmith_)
 ## How does KERI keep identifiers secure?
