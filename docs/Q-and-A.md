@@ -1,6 +1,14 @@
 # Q&A about KERI
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
+**The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**
+
+Why should you read or step through the Q&A? To get a different angle to the same topic: KERI.
+
+
+```
+{TBW} means: to be written
+```
 - [Q&A about KERI](#qa-about-keri)
     + [Disclaimer](#disclaimer)
     + [List of questions and definitions](#list-of-questions-and-definitions)
@@ -196,9 +204,11 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 ## Abbreviations
 In alphabetic order:\
+ACDC = Authentic Chained Data Container Task Force
 AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
+DEL = [Duplicitous Event Log](#duplicitous-event-log)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DIF = Decentralized Identity Foundation\
 DDO = DID Document, look up W3D DID standardization for more info\
@@ -211,6 +221,7 @@ KAACE = [KERI Agreement Algorithm for Control Establishment](#keri-agreement-alg
 KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
+KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-docs)
 LOA = [Levels Of Assurance](#levels-of-assurance)\
 PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PR = Pull Request; github terminology\
@@ -222,6 +233,9 @@ WASM = [WebAssembly](#WebAssembly)
 
 
 Definitions in alphabetic order:
+
+#### Authentic Chained Data Container Task Force
+The purpose of the Authentic Chained Data Container (ACDC) Task Force  is to draft a TSS (ToIP Standard Specification) that defines the standard requirements for the semantics of Authentic Provenance Chaining of Authentic Data Containers. [See more](https://wiki.trustoverip.org/display/HOME/ACDC+%28Authentic+Chained+Data+Container%29+Task+Force)
 
 #### Ambient verifiability
 Verifiable by anyone, anywhere, at anytime. E.g. Ambient Duplicity Detection describes the possibility of detecting duplicity by anyone, anywhere, anytime.
@@ -266,17 +280,35 @@ DID; Decentralized identity is a technology that uses cryptography to allow indi
 
 `KERI`s definition of decentralization (centralization) is about _control_ not _spatial distribution_. In our definition _decentralized_ is not necessarily the same as _distributed_. By distributed we mean that activity happens at more than one site. Thus decentralization is about _control_ and distribution is about _place_. To elaborate, when we refer to decentralized infrastructure we mean infrastructure under decentralized (centralized) control no matter its spatial distribution. Thus _decentralized infrastructure_ is infrastructure sourced or controlled by more than one `entity`.
 
+#### Duplicitous event log
+Or DEL. This is a record of _inconsistent_ event messages produced by a given controller or witness with respect to a given `KERL`. The duplicitous events are indexed to the corresponding event in a KERL. A duplicitous event is represented by a set of two or more provably mutually inconsistent event messages with respect to a KERL. Each `juror` keeps a duplicitous event log (DEL) for each controller and all designated witness with respect to a KERL. Any validator may confirm duplicity by examining a DEL.
+
 #### Derivation code
-{TBW}
+To properly extract and use the `public key` embedded in a self-certifying identifier we need to know the cryptographic _signing scheme_ used by the key pair. KERI includes this very compactly in the identifier, by replacing the pad character (a character used to fill a void to able to always end up with a fixed length public key) with a special character that encodes the derivation process. Call this the derivation code.
+```
+For example suppose that the 44 character Base-64 with trailing pad charac- ter for the public key is as follows:
+_F5pxRJP6THrUtlDdhh07hJEDKrJxkcR9m5u1xs33bhp=_
+If B is the value of the derivation code then the resultant self-contained string is as follows:
+_BF5pxRJP6THrUtlDdhh07hJEDKrJxkcR9m5u1xs33bhp_
+```
+All crypto material appears in `KERI` in a fully qualified representation that includes a derivation code prepended to the crypto-material.
+<img src="../images/derivation-code.png" alt="Derivation Code" border="0" width="400">
 
 #### Duplicity
 In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe **external inconsistency**. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
+In common language 'duplicity' has a slightly different connotation: 'two-facedness', 'dishonesty', 'deceitfulness', 'deviousness,'two-facedness', 'falseness'.
+#### End verifiable
+If a log is end verifiable, this means that the log may be verified by any end user that receives a copy. No trust in intervening infrastructure is needed to verify the log and validate the content. 
+
 #### Entropy
 Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm.[More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 
+The term entropy is also used to describe the degree of unpredictability of a message. Entropy is then measured in bits. The degree or strength of randomness determines how difficult it would be for someone else to reproduce the same large random number. This is called _collision resistance_. 
+
 #### Establishment Event
-{TBW}
+An event that establishes control authority. What are the authoritative key-pairs in any point in time. For a trivial system this is one authoritative keypair and it never changes. However, if we need persistance in our identifier and we want to be able to for example overcome compromise of our keys, we need to be able to do something like rotate keys.
+
 #### End verifiable log
 End verifiable logs on ambient infrastructure enables `ambient verifiability` (verifiable by anyone, anywhere, at anytime). We don't need the intermediate states of the log.
 
@@ -284,7 +316,7 @@ End verifiable logs on ambient infrastructure enables `ambient verifiability` (v
 Entities are not limited to natural persons but may include groups, organizations, software agents, things, and even data items. 
 
 #### Event sourced architecture
-It is an Event driven architecture. However in Event Driven you can't ever replay an event
+It is an Event driven architecture. However in Event Driven you can't ever replay an event.\
 In the Event Sourced architecture you recreate states in an asynchronous way. That has in general great scaleability and resiliance characteristics. However, in KERI the driver for event sourcing is security.
 
 #### External consistency
@@ -293,9 +325,11 @@ Two or more logs are _externally consistent_ if they are both verfiable internal
 External logs that are _inconsitent_, have at least two reported copies of the logs that are different. That means I have a duplicitous log. We need duplicity detection to be able to garantuee _external consistency_ or put in an different way: duplicity detection protects against external inconsistency.
 
 #### Inception Event
-{TBW}
+Is a type of Establishment Event, it's the first event that establishes an identifier. \
+(_SamMSmith_)
 #### Inconsistency
-{TBW}
+If a reason, idea, opinion, etc. is inconsistent, different parts of it do not agree, or it does not agree with something else. Data inconsistency occurs when similar data is kept in different formats in more than onFBTe file. When this happens, it is important to match the data between files. 
+
 #### Identity
 A unique entity. Typically represented with a unique identifier.
 
@@ -312,21 +346,43 @@ It is a contraction of KERI and [Kademlia](https://en.wikipedia.org/wiki/Kademli
 #### Key
 A mechanism for granting or restricing access to something. MAY be used to issue and prove, MAY be used to transfer and control over _identity_ and _cryptocurrency_. [More](https://en.wikipedia.org/wiki/Key_(cryptography))
 
+#### Key Event
+A data structure that consist of a header (Key Event header), a configuration section (Key Event Data spans Header and configuration) and signatures (Key event Message spans Data and signatures)\
+(_@henkvancann_)
+
+<img src="../images/Key-Event.png" alt="Key Event (message)" border="0" width="400">
+
 #### Key Event Log
-{TBW}
+Hash-chained Key Events, these are blockchains in a narrow definition, but not in the sense of ordering (not ordered) or global consensus mechanisms (not needed).
+_(SamMSmith)_
+
 #### Key Event Receipt Log
-{TBW}
+Signed Key Events, keeping track of establishment events. To begin with the inception event and any number of rotation events. We call that the _establishment subsequence_. \
+(_@henkvancann_)
+
+<img src="../images/inception-rotation.png" alt="inception and any number of rotation events" border="0" width="400">
+
+_(SamMSmith)_
+
 #### Key Event State
 Includes the mapping CNAME like, it also contain the witness data\
 The KES is never signed by the controller of the AID\
 {TBW}
+
+#### KERI Implementation/Improvement Docs
+Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
 #### Level of Assurance
 LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
 
 #### Non-Establishment Event
-{TBW}
+To be able to do something with the identifier, it anchors data to the key event sequence. So you can so things like issue or revoke a verifiable credential or engage in a transaction in which you give a commitment of some form to some other entity and you can anchor that commitment to the KER log and make it verifiable that way.
+
+#### Non-transferable identifier
+And identifier of which you can't rotate its controlling private key. When the private key for a non-transferable identifier become exposed to potential compromise then the identifier must be abandoned by the controller as it is no longer secure.  
+
+The main innovation of KERI is that it provides a universal decentralized mechanism that supports *both* non-transferable and more importantly transferable self-certifying identifiers.
 
 #### Normative
 In general, we call a theory “normative” if it, in some sense, tells you what you should do - what action you should take. If it includes a usable procedure for determining the optimal action in a given scenario. [Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
@@ -344,6 +400,15 @@ Now payload in `KERI`. The payload of an item in an `Event Log` is one the follo
 - a public key
 Note that the KERI never puts raw data or privacy sensitive data in a `KEL` or `KERL`.
 
+#### Prefix
+A prefix that is composed of a basic Base-64 (URL safe) derivation code prepended to Base-64 encoding of a basic public digital signing key.\
+Including the derivation code in the prefix binds the derivation process along with the public key to the resultant identifier. 
+```
+An example of the prefix with a one character derivation code and a 32 byte public key encoded into a 44 character Based-64 string follows:
+BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0.
+```
+<img src="../images/prefix.png" alt="Prefix derivation" border="0" width="600">
+
 #### Public Key Infrastructure
 A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
@@ -354,6 +419,9 @@ A race condition or race hazard is the condition of an electronics, software, or
 Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key cryptography we may not trust in “what” was said, but we may trust in “who” said it.\
 The root-of-trust is consistent attribution via verifiable integral non-repudiable statements.
 
+#### Rotation Event
+A type of `Establishment event` that allows to change to authoritative public key. So we start with a `root-of-trust` in public private key pair that get down to the identifier, and then we can rotate authoritatively to other keypairs given signed rotation messages. The infrastructure that we need, keeps track of these rotations, or `Key Event Receipt Infrastructure`.
+_(SamMSmith)_
 #### Seal
 A seal is a cryptographic anchor that provides evidence of authenticity; we have:
 1. Digist Event Seal
@@ -370,11 +438,15 @@ Information controlled by an identity. MAY be used to derive _key_s.
 <img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="800">
 
 #### Self Certifying Identifier
-A controller of issues an own Identifier by binding a generated public private keypair to an identifier. After this a controller is able to sign the identifier and create a certificate.
+In brief: A self-certifying identifier cryptographically binds an identifier to a key-pair.\
+A controller issues an own Identifier by binding a generated public private keypair to an identifier. After this a controller is able to sign the identifier and create a certificate. Also called a _cryptonym_. The simplest form of a self-certifying identifier includes either the public key or a unique fingerprint of the public key as a `prefix` in the identifier.
 
 <img src="../images/sci_issue_bind.png" alt="Self Certifying Identifier issuance and binding" border="0" width="400">
 
 The root-of-trust is fully cryptographic, there is no infrastructure associated with it. If we start there we can build a secure system on top of that. It means SCI gives us strong bindings between the keypair, the controller and the identifier. And so it fixes the main weakness of any administratively issued identifier asserting the binding between the keypair and the identifier and between the controller and the identifier, replacing them with all cryptographically strong bindings.
+
+<img src="../images/sci_ssi_book.png" alt="Self Certifying Identifier Generation and Publishing" border="0" width="400">
+[Source](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/141) is #SSI book.
 
 #### Self Sovereign Identity
 SSI is a new model for Internet-scale digital identity based on an emerging set of protocols, cutting edge cryptography and open standards. Technological and social movements have come together that make SSI possible.\
@@ -391,6 +463,11 @@ A digital subject: A person or thing represented or existing in the digital real
 
 #### Transfer
 The process of changing the _controller_ of _cryptocurrency_, _identity_ or _verifiable credential_. MAY require the use of a _key_.
+
+#### Transferable identifier
+And identifier of which you can rotate its controlling private key. When the private key for a transferable identifier become exposed to potential compromise then control over the identifier may be transferred to a new key-pair to maintain security.
+
+The main innovation of KERI is that it provides a universal decentralized mechanism that supports *both* non-transferable and more importantly transferable self-certifying identifiers.
 
 #### Trust-over-IP
 It's a term related to the effort of a foundation. The Trust over IP Foundation is an independent project hosted at Linux Foundation to enable the trustworthy exchange and verification of data between any two parties on the Internet. [More](https://trustoverip.org/about/faq/).
@@ -489,6 +566,11 @@ Yes, KERI sits under the *Decentralized Identity Foundation*, [DIF](https://iden
 ## What's the diffrence between a `normative` and `non-normative` description or theory?
 See the [definitions](#normative) section for what both are. For example, theories of ethics are generally `normative` - you should not kill, you should help that person, etc. Economics is most commonly `non-normative` - instead of asking “how should this person choose which goods to buy?”, we are often more interested in “how does this person choose which commodities they buy?”.
 
+## What's the difference between the whitepaper and the KIDs
+The [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) is the historically grown and expanded design document of `KERI`.
+
+[KID](../kids) is focussed on Implementation; "this is how we do it"  We add commentary to the indivudual KIDs that elaborate on the why. It has been split from the _how_ to not bother implementors with the _why_)
+
 # Q&A section KERI operational
 
 ## Where can I download KERI?
@@ -521,6 +603,18 @@ Harm that can be done to a `validator`: _Inadvertent acceptance_ of verifiable -
 
 Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.
 
+## Is KERI post-quantum secure?
+In brief: yes, pre-rotation with hashed public keys and strong one-way hash functions are post-quantum secure.
+
+Post-quantum cryptography deals with techniques that maintain their cryptographic strength despite attack from quantum computers. Because it is currently assumed that practical quantum computers do not yet exist, _post_-quantum techniques are forward looking to some future time when they do exist. A one-way function that is post- quantum secure will not be any less secure (resistant to inversion) in the event that practical quantum computers suddenly or unexpectedly become available. One class of post-quantum secure one-way functions are some cryptographic strength hashes. The analysis of D.J. Bernstein with regards the collision resistance of cryptographic one-way hashing functions concludes that quantum computation provides no advantage over non-quantum techniques.\
+Strong one-way hash functions, such as 256 bit (32 byte) Blake2, Blake3 and SHA3, with 128 bits of pre-quantum strength maintain that strength post-quantum.\
+[Source: whitepaper page 65](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+
+## According to the SSI Book KERI will never be able to substitute the internet conventional PKI infra. Right?
+[SSI Book](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/144): "As powerful as this (read KERI-like) solution appears, completely self-certifying identifiers have _one major Achilles heel_: the controller’s identifier needs to change every time the public key is rotated. As we will explain further in Chapter 10 on decentralized key management, key rotation—switching from one public/private key pair to a different one—is a fundamental security best practice in all types of PKI. Thus the inability for self-certifying identifiers alone to support key rotation has effectively prevented their adoption as an alternative to conventional PKI.
+
+{TBW prio 1}
+
 ## What happens if I or other people are offline?
 Any controller can install a Service/Agent Log, controlled by them.
 
@@ -552,7 +646,14 @@ _(@henkvancann)_
 Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/keri/issues/54) key and identifier management with `KERI` that answers this question profoundly.\
 (_SamMSmith_)
 
+## Delegations in many systems are unilateral. KERI has cooperative delegation. What is that and why is it better?
+In many system unilateral delegation is a single point of failure. if a delegated key's delegator gets compromised, you have no way to recover. 
+
+Keys are in different infrastructures in KERI. Both the delegator and the delegatee have keys they manage. If one of them get compromised or lost, we still can recover. Each level of delegation allows delegation of the level above.
+_(@henkvancann)_
+
 # Q&A section Root of trust
+
 ## What do I need to trust in KERI?
 Primary root of trust is KEL not secondary (starts with self cert ID but then after first rotation if any must have KEL.\
 (_SamMSmith_)
@@ -568,6 +669,11 @@ In blockchains you need total ordering, which you need for double spend protecti
 For people in blockchain this is a bit hard to grasp, but we don’t need hash chain data structure of events on single identifier nor the *ordering* those, I just need logs, I need *append-only logs of events* to establish the authority.\
 And so I defend myself against `duplicity`.\
 (_SamMSmith_)
+
+## Why is end-verifiability such a big thing in KERI?
+In brief: with end-verifiability anyone can verify anywhere at anytime, without the need to trust anyone or anything in between.
+
+Because any copy of an `end-verifiable` record or log is sufficient, any infrastructure providing a copy is replaceable by any other infrastructure that provides a copy, that is, any infrastructure may do. Therefore the infrastructure used to maintain a log of transfer statements is merely a `secondary root-of-trust` for control establishment over the identifier. This enables the use of ambient infrastructure to provide a copy of the log. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, anyone can verify anywhere at anytime. This approach exhibits some of the features of certificate transparency and key transparency with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a self-certifying identifier.
 
 # Q&A section Why the internet is broken
 
@@ -611,9 +717,14 @@ A self-sovereign identifier that is not self-certifying is dependent of infrastr
 _(@henkvancann)_
 
 ## Is my KERI identifier public?
-{TBW}
+In the direct mode (peer to peer) KERI can be used to keep identifiers private to the peers or group involved. In the indirect mode all identifiers are public. The privacy of the individual, group or object described by the identifier is weak because anyone can bind and indentifier to a subject anytime and anywhere. Fortunately, this binding is weak too, As soon as controllers and verfiers sign statements / events related to an identifier, that's when the binding gets strong and subjects publicly exposed.\
+_(@henkvancann)_
+
 ## Is a KERI identifier GPDR proof?
-{TBW}
+KERI enables support for GDPR’s right to be forgotten.\
+{TBW}\
+_(@henkvancann)_
+
 ## What do I need a self-certifying identifier for?
 It is a cryptographically derived, strong binding between a controller, a keypair and an identifier. No weak bindings introduced by administration present.
 _(@henkvancann)_
@@ -632,6 +743,11 @@ To be able to horizontally scale your identifier system, that consists of a root
 ## What do I need a self-signing identifier for?
 Often it is an efficiecy measure where the identifier includes the signature as your `content-addressable hash`.\
 _(SamMSmith)_
+
+## What do I need a non-transferable identifier for, as KERI supports transferable identifiers?
+Its use is different. Many applications of self-certifying identifiers only require temporary use after which the identifier is abandoned. These are called ephemeral identifiers. Other applications may only attach a limited amount of value to the identifier such that replacing the identifier is not onerous.\
+Because a non-transferable (ephemeral) identifier is not recoverable in the event of compromise, the only recourse is to replace the identifier with another identifier. In some applications this may be preferable, given the comparable simplicity of maintaining key state.\
+In either of these cases a non-transferable self-certifying identifier is sufficient.
 
 # Q&A section Event logs
 
@@ -655,11 +771,23 @@ _(@henkvancann)_
 # Q&A section Inconsistency and duplicity
 
 ## What kind of Inconsistencies do we have?
-{TBW}
+An internally inconsistent KEL, this simply won't verify. 
+External inconsistency: two versions of the key event log (KEL).
+
+## How can it be garantueed than an identifier represents a certain identity and not another one?
+KERI takes advantage of its cryptographic root of trust with strong bindings, to get an inviable guarantee, based on both internal consistency for the cryptographic root of trust and external consistency using ambient duplicity detection.
+
 ## What is Duplicity?
-{TBW}
+See the [definition](#duplicity). What it means is that we have a way to make judgements about trust in entities.\
+_(@henkvancann)_
+
+## What does duplicity look like?
+Duplicity takes two forms. In the first form, a `controller` may be deemed duplicitous whenever it produces an event message that is inconsistent with another event message it previously produced. In the second form, a witness may be deemed duplicitous when it produces an event _receipt_ that is in- consistent with another event receipt it previously produced.\
+_(SamMSmith)_
+
 ## Why should we care about Duplicity?
-{TBW}
+Duplicity becomes a basis for distrust in a controller or its witnesses. _(SamMSmith)_
+
 # Q&A section Key rotation
 
 ## What is Key Rotation?
@@ -694,14 +822,23 @@ _(@henkvancann)_
 # Q&A section Wallets
 
 ## Why do I need a wallet for KERI?
-{TBW}
+Yes. [Universal wallet](https://w3c-ccg.github.io/universal-wallet-interop-spec/) - would do - with a thin layer on top of it. \
+A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
+{TBW}\
+(_SamMSmith_) / _(CharlesCunningham)_
+
+
 ## How can I backup the KERI identifiers in my wallet?
 {TBW}
 ## Can I receive crypto money in my KERI wallet?
 We don't need a crypto currency embedded in the KERI system, we can use any other crypto currency system for payment. So the design of the KERI system has left crypto token control out.\
 _(@henkvancann)_
+
 ## Does a KERI wallet store virtual credentials connect to my identifiers?
-{TBW}
+The KERI whitepaper has little about virtual credentials and KERI's place in the W3C SSI space for DIDs and VCs. The reason is that KERI is mainly a level 1 and level 2 solution in the trust-over-ip framework.\
+_(@henkvancann)_
+
+In this presenation of Sam, there's a lot about the relation between KERI and VCs: https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf
 
 # Q&A section Signatures
 
@@ -754,7 +891,12 @@ When you rotate keys, you can always rotate to a different format.
 Yes, you can derive your keys from that scheme. But KERI is agnostic about it, it wouldn't know.
 
 ## Not your keys, not your identity?
-{Samuel, could you shine a light on wether it is as binary as stated? If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
+In KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.
+
+If 
+
+Pre rotated keys are best practise to keep control of your identifiers. 
+If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
 _(@henkvancann)_
 
 ## The wallet is there to store my KERI private keys safely, no?
@@ -815,8 +957,6 @@ Layer 4: Ecosystem governance framework
 - KERIs objective  is to be the spanning trust infrastructure of the whole internet
 - Portability of the identities and KERI interoperability between platforms is cryptographically secured
 - Inconsistencies "reported" by meercats-like alert governance system
-
-
  }
 
 ## How can KERI offer consistent services and truth?
