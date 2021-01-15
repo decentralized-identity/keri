@@ -598,7 +598,8 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 (_SamMSmith_)
 
 ## How does KERI scale
-`KEL`, `KERL` and `KAACE` might well be very lean alternatives to blockchain based solutions. The hard part is the ambient verifiable architecture.
+`KEL`, `KERL` and `KAACE` might well be very lean alternatives to blockchain based solutions. The hard part is the ambient verifiable architecture.\
+ _(@henkvancann)_
 
 ## Will KERI be interoperable with DID;peer and Sidetree?
 **(@OR13) argues the following:**\
@@ -634,13 +635,15 @@ The DID and VC layers are the appopriate layers for interopability. The performa
 (_SamMSmith_)
 ## How does KERI keep identifiers secure?
 By the mechanism of availability, consistency, and duplicity.\
-We have to handle `race conditions` too, just like any other distributed database or blockchain. 
+We have to handle `race conditions` too, just like any other distributed database or blockchain.\
+(_SamMSmith_)
 
 ## What are the security risks of KERI with regard to the identity protocol?
 Harm that can be done to the a `controller`: Unavailability, loss of control authority, externally forced duplicity\
 Harm that can be done to a `validator`: _Inadvertent acceptance_ of verifiable - but forged or duplicitous events 
 
-Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.
+Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.\
+(_SamMSmith_)
 
 ## Is KERI post-quantum secure?
 In brief: yes, pre-rotation with hashed public keys and strong one-way hash functions are post-quantum secure.
@@ -658,13 +661,13 @@ Strong one-way hash functions, such as 256 bit (32 byte) Blake2, Blake3 and SHA3
 Any controller can install a Service/Agent Log, controlled by them.
 
 ## How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?
-{TBW}
+{TBW prio 2}
 ## How to handle multiple formats of KEL and KERL through time. Will they be backwards compatible?
-{TBW}
+{TBW prio 2}
 ## Could a KEL or KERL be pruned or charded?
-{TBW}
+{TBW prio 2}
 ## How to bootstrap KERI on the internet? Is it like fax machine; the more there are the more effective it is?
-{TBW}
+{TBW prio 1}
 ## Why does KERI demand signing and digesting the full over-the-wire serialization of a message?
 The discussion of `KERI`s approach to *serializing messages and signing and digesting the full over-the-wire serialization* is inconvenient for implementers. The motivation for this approach I am calling Zero Message Malleability as a property of `KERI`. 
 This is a "best practices" security first approach that prevents semantic leakage over time that becomes a transaction malleability vulnerability. Indeed `KERI` approach trades off some inconvenience in serialization for better security and reduces the inconvenience of needed to have tightly specified semantics to prevent transaction malleability.\
@@ -761,7 +764,7 @@ _(@henkvancann)_
 
 ## Is a KERI identifier GPDR proof?
 KERI enables support for GDPR’s right to be forgotten.\
-{TBW}\
+{TBW prio 1}\
 _(@henkvancann)_
 
 ## What do I need a self-certifying identifier for?
@@ -882,15 +885,26 @@ In this presenation of Sam, there's a lot about the relation between KERI and VC
 # Q&A section Signatures
 
 ## Who can sign off my proofs and identifiers?
-{TBW}
+{TBW prio 1}
 ## What is the practical use of signatures?
-{TBW}
-## Do verifiers, validators, witnesses and watcher sign off `payloads`?
-{TBW}
+In general they can proof the control of a private key at a certain point back in time.
+_(@henkvancann)_
+
+## Do verifiers, validators, witnesses and watchers all sign off `payloads`?
+Yes they do. For every cause there is a different payload. The main reason why all roles sign off cryptographical references is commitment to those sources (the payload in KERI is often a digest of sources) at a certain point in time.\
+_(@henkvancann)_
+
 # Q&A section Proofs
 
 ## What does KERI proof?
-{TBW}
+KERI has the ability to proof various thing:
+ - Control over an Autonomous identifier (`AID`).
+ - Control over a pre-rotated key
+ - Commitment to an Event Log
+ - Content addressing by a hash
+ - Delegation of control over a key
+ - {TBW prio 2}
+
 ## Does KERI know whether any message in the Event Logs are valid or true?
 No, KERI is data-agnostic. KERI does make no statement about the validity of the payload data.
 _(@henkvancann)_
@@ -939,11 +953,15 @@ If you lose unique control of a key right after inception, before rotation, are 
 _(@henkvancann)_
 
 ## The wallet is there to store my KERI private keys safely, no?
-{TBW}
+{TBW prio 1}
 ## Are compound private keys (Shamir Secret Sharing) and multisignature schemes possible to incept identifiers?
-{TBW}
+Yes, complex fractional structures are natively possible in KERI. However only for the non-basic forms (for transferable identifiers).\
+_(@henkvancann)_
+{TBW prio 1}
+
 ## How to delegate control over my private keys that control my identifiers?
-{TBW}
+{TBW prio 3}
+
 # Q&A section Blockchain
 
 ## Does KERI use a blockchain?
@@ -971,8 +989,7 @@ The identifier is now locked to that ledger. We want identifiers to be portable 
 
 ## What does the governance framework of KERI look like?
 > Decentralized systems must coordinate across multiple parties, all acting independently in their own self-interest. This means that the rules of engagement and interaction must be spelled out and agreed to ahead of time, with incentives, disincentives, consequences, processes, and procedures made clear.
-
-{TBW}
+{TBW prio 3}
 DRAFT BY _(@henkvancann)_
 
 KERI is self-administered, self-governed. What aspects of KERI need governance?
@@ -1015,11 +1032,10 @@ This would be a set of `watchers` that the validators trust that record any and 
 ## Witnesses have no skin in the game, it’s a `nothing at stake` situation, no?
 The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) has a section called the Duplicity Game.  I suggest reading through that first. Or see the [part of the SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar that tackles this.\
 (_SamMSmith_)
-
-{TBW}
+{TBW prio 2}
 
 ## What is the difference between Key Event Receipt Infrastructure (KERI), and distributed hash tables (DHTs)?
-{TBW prio 2}
+{TBW prio 3}
 
 ## As long as witnesses keep lying together no one will ever be able to prove them wrong? 
 Witnesses do not make any statement about the content of what is being proved. KERI does not
