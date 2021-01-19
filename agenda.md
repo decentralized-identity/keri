@@ -1,6 +1,6 @@
 # KERI Project Work Item
 
-DIF Identifiers and Discovery WG 
+(DIF Identifiers and Discovery WG)
 
 [![hackmd-github-sync-badge](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ/badge)](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ)
 
@@ -38,21 +38,7 @@ Agenda
         5. fix TOCs on kid003
             6. Juan will do
     - Sam: Delegation-enhanced recovery modes (WP 11.6; new WP (2.5.8) has 7.2.5, 11.6 cover this)
-        - would be urgent to discuss if any implementers were already on recovery; no one (at least no one on the call) is there yet, tho.
-        - review of cooperative delegation
     - Henk Q&A
-1. [Not your keys...](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#not-your-keys-not-your-identity)
-2. [relation KERI and VC model](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#does-a-keri-wallet-store-virtual-credentials-connect-to-my-identifiers)
-    3. Some source material in this [presentation](https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf)
-4. [DEL](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#duplicitous-event-log) 
-    - is it normative?
-    - Sam: Validators need to track DELs (and blame their authors) for incentive model
-    - Henk: Could they be reconstructed later if deleted?
-    - Sam: Someone needs to!
-    - Sam: storing and publishing DELs is a community service 
-5. [Cooperative Delegation](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#delegations-in-many-systems-are-unilateral-keri-has-cooperative-delegation-what-is-that-and-why-is-it-better)
-6. Anything in Q&A that currently has the reference "_(@henkvancann)_" could use an expert review. Anyone editing the Q&A: please keep in mind it's targeted at newbies in the KERI field.
-
 - TechTalk hour
     - Details of fractionally weighted threshold support update Python implementation
         - Issues:
@@ -68,6 +54,24 @@ Agenda
 
 - Introductions
     - new folks: Mikaela T and Philip F from (CANIS project)
+
+- use case/spec hour notes
+
+    - Sam: Delegation-enhanced recovery modes (WP 11.6; new WP (2.5.8) has 7.2.5, 11.6 cover this)
+        - would be urgent to discuss if any implementers were already on recovery; no one (at least no one on the call) is there yet, tho.
+        - review of cooperative delegation
+    - Henk Q&A
+1. [Not your keys...](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#not-your-keys-not-your-identity)
+2. [relation KERI and VC model](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#does-a-keri-wallet-store-virtual-credentials-connect-to-my-identifiers)
+    - Some source material in this [presentation](https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf)
+4. [DEL](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#duplicitous-event-log) 
+    - is it normative?
+    - Sam: Validators need to track DELs (and blame their authors) for incentive model
+    - Henk: Could they be reconstructed later if deleted?
+    - Sam: Someone needs to!
+    - Sam: storing and publishing DELs is a community service 
+5. [Cooperative Delegation](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#delegations-in-many-systems-are-unilateral-keri-has-cooperative-delegation-what-is-that-and-why-is-it-better)
+6. Anything in Q&A that currently has the reference "_(@henkvancann)_" could use an expert review. Anyone editing the Q&A: please keep in mind it's targeted at newbies in the KERI field.
 
 - tech talk
     - Extracted data algorithm uniqueness
