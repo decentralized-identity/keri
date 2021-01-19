@@ -965,8 +965,10 @@ Pre rotated keys are best practise to keep control of your identifiers.
 If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
 _(@henkvancann)_
 
-## The wallet is there to store my KERI private keys safely, no?
+## A wallet is there to store my KERI private keys safely, no?
+Currently _Universal wallet_ is aimed at to store KERI keys. The vast majority of security breaches or exposures of keys are originated by the behaviour of people: the way they use wallets. Most rarely due to errors in the wallet software.
 {TBW prio 1}
+
 ## Are compound private keys (Shamir Secret Sharing) and multisignature schemes possible to incept identifiers?
 Yes, complex fractional structures are natively possible in KERI. However only for the non-basic forms (for transferable identifiers).\
 _(@henkvancann)_
