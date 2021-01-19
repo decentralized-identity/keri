@@ -1,4 +1,6 @@
-# DIF Identifiers and Discovery WG - KERI work item
+# KERI Project Work Item
+
+DIF Identifiers and Discovery WG 
 
 [![hackmd-github-sync-badge](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ/badge)](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ)
 
@@ -12,17 +14,74 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 [ID WG Charter](https://bit.ly/DIF-WG-select1) | Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD) |
  Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://keri.one/) | Helpful bibliography [ Wasm1 | Wasm2 | MSFT CQRS ] | ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589 Password: 293152
 
+## Future/Pending Topics
+
+- direct-mode interop updates post breaking changes
+
+## Agenda 19Jan
+
+Agenda
+- Charles' [issue](https://github.com/decentralized-identity/keriox/issues/57) re: updating prefix derivation post malleability-vuln fix
+- Editorial updates from Juan and Henk
+
 ## Agenda 12Jan
 
 - Spec & Use-Case Hour
-    - f2f presentations - 15min progress report out + side session(s) on interop
-    - Rust panel?
+    - DIF f2f [presentations](https://docs.google.com/spreadsheets/d/1hVnwrnU7QOp_rA7AcK2NTQkflSAg0zvQ3-We2DqyRpk/edit?ts=5fea38e1#gid=445783158) - 15min progress report out + side session(s) on interop
+        - Enhanced recovery rules for cooperatively delegated identifiers. See additional language in WP 2.58 Sections 7.25 Cooperative delegation and Section 11.6 Recovery
+        - Rust panel
     - Thumbs up on editorial pass to fix 
         1. [2char](https://github.com/decentralized-identity/kerigo/pull/4) issue in the strawmen?
-        2. [charles' diagrams](https://github.com/decentralized-identity/keri/pull/85)
+            2. Juan will do
+        3. [charles' diagrams](https://github.com/decentralized-identity/keri/pull/85)
+            4. Juan will do
+        5. fix TOCs on kid003
+            6. Juan will do
+    - Sam: Delegation-enhanced recovery modes (WP 11.6; new WP (2.5.8) has 7.2.5, 11.6 cover this)
+        - would be urgent to discuss if any implementers were already on recovery; no one (at least no one on the call) is there yet, tho.
+        - review of cooperative delegation
+    - Henk Q&A
+1. [Not your keys...](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#not-your-keys-not-your-identity)
+2. [relation KERI and VC model](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#does-a-keri-wallet-store-virtual-credentials-connect-to-my-identifiers)
+    3. Some source material in this [presentation](https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf)
+4. [DEL](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#duplicitous-event-log) 
+    - is it normative?
+    - Sam: Validators need to track DELs (and blame their authors) for incentive model
+    - Henk: Could they be reconstructed later if deleted?
+    - Sam: Someone needs to!
+    - Sam: storing and publishing DELs is a community service 
+5. [Cooperative Delegation](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#delegations-in-many-systems-are-unilateral-keri-has-cooperative-delegation-what-is-that-and-why-is-it-better)
+6. Anything in Q&A that currently has the reference "_(@henkvancann)_" could use an expert review. Anyone editing the Q&A: please keep in mind it's targeted at newbies in the KERI field.
+
 - TechTalk hour
-    - Enhanced recovery rules for cooperatively delegated identifiers. See additional language in WP 2.57  Sections 7.25 Cooperative delegation and Section 11.6 Recovery
-    - direct-mode interop updates post breaking changes
+    - Details of fractionally weighted threshold support update Python implementation
+        - Issues:
+            - Extracted data algorithm uniqueness
+            - Next commitment for fractionally weighted threshold
+    - Enhanced recovery rules for cooperatively delegated identifiers. See additional language in WP 2.58 Sections 7.25 Cooperative delegation and Section 11.6 Recovery
+        - Revised recovery logic.  
+    - Custodial delegation
+
+
+<details>
+<summary>Minutes</summary>
+
+- Introductions
+    - new folks: Mikaela T and Philip F from (CANIS project)
+
+- tech talk
+    - Extracted data algorithm uniqueness
+        * something something breaking change to serialization
+            * paging dr chunningham, your signoff is needed in surgery
+    - Next commitment for fractionally weighted threshold
+        * tour of some validateSigs & kevers breaking changes re: signing thresholds
+    - Q & A
+        * Henk: why must prefix be unique? Sam: hash comes from inception event; any semantically-significant change to inception event would create a diff hash and thus a diff identifier (the self-addressing part); only the inception event are susceptible to txn malleability attacks
+
+- scheduling an interop demo by the end of jan? 2Feb in 3 weeks? Try doing it in-WG meeting two weeks from now?
+           
+    
+</details>
 
 ## Agenda 5Jan
 
