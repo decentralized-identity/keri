@@ -676,7 +676,7 @@ Any controller can install a Service/Agent Log, controlled by them.
 {TBW prio 2}
 ## Could a KEL or KERL be pruned or charded?
 {TBW prio 2}
-## How to bootstrap KERI on the internet? Is it like fax machine; the more there are the more effective it is?
+## How to bootstrap KERI on the internet? Is it like fax machine; the more KELs, there are the more effective it is?
 {TBW prio 1}
 ## Why does KERI demand signing and digesting the full over-the-wire serialization of a message?
 The discussion of `KERI`s approach to *serializing messages and signing and digesting the full over-the-wire serialization* is inconvenient for implementers. The motivation for this approach I am calling Zero Message Malleability as a property of `KERI`. 
@@ -694,7 +694,7 @@ _(@henkvancann)_
 The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.\
 _(@henkvancann)_
 
-## Could Keri work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
+## Could KERI work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
 Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/keri/issues/54) key and identifier management with `KERI` that answers this question profoundly.\
 (_SamMSmith_)
 
@@ -894,8 +894,11 @@ In this presenation of Sam, there's a lot about the relation between KERI and VC
 
 # Q&A section Signatures
 
-## Who can sign off my proofs and identifiers?
+## Who can sign off my proofs and identifiers using KERI?
+Depends on what you mean with proof. KERI is content agnostic, so any cryptographic proof can be referenced and signed in a KEL, even a third party signature. As far as KERI-internal proofs are concerned a subject-controller, a delegated controller and combination of (fractioned) multi-signatures can prove authoritative conrol over a key and over a pre-rotated key.
+_(@henkvancann)_
 {TBW prio 1}
+
 ## What is the practical use of signatures?
 In general they can proof the control of a private key at a certain point back in time.
 _(@henkvancann)_
