@@ -17,12 +17,36 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 ## Future/Pending Topics
 
 - direct-mode interop updates post breaking changes
+- replay mode refactor & witness logic rev
+
+## Agenda 26Jan
+
+- New Count codes for Replay Mode
+- Update from Sam on escrow processing (//buffer)
+- Steve - Directmode documentation is out of date?
+    - swim lane?
 
 ## Agenda 19Jan
 
 Agenda
 - Charles' [issue](https://github.com/decentralized-identity/keriox/issues/57) re: updating prefix derivation post malleability-vuln fix
 - Editorial updates from Juan and Henk
+    - Juan: 'dig' ambiguity in kid0003 (only takes a sec, let's do it together on-call)
+        - major facepalm as Juan realizes his editorial work was needlessly redoing work in a separate file in the same directory...
+    - nix all TOCs?
+
+<detail>
+<summary>Minutes</summary>
+
+- Introduction
+    - Nick Telfer (indiv contributor, ex-Consensys, helping with Py implementation)
+
+- Receipts as abbreviated messages or message-fragments
+    - whitepaper terminology should be revised
+
+</detail>
+
+
 
 ## Agenda 12Jan
 
@@ -772,7 +796,9 @@ Casual chat
 Charles: ToIP have a WG we should be talking to?
 Robert: not that I know about…
 Robert: Identifier working group (passive/active); originally proposed as “identifiers” WG, Drummond renamed DKMS group; but KERI doesn’t “do” KM; 
-IIW! - Oct20-22 (Tu-Th)
+
+## IIW! - Oct20-22 (Tu-Th)
+
 
 Intros
 Dave Huseby - Security Maven still? - COME ON IN, THE WATER’S FINE!
@@ -872,7 +898,8 @@ Deadline? As yet unknown; DID Core Spec reaches Recommendation when? (2yr charte
 
 
 
-
+## 13 Oct - IIW planning meeting
+[recording](https://us02web.zoom.us/rec/share/-GCUPbDw6_4_rTu-ZsINpmYH2vWKELZ0-OoRaMPVKOLup_OI3xcj52rjCO6Zrf4.XtFVaujW0ZB8iRfF)
 
 TODO LIST - MUST HAVES
 Tunneling logistics: TCP easy ? is it worth doing Bare UDP or HTTP also? 
@@ -954,7 +981,9 @@ Databases storing receipts can be different; ordering of events into logs has to
 Sam: “A good demo would be two parties sending each other events, then showing/dumping logs afterwards to prove identical logs and state”
 
 
-Agenda - 6 October 2020
+## 6 October 2020
+[recording](https://us02web.zoom.us/rec/share/tNl9tzVwt_H6ceS-4Bv_2DnckMea5tcT6TRRtKtvVaWGlToPk4oaL2hr255HhFY.crdfJ1ddxanY0kvZ)
+
 Agenda clarification (and Q&A)
 Shivam: Text encoding rather than buffering?
 (needed for JS; PY does it internally?) 
@@ -1018,6 +1047,9 @@ Pros and cons: websockets harder to load-balance, but also harder to snoop on; F
 
 
 Agenda - 29 September 2020
+
+[recording](https://us02web.zoom.us/rec/share/s_OQvqcYC14ms1lDQ0MlO9_GKRYdHGvQSLmjYnqFprsro8_5AiZqiRkcYqpZMxXK.wUN5SLDclcZTFdg0)
+
 Direct Mode with validator receipts (transferable)
 KID3 : added verbiage about transferible ID validators - pointer back to establishment event makes clear which keys to validate a given signature against (section “transferable Streaming EVent Receipt Msg w/Attached Sig”)
 Transferable IDs seem more appropriate/common/necessary to direct mode, thus urgency
@@ -1040,7 +1072,10 @@ Michal: loadbalancing question (sorry, I missed it); Sam: Aries optimizes for id
 Sam: Acapy-style protocol is fine, and we need one eventually, but I am interested in optimizing for streaming and for performance in v1
 Contributing guidelines
 Comment code plz!
-Agenda - 22 September 2020
+
+## 22 September 2020
+[recording](https://us02web.zoom.us/rec/share/Pdez5n0-hTo1PtydLaSqP4S8ORNKcEtLnQNxQEMo5v4IoLvGrygQxJLHCZ2SqD9j.A5-3SZc2kaF2S_33)
+
 More roadmap talk:
 Make KERI Working Group - worth the hassle for more visibility?
 No objections
@@ -1116,7 +1151,14 @@ Non-transferable DIDs=locked to one set of keys ; only way to transfer is to “
 KERI Witnesses use non-transferable IDrs; if compromised, start over, don’t rotate 
 #52 - Key Rotation Rules (revocation versus rotation proper) - linked to DID-Core stuff
 
-Agenda - 08 September 2020
+## 15 Sep
+
+[recording](https://us02web.zoom.us/rec/share/uMTFA6DYyXqN7TuCZjg-VMNvrza621m4EzoekitR04-88Xxdsb571aJa2XDcihdX.yrzIM8Gh0InHL_5D)
+
+## Agenda - 08 September 2020
+
+[recording](https://us02web.zoom.us/rec/share/HdLfuIwMwoACKik7KKPUoFAGXyKri3bf7rfxmukNHQ57FmJ79o7chZ0r711MJ5t6.jYAxhnQ1_X5EgFnO)
+
 Robert: Crypto Layer based on https://github.com/RustCrypto/traits ?
 Charles: A good idea, currently the Ursa functionality used is only a very thin layer over these, and does not include Ed/X448 (or other potential targets e.g. P256)not 
 Charles: Qualified material will still be useful/reusable (deriv codes, for ex.)
@@ -1173,7 +1215,13 @@ Key Event Verifier (and test code) updated in Keripy UPDATED to use LMDB - only 
 DID method name?
 Action items
 MEETING IS WEEKLY AT LEAST UNTIL IIW!
-Agenda - 18 August 2020
+
+
+## 18 August 2020
+
+[recording](https://us02web.zoom.us/rec/share/7uZecrTyqWVLe4nW5mraRow9GYW8aaa8gXJIqaYNnhx--TBR-4f8_PUtJ8MlMZbg)
+
+Agenda
 Housekeeping- git hub permissions, IPR agreements, etc; 
 Quick overview of recently-updated KID 3 (Serialization)
 Tour of temporary internal testing apparatus for direct-mode development (sample DIDs hardcoded, a few events passed in as constants, etc)
@@ -1196,14 +1244,22 @@ Fixed? Reconcile/double-check together when Robert is here?
 Align attached sig prefix code and 2-char sig prefix codes?
 Sig config and attached derivation codes, what if they dont match but the sigs are valid and there are enough of them? Is it better to deprecate the sig config asap?
 Addressed by the addition of a sig count code, to be inserted between the event and the signatures in the event stream/serialised form
-Agenda - 21 July 2020
+
+## 4 Aug
+
+[recording](https://us02web.zoom.us/rec/share/wMdxAY_rxk1JaZXc6BHUA5AGBqLjT6a803Qe8_ANnUuL2p-4rucN7G9BHmzXta7h)
+
+## 21 July 2020 
+
+[Recording](https://us02web.zoom.us/rec/share/2O5kAJjQ-npJXJ3n-FnDep4bA6j3eaa823IY-qZbyUr1BRE4QLjZ9iBp4C6AaQyd) -
+
+Agenda
 Get word out on meeting time  Move to 8 am MT every other Tuesday.
 Sign DIF open participation  contributor agreement
 https://docs.google.com/forms/d/e/1FAIpQLSc9jyJiSfu8kb6mLZK4nHfRHQQjb7XSzlmdfWfYlxJJg3qM8A/viewform
 https://link.medium.com/PCtPmbHJV7
 
-
-     
+    
 Updated Derivation Tables  Version 2.34 of WP
 Robert: Changelog? Sam: Moving to github eventually (as plaintext .md file)
 Updated KID-003
@@ -1240,6 +1296,30 @@ KIDs
 3: serialization of events
 4: verification?
 
+Library breakdown/topology (30-??min)
+Logger (witness?)
+Log-combiner/propagator (Watcher?)
+Consensus Mechanism (Jury?)
+DID Method --> Logger pipeline (Controller?)
+Resolver (Validator?)
+?? (Judge?)
+Right to be forgotten mechanism
+Queue mechanism? NoDB / append-only storage that might be retro-deletable?
+Design decisions (15min)
+
+[Recording](https://us02web.zoom.us/rec/share/2JVqdunv7z5LGInf5GzaA4B6Wd3cX6a81CEdqKdZxBkOqdAU-YakYSQFkCJfTXzD) 13 July
+
+Agenda - week of 14 July 2020 **OPTIONAL**
+(meeting for core/currently-active contributors)
+RustCon2020: Charles and Robert Mitwicki 
+Agenda:
+Wasm versus JS bindings - decide across all for v1?
+Pure JS → faster adoption, yet WASM might inspire more trust from a security angle; reusing the WASM might make less work for the JS guy?
+Charles: *also* having JS might make for more completely autonomous (and comparable) implementations, but if we already have a full python impl… we already meet the “two complete implementations requirement”
+Charles: if it’s up to me, I’d be happy with WASM
+Sam: Division of labor: glue in JS that we can start on sooner?
+
+[Recording](https://us02web.zoom.us/rec/share/y-1XLI_Q_0ROXNKT1Uj8WYobHb_1T6a80HAZ_vFbyErRbJ8uFFSi3_FCg370jhE6) 7 July
 
 Agenda - 7 July 2020
 Get word out on meeting time  Move to 8 am MT every other Tuesday.
@@ -1281,30 +1361,7 @@ Meeting
 Trying to attend: 
 In attendance: Shivam, Charles, Sam, Juan, Rory?
 Regrets: 
-Agenda - week of 14 July 2020 **OPTIONAL**
-(meeting for core/currently-active contributors)
-RustCon2020: Charles and Robert Mitwicki 
-Agenda:
-Wasm versus JS bindings - decide across all for v1?
-Pure JS → faster adoption, yet WASM might inspire more trust from a security angle; reusing the WASM might make less work for the JS guy?
-Charles: *also* having JS might make for more completely autonomous (and comparable) implementations, but if we already have a full python impl… we already meet the “two complete implementations requirement”
-Charles: if it’s up to me, I’d be happy with WASM
-Sam: Division of labor: glue in JS that we can start on sooner?
 
-
-Agenda - 21 July 2020
-Library breakdown/topology (30-??min)
-Logger (witness?)
-Log-combiner/propagator (Watcher?)
-Consensus Mechanism (Jury?)
-DID Method --> Logger pipeline (Controller?)
-Resolver (Validator?)
-?? (Judge?)
-Right to be forgotten mechanism
-Queue mechanism? NoDB / append-only storage that might be retro-deletable?
-Design decisions (15min)
-
-
-
+[Recording](https://us02web.zoom.us/rec/share/38lPLJCh6jhOHbPf0FOGYPIqLL7UX6a82yNM-fVZyUhWFL7WrNlfyGZ1DoYJsexR) 30 June
 	
 
