@@ -645,6 +645,11 @@ Harm that can be done to a `validator`: _Inadvertent acceptance_ of verifiable -
 Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.\
 (_SamMSmith_)
 
+## Is the KERL technically a blockchain/hashed data log, rather than a ledger that implies a balance?
+Yes a KEL/KERL is a hash chained data structure. But not merely hash chained but also signed, so its also a cryptographic proof of key state.\
+It is not tracking balance it is tracking key state.
+(_SamMSmith_)
+
 ## Is KERI post-quantum secure?
 In brief: yes, pre-rotation with hashed public keys and strong one-way hash functions are post-quantum secure.
 
