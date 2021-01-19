@@ -537,6 +537,11 @@ _(@henkvancann)_
 ## Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).
 
+## What problem is KERI solving? How? And why can't it be solved by other solutions?
+KERI solves the problem of **secure attribution to identifiers**. By ambient availability of verifiable Key event Logs that prove authoritive control over identifier's private keys. It can't be solved by onther solutions known so far because those solution have not managed to span identifier interoperability over the internet.
+_(@henkvancann)_
+{TBW prio 1}
+
 ## Who is KERI? Is it a company or a not for profit?
 KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and within that in the *Identity and Discovery* Workgroup.
 Due to its licensing structure, KERI isn't owned by anyone and everyone at the same time. The Intellectual Property Right of KERI is hosted with `DIF`. It is an open source project.
