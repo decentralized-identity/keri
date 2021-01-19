@@ -676,8 +676,11 @@ Any controller can install a Service/Agent Log, controlled by them.
 {TBW prio 2}
 ## Could a KEL or KERL be pruned or charded?
 {TBW prio 2}
-## How to bootstrap KERI on the internet? Is it like fax machine; the more KELs, there are the more effective it is?
+## How to bootstrap KERI on the internet? Is it like fax machine; the more KELs there are, the more effective it is?
+Any subject / controller can start creating KERI events in a KERI event log. Dependent of the objectives a controller has with KERI a more peer-to-peer (one-to-one) approach or contrary to that a one to many approach. In the latter case a set of witnesses and their services can emerge per controller. Subsequently one or more verifiers (and their watchers) can also enter the play.
+The more entities are getting used to play the different KERI specific roles the more rapid and easy will the bootstrapping / flooding of KERI on the internet evolve.
 {TBW prio 1}
+
 ## Why does KERI demand signing and digesting the full over-the-wire serialization of a message?
 The discussion of `KERI`s approach to *serializing messages and signing and digesting the full over-the-wire serialization* is inconvenient for implementers. The motivation for this approach I am calling Zero Message Malleability as a property of `KERI`. 
 This is a "best practices" security first approach that prevents semantic leakage over time that becomes a transaction malleability vulnerability. Indeed `KERI` approach trades off some inconvenience in serialization for better security and reduces the inconvenience of needed to have tightly specified semantics to prevent transaction malleability.\
