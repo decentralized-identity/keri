@@ -164,7 +164,8 @@ We've done our best to protect the privacy of the Github by investigating the im
   * [As long as witnesses keep lying together no one will ever be able to prove them wrong?](#as-long-as-witnesses-keep-lying-together-no-one-will-ever-be-able-to-prove-them-wrong)
 - [Q&A section Watchers](#qa-section-watchers)
   * [How can we detect duplicity? Suppose controller has power over witnesses.](#how-can-we-detect-duplicity--suppose-controller-has-power-over-witnesses)
-
+- [Q&A Virtual Credentials](#qa-virtual-credentials)
+  * [Why doesn't KERI use certification as a root of trust?](#why-doesn-t-keri-use-certification-as-a-root-of-trust)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -581,6 +582,10 @@ A [KID](../kids) is focussed on Implementation; "this is how we do it"  We add c
 ## KERI has invented its own key representation and signature format. Why not conforn to current standards already available?
 {TBW prio 1}
 
+## In the KERI system design trade space you strike out features, so you must have stroked out application space too; which?
+<img src="../images/trade-space-limitations.png" alt="trade-space-limitations" border="0" width="300">
+{TBW prio 2}
+
 # Q&A section KERI operational
 
 ## Where can I download KERI?
@@ -857,6 +862,10 @@ The primary purpose of rotating encryption keys is not to decrease the probabili
 However, for _signing keys_ there is a concrete reason: say it takes X months of computation (expected value given your threat model) to crack a key, and you rotate your signing key every 𝑋−1 months and revoke the old one, then by the time an attacker has cracked the key, any new signatures produced by the attacker will either be A) rejected by clients because of key expiry, or B) back-dated to before the key revocation (which should also raise warning in clients).\
 [Source](https://crypto.stackexchange.com/questions/41796/whats-the-purpose-of-key-rotation).
 
+## Why does KERI solve interoperability with its key rotation scheme? 
+KERI uses plain old digital signatures from PKI, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. KERI solves that problem.
+
+
 ## Wat is Pre-rotation?
 Pre-rotation is a _cryptographical commitment (a hash)_ to the _next_ private key in the rotation-scheme. (_@henkvancann_)\
 The pre-rotation scheme provides secure verifiable rotation that mitigates successful exploit of a given set of signing private keys from a set of (public, private) key-pairs when that exploit happens sometime **after** its creation _and_ its first use to issue a `self-certifying identifier`. In other words, it assumes that the private keys remains private **until after** issuance of the associated identifier.\
@@ -960,11 +969,8 @@ When you rotate keys, you can always rotate to a different format.
 Yes, you can derive your keys from that scheme. But KERI is agnostic about it, it wouldn't know.
 
 ## Not your keys, not your identity?
-In KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.
-
-If 
-
-Pre rotated keys are best practise to keep control of your identifiers. 
+In KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.\
+Pre rotated keys are best practise to keep control of your identifiers. \
 If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
 _(@henkvancann)_
 
@@ -979,6 +985,8 @@ _(@henkvancann)_
 
 ## How to delegate control over my private keys that control my identifiers?
 {TBW prio 3}
+
+
 
 # Q&A section Blockchain
 
@@ -1059,6 +1067,7 @@ The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/present
 Witnesses do not make any statement about the content of what is being proved. KERI does not
 enable someone to proof the *veracity* of a statement only the *authenticity* of the statement. {TBW} \
 (_SamMSmith_)
+
 # Q&A section Watchers
 
 ## How can we detect duplicity? Suppose controller has power over witnesses.
@@ -1066,3 +1075,11 @@ In a Public setting `duplicity detection` protects the validator from any duplic
 
 Since a given controller in a public setting may not know who all a given validator is using for duplicity detection (watchers etc), the controller can't ensure that they will not be detected. And once detected any value that their public identifier had is now imperiled because *any entity with both copies can proof irrefutably to any other entity that the controller is duplicitous (i.e. not trustable)*. \
 (_SamMSmith_)
+
+# Q&A Virtual Credentials
+
+## Why doesn't KERI use certification as a root of trust?
+Why do we want portable identifiers instead of the Ledger Locked IDs, since we have DIDs that can resolve a ledger locked Id uniformly? You say “We don’t want to use certification as a root of trust, we want to do it self-certified all the way” -> what about the issuance of a credential based on the ledger locking, isn’t that beneficial?
+
+## Is Custodianship of KERI identifiers possible? 
+_Or does (Delegated, Multi-sig) Self-Adressing do the job?_\
