@@ -101,7 +101,7 @@ We've done our best to protect the privacy of the Github by investigating the im
   * [Could Keri work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?](#could-keri-work-for-edge-computers-that-need-self-sovereign-identity--how-to--selectively--share-control-over-the--sci---sai--with-the-owners-of-the-device)
 - [Q&A section Root of trust](#qa-section-root-of-trust)
   * [What do I need to trust in KERI?](#what-do-i-need-to-trust-in-keri)
-    + [What the difference between a trust basis and a trust domain?](#what-the-difference-between-a-trust-basis-and-a-trust-domain)
+    + [What is the difference between a trust basis and a trust domain?](#what-is-the-difference-between-a-trust-basis-and-a-trust-domain)
   * [KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?](#keri-does-not-need-a-blockchain--but-how-does-it-establish-the-root-of-trust-that-we-need-for-ssi--how-does-the-data-persist)
 - [Q&A section Why the internet is broken](#qa-section-why-the-internet-is-broken)
   * [Why would the internet be broken?](#why-would-the-internet-be-broken)
@@ -512,6 +512,11 @@ _(@henkvancann)_
 However there are also votes for `did:keri`: _Drummond Reed_ (Dec 2 2020): "at IIW we asked that question and  feedback overwhelmingly favored did:keri. Furthermore, I’ve proposed that the keri namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the keri namespace in the Indy DID method."\
 _(@henkvancann)_
 
+## Some say that with KERI, a DID can be reduced to did:<identifier>. But that’s not a valid DID?!
+_Every DID must have a method name component before the method-specific ID._
+
+The first paper mentioning the absence of the method is [Thinking of DID? KERI On](https://humancolossus.foundation/blog/thinking-of-did-keri-on) by The Human Colossus Foundation, written by Robert Mitwicki. He addressed the concern in the question (the invalidity of the DID method) and made it more clear what the Foundation meant by that: "We look into the future and with that view we think that namespace could be dropped and we could keep only identifier, as the namespace seems to be one of the major drawbacks of decentralized identifiers at the moment. In my opinion `did:keri:<identifiers>`  would be just intermediate step as the issue addressed by post would still hold. We see that KERI could be a major upgraded for DID; not replacement."
+
 ## Is it possible to create a KERI DID that is permanently locked to the "did:key" style / ephemeral?
 It is. Sections 2.2.3 - 2.3.1 of the [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains transferrability and the "basic"-type identifier, which always represents a public key and may be either transferrable (can be updated) or non-transferrable (ephemeral/did:key style). section 14.2 actually details how these are encoded, basically check the first few chars of the identifier.\
 _(CharlesCunningham)_
@@ -718,7 +723,7 @@ _(@henkvancann)_
 Primary root of trust is KEL not secondary (starts with self cert ID), but then after first rotation if any must have KEL.\
 (_SamMSmith_)
 
-### What the difference between a trust basis and a trust domain?
+### What is the difference between a trust basis and a trust domain?
 A trust basis binds controllers, identifiers, and key-pairs.
 
 A trust domain is the ecosystem of interactions that rely on a trust basis.
