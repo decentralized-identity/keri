@@ -201,6 +201,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Agencies](#qa-key-agencies)
 - [Witness](#qa-section-Witness)
 - [Watchers](#qa-section-watcher)
+- [Virtual Credentials](virtual-credentials)
 
 # Definitions
 
@@ -530,7 +531,6 @@ In brief: we argue that the chain is as strong as its weakest ring.
 Security is not build into the protocol but indeed as the eloborate question mentions, it depends on the DID method. Which overall is a huge risk for community as people needs to know the security level which each did method brings. From that perspective without unified security model brings us to the similar situation where, me having private email server in the basement to avoid spying by google, I send out my e-mail to you having it on gmail. I have high security and privacy but other side have just security without privacy. The outcome is that security model is applied in wrong place and KERI aims to fix it.
 _(RobertMitwicki)_
 
-
 ## Could we see a `WASM` module in the near future for Sidetree and DID:peer interoperability?
  WASM is certainly on the roadmap, but for the main issue of Sidetree and did:peer interop, see the [core KERI spec repo issue](https://github.com/decentralized-identity/keri/issues/79) for more info.\
 _(CharlesCunningham)_
@@ -705,6 +705,13 @@ The more entities are getting used to play the different KERI specific roles the
 The discussion of `KERI`s approach to *serializing messages and signing and digesting the full over-the-wire serialization* is inconvenient for implementers. The motivation for this approach I am calling Zero Message Malleability as a property of `KERI`. 
 This is a "best practices" security first approach that prevents semantic leakage over time that becomes a transaction malleability vulnerability. Indeed `KERI` approach trades off some inconvenience in serialization for better security and reduces the inconvenience of needed to have tightly specified semantics to prevent transaction malleability.\
 (_SamMSmith_)
+
+## If the KERI resolver "relies on a distributed hash table (DHT) algorithm .. such as IPFS or GNUnet", isn't that a huge contradiction in terms?! 
+_If KERI has this built-in reliance, then doesn't that contradict and defeat the whole purpose of KERI?_
+
+KERI resolver - due to the KERI architecture we get rid of the "magic box" in a way that I don't have to trust any infrastructure component. `DHT` is just example how this can be done in decentralized fashion.\
+But the point is that **I don't have to trust any node or network** that the statement is correct. I can cryptographically verify that everytime with KERI. Compare to current DID infrastructure where I have to trust resolution process in each DID-method because as soon as would get DID Document, I can't verify that this is the correct one. Think of it like `DID:peer` where I can always be 100% sure that the `DDO` which I have belongs to that DID. Not every DID method has this kind of properties. And I think this characteristic is crucial for adoption of DIDs.
+(_RobertMitwicki_)
 
 # Q&A section Userinterface
 
@@ -1025,6 +1032,7 @@ Because for our purposes we don't need to. Consider two distinct identifier to t
 
 The identifier is now locked to that ledger. We want identifiers to be portable accross ledgers, so we don't want to use registration as the root-of-trust, we want to be self-certified all the way.
 (_SamMSmith_)
+
 
 # Q&A section Agencies
 
