@@ -1055,6 +1055,13 @@ Because for our purposes we don't need to. Consider two distinct identifier to t
 The identifier is now locked to that ledger. We want identifiers to be portable accross ledgers, so we don't want to use registration as the root-of-trust, we want to be self-certified all the way.
 (_SamMSmith_)
 
+## KERI is basically a series of Pay2PublicKeyHash transactions?
+_that you send to witnesses, who observe them and attest to the particular line of operations they see?_
+
+In brief: for KERI that is an apples and oranges comparison.
+
+Because total linear ordering is not needed for a given identifier's event sequencing. Only linear order of that identifier's history. The history's from other events do not have to be ordered with respect to each other. So the secure ordering of a given identifier's history is a completely different class of problem than the secure total ordering of comingled history from multiple identifiers. The security demands are less for the former case. So the equivalent security may be obtained in other ways. While the latter as a side effect of total ordering gives local ordering (per identifier) for free. But securing total ordering may be much harder to do. So one has to be careful, because it's no longer an apples to apples comparison. 
+(_SamMSmith_)
 
 # Q&A section Agencies
 
