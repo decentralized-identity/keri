@@ -10,13 +10,18 @@ If you get lost, try the [definitions](#Definitions) below.
 KERI. Key Event Receipt Infrastructure. Not something to mess around with.
 
 ### Why are you spending so much time with KERI? <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
-It's revolutionairy technology and has the ability to repair the internet. The internet is broken. You can trust the entities you're interacting with on the web. We use cryptography, a secret language, to keep things private and under control. It's laid out in our [White Paper]().
+It's revolutionairy technology and has the ability to repair the internet. The internet is broken. You can't trust the entities you're interacting with on the web. We use cryptography, a secret language, to keep things private and under control. It's laid out in our [White Paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf).
 
 ### Who was laid? Have you been watching Crypto Porn and been using white paper??! You dirt bag, you... <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
-That's a misunderstanding. Let's take it slowly. {Here the story of how KERI came about, resulting in the whitepaper and links to sources on keri.one }
+That's a misunderstanding. Let's take it slowly. {Here the story of how KERI came about, resulting in the whitepaper and links to educational sources, like on keri.one }
 
 ### What’s the problem KERI is going to solve? <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
-This is no spanning trust layer for the internet, based on identifiers that under control of the entities involved. Like us, human beings. We want to be able to prove that we are who we say we are in the digital world. And be in control of that identifier. \
+There is no spanning trust layer for the internet, based on identifiers that are under control of the entities involved. Entities like us indivdual human beings, but als organisation, machines, things, and even software code (smart contracts and oracles, but forget about them). 
+
+Let's keep it simple: individual identifiers. Did you know: You don't own your Facebook account, you don't own the money in your bank account, you don't own the bitcoin in your exchange, etc. Apart from that you don't control them. So you might feel strong and powerful, mommy, but in fact you're not; as a digital identity, I mean of course.
+When we get fed up with certain service and it's toe crunching privacy breaches, e.g. Facebook, you'd like to take your digital 'you' with you. And not only you, but also your network, your history of posts, messages, transactions etc. You know what: you can't nowadays. KERI is the eligible to get it done fundamentally right and future proof. 
+
+Besides that we want to be able to prove that we are who we say we are in the digital world, anywhere and at all times. And be in control of that identifier. \
 Image your Twitter-account is copied by aunty Geraldine, imposing as you on the web. She posts all these unvealing things about the bridge club in your name. You don't want that, do you? And Twitter might also shut off your real account, because they've been convinced by aunty Geraldine, that the imposting account she controls, is 'you'. You don't want that even more. Do you?
 
 ### Wait a minute, ‘Keribberish!’, What is that you're trying to tell me? <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
