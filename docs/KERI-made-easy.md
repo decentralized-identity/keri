@@ -4,7 +4,7 @@ If you get lost, try the [definitions](#Definitions) below.
 
 ## What else help better than to image you have to convince your imaginary *mother-in-law* of the usefulness of KERI?
 <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="300" align="left">
-<img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="300" align="right">
+<img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="200" align="right">
 
 ### Who is Carry? Are you messing around? <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
 KERI. Key Event Receipt Infrastructure. Not something to mess around with.
@@ -13,10 +13,11 @@ KERI. Key Event Receipt Infrastructure. Not something to mess around with.
 It's revolutionairy technology and has the ability to repair the internet. The internet is broken. You can trust the entities you're interacting with on the web. We use cryptography, a secret language, to keep things private and under control. It's laid out in our [White Paper]().
 
 ### Who was laid? Have you been watching Crypto Porn and been using white paper??! You dirt bag, you... <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
-That's a misunderstanding. Let me take it slower. {Here the story of how KERI came about, resulting in the whitepaper and links to sources on keri.one }
+That's a misunderstanding. Let's take it slowly. {Here the story of how KERI came about, resulting in the whitepaper and links to sources on keri.one }
 
 ### What’s the problem KERI is going to solve? <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
-This is no spanning trust layer for the internet, based on identifiers that under control of the entities involved. Like us, human beings. We want to be able to prove that we are who we say we are in the digital world. And be in control of that identifier. Image your Twitter-account is copied by aunty Geraldine, imposing as you on the web. She posts all these unvealing things about the bridge club in your name. You don't want that. And Twitter might also shut off your true account, because they might think that the imposter's account is really you. You don't want that even more. Don't you?
+This is no spanning trust layer for the internet, based on identifiers that under control of the entities involved. Like us, human beings. We want to be able to prove that we are who we say we are in the digital world. And be in control of that identifier. \
+Image your Twitter-account is copied by aunty Geraldine, imposing as you on the web. She posts all these unvealing things about the bridge club in your name. You don't want that, do you? And Twitter might also shut off your real account, because they've been convinced by aunty Geraldine, that the imposting account she controls, is 'you'. You don't want that even more. Do you?
 
 ### Wait a minute, ‘Keribberish!’, What is that you're trying to tell me? <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
 {Explain in more detail what we are going to solve practically and urgently}
@@ -87,7 +88,7 @@ If we'd use an `API` we would have to trust the service party. Before you get st
 **It’s like the connectors on the back of your TV**. They let you plug in a device from another manufacturer (DVD player, games console, set-top box) and both the TV and the device know what to do next. The connectors are the interface that lets one machine talk to another.<br/>   
 **It's like a waiter at a restaurant**. The waiter takes a guests' food order, then delivers to the food order to the kitchen staff. The kitchen staff then makes the food, hands the food to the waiter, and then the waiter delivers the correct food order back to the guest. <br/>[Source](https://sidewaysdictionary.com/#/term/API)
 
-So for our purpose API and external service just won't do. Because we have to trust third parties and our identity could be revealed in the process to others.
+So for our purpose API and external service just won't do. Because we have to trust third parties and our identity could be revealed or abused in the process to others.
 
 ### Okay, got it: it's great, it's new, it's relevant, but can I eat, can I wear it, can I ride it? <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
 
@@ -107,6 +108,10 @@ Being dupicitous means that a certain identifier has provenly made double statem
 ### Touching, all of that, but hey son, time's running out... can I earn money with KERI? How. Quick. <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
 
 It integrates well with the DID - methods framework. Another angle could be monitoring that two or more entities from the same logical entity (e.g. a futures trading company) do not interfere with eachother on a public exchange. Example: Division A shorts an assets that division B has just insured against going bust.
+
+It's obvious if Division A and B would become aware of eachothers identifiers and the outside world would not, that a great efficiency improvement can be established.
+
+## GO CALL THEM, MOM! :)
 
 ## Definitions
 In Alphabetic order
