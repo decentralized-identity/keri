@@ -523,6 +523,20 @@ The first paper mentioning the absence of the method is [Thinking of DID? KERI O
 It is. Sections 2.2.3 - 2.3.1 of the [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains transferrability and the "basic"-type identifier, which always represents a public key and may be either transferrable (can be updated) or non-transferrable (ephemeral/did:key style). section 14.2 actually details how these are encoded, basically check the first few chars of the identifier.\
 _(CharlesCunningham)_
 
+## Why do you re-invent Ripple and claim it's something new?
+To begin with KERI has no blockchain, and doesn't depend on blockchains. If an implementation depends on blockchains at all, KERI operates blockchain agnostic.
+Secondly KERI doesn't support a crypto currency. It doesn't need because it can easily connect to one if needed and again being crypto currency agnostic while doing so.
+Lastly KERI is fundamentally different from Ripple: it doesn't need total ordering, timestamping and Proof of Authority consensus on transactions registered on a ledger.
+
+It's comparing apples and oranges. But we're happy to do that exercise for the hard-to-convince part of the SSI community.
+{TBW prio 1}
+#### Differences between Ripple consensus and KERI witness ambient availability of KELRs
+{TBW prio 2}
+#### What KERI has that Ripple doesn't have
+{TBW prio 3}
+#### What Ripple has that KERI doesn't have
+{TBW prio 3}
+
 ## Is it fair to say that DID resolution in general is a security weakness and then push forward KERI in that name? 
 _Although some DIDs have not kept up with design goals* of DIDs, e.g. did:web, it is too strong to state this in general. It simply depends on the DID method?\
 *decentralization, persistence, cryptographic verifiability._

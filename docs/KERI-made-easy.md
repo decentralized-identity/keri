@@ -2,9 +2,12 @@
 This page is an attempt to explain the benefits and urgency of `KERI` in plain people's language with lots of analogies and further reading. <br/>
 If you get lost, try the [definitions](#Definitions) below.
 
-## What else help better than to image you have to convince your imaginary *mother-in-law* of the usefulness of KERI?
+## What else helps better than to image you have to convince your imaginary *mother-in-law* of the usefulness of KERI?
 <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="300" align="left">
+
 <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="200" align="right">
+
+# You can read this "KERI MADE EASY" as a conversation top down
 
 ### Who is Carry? Are you messing around? <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
 KERI. Key Event Receipt Infrastructure. Not something to mess around with.
@@ -12,7 +15,7 @@ KERI. Key Event Receipt Infrastructure. Not something to mess around with.
 ### Why are you spending so much time with KERI? <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
 It's revolutionairy technology and has the ability to repair the internet. The internet is broken. You can't trust the entities you're interacting with on the web. We use cryptography, a secret language, to keep things private and under control. It's laid out in our [White Paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf).
 
-### Who was laid? Have you been watching Crypto Porn and been using white paper??! You dirt bag, you... <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
+### Who got laid? Have you been watching Crypto Porn and been using white paper??! You dirt bag, you... <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
 That's a misunderstanding. Let's take it slowly. {Here the story of how KERI came about, resulting in the whitepaper and links to educational sources, like on keri.one }
 
 ### What’s the problem KERI is going to solve? <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
@@ -147,3 +150,10 @@ Credentials are a part of our daily lives; driver's licenses are used to assert 
  
  #### ZKP - Zero Knowledge Proof
 ZKP is a method to prove the data without actually revealing the data. The person you’re proving to, doesn’t learn anything more than the bare fact that you’re proving. [Know more](https://medium.com/@pranshurastogi/zero-knowledge-proofs-a-method-to-conserve-privacy-1b072222ac1a) and analogies.
+
+
+### Acknowledgements
+
+[Mother in law demanding jump through burning ring - picture source](https://www.zawaj.com/askbilqis/my-mother-in-law-making-my-life-hell/)
+
+[[Mother in law scolding - picture source](http://www.clipartpanda.com/categories/mother-in-law-20clipart)
