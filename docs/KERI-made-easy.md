@@ -3,6 +3,8 @@ This page is an attempt to explain the benefits and urgency of `KERI` in plain p
 If you get lost, try the [definitions](#Definitions) below.
 
 ## What else help better than to image you have to convince your imaginary *mother-in-law* of the usefulness of KERI?
+<img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="300" align="left">
+<img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="300" align="right">
 
 ### Who is Carry? Are you messing around? <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
 KERI. Key Event Receipt Infrastructure. Not something to mess around with.
@@ -17,14 +19,16 @@ That's a misunderstanding. Let me take it slower. {Here the story of how KERI ca
 This is no spanning trust layer for the internet, based on identifiers that under control of the entities involved. Like us, human beings. We want to be able to prove that we are who we say we are in the digital world. And be in control of that identifier. Image your Twitter-account is copied by aunty Geraldine, imposing as you on the web. She posts all these unvealing things about the bridge club in your name. You don't want that. And Twitter might also shut off your true account, because they might think that the imposter's account is really you. You don't want that even more. Don't you?
 
 ### Wait a minute, ‘Keribberish!’, What is that you're trying to tell me? <img src="../images/mother-in-law-scolding.gif" alt="Mother-in-law telling me off" border="0" width="100">
+{Explain in more detail what we are going to solve practically and urgently}
 
-### So what’s the whole point if your KERI does what others do too?! <img src="./Images/emoji-2744064_1280.png" alt="Smiley asking questions and being confused" border="0" width="50">
 
-Sorry, it’s complicated, please hold on. **What just happened with KERI is *a great reset in thinking about trust that you can control your digital self by yourself* we’ve had this for some years already. We just needed time to put them together the right way. The building blocks just need to be assembled in an unprecedented way. <br/>
+### So what’s the whole point if your KERI does what others do too?! <img src="../images/me-and-mother-in-law.jpg" alt="Mother-in-law demanding answers" border="0" width="100">
+
+Sorry, it’s complicated, please hold on. What just happened with KERI is *a great reset in thinking about trust that you can control your digital self by yourself* we’ve had this for some years already. We just needed time to put them together the right way. The building blocks just need to be assembled in an unprecedented way. <br/>
 Features: <br/>
-1.	Privacy.  Anonymize your statements and your lookups.
-2.	Speed.  Provide information more quickly and at a higher rate due to the use of a local database.
-3.	Reliability. Aggregrate information, making your data more trustworthy.
+1.	Privacy.  Anonymize your statements and your data.
+2.	Speed.  Provide information more quickly and at a higher rate due to the use of a local database of small infrastructure.
+3.	Reliability. Verfiable information to root of coming into existance; making connected data more trustworthy.
 4.	Self-sovereignty. Control your identifier. 
 5.  Verifiable statements. Offer statements that are shareable and someone can confirm the statement without revealing what statement they are confirming. It's a kind of `zero knowledge proof`.
 
