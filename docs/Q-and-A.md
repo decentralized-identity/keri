@@ -201,6 +201,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Agencies](#qa-key-agencies)
 - [Witness](#qa-section-Witness)
 - [Watchers](#qa-section-watcher)
+- [Security Guarantees](#qa-security-guarantees)
 - [Virtual Credentials](virtual-credentials)
 
 # Definitions
@@ -1157,4 +1158,20 @@ Since a given controller in a public setting may not know who all a given valida
 Why do we want portable identifiers instead of the Ledger Locked IDs, since we have DIDs that can resolve a ledger locked Id uniformly? You say “We don’t want to use certification as a root of trust, we want to do it self-certified all the way” -> what about the issuance of a credential based on the ledger locking, isn’t that beneficial?
 
 ## Is Custodianship of KERI identifiers possible? 
-_Or does (Delegated, Multi-sig) Self-Adressing do the job?_\
+_Or does (Delegated, Multi-sig) Self-Adressing do the job?_
+
+# Q&A Security Guarantees
+
+## Can I rotate keys with Tangem in KERI?
+_Suppose I'd trust a Tangem card for generating public private key pairs at will and the NFC communication allowing to interact with a wallet app._
+
+One of the main concerns is that there is a theoretical link (a binding) between the cards and a user, via the card-ID (CID). However the CID is used only for checking the authenticity and integrity of the chip itself. Tangem publishes and anchors a list of CIDs with corresponding public addresses in a public blockchain. When checking authenticity, the verifier looks up the pub CID and corresponding pub address in the published list, and verifies that the chip controls the correct pub address by means of a challenge-response scheme. 
+Even though for blockchain or SSI interactions, a completely new wallet with new pub/priv keypair is generated, the pub/priv key of the CID is used when the authenticity of the chip is checked by means of a challenge response scheme. Everything happens in the client app (2021: iOS or Android; and the client code is open source), where there is no communication with Tangem, so Tangem is not able to see any activity conducted by this CID in an authenticity check.
+The CID and corresponding key pairs are not used in any other interaction. A new wallet with new pub/private key pair is generated on chip, with these keys being used for any transactions, signing, etc. 
+
+Q: With the chip firmware being proprietary, how can we be sure that the newly generated private keys for new wallets are not still linked somehow to the cards CID?
+A: The firmware is audited by Kudelski and can be verified with a published hash. 
+TBD: How can it be verified, when and by whom? If the firmware is not open source, then somebody has to draw a hash from it in an authorized situation. However, Tangem cards are EAL6+ and FIDO2 certified.
+
+On the issue of Rotation:
+{TBW prio 2}
