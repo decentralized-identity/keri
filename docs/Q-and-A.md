@@ -269,7 +269,7 @@ An assertion of the truth of something, typically one which is disputed or in do
 #### Content-addressable hash
 Content addressing is a way to find data in a network using its content rather than its location. The way we do is by taking the content of the content and hashing it. Try uploading an image to IPFS and get the hash using the below button. In the IPFS ecosystem, this hash is called Content Identifier, or CID.
 #### Controller
-The entity that has the ability to make changes to an _identity_, _cryptocurrency_ or v_erifiable credential_. 
+The entity that has the ability to make changes to an _identity_, _cryptocurrency_ or _verifiable credential_. 
 
 The controller of an `autonomous identifier` is the entity (person, organization, or autonomous software) that has the capability, as defined by derivation, to make changes to an `Event Log`. This capability is typically asserted by the control of a single inception key. In DIDs this is typically asserted by the control of set of cryptographic keys used by software acting on behalf of the controller, though it may also be asserted via other mechanisms. In KERI an AID has one single controller. Note that a DID may have more than one controller, and the DID `subject` can be the DID controller, or one of them.
 
@@ -485,7 +485,8 @@ a _validator_ is anybody that wants to estblish control-authority over an identi
 During validation of virtual credentials for example, a `verifier` checks to see if a `verifiable credential` (VC) has been signed by the controller of this VC using the applicable verification method.
 
 #### Verifiable Credential
-VC; A data model for conveying claims made by an issuer about a subject. See [vc-data-model](https://www.w3.org/TR/vc-data-model/) for more.
+VC; A data model for conveying claims made by an issuer about a subject. See [vc-data-model](https://www.w3.org/TR/vc-data-model/) for more.\
+Credentials are a part of our daily lives; driver's licenses are used to assert that we are capable of operating a motor vehicle, university degrees can be used to assert our level of education, and government-issued passports enable us to travel between countries. This specification provides a mechanism to express these sorts of credentials on the Web in a way that is cryptographically secure, privacy respecting, and machine-verifiable. [Know more](https://www.w3.org/TR/vc-data-model/)
 
 #### W3C DID
 The W3C consortium Decentralized ID standardization. [More](https://w3c.github.io/did-core/).
