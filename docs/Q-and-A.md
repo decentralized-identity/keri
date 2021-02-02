@@ -525,19 +525,27 @@ The first paper mentioning the absence of the method is [Thinking of DID? KERI O
 It is. Sections 2.2.3 - 2.3.1 of the [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains transferrability and the "basic"-type identifier, which always represents a public key and may be either transferrable (can be updated) or non-transferrable (ephemeral/did:key style). section 14.2 actually details how these are encoded, basically check the first few chars of the identifier.\
 _(CharlesCunningham)_
 
-## Why do you re-invent Ripple and claim it's something new?
-To begin with KERI has no blockchain, and doesn't depend on blockchains. If an implementation depends on blockchains at all, KERI operates blockchain agnostic.
-Secondly KERI doesn't support a crypto currency. It doesn't need because it can easily connect to one if needed and again being crypto currency agnostic while doing so.
-Lastly KERI is fundamentally different from Ripple: it doesn't need total ordering, timestamping and Proof of Authority consensus on transactions registered on a ledger.
+## Why do you re-invent blockchains and claim it's something new?
+To begin with KERI has no blockchain, and doesn't depend on blockchains. If an implementation of KERI depends on blockchains at all, KERI operates blockchain agnostic.
+Secondly KERI doesn't support a crypto currency. It doesn't need currency because it can easily connect to one, if needed. And again, KERI is crypto currency agnostic while doing so.
+Lastly KERI is fundamentally different from blockchains like Ripple (Permissioned PBFT consensus) or Stellar (imcomplete open public, non-permissioned PBFT consensus): it doesn't need **total ordering**, timestamping and Proof of Authority consensus on transactions registered on a ledger.
 
 It's comparing apples and oranges. But we're happy to do that exercise for the hard-to-convince part of the SSI community.
-{TBW prio 1}
-#### Differences between Ripple consensus and KERI witness ambient availability of KELRs
-{TBW prio 2}
-#### What KERI has that Ripple doesn't have
-{TBW prio 3}
-#### What Ripple has that KERI doesn't have
-{TBW prio 3}
+
+```
+KERI is nothing that we already know of. It's a mixtures of things. You can't say _"Oh, KERI lays eggs, so it must be a reptile"_ It's not a reptile. And then you go _"I see, but it gives birth, so it must be a mammal"_. It's also not a mammal. It's KERI. It may have the characteristics you describe, but it's a species of it's own.\
+(_SamMSmith_)
+
+```
+#### How can you get away with not complying to the security model (and guarantees) of an open public blockchain?
+KERI better fits the Identity space. Doing away the total ordering in blockchains is a huge performance - and throughput gain, plus less worry about goverance. There's also not such a thing as consensus forks.
+KERI solves (or _"gets away with"_ if you wish) this with duplicity detection. Watchers are all that matter. They garuantee that logs are immutable by one very simple rule: **"first seen wins"**.
+
+
+#### Differences between blockchain-based security and KERI security
+- Where KERI doesn't need total ordering in its logs, blockchain do need that. What KERI needs is watchers that construct string of event in the relative order of reception of the KEL  {TBW please explain or improve this: what is this, why is it important?}
+- Another characteristic is that KERI identifiers are transferable and blockchain-based identifiers are not, they are bound to their ledger.
+
 
 ## Is it fair to say that DID resolution in general is a security weakness and then push forward KERI in that name? 
 _Although some DIDs have not kept up with design goals* of DIDs, e.g. did:web, it is too strong to state this in general. It simply depends on the DID method?\
