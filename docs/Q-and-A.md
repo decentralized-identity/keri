@@ -533,7 +533,11 @@ Lastly KERI is fundamentally different from blockchains like Ripple (Permissione
 It's comparing apples and oranges. But we're happy to do that exercise for the hard-to-convince part of the SSI community.
 
 ```
-KERI is nothing that we already know of. It's a mixtures of things. You can't say _"Oh, KERI lays eggs, so it must be a reptile"_ It's not a reptile. And then you go _"I see, but it gives birth, so it must be a mammal"_. It's also not a mammal. It's KERI. It may have the characteristics you describe, but it's a species of it's own.\
+KERI is nothing that we already know of. It's a mixtures of things. 
+You can't say _"Oh, KERI lays eggs, so it must be a reptile"_ It's not a reptile. 
+And then you go _"I see, but it gives birth, so it must be a mammal"_. 
+It's also not a mammal. It's KERI. 
+It may have the characteristics you describe, but it's a species of it's own.\
 (_SamMSmith_)
 
 ```
