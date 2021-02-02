@@ -525,7 +525,7 @@ The first paper mentioning the absence of the method is [Thinking of DID? KERI O
 It is. Sections 2.2.3 - 2.3.1 of the [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains transferrability and the "basic"-type identifier, which always represents a public key and may be either transferrable (can be updated) or non-transferrable (ephemeral/did:key style). section 14.2 actually details how these are encoded, basically check the first few chars of the identifier.\
 _(CharlesCunningham)_
 
-## Why do you re-invent blockchains and claim it's something new?
+## Why do you reinvent blockchains and claim it's something new?
 To begin with KERI has no blockchain, and doesn't depend on blockchains. If an implementation of KERI depends on blockchains at all, KERI operates blockchain agnostic.
 Secondly KERI doesn't support a crypto currency. It doesn't need currency because it can easily connect to one, if needed. And again, KERI is crypto currency agnostic while doing so.
 Lastly KERI is fundamentally different from blockchains like Ripple (Permissioned PBFT consensus) or Stellar (imcomplete open public, non-permissioned PBFT consensus): it doesn't need **total ordering**, timestamping and Proof of Authority consensus on transactions registered on a ledger.
@@ -533,11 +533,11 @@ Lastly KERI is fundamentally different from blockchains like Ripple (Permissione
 It's comparing apples and oranges. But we're happy to do that exercise for the hard-to-convince part of the SSI community.
 
 ```
-KERI is nothing that we already know of. It's a mixtures of things. 
+KERI is nothing like we already know of. It's a mixtures of things. 
 You can't say _"Oh, KERI lays eggs, so it must be a reptile"_ It's not a reptile. 
 And then you go _"I see, but it gives birth, so it must be a mammal"_. 
 It's also not a mammal. It's KERI. 
-It may have the characteristics you describe, but it's a species of it's own.\
+It may have the characteristics you describe, but it's a species of its own.
 (_SamMSmith_)
 
 ```
