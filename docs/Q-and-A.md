@@ -1,4 +1,7 @@
 # Q&A about KERI
+
+[![hackmd-github-sync-badge](https://hackmd.io/iDVDsqwkTXm16B-cIlVhvg/badge)](https://hackmd.io/iDVDsqwkTXm16B-cIlVhvg)
+
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
 **The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**
