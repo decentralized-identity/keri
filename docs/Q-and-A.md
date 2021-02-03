@@ -545,10 +545,27 @@ Discovery is a layer on top of what KERI provides. KERI doesn't preclude DID, no
 It doesn't need/want to solve/serve that slice of the use case pie.
 
 #### Follow up question 1: Why does KERI rule out 95% of the DID-based use cases upfront, where we need public discoverability on a decentralized deterministically iterable registry?
+```
+The vast majority of users use apps and services that are exchanges between or about the well-known, 
+publicly resolvable registered persona DIDs of people, places, or things? 
+Let's list a few to see how much of human digital life it covers:
+- All social media: Twitter, Facebook, Instagram, Telegram, Signal, etc.
+- All public content creation: YouTube, SoundCloud, Spotify, etc.
+-All current registries: NPM, all app stores, all things that use those registries (basically every piece of software on the planet)
+- All publicly registered objects: cars, boats, airplanes, etc.
+Put it this way: very few use cases on this planet will not directly, or within them, rely on publicly iterable, globally registered persona DIDs. 
+But that said, I'm interested in hearing other opinions or counter arguments to the contrary.
+```
 *There is an implicit need for the registry to track its entries as DIDs. I guess those 95% use cases will have to get other types of DIDs for that?*
 
 It's possible to make a DID doc that represents a KERI identifier. If you want to resolve it, you can put it in any number of blockchains. That just publishes it. However, they don't have to be published to work. \
 (_@_stevetodd__)
+
+Or for example TOR hidden services, these are not designed to be discoverable. In fact, the whole point of tool is to provide anonymity. Anonymity is a property of set membership, and it's destroyed by making the sets small or enumerable.
+(_@OR13b_)
+
+ In many scenarii, what the elaborate question explains makes sense. I can understand a different design goal/priority for KERI, I think the rationale is quite clear in terms of where it stands in the DID space.
+(_@fimbault_)
 
 #### Follow up question 2: That's not deterministic?! 
 _You can't have Registry A magically just trust that a DID from Other System B, it would need to be native to it?_
