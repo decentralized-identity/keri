@@ -525,6 +525,47 @@ The first paper mentioning the absence of the method is [Thinking of DID? KERI O
 It is. Sections 2.2.3 - 2.3.1 of the [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains transferrability and the "basic"-type identifier, which always represents a public key and may be either transferrable (can be updated) or non-transferrable (ephemeral/did:key style). section 14.2 actually details how these are encoded, basically check the first few chars of the identifier.\
 _(CharlesCunningham)_
 
+## DID data model supports verification methods which are not based on public keys or even any cryptography at all. KERI can't do this? 
+_In many ways KERI is "better" than DIDs, especially when it comes to proof-of-control. But I think this is one thing that DIDs can do that KERI can't: verification methods which are not based on public keys or even any cryptography at all._
+
+KERI can support them, with some special event type, they use it to store CRDT ops.\
+(_@OR13b_)
+The point of KERI is to maintain to control of key-derived identifiers. It's not intended to provide all the capabilities of DID.\
+(_@_stevetodd__)
+
+## How do I find all the DIDs that stand for apps, code modules, public businesses, and other entities that benefit from being publicly discoverable on a decentralized deterministically iterable registry?
+_How might one build a decentralized deterministically iterable registry for such use cases where the entries are securely known to be from the matching Identifier?_\
+_The reason I am asking is to get people to think about the system they'd inevitably need to create to support the 95% of use cases (given 95% of identity interactions are between personas of people, places, and things that are discoverable)_\
+_Is it not a helpful exercise to game out the things required to support 95% of DID use cases with other DID system developers?_
+
+It's considered a privacy property of KERI, that you cannot enumerate all identitiess, in the same way that finding all minorities of certain religious preference might not be a feature.\
+(_@OR13b_)
+
+Discovery is a layer on top of what KERI provides. KERI doesn't preclude DID, nor does it need to implement all of DID. KERI will participate in the DID ecosystem. (_@_stevetodd__)\
+It doesn't need/want to solve/serve that slice of the use case pie.
+
+#### Follow up question 1: Why does KERI rule out 95% of the DID-based use cases upfront, where we need public discoverability on a decentralized deterministically iterable registry?
+*There is an implicit need for the registry to track its entries as DIDs. I guess those 95% use cases will have to get other types of DIDs for that?*
+
+It's possible to make a DID doc that represents a KERI identifier. If you want to resolve it, you can put it in any number of blockchains. That just publishes it. However, they don't have to be published to work. \
+(_@_stevetodd__)
+
+#### Follow up question 2: That's not deterministic?! 
+_You can't have Registry A magically just trust that a DID from Other System B, it would need to be native to it?_
+_Any registry with deterministically resolvable entries requires the entry controllers' IDs and resolutions be native to it. That's an empirical computer science wall type of requirement._ \
+_Imagine I want to register a DID in a decentralized deterministically iterable registry - something anyone can run and deterministically know all entries registered with it, wherein the registry has no central entities or authorities that determine the bindings between entries and those who control them..._\
+**_Nowhere in any paper on this planet is this a solved problem, because it's basically NP hard_**
+
+It depends on what you mean by resolve. The [white paper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) explains the points brought up in this question.
+(_@_stevetodd__)
+
+{TBW prio 1}
+
+
+## Nowhere in any paper on this planet is this a solved problem, because it's basically NP hard
+
+Orie Steele (Transmute)  12:30 AM
+its considered a privacy property of KERI, that you cannot enumerate all identitiess
 ## Why do you reinvent blockchains and claim it's something new?
 To begin with KERI has no blockchain, and doesn't depend on blockchains. If an implementation of KERI depends on blockchains at all, KERI operates blockchain agnostic.
 Secondly KERI doesn't support a crypto currency. It doesn't need currency because it can easily connect to one, if needed. And again, KERI is crypto currency agnostic while doing so.
