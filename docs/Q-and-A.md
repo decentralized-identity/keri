@@ -551,10 +551,13 @@ publicly resolvable registered persona DIDs of people, places, or things?
 Let's list a few to see how much of human digital life it covers:
 - All social media: Twitter, Facebook, Instagram, Telegram, Signal, etc.
 - All public content creation: YouTube, SoundCloud, Spotify, etc.
--All current registries: NPM, all app stores, all things that use those registries (basically every piece of software on the planet)
+-All current registries: NPM, all app stores, all things that use those registries 
+    (basically every piece of software on the planet)
 - All publicly registered objects: cars, boats, airplanes, etc.
-Put it this way: very few use cases on this planet will not directly, or within them, rely on publicly iterable, globally registered persona DIDs. 
+Put it this way: very few use cases on this planet will not directly, or within them, 
+rely on publicly iterable, globally registered persona DIDs. 
 But that said, I'm interested in hearing other opinions or counter arguments to the contrary.
+(_@csuwildcat_)
 ```
 *There is an implicit need for the registry to track its entries as DIDs. I guess those 95% use cases will have to get other types of DIDs for that?*
 
