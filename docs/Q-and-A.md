@@ -95,7 +95,6 @@ We've done our best to protect the privacy of the Github by investigating the im
   * [Could a KEL or KERL be pruned or charded?](#could-a-kel-or-kerl-be-pruned-or-charded)
   * [How to bootstrap KERI on the internet? Is it like fax machine; the more there are the more effective it is?](#how-to-bootstrap-keri-on-the-internet--is-it-like-fax-machine--the-more-there-are-the-more-effective-it-is)
   * [Why does KERI demand signing and digesting the full over-the-wire serialization of a message?](#why-does-keri-demand-signing-and-digesting-the-full-over-the-wire-serialization-of-a-message)
-- [Q&A section Userinterface](#qa-section-userinterface)
   * [What does KERI look like?](#what-does-keri-look-like)
   * [Is there a KERI course or webinar available?](#is-there-a-keri-course-or-webinar-available)
   * [Could Keri work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?](#could-keri-work-for-edge-computers-that-need-self-sovereign-identity--how-to--selectively--share-control-over-the--sci---sai--with-the-owners-of-the-device)
@@ -170,22 +169,24 @@ We've done our best to protect the privacy of the Github by investigating the im
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## Knowledge you should be confidently applying
-- The definitions above
+- The definitions in the [glossary](./Glossary.md)
 - Public private key pairs
+- Hashing and hashes
+- Signatures
 - Bitcoin Improvement Protocols: BIP32, BIP39, BIP44, BIP47, BIP49, BIP84, BIP174
 - hierarchical deterministic derivation paths
 - Base58
 - Eliptic curves
+- Blockchains, open public, private and hybrid
+- W3C DIDs
 ## Actions you should be comfortable with
 - Amend knowledge and keep existing knowledge up to date
 - create a key pair safely and back it up safely
-- recover from a seed
 - sweep to a new wallet
 
 # Jump table to categories
 - [General](#qa-section-general)
 - [KERI operational](#qa-section-keri-operational)
-- [Userinterface](#qa-section-userinterface)
 - [Root of trust](#qa-section-root-of-trust)
 - [Why the internet is broken](#qa-section-why-the-internet-is-broken)
 - [Identifiers](#qa-section-identifiers)
@@ -510,8 +511,6 @@ _If KERI has this built-in reliance, then doesn't that contradict and defeat the
 KERI resolver - due to the KERI architecture we get rid of the "magic box" in a way that I don't have to trust any infrastructure component. `DHT` is just example how this can be done in decentralized fashion.\
 But the point is that **I don't have to trust any node or network** that the statement is correct. I can cryptographically verify that everytime with KERI. Compare to current DID infrastructure where I have to trust resolution process in each DID-method because as soon as would get DID Document, I can't verify that this is the correct one. Think of it like `DID:peer` where I can always be 100% sure that the `DDO` which I have belongs to that DID. Not every DID method has this kind of properties. And I think this characteristic is crucial for adoption of DIDs.
 (_RobertMitwicki_)
-
-# Q&A section Userinterface
 
 ## What does KERI look like?
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
