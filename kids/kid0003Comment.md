@@ -1,51 +1,82 @@
----
-tags: KERI
-email: sam@samuelsmith.org
----
 
-# Zero Message Malleability
+# KID0003 - Serialization - Commentary
 
-[![hackmd-github-sync-badge](https://hackmd.io/LdDZLLQvSxml3k3ND7jFZg/badge)](https://hackmd.io/LdDZLLQvSxml3k3ND7jFZg)
+[![hackmd-github-sync-badge](https://hackmd.io/nhNY3H3aS4qjMipjJvWB7g/badge)](https://hackmd.io/nhNY3H3aS4qjMipjJvWB7g)
 
-version 1.02
+## Navigation
+
+[Back to table of contents](readme.md)
+|Link|Commentary|Section
+|---|---|---|
+|[0000](kid0000.md)|[X](kid0000Comment.md)|Glossary, overview, how to use|
+|[0001](kid0001.md)|[X](kid0001Comment.md)|Prefixes, Derivation and derivation reference tables|
+|[0002](kid0002.md)|[X](kid0002Comment.md)|Data model (field & event concepts and semantics)|
+|[0003](kid0003.md)|X|Serialization|
+|[0004](kid0004.md)|[X](kid0004Comment.md)|Key Configuration (Signing threshold & key set)|
+|[0005](kid0005.md)|[X](kid0005Comment.md)|Next Key Commitment (Pre-Rotation)|
+|[0006](kid0006.md)|[X](kid0006Comment.md)|Seals|
+|[0007](kid0007.md)|[X](kid0007Comment.md)|Delegation (pending PR by Sam)|
+|[0008](kid0008.md)|[X](kid0008Comment.md)|Key-Event State Machine|
+|[0009](kid0009.md)|[X](kid0009Comment.md)|Indirect Mode & Witnesses|
+|0010||Recovery/consensus Algorithm (KAACE)|
+|0010||Database & Storage Considerations|
+|0097|n/a|**Non-Normative** Implementation Guidance|
+|0098|n/a|Use Cases|
+|0099|n/a|Test Vectors and Normative Statement Index|
+
+### Further rationale for serialization approach
+
+Beneficial if not necessary constraints are ease and convenience of development and maintenance of the associated code libraries. One possibility that was considered and rejected would be to use same serializations for both the complete event serialization and the extracted data set serialization. The problem with that approach is that on an event by event basis the serialization encoding may change, that is, one event may be encoded using JSON and another using CBOR. This would require keeping track of which encoding was used on the event in order to reproducibly perform an extracted data serialization. More problematic is that for delegated events, the extracted data set digest included in one event may be from data extracted from an event belonging to a different identifier. In such a situation, keeping track of the encoding provides an inconvenience that obviates the advantages of using the same encodings for both events and extracted data sets. Given this, then a simplified but repeatable encoding algorithm may be used for the extracted data set serializations. Simplified because the extracted data sets do not need to be de-serialized.
+
+The one constraint for extracted data set serializations is that the ordering of elements be exactly specified. One way to simplify that specification is to use the ordering of data elements in the complete event serialization. But this means imposing an ordering constraint on the complete event serialization. The advantage is that ordering is only expressed once per event not once per extracted data set. This better future proofs the protocol as there is always only one place for ordering and that is the complete event element ordering.
+
+Another benefit of ordering the complete event serialization is that automated self-contained discovery of the serialization encoding used in an event becomes trivialized by requiring that the first element in the serialization be the version string element. A de-serializer may then unambiguously determine the encoding by inspecting the first few bytes of any serialized event. This better supports a wider variety of transport protocols and databases.
+
+### Further rationale for JSON.stringify usage
+
+Until recently native JSON serialization libraries in JavaScript did not preserve a logical ordering of elements from a Mapping (JavaScript Object) data structure. The only ordering possible was lexicographic by sorting the fields in the mapping by their labels. This meant that arbitrary logical ordering of mapping fields was not possible and no semantic meaning could be imposed on the serialization based on order of appearance of fields. One could approximate some ordering by imposing lexicographic constraints on the field names but that makes the field names less usable. Ordered mappings support a logical ordering by preserving the order of creation of fields in the mapping. Any arbitrary order may be imposed by changing the order of creation of the fields in the mapping.
+
+Fortunately Javascript ES6 (ES2015) and later now provide a mechanism to impose property (field) creation order on JSON.stringify() serializations. The latest versions of Javascript now natively preserve property creation order when serializing. This means that de-serialization will automatically recreate the properties in the same order as serialized. For those implementations of Javascript ES6 or later that do not yet support native JSON.stringify property creation ordering, a JSON.stringify parameter replacer function that uses the [[ownPropertyKeys]] internal method, namely, Reflect.ownKeys(object) may be employed to ensure property creation order. This means that native Javascript support may be easily and broadly provided. All major JavaScript implementations now support JavaScript ES6. Example JavaScript code is provided later in this document.
+
+Other languages like Python, Ruby, Rust etc. have long supported native creation order preserving serializations of ordered mappings. These preserve field element (property equivalent) creation order. This in combination with the recent JavaScript support means that KERI may impose an ordering constraint on complete event data elements that may be used for canonical ordering of both complete events and extracted data element sets.
+
+### Mutually Exclusive Multi-Type Support
+
+Two event elements values may be of more than one type. The design decision was primarily practical. Although the idea of multiple types of values for a given element label introduces complexity it was less complexity then adding an additional element with unique label for each type.  
+
+This trade-off happens with the value types are mutually exclusive. This means that should there be two different labels one for each type, then the presence of both labels must be handled. This is either an error or there must be a prioritization of
+the labels. If both are present the implementation must decide which one is to be used. Clearly both should never be present so its an error. There is no way to infer the intent of the provider. But how best to enforce the error?  
+
+The code to enforce mutual exclusivity is at least as complex as the code to do a type check switch.  In either case, because both types must separably supported, the code to support both types after the switch or prioritization is the same. But having only one field label with more than one type value means there is no chance of prioritization errors due to ambiguity of intent. One field forces zero ambiguity of intent. In languages like Python that are duck typed, the consensus is that a type switch is preferred to multiple fields.  
+
+In general, an event's serialization should not be the operative representation. This distinction is not a problem for most languages, but does arise frequently in JavaScript where JSON is so closely tied to the operative representation. In non JavaScript implementations extraction from a serialization should handle the type switch and if desirable the representation after extraction may have multiple attribute labels, one for each value type.
+
+In conclusion, the design decision here is that an OR-ing of value types in a serialization field element where those value types are mutually exclusive is practically less error prone and less complex than adding mutually exclusive field labels, one for each value type to the serialization.  
 
 
-The KERI approach is that the over-the-wire serialization of the key event message is completely encompassed by the attached signatures. Likewise digests that chain one key event message to another completely encompass the over-the-wire serializaton of the chained digested key event message. We call this property zero message malleability. Moreover, because each message is signed, the signature protects the embedded chaining digest.
+## Inception Configuration Traits
 
-What this means is that if even 1 bit of the signed or digested key event message is changed the signature or digest are invalidated.  This property of zero message malleability mitigates a host of attack vectors that may referred to as transaction malleability.  An attacker may not change even one bit of an over-the-wire message without it being detected by any validator as invalid (not verifiable). Thus any successful attack by an external entity must start with compromising the signing keys of the controller in order to create a alternate version of message that is verifiable. 
+The naming of these as a "trait" was originally motivated by a desire to avoid confusion with  the words attribute and property refer to elements associated with objects (namely Python objects). However in other languages like Rust the word trait is also used. Another synonym "aspect" is used in other languages as well. So given there may not be a word with conflict, trait, is used because it is short. Given that the current trait is a *constraint* a suggested approach is to change the term to "curb" which does not conflict with any language terms.
 
+Inception configuration traits only show up in the 'cnfg' element of the inception and delegated inception events.
 
-In many protocols the signatures and/or digests do not completely encompass the the over-the-wire serialization but some subset of data in the key event. In these type of protocols the specification of that data subset must be precisely specified to avoid vulnerabilities. This include type, labels, and structure. If not then an attacker might be able to exploit some ambiguity in that specification to provide an alternate version of the message that still verifies with the same signature without having to compromise keys. Indeed any optional data allowed in the message that is not wrapped in the signature but that has some semantic value provides an attack vector. This semantic leakage often happens over time as the standard evolves.
+So far the only configuration trait defined for KERI is the following:
 
-The KERI approach of zero message malleability is a future proof  approach that prevents semantic leakage from ever occurring as the protocol evolves over time and provides some flexibilty with regards the specification of optional data within each message. An attacker must first compromise keys before it can play with optional data.
+```python
+'EO'
+```
 
-Zero transaction malleability does not prevent a malicious or faulty conroller from crafting invalid but verifiable messages or from crafting verifiable but malicious messages that expose weaknesses in the specification of the event message. But only the holder of the private signing keys may do so. And the KERI approach to duplicity detection means that a mallicious controller may not undetectably create multiple versions of a given verifiable key event message. This mitigates the risk of specification ambiguity to mallicious controllers.
+The inception EO (Establishment Only) trait, when present places a constraint on the key event stream that only allows  establishment events. Or in other words interaction events are not allowed. This provides the best case security because signing keys become one use only and therefore minimizes the potential for exploit of signing keys.
 
-KERI is opinionated about security. The best practice for locking down any semantic leakage is to fully encompass the over-the-wire key event message with the signatures and digests not some subset of the data. 
+To apply a trait include a mapping of the following form in the c (config) element list. Where the mapping has one element with key = 'trait' and value is the trait string. In this case value = 'EO'. For example:
 
-Zero message malleability is somewhat inconvenient when generating and parsing the over-the-wire serializations but it is an intentional trade-off that reflects KERI's security first aesthetic.
+```json
+{
 
-## Semantic Leakage
+"c": [{"trait":  "EO"}]
+}
+```
 
-We define semantic leakage to occur whan any part of an over the wire message that contributes any meaning or function that affects the behavior of the protocol but is not wrapped in a signature. Often this might be a header or some optional part of a message. A message with semantic leakage is inherently vulnerable to probing attacks. Its just asking for trouble.
+Each trait string must be unique.
 
-Zero Message Malleability, is a specific design feature that says completely wrap over the wire messages with a signature(s).  Many protocols employs MACs Hashes and Signatures but make optimizations that result in not wrapping the full over the wire message. This exposes them to semantic leakage. It is one of the most insidious and difficult to detect types of vulnerabilities. Bitcoin still suffers from new transaction malleability attacks as do many protocols such as SSL. Until those protocols achieve ZMM they will contintue to be vulnerable.
-
-## Probing Attacks
-
-In a protocol where some parts of the over the wire message (say a header or an optional block) is not wrapped by the signature, i.e. does not have ZMM, then a probe attack is enabled where an attacker can send different messages but whose signatures still verify. These different messages may elicit different responses. These become a means of discovering defects in an implementation without having to compromise keys. Compromizing keys is hard. Its not susceptible to probing attacks if those keys are full 128 bit cryptographic strength. KERI's ZMM makes such attacks, i.e. probing attacks without compromising signatures, impossible.
-
-
-ZMM does not protect against a malicious controller. In KERI the duplicity detection protects against malicious controllers. A malicious controller has access to the keys and may therefore create and sign messages at will. But that controller may not create duplicitous messages without risking detection.
-
-For example if a given validator's implementation of KERI has defects in it then a malicious controller can send messages that are fully wrapped in verifiable signatures but the contents somehow expose an error in the validators implementation. Typically incorrelty implemented validation logic. A trivial example would be non-sequential sequence numbers. If a validator's code did not check for sequential sequence numbers then it would create a malformed KEL that some other validator would reject.
-
-## Formal Schema
-
-One of the reasons that many protocols with flexible message structure use formal schema descriptions is to avoid vulnerabilities that may arise from inadvertent semantic leakage when the protocol does not have ZMM.  Inadvertent semantic leakage may arise over time as the protocol features are changed. We call this semantic drift.  ZMM means that inadvertent leakage is not possible, hence semantic drift is less dangerous. In spite of semantic drift a ZMM protocol is not vulnerable to external probing attack without compromise of keys.  
-
-
-
-
-
-
+In delegated inception events additional traits may be defined for constraints on permissions. A suggested constraint maybe "DoNotDelegate" or "NoDel" to forbid the delegated event stream from creating delegations of other event streams.

@@ -5,6 +5,7 @@ Key Event Receipt Infrastructure - the spec and implementation of the KERI proto
 
 ## Starting Points
 * For an overview and introduction, see the explanatory **slideshow** [here](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) or the public-facing <a href=https://keri.one>website</a>.
+* A partial draft of the spec (still pending substantial editorial reduction) is available in the [KIDs](kids/) directory.
 * The most recent version of the **whitepaper** is [here](https://github.com/decentralized-identity/keri/blob/master/kids/KERI_WP.pdf). It contains an overview of the functional requirements and design of the KERI protocol, but should not be taken as authoritative as a specification and predates the experimental implementation.
 * Definitions, **Questions and Answers** categorized by topic [here](./docs/Q-and-A.md).
 * **Contributor guidelines** can be found [here](contributing.md).
@@ -13,7 +14,4 @@ Key Event Receipt Infrastructure - the spec and implementation of the KERI proto
 
 ## Ways to contribute
 * We are gathering inputs and working on a skeleton for a spec in the hours BEFORE our **weekly developer sync meetings**
-* Feel free to **[open an issue](https://github.com/decentralized-identity/keri/issues)** here if you have use-case ideas!
-
-## Acknowledgements
-[KERI image](./images/KERI_image_by_CChunningham.png) by Charles Chunningham, license unknown
+* Feel free to **[open an issue](https://github.com/decentralized-identity/keri/issues)** here if you have use-case ideas, or if you have suggestions on how to make the current KIDs more concise, crisper, or easier to understand from an implementer's point of view.
