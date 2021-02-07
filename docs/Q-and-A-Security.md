@@ -1,6 +1,9 @@
 # Q&A about KERI's Security model and Guarantees
 
-<img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
+
+| --- | ![](../images/Keri_logo_color_on_white.png)| ---------------------------- |
+| -------- | -------- | -------- |
+
 
 This document is part two of [Q-and-A](./Q-and-A.md). Both files shares a common [Glossary](./Glossary.md)
 
@@ -13,7 +16,8 @@ Why should you read or step through the Q&A? To get a different angle to the sam
 
 ```
 {TBW} means: to be written
-{TBW prio 1} means to be written with the highest priority, 3 = no urgency, 2 = intermediate}
+{TBW prio 1} means to be written with the highest priority, 
+3 = no urgency, 2 = intermediate
 ```
 - [Q&A about KERI](#qa-about-keri)
     + [Disclaimer](#disclaimer)
