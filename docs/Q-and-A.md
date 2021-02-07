@@ -1,7 +1,10 @@
 # Q&A about KERI
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
-**The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**
+**The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**\
+*Q = one star question. Novice to KERI, advanced in DIDs\
+**Q = two star question. Proficient in DIDs and advanced in KERI\
+***Q = three star question. Expert in DIDs and proficient in KERI
 
 Why should you read or step through the Q&A? To get a different angle to the same topic: KERI.
 
@@ -187,7 +190,6 @@ We've done our best to protect the privacy of the Github by investigating the im
 # Jump table to categories
 - [General](#qa-section-general)
 - [KERI operational](#qa-section-keri-operational)
-- [Root of trust](#qa-section-root-of-trust)
 - [Why the internet is broken](#qa-section-why-the-internet-is-broken)
 - [Identifiers](#qa-section-identifiers)
 - [Event logs](#qa-section-event-logs)
@@ -199,6 +201,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Proofs](#qa-section-proofs)
 - [Private Key Management](#qa-section-private-key-management)
 - [Blockchain](#qa-key-blockchain)
+- [Root of trust](#qa-section-root-of-trust)
 - [Agencies](#qa-key-agencies)
 - [Witness](#qa-section-Witness)
 - [Watchers](#qa-section-watcher)
@@ -533,7 +536,7 @@ _(@henkvancann)_
 
 # Q&A section Root of trust
 
-## What do I need to trust in KERI?
+## *Q: What do I need to trust in KERI?
 Primary root of trust is KEL not secondary (starts with self cert ID), but then after first rotation if any must have KEL.\
 (_SamMSmith_)
 
