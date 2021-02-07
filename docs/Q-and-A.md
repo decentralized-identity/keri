@@ -104,7 +104,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Q&A section Root of trust](#qa-section-root-of-trust)
   * [What do I need to trust in KERI?](#q-what-do-i-need-to-trust-in-keri)
     + [What is the difference between a trust basis and a trust domain?](#q-what-is-the-difference-between-a-trust-basis-and-a-trust-domain)
-  * [KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?](#q-keri-does-not-need-a-blockchain--but-how-does-it-establish-the-root-of-trust-that-we-need-for-ssi--how-does-the-data-persist)
+  * [KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?](#q-keri-does-not-need-a-blockchain-but-how-does-it-establish-the-root-of-trust-that-we-need-for-ssi-how-does-the-data-persist)
 - [Q&A section Why the internet is broken](#qa-section-why-the-internet-is-broken)
   * [Why would the internet be broken?](#why-would-the-internet-be-broken)
   * [How can the internet be fixed?](#how-can-the-internet-be-fixed)
