@@ -287,41 +287,41 @@ I am not denying existence of existing DID infrastructure, but I agree a lot of 
 _(RobertMitwicki)_
 # Q&A section Wallets
 
-## Why do I need a wallet for KERI?
+## *Q: Why do I need a wallet for KERI?
 Yes. [Universal wallet](https://w3c-ccg.github.io/universal-wallet-interop-spec/) - would do - with a thin layer on top of it. \
 A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
 {TBW}\
 (_SamMSmith_) / _(CharlesCunningham)_
-## How can I backup the KERI identifiers in my wallet?
+## *Q: How can I backup the KERI identifiers in my wallet?
 {TBW}
 ## Can I receive crypto money in my KERI wallet?
 We don't need a crypto currency embedded in the KERI system, we can use any other crypto currency system for payment. So the design of the KERI system has left crypto token control out.\
 _(@henkvancann)_
 
-## Does a KERI wallet store virtual credentials connect to my identifiers?
+## *Q: Does a KERI wallet store virtual credentials connect to my identifiers?
 The KERI whitepaper has little about virtual credentials and KERI's place in the W3C SSI space for DIDs and VCs. The reason is that KERI is mainly a level 1 and level 2 solution in the trust-over-ip framework.\
 _(@henkvancann)_
 
 In this presenation of Sam, there's a lot about the relation between KERI and VCs: https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf
 # Q&A section Signatures
 
-## Who can sign off my proofs and identifiers using KERI?
+## **Q: Who can sign off my proofs and identifiers using KERI?
 Depends on what you mean with proof. KERI is content agnostic, so any cryptographic proof can be referenced and signed in a KEL, even a third party signature. As far as KERI-internal proofs are concerned a subject-controller, a delegated controller and combination of (fractioned) multi-signatures can prove authoritative conrol over a key and over a pre-rotated key.
 _(@henkvancann)_
 {TBW prio 1}
 
-## What is the practical use of signatures?
+## *Q: What is the practical use of signatures?
 In general they can proof the control of a private key at a certain point back in time.
 _(@henkvancann)_
 
-## Do verifiers, validators, witnesses and watchers all sign off `payloads`?
+## **Q: Do verifiers, validators, witnesses and watchers all sign off `payloads`?
 Yes they do. For every cause there is a different payload. The main reason why all roles sign off cryptographical references is commitment to those sources (the payload in KERI is often a digest of sources) at a certain point in time.\
 _(@henkvancann)_
 
 # Q&A section Proofs
 
-## What does KERI proof?
-KERI has the ability to proof various thing:
+## *Q: What does KERI proof?
+KERI has the ability to proof various things:
  - Control over an Autonomous identifier (`AID`).
  - Control over a pre-rotated key
  - Commitment to an Event Log
@@ -329,72 +329,73 @@ KERI has the ability to proof various thing:
  - Delegation of control over a key
  - {TBW prio 2}
 
-## Does KERI know whether any message in the Event Logs are valid or true?
-No, KERI is data-agnostic. KERI does make no statement about the validity of the payload data.
+## *Q: Does KERI know whether any message in the Event Logs are valid or true?
+No, KERI is data-agnostic. KERI does make no statement about the validity of the payload data.\
 _(@henkvancann)_
-## How can we verify that a statement by a controller is valid?
-We may verify that the controller of a private key, (the who), made a statement but not the `validity` of the statement itself.\
+
+## *Q: How can we verify that a statement by a controller is valid?
+We may verify that the controller of a private key, made a statement but not the `validity` of the statement itself.\
 (_SamMSmith_)
-## How can we trust what was said or written?
+## *Q: How can we trust what was said or written?
 We may build trust over time in what was said via histories of verifiably attributable (to whom) consistent statements, i.e. `reputation`.\
 (_SamMSmith_)
 
-## Do I need to show the full log (KEL) to anybody I transact with, even though I'd only like to show a part of it, for example a virtual credential?
+## **Q: Do I need to show the full log (KEL) to anybody I transact with, even though I'd only like to show a part of it, for example a virtual credential?
 Yes, because they can't verify the root of trust. They have to have access to the full log at some point in time. Once they verfied to the root of trust, once, they don't have to keep a copy of the full log. They have to keep the event they've seen and any event since, that they need to verify as they go.
 (_SamMSmith_)
 
 # Q&A section Private Key Management
 
-## How multi-tasking is the key infrastructure?
-KERI has univalent, bivalent and multivalent infrastructures.\
+## **Q: How multi-tasking is the key infrastructure?
+KERI has `univalent`, `bivalent` and `multivalent` infrastructures.\
 <img src="../images/key-infra-valence.png" alt="Key Infrastruction Valence levels" border="0" width="600">
-You need Key-pair Generation and Key Event Signing Infrastructure. And KERI doesn't care how you do it.
-From bivalent delegation comes into play. But in fact you can have multivalent infrastructures, all with their own security garantuees and its own key management policies.\
+You need Key-pair Generation and Key-Event-Signing Infrastructure. And KERI doesn't care how you do it.\
+From `bivalent` delegation {fill out?!} comes into play. But in fact you can have `multivalent` infrastructures, all with their own security garantuees and its own key management policies.\
 It's all one KERI codebase to do all these infrastructures.\
 (_SamMSmith_)
 
-## Does your public-private-key format matter in KERI?
+## *Q: Does your public-private-key format matter in KERI?
 No, because the derivation code allows you to use whichever format you want. So anyone that sees an identifier looks at the first byte or two bytes prepended, it's a derived code, and you can tell exactly what type of public-private-key format we have, e.g. ecdsa.
 
 When you rotate keys, you can always rotate to a different format.
 
-## Can I use BIP32 Hierarchical deterministic keys in KERI to rotate?
+## *Q: Can I use BIP32 Hierarchical deterministic keys in KERI to rotate?
 Yes, you can derive your keys from that scheme. But KERI is agnostic about it, it wouldn't know.
 
-## Not your keys, not your identity?
+## *Q: Not your keys, not your identity?
 In KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.\
 Pre rotated keys are best practise to keep control of your identifiers. \
 If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
 _(@henkvancann)_
 
-## A wallet is there to store my KERI private keys safely, no?
+## *Q: A wallet is there to store my KERI private keys safely, no?
 Currently _Universal wallet_ is aimed at to store KERI keys. The vast majority of security breaches or exposures of keys are originated by the behaviour of people: the way they use wallets. Most rarely due to errors in the wallet software.
 {TBW prio 1}
 
-## Are compound private keys (Shamir Secret Sharing) and multisignature schemes possible to incept identifiers?
+## **Q: Are compound private keys (Shamir Secret Sharing) and multisignature schemes possible to incept identifiers?
 Yes, complex fractional structures are natively possible in KERI. However only for the non-basic forms (for transferable identifiers).\
 _(@henkvancann)_
 {TBW prio 1}
 
-## How to delegate control over my private keys that control my identifiers?
+## **Q: How to delegate control over my private keys that control my identifiers?
 {TBW prio 3}
 
 # Q&A section Blockchain
 
-## Does KERI use a blockchain?
+## *Q: Does KERI use a blockchain?
 No, but KERI uses the same cryptographical building blocks as blockchains do. \
 _(@henkvancann)_ \
 However, KERI may be augmented with distributed consensus ledgers but does not require them. [Source: section conclusion in whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
 
 
-## What's the difference between KERI and blockchain?
+## **Q: What's the difference between KERI and blockchain?
 `KERI` is a unordered hash-linked list of signed Key Event logs and blockchain is a timestamped ordered list of hash-linked blocks of signed transactions. What this means:
 1. we don't need ordering in `KERI` and that frees us from consensus protocols in blockchains
 2. Hash-linking is done on a lower level in `KERI` and preserves consistency and fuels revealance of duplicity.
 3. In `KERI` proofs are cryptographically derived from the root of trust, being the autonomous controller, in blockchains the root-of-trust is a transaction on a ledger; that means the Identifier gets locked on the ledger.\
 _(@henkvancann)_
 
-## Why not register identities on an open public ledger like bitcoin, ethereum or soverin?
+## **Q: Why not register identities on an open public ledger like bitcoin, ethereum or soverin?
 Because for our purposes we don't need to. Consider two distinct identifier to totally ordered, distributed consensus ledger:
 1. the access identifier that allows you to access the ledger. This one is ussually a `SCI`. E.g. on bitcoin your bitcoin address is cryptographically derived from the public key from your keypair.
 2. the register identifier that allows you to register an identifier on the ledger. The ledger transaction is validated registering of your identifier, not the cryptographic root-of-trust that the access identifier is using.
@@ -402,10 +403,10 @@ Because for our purposes we don't need to. Consider two distinct identifier to t
 The identifier is now locked to that ledger. We want identifiers to be portable accross ledgers, so we don't want to use registration as the root-of-trust, we want to be self-certified all the way.
 (_SamMSmith_)
 
-## KERI is basically a series of Pay2PublicKeyHash transactions?
+## **Q: KERI is basically a series of Pay2PublicKeyHash transactions?
 _that you send to witnesses, who observe them and attest to the particular line of operations they see?_
 
-In brief: for KERI that is an apples and oranges comparison.
+**In brief: for KERI that is an apples and oranges comparison.**
 
 Because total linear ordering is not needed for a given identifier's event sequencing. Only linear order of that identifier's history. The history's from other events do not have to be ordered with respect to each other. So the secure ordering of a given identifier's history is a completely different class of problem than the secure total ordering of comingled history from multiple identifiers. The security demands are less for the former case. So the equivalent security may be obtained in other ways. While the latter as a side effect of total ordering gives local ordering (per identifier) for free. But securing total ordering may be much harder to do. So one has to be careful, because it's no longer an apples to apples comparison. 
 (_SamMSmith_)
@@ -428,14 +429,14 @@ And so I defend myself against `duplicity`.\
 (_SamMSmith_)
 
 ## **Q: Why is end-verifiability such a big thing in KERI?
-In brief: with end-verifiability anyone can verify anywhere at anytime, without the need to trust anyone or anything in between.
+**In brief: with end-verifiability anyone can verify anywhere at anytime, without the need to trust anyone or anything in between.**
 
 Because any copy of an `end-verifiable` record or log is sufficient, any infrastructure providing a copy is replaceable by any other infrastructure that provides a copy, that is, any infrastructure may do. Therefore the infrastructure used to maintain a log of transfer statements is merely a `secondary root-of-trust` for control establishment over the identifier. This enables the use of ambient infrastructure to provide a copy of the log. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, anyone can verify anywhere at anytime. This approach exhibits some of the features of certificate transparency and key transparency with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a self-certifying identifier.
 
 
 # Q&A section Agencies
 
-## What does the governance framework of KERI look like?
+## **Q: What does the governance framework of KERI look like?
 > Decentralized systems must coordinate across multiple parties, all acting independently in their own self-interest. This means that the rules of engagement and interaction must be spelled out and agreed to ahead of time, with incentives, disincentives, consequences, processes, and procedures made clear.
 {TBW prio 3}
 DRAFT BY _(@henkvancann)_
@@ -444,26 +445,25 @@ KERI is self-administered, self-governed. What aspects of KERI need governance?
 
 Purist permissionless network proponents will argue that a real decentralized network does not need a governance framework since mathematics and cryptography make sure that proper governance is in place.
 
-The Trust over IP stack includes both a governance stack and technology stack.\
-KERI governance roles at *Layer 1* can include: 
+The Trust over IP stack includes both a governance stack and technology stack.
+#### KERI governance roles at *Layer 1* can include: 
 - Controller, Entropy hardware and software, KEL, KERL
-*Layer 2: Provider governance frameworks*
+#### Layer 2: Provider governance frameworks
 - Governance of capabilities of digital wallets, agents, and agencies. So the need is primarily to establish baseline security, privacy, and data protection requirements, plus interoperability testing and certification programs, for the following roles:
 - Hardware Developers: hardware security modules (HSMs)
 - Software Developers: duplicity verification and internal consistency checks
 - Agency: ambient availability of KELs and KERLs
-*Layer 3: Credential governance frameworks*\
+#### Layer 3: Credential governance frameworks
 KERI is not an outspoken credential issuance and verification framework. Having said that:
 - Controller: inception proof, revocation, delegation proof
 - Holders: availability
 - Verfifier: external inconsistency proofs
-Layer 4: Ecosystem governance framework
+#### Layer 4: Ecosystem governance framework
 - KERIs objective  is to be the spanning trust infrastructure of the whole internet
 - Portability of the identities and KERI interoperability between platforms is cryptographically secured
 - Inconsistencies "reported" by meercats-like alert governance system
- }
 
-## How can KERI offer consistent services and truth?
+## **Q: How can KERI offer consistent services and truth?
 A. In a pair-wise setting  each party only needs to be consistent with the other party. Witnesses are not used. It doesn't matter if they lie to each other as long as they lie consistently. KERI does not
 enable someone to proof the *veracity* of a statement only the *authenticity* of the statement.\
 (_SamMSmith_)
@@ -478,9 +478,9 @@ This would be a set of `watchers` that the validators trust that record any and 
 
 # Q&A Virtual Credentials
 
-## Why doesn't KERI use certification as a root of trust?
+## *Q: Why doesn't KERI use certification as a root of trust?
 Why do we want portable identifiers instead of the Ledger Locked IDs, since we have DIDs that can resolve a ledger locked Id uniformly? You say “We don’t want to use certification as a root of trust, we want to do it self-certified all the way” -> what about the issuance of a credential based on the ledger locking, isn’t that beneficial?
 
-## Is Custodianship of KERI identifiers possible? 
+## *Q: Is Custodianship of KERI identifiers possible? 
 _Or does (Delegated, Multi-sig) Self-Adressing do the job?_
-
+{TBW Prio 2}
