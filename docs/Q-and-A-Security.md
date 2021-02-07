@@ -259,8 +259,8 @@ Without KELs, we wouldn't have a chain of registered and signed key events for a
 _(@henkvancann)_
 
 ## How do I create a KEL?
-By a key inception event. A controller creates a key pair and binds this to his/her KERI identifier.
-There will be wallet software and an API available in the course of code development and also a DID scheme (DID:UN) that invokes calls to those APIs during resolution of the DID.
+By a key [`inception event`](./Glossary.md#inception-event). A controller creates a key pair and binds this to his/her KERI identifier.
+There will be wallet software and an API available in the course of code development and also a DID scheme (DID:UN) that invokes calls to those APIs during resolution of the DID.\
 _(@henkvancann)_
 
 ## How can I trust a KEL?
