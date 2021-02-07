@@ -228,8 +228,30 @@ _(@henkvancann)_
 It is a cryptographically derived, strong binding between a controller, a keypair and an identifier. No weak bindings introduced by administration present.
 _(@henkvancann)_
 
+## How does self addressing work for the identifier?
+Using a content digest not only binds the inception statement to the identifier but also makes it easy to use the identifier prefix to retrieve the inception statement from a content addressable database. 
+
+```
+Mechanism:
+**inception statement -> hashing -> #**
+
+# points to a record in a database:
+**# -> inception statement -> hashing -> # (proof of "address")**
+```
+
+This requires that the database store the signature with the inception data, so that a reader may cryptographically verify that the inception data is authoritative. Without the signa- ture the digest is repudiable by the controller. This approach also enables content or document specific but self-certifying identifiers. 
+```
+inception statement -> sig + derivation + public key + extra data
+Check sig with public key -> 
+non-repudiable unique attribution to the content by whoever controls the private key
+```
+
 ## What do I need a self-addressing identifier for?
-{TBW}
+In brief: 
+1. commitment: nonrepudiable unique attribution to the content creator as controller
+2. confidentiality: a decryption key must be obtained from the controller
+
+Self-addressing identifiers provide a mechanism for a content addressable database to enforce nonrepudiable unique attribution to the content creator as controller. This binds the content to the creator in the content address. Different creator means different address. This makes confidential (encrypted) content more usable as the content address is bound to the controller from whom a decryption key must be obtained.
 
 ## What do I need a multi-sig self-addressing identifier for?
 To get even more security in terms of your signing scheme.\
