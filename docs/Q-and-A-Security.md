@@ -126,7 +126,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Virtual Credentials](./Q-and-A.md#virtual-credentials)
 
 
-# Q&A section KERI operational
+# Q&A section KERI operational security
 
 ## **Q: How can it be one solution, fit for all SSI problems? 
 KERI uses plain old digital signatures from `PKI`, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. `KERI` solves that problem.\
