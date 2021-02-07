@@ -1,8 +1,9 @@
 # Q&A about KERI's Security model and Guarantees
 
 
-| --- | ![](../images/Keri_logo_color_on_white.png)| ---------------------------- |
-| -------- | -------- | -------- |
+| --- |KERI logo| --- --- --- --- --- --- --- --- --- --- |
+| -------- | -------- | --------------------------------- |
+|     |![](../images/Keri_logo_color_on_white.png)|     |
 
 
 This document is part two of [Q-and-A](./Q-and-A.md). Both files shares a common [Glossary](./Glossary.md)
