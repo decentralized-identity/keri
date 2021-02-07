@@ -120,7 +120,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Proofs](./Q-and-A.md#qa-section-proofs)
 - [Private Key Management](./Q-and-A.md#qa-section-private-key-management)
 - [Blockchain](./Q-and-A.md#qa-key-blockchain)
-- [KERI operational](#qa-section-keri-operational)
+- [KERI operational](./Q-and-A.md#qa-section-keri-operational)
 - [Root of trust](./Q-and-A.md#qa-section-root-of-trust)
 - [Agencies](./Q-and-A.md#qa-key-agencies)
 - [Virtual Credentials](./Q-and-A.md#virtual-credentials)
