@@ -2,6 +2,7 @@
 
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
+
 This document is part one. Part two is [Q-and-A Security](./Q-and-A-Security.md). Both files shares a common [Glossary](./Glossary.md)
 
 **The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**\
@@ -161,11 +162,11 @@ KERI solves (or _"gets away with"_ if you wish) this with duplicity detection. W
 
 There is a separate [Q&A Security](./Q-and-A-Security.md) to answer the extensive list of Security related questions.
 
-## Could we see a `WASM` module in the near future for Sidetree and DID:peer interoperability?
+## ***Q: Could we see a `WASM` module in the near future for Sidetree and DID:peer interoperability?
  WASM is certainly on the roadmap, but for the main issue of Sidetree and did:peer interop, see the [core KERI spec repo issue](https://github.com/decentralized-identity/keri/issues/79) for more info.\
 _(CharlesCunningham)_
 
-## How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
+## *Q: How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
 [Trust-over-IP](#trust-over-ip):
 - Its goal is to be the missing authentication layer of the internet. That's a pretty well matching objective.
 - Layer 1 (settlement layer): Where other `DID`s use blockchains or databases to register identities and settle 'transactions' between between, `DDO`s, and `VC`s, KERI uses homegrown native structures: `KEL` and `KERL`.
@@ -180,15 +181,15 @@ _(@henkvancann)_
 2. No verifiable credentials
 _(@henkvancann)_
 
-## Why use KERI?
+## *Q: Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).
 
-## What problem is KERI solving? How? And why can't it be solved by other solutions?
+## *Q: What problem is KERI solving? How? And why can't it be solved by other solutions?
 KERI solves the problem of **secure attribution to identifiers**. By ambient availability of verifiable Key event Logs that prove authoritive control over identifier's private keys. It can't be solved by onther solutions known so far because those solution have not managed to span identifier interoperability over the internet.
 _(@henkvancann)_
 {TBW prio 1}
 
-## Who is KERI? Is it a company or a not for profit?
+## *Q: Who is KERI? Is it a company or a not for profit?
 KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and within that in the *Identity and Discovery* Workgroup.
 Due to its licensing structure, KERI isn't owned by anyone and everyone at the same time. The Intellectual Property Right of KERI is hosted with `DIF`. It is an open source project.
 
@@ -200,11 +201,11 @@ On github KERI is - and will become even more - a thickening bunch of repositori
  Lastly, the important man, who founded KERI is *Samuel M. Smith Ph.D.*, operationing from his firm [prosapien.com](https://www.prosapien.com).
  _(@henkvancann)_
 
-## In what programming languages is KERI available?
+## *Q: In what programming languages is KERI available?
 In Python. It will be available in the coming year in Rust, Javascript and Go (2020).
 _(@henkvancann)_
 
-## How KERI fits in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?
+## *Q: How does KERI fit in [the 10 principles of SSI](https://medium.com/metadium/self-sovereign-identity-principle-6-portability-4a7105dd0381) by Christopher Allen?
 KERI is not primarily about self-sovereign identity. KERI is primarily about autonomic identifiers, AIDs. That is: identifiers that are self managing. KERI provides proof of control authority over the identifier. What one does with the identifier is not constrained by KERI. But because the primary root of trust of an AID is a KEL which can be hosted by any infrastructure, any identity system (SSI or otherwise) built on top of KERI may also be portable.\
 So in my opnion portability of the associated identifiers is essential to any truly self-sovereign identity system.\
 (_SamMSmith_)
@@ -212,14 +213,14 @@ So in my opnion portability of the associated identifiers is essential to any tr
 Where Christopher Allen is talking about *portability of information* related to the identity, in KERI we take this a step further with the *portability of the identifier itself* with respect to its supporting infrastructure (aka spanning layer).  Most `DID` methods do not have portable identifiers. They are locked to a given ledger.\
 (_SamMSmith_)
 
-## Does KERI cooperate with other projects in the self-sovereign Identity field?
+## *Q: Does KERI cooperate with other projects in the self-sovereign Identity field?
 Yes, KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and is part of the *Identity and Discovery* Workgroup. There are also non-formal relation with the newly launched trust-over-ip foundation, and there's good reasons to fit KERI into trust-over-ip.\
 (_SamMSmith_)
 
-## What's the difference between a `normative` and `non-normative` description or theory?
+## *Q: What's the difference between a `normative` and `non-normative` description or theory?
 See the [definitions](#normative) section for what both terms mean. For example, theories of ethics are generally `normative` - you should not kill, you should help that person, etc. Economics is most commonly `non-normative` - instead of asking “how should this person choose which goods to buy?”, we are often more interested in “how does this person choose which commodities they buy?”.
 
-## What's the difference between the KERI whitepaper and the KIDs
+## **Q: What's the difference between the KERI whitepaper and the KIDs
 The [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf) is the historically grown and expanded design document of `KERI`.
 
 A [KID](../kids) is focussed on Implementation; "this is how we do it"  We add commentary to the indivudual KIDs that elaborate on the why. It has been split from the _how_ to not bother implementors with the _why_.
@@ -273,18 +274,17 @@ We believe that _decentralization of value transfer_ is essential to building tr
 However there are also votes for `did:keri`: _Drummond Reed_ (Dec 2 2020): "at IIW we asked that question and  feedback overwhelmingly favored did:keri. Furthermore, I’ve proposed that the keri namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the keri namespace in the Indy DID method."\
 _(@henkvancann)_
 
-## **Q: Some say that with KERI, a DID can be reduced to did:<identifier>. But that’s not a valid DID?!
+## **Q: Some say that with KERI, a DID can be reduced to did:\<identifier>. But that’s not a valid DID?!
 _Every DID must have a method name component before the method-specific ID._
 
 The first paper mentioning the absence of the method is [Thinking of DID? KERI On](https://humancolossus.foundation/blog/thinking-of-did-keri-on) by The Human Colossus Foundation, written by Robert Mitwicki. He addressed the concern in the question (the invalidity of the DID method) and made it more clear what the Foundation meant by that: "We look into the future and with that view we think that namespace could be dropped and we could keep only identifier, as the namespace seems to be one of the major drawbacks of decentralized identifiers at the moment. In my opinion `did:keri:<identifiers>`  would be just intermediate step as the issue addressed by post would still hold. We see that KERI could be a major upgraded for DID; not replacement."
 
 ## **Q: Isn't it a bit arrogant of KERI to say "my new DID method is so good that it can replace all others for all eternity"?
+
 _But by doing that you will also exclude a lot of existing identifier infrastructure._
 
 I am not denying existence of existing DID infrastructure, but I agree a lot of them could be obsolete if we introduce KERI. A lot of business models which are build upon current model would be obsolete. I understand that a lot of people would not like that, but that is called progress.\
 _(RobertMitwicki)_
-
-
 # Q&A section Wallets
 
 ## Why do I need a wallet for KERI?
@@ -292,8 +292,6 @@ Yes. [Universal wallet](https://w3c-ccg.github.io/universal-wallet-interop-spec/
 A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
 {TBW}\
 (_SamMSmith_) / _(CharlesCunningham)_
-
-
 ## How can I backup the KERI identifiers in my wallet?
 {TBW}
 ## Can I receive crypto money in my KERI wallet?
@@ -305,8 +303,6 @@ The KERI whitepaper has little about virtual credentials and KERI's place in the
 _(@henkvancann)_
 
 In this presenation of Sam, there's a lot about the relation between KERI and VCs: https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf
-
-
 # Q&A section Signatures
 
 ## Who can sign off my proofs and identifiers using KERI?
