@@ -95,6 +95,17 @@ We've done our best to protect the privacy of the Github by investigating the im
 - Amend knowledge and keep existing knowledge up to date
 
 # Jump table to categories
+## PART TWO SECURITY
+- [KERI operational](#qa-section-keri-operational)
+- [Identifiers](#qa-section-identifiers)
+- [Event logs](#qa-section-event-logs)
+- [Inconsistency and duplicity](#qa-inconsistency-and-duplicity)
+- [Key rotation](#qa-key-rotation)
+- [KEL and KELR](#qa-section-kel-and-kerl)
+- [Witness](#qa-section-Witness)
+- [Watchers](#qa-section-watcher)
+- [KERI and blockchain settled DIDs](#qa-keri-and-blockchain-settled-dids)
+- [Security Guarantees](#qa-security-guarantees)
 ## PART ONE
 - [General](./Q-and-A.md#qa-section-general)
 - [Why the internet is broken](./Q-and-A.md#qa-section-why-the-internet-is-broken)
@@ -107,17 +118,6 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Root of trust](./Q-and-A.md#qa-section-root-of-trust)
 - [Agencies](./Q-and-A.md#qa-key-agencies)
 - [Virtual Credentials](./Q-and-A.md#virtual-credentials)
-## PART TWO SECURITY
-- [KERI operational](#qa-section-keri-operational)
-- [Identifiers](#qa-section-identifiers)
-- [Event logs](#qa-section-event-logs)
-- [Inconsistency and duplicity](#qa-inconsistency-and-duplicity)
-- [Key rotation](#qa-key-rotation)
-- [KEL and KELR](#qa-section-kel-and-kerl)
-- [Witness](#qa-section-Witness)
-- [Watchers](#qa-section-watcher)
-- [KERI and blockchain settled DIDs](#qa-keri-and-blockchain-settled-dids)
-- [Security Guarantees](#qa-security-guarantees)
 
 
 # Q&A section KERI operational

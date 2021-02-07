@@ -97,6 +97,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - sweep to a new wallet
 
 # Jump table to categories
+## PART ONE
 - [General](#qa-section-general)
 - [Why the internet is broken](#qa-section-why-the-internet-is-broken)
 - [KERI and DIDs](#qa-keri-and-dids)
@@ -108,7 +109,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Root of trust](#qa-section-root-of-trust)
 - [Agencies](#qa-key-agencies)
 - [Virtual Credentials](#virtual-credentials)
-
+## PART TWO
 - [KERI operational](./Q-and-A-Security.md#qa-section-keri-operational)
 - [Identifiers](./Q-and-A-Security.md#qa-section-identifiers)
 - [Event logs](./Q-and-A-Security.md#qa-section-event-logs)
