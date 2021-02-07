@@ -112,7 +112,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Agencies](#qa-key-agencies)
 - [Virtual Credentials](#virtual-credentials)
 ## PART TWO
-- [KERI operational security](./Q-and-A-Security#qa-section-keri-operational-security)
+- [KERI operational security](./Q-and-A-Security.md#qa-section-keri-operational-security)
 - [Identifiers](./Q-and-A-Security.md#qa-section-identifiers)
 - [Event logs](./Q-and-A-Security.md#qa-section-event-logs)
 - [Inconsistency and duplicity](./Q-and-A-Security.md#qa-inconsistency-and-duplicity)
