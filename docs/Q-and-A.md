@@ -108,10 +108,11 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Private Key Management](#qa-section-private-key-management)
 - [Blockchain](#qa-key-blockchain)
 - [Root of trust](#qa-section-root-of-trust)
+- [KERI operational](./Q-and-A-Security.md#qa-section-keri-operational)
 - [Agencies](#qa-key-agencies)
 - [Virtual Credentials](#virtual-credentials)
 ## PART TWO
-- [KERI operational](./Q-and-A-Security.md#qa-section-keri-operational)
+- [KERI operational security](#qa-section-keri-operational-security)
 - [Identifiers](./Q-and-A-Security.md#qa-section-identifiers)
 - [Event logs](./Q-and-A-Security.md#qa-section-event-logs)
 - [Inconsistency and duplicity](./Q-and-A-Security.md#qa-inconsistency-and-duplicity)
@@ -432,6 +433,57 @@ And so I defend myself against `duplicity`.\
 **In brief: with end-verifiability anyone can verify anywhere at anytime, without the need to trust anyone or anything in between.**
 
 Because any copy of an `end-verifiable` record or log is sufficient, any infrastructure providing a copy is replaceable by any other infrastructure that provides a copy, that is, any infrastructure may do. Therefore the infrastructure used to maintain a log of transfer statements is merely a `secondary root-of-trust` for control establishment over the identifier. This enables the use of ambient infrastructure to provide a copy of the log. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, anyone can verify anywhere at anytime. This approach exhibits some of the features of certificate transparency and key transparency with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a self-certifying identifier.
+
+# Q&A section KERI operational
+
+## *Q: Where can I download KERI?
+On (sub)page(s of) [github](https://github.com/decentralized-identity/keri).
+
+## *Q: Where can we find the code and how could a coder get started?
+The homepage on github [README.md](../README.md) pretty much sums up all the possibilities to download the available code and how developers can currently engage in the development process. We welcome all help we can get.
+
+## *Q: What would you see as the main drawback of KERI?
+- Its main drawback is that it's nascent. (_SamMSmith_)\
+- The field of cryptography is already complex by itself. KERI's extended complexity, combined with totally new terms and new process description make it a steep learning curve. It depends on your individual drive to want to know about KERI, to what extent the effort pays off. Maybe first try:
+    1. [KERI made easy](./KERI-made-easy.md)
+    2. The general [KERI Q&A](./Q-and-A.md)
+    _(@henkvancann)_
+- KERI is inventing its own lowest level building blocks. That will prevent a lot of potential code reuse. (@OR13)
+
+## *Q: Where you would need something quite different than KERI?
+`KERI` does one thing, it establishes control authority using verifiable portable proofs that are `KEL`s.\
+(_SamMSmith_)
+
+## *Q: How does KERI scale
+`KEL`, `KERL` and `KAACE` might well be very lean alternatives to blockchain based solutions. The hard part is the ambient verifiable architecture.\
+ _(@henkvancann)_
+
+## *Q: Is KERI post-quantum secure?
+**In brief: yes, pre-rotation with hashed public keys and strong one-way hash functions are post-quantum secure.**
+
+Post-quantum cryptography deals with techniques that maintain their cryptographic strength despite attack from quantum computers. Because it is currently assumed that practical quantum computers do not yet exist, _post_-quantum techniques are forward looking to some future time when they do exist. A one-way function that is post- quantum secure will not be any less secure (resistant to inversion) in the event that practical quantum computers suddenly or unexpectedly become available. One class of post-quantum secure one-way functions are some cryptographic strength hashes. The analysis of D.J. Bernstein with regards the collision resistance of cryptographic one-way hashing functions concludes that quantum computation provides no advantage over non-quantum techniques.\
+Strong one-way hash functions, such as 256 bit (32 byte) Blake2, Blake3 and SHA3, with 128 bits of pre-quantum strength maintain that strength post-quantum.\
+[Source: whitepaper page 65](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+
+
+## *Q: What happens if I or other people are offline?
+Any controller can install a Service/Agent Log, controlled by them.
+
+## *Q: How to handle multiple formats of KEL and KERL through time. Will they be backwards compatible?
+{TBW prio 2}
+## *Q: How to bootstrap KERI on the internet? Is it like fax machine; the more KELs there are, the more effective it is?
+Any subject / controller can start creating KERI events in a KERI event log. Dependent of the objectives a controller has with KERI a more peer-to-peer (one-to-one) approach or contrary to that a one to many approach. In the latter case a set of witnesses and their services can emerge per controller. Subsequently one or more verifiers (and their watchers) can also enter the play.
+The more entities are getting used to play the different KERI specific roles the more rapid and easy will the bootstrapping / flooding of KERI on the internet evolve.
+{TBW prio 1}
+
+
+## *Q: Is there a KERI course or webinar available?
+The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.\
+_(@henkvancann)_
+
+## *Q: Could KERI work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
+Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/keri/issues/54) key and identifier management with `KERI` that answers this question profoundly.\
+(_SamMSmith_)
 
 
 # Q&A section Agencies

@@ -101,7 +101,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 # Jump table to categories
 ## PART TWO SECURITY
-- [KERI operational](#qa-section-keri-operational)
+- [KERI operational security](#qa-section-keri-operational-security)
 - [Identifiers](#qa-section-identifiers)
 - [Event logs](#qa-section-event-logs)
 - [Inconsistency and duplicity](#qa-inconsistency-and-duplicity)
@@ -120,6 +120,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Proofs](./Q-and-A.md#qa-section-proofs)
 - [Private Key Management](./Q-and-A.md#qa-section-private-key-management)
 - [Blockchain](./Q-and-A.md#qa-key-blockchain)
+- [KERI operational](#qa-section-keri-operational)
 - [Root of trust](./Q-and-A.md#qa-section-root-of-trust)
 - [Agencies](./Q-and-A.md#qa-key-agencies)
 - [Virtual Credentials](./Q-and-A.md#virtual-credentials)
@@ -127,30 +128,18 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 # Q&A section KERI operational
 
-## Where can I download KERI?
-On (sub)page(s of) [github](https://github.com/decentralized-identity/keri).
-
-## Where can we find the code and how could a coder get started?
-The homepage on github [README.md](../README.md) pretty much sums up all the possibilities to download the available code and how developers can currently engage in the development process. We welcome all help we can get.
-
-## What would you see as the main drawback of KERI?
-Its main drawback is that it's nascent. (_SamMSmith_)\
-KERI is inventing its own lowest level building blocks. That will prevent a lot of potential code reuse. (@OR13)
-
-
-## How can it be one solution, fit for all SSI problems? 
+## **Q: How can it be one solution, fit for all SSI problems? 
 KERI uses plain old digital signatures from `PKI`, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. `KERI` solves that problem.\
 (_SamMSmith_)
 
-## Where you would need something quite different than KERI?
+## *Q: Where you would need something quite different than KERI?
 `KERI` does one thing, it establishes control authority using verifiable portable proofs that are `KEL`s.\
 (_SamMSmith_)
 
-## How does KERI scale
-`KEL`, `KERL` and `KAACE` might well be very lean alternatives to blockchain based solutions. The hard part is the ambient verifiable architecture.\
- _(@henkvancann)_
+## *Q: How does KERI scale safely without comprising the security model
+{TBW Prio 2}
 
-## Will KERI be interoperable with DID;peer and Sidetree?
+## **Q: Will KERI be interoperable with DID;peer and Sidetree?
 **(@OR13) argues the following:**\
 Afaik this ship sailed when KERI decided to define its own event format. I don't think KERI shares any commonality with sidetree or did peer, and it's no longer possible to align them, so while you can start with the same key material, doing similar operations will very quickly result in totally different event structures.
 
@@ -182,66 +171,41 @@ From an engineering management and interopability perspective, I would have deci
 
 The DID and VC layers are the appopriate layers for interopability. The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling.\
 (_SamMSmith_)
-## How does KERI keep identifiers secure?
+## **Q: How does KERI keep identifiers secure?
 By the mechanism of availability, consistency, and duplicity.\
 We have to handle `race conditions` too, just like any other distributed database or blockchain.\
 (_SamMSmith_)
 
-## Is the KERL technically a blockchain/hashed data log, rather than a ledger that implies a balance?
+## **Q: Is the KERL technically a blockchain/hashed data log, rather than a ledger that implies a balance?
 Yes a KEL/KERL is a hash chained data structure. But not merely hash chained but also signed, so its also a cryptographic proof of key state.\
 It is not tracking balance it is tracking key state.
 (_SamMSmith_)
 
-## Is KERI post-quantum secure?
-In brief: yes, pre-rotation with hashed public keys and strong one-way hash functions are post-quantum secure.
-
-Post-quantum cryptography deals with techniques that maintain their cryptographic strength despite attack from quantum computers. Because it is currently assumed that practical quantum computers do not yet exist, _post_-quantum techniques are forward looking to some future time when they do exist. A one-way function that is post- quantum secure will not be any less secure (resistant to inversion) in the event that practical quantum computers suddenly or unexpectedly become available. One class of post-quantum secure one-way functions are some cryptographic strength hashes. The analysis of D.J. Bernstein with regards the collision resistance of cryptographic one-way hashing functions concludes that quantum computation provides no advantage over non-quantum techniques.\
-Strong one-way hash functions, such as 256 bit (32 byte) Blake2, Blake3 and SHA3, with 128 bits of pre-quantum strength maintain that strength post-quantum.\
-[Source: whitepaper page 65](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
-
-## According to the SSI Book KERI will never be able to substitute the internet conventional PKI infra. Right?
-[SSI Book](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/144): "As powerful as this (read KERI-like) solution appears, completely self-certifying identifiers have _one major Achilles heel_: the controller’s identifier needs to change every time the public key is rotated. As we will explain further in Chapter 10 on decentralized key management, key rotation—switching from one public/private key pair to a different one—is a fundamental security best practice in all types of PKI. Thus the inability for self-certifying identifiers alone to support key rotation has effectively prevented their adoption as an alternative to conventional PKI.
-
+## **Q: According to the SSI Book KERI will never be able to substitute the internet conventional PKI infra. Right?
+[SSI Book](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/144): "As powerful as this (read KERI-like) solution appears, completely self-certifying identifiers have _one major Achilles heel_: the controller’s identifier needs to change every time the public key is rotated. As we will explain further in _Chapter 10_ on decentralized key management, key rotation—switching from one public/private key pair to a different one—is a fundamental security best practice in all types of PKI. Thus the inability for self-certifying identifiers alone to support key rotation has effectively prevented their adoption as an alternative to conventional PKI.\
 {TBW prio 1}
 
-## What happens if I or other people are offline?
-Any controller can install a Service/Agent Log, controlled by them.
+## **Q: How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?
+{TBW prio 2}
+## **Q: Could a KEL or KERL be pruned or charded?
+Compared to blockchains KEL and KERL are lean and mean data structures. So pruning or charding might not be necessary. For the sake of security KEL and KERL can't be charded, because they are ambient available. However you could soft-prune a KEL because if you've verified to the root-of-trust once, you don't need to do that again up until the current key event in the KEL {The same holds for KERLs?}\
+{TBW prio 2}\
+_(@henkvancann)_
 
-## How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?
-{TBW prio 2}
-## How to handle multiple formats of KEL and KERL through time. Will they be backwards compatible?
-{TBW prio 2}
-## Could a KEL or KERL be pruned or charded?
-{TBW prio 2}
-## How to bootstrap KERI on the internet? Is it like fax machine; the more KELs there are, the more effective it is?
-Any subject / controller can start creating KERI events in a KERI event log. Dependent of the objectives a controller has with KERI a more peer-to-peer (one-to-one) approach or contrary to that a one to many approach. In the latter case a set of witnesses and their services can emerge per controller. Subsequently one or more verifiers (and their watchers) can also enter the play.
-The more entities are getting used to play the different KERI specific roles the more rapid and easy will the bootstrapping / flooding of KERI on the internet evolve.
-{TBW prio 1}
-
-## Why does KERI demand signing and digesting the full over-the-wire serialization of a message?
+## **Q: Why does KERI demand signing and digesting the full over-the-wire serialization of a message?
 The discussion of `KERI`s approach to *serializing messages and signing and digesting the full over-the-wire serialization* is inconvenient for implementers. The motivation for this approach I am calling Zero Message Malleability as a property of `KERI`. 
 This is a "best practices" security first approach that prevents semantic leakage over time that becomes a transaction malleability vulnerability. Indeed `KERI` approach trades off some inconvenience in serialization for better security and reduces the inconvenience of needed to have tightly specified semantics to prevent transaction malleability.\
 (_SamMSmith_)
 
-## If the KERI resolver "relies on a distributed hash table (DHT) algorithm .. such as IPFS or GNUnet", isn't that a huge contradiction in terms?! 
+## **Q: If the KERI resolver "relies on a distributed hash table (DHT) algorithm .. such as IPFS or GNUnet", isn't that a huge contradiction in terms?! 
 _If KERI has this built-in reliance, then doesn't that contradict and defeat the whole purpose of KERI?_
 
 KERI resolver - due to the KERI architecture we get rid of the "magic box" in a way that I don't have to trust any infrastructure component. `DHT` is just example how this can be done in decentralized fashion.\
 But the point is that **I don't have to trust any node or network** that the statement is correct. I can cryptographically verify that everytime with KERI. Compare to current DID infrastructure where I have to trust resolution process in each DID-method because as soon as would get DID Document, I can't verify that this is the correct one. Think of it like `DID:peer` where I can always be 100% sure that the `DDO` which I have belongs to that DID. Not every DID method has this kind of properties. And I think this characteristic is crucial for adoption of DIDs.
 (_RobertMitwicki_)
 
-
-## Is there a KERI course or webinar available?
-The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.\
-_(@henkvancann)_
-
-## Could KERI work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
-Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/keri/issues/54) key and identifier management with `KERI` that answers this question profoundly.\
-(_SamMSmith_)
-
-## Delegations in many systems are unilateral. KERI has cooperative delegation. What is that and why is it better?
-In many system unilateral delegation is a single point of failure. if a delegated key's delegator gets compromised, you have no way to recover. 
-
+## **Q: Delegations in many systems are unilateral. KERI has cooperative delegation. What is that and why is it better?
+In many system unilateral delegation is a single point of failure. if a delegated key's delegator gets compromised, you have no way to recover.\
 Keys are in different infrastructures in KERI. Both the delegator and the delegatee have keys they manage. If one of them get compromised or lost, we still can recover. Each level of delegation allows delegation of the level above.
 _(@henkvancann)_
 
