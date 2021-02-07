@@ -540,12 +540,12 @@ _(@henkvancann)_
 Primary root of trust is KEL not secondary (starts with self cert ID), but then after first rotation if any must have KEL.\
 (_SamMSmith_)
 
-### What is the difference between a trust basis and a trust domain?
+### **Q: What is the difference between a trust basis and a trust domain?
 A trust basis binds controllers, identifiers, and key-pairs.
 
 A trust domain is the ecosystem of interactions that rely on a trust basis.
 
-## KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?
+## ***Q: KERI does not need a blockchain, but how does it establish the root-of-trust that we need for SSI? How does the data persist?
 The `KELs` are what establishes the root of trust in `KERI`. So you have a `SCI` and a `KEL`. The `KEL` is ordered with respect to the SCI by the controller. You don't need total ordering with respect to other identifiers to establish the root of trust in `KERI`, because the controller is the one and only, who orders events.\
 In blockchains you have total ordering, which you need for double spend protecting in cryptocurrencies, but not in `KERI`.\
 For people in blockchain this is a bit hard to grasp, but we don’t need hash chained data structure of events on single identifier nor the *ordering* those, I just need logs, I need *append-only logs of events* to establish the authority.\
