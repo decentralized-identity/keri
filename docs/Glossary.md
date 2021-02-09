@@ -123,6 +123,9 @@ Two or more logs are _externally consistent_ if they are both verfiable internal
 
 External logs that are _inconsitent_, have at least two reported copies of the logs that are different. That means I have a duplicitous log. We need duplicity detection to be able to garantuee _external consistency_ or put in an different way: duplicity detection protects against external inconsistency.
 
+#### First seen
+"First seen" in KERI is the first **verified** event, accepted in the `KEL`. It has no effect on escrow for example.
+
 #### Inception Event
 Is a type of Establishment Event, it's the first event that establishes an identifier. \
 (_SamMSmith_)
@@ -248,6 +251,8 @@ Information controlled by an identity. MAY be used to derive _key_s.
 `SAI`, This is a self certfifying identifier (`SCI`) that has been attached to a certain context or infrastructure at the time of its inception. The inception configuration together with public key and it's `derivation`, forms a digest (hash) plus it's own `derivation code` that constitutes the Prefix of a self-addressing ID.
 
 <img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="800">
+
+The binding in a Self-Addressing Identifier between inception data and private key can be created by replacing the public key in the identifier prefix with a content digest (hash) of the inception statement (that includes the public key). So it's a further step of commitment to identifier information and also another level of hiding information at face vlaue by one-way encryption beyond the inception statement. However all the information is end-verifiable.
 
 #### Self Certifying Identifier
 In brief: A self-certifying identifier cryptographically binds an identifier to a key-pair.\
