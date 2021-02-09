@@ -124,7 +124,8 @@ Two or more logs are _externally consistent_ if they are both verfiable internal
 External logs that are _inconsitent_, have at least two reported copies of the logs that are different. That means I have a duplicitous log. We need duplicity detection to be able to garantuee _external consistency_ or put in an different way: duplicity detection protects against external inconsistency.
 
 #### First seen
-"First seen" in KERI is the first **verified** event, accepted in the `KEL`. It has no effect on escrow for example.
+"First seen" in KERI is the first **verified** event, accepted in the `KEL`. It has no effect on the timing of what has arrived in escrow for example; in escrow there can be garbage.
+Every 'first seen' event is propagated world wide within micro-seconds to the watchers. Only in this microseconds windows that you could have a live key conprise attack. If that happens, this where you have to look after this duplicity-attack a bit more in depth to handle it safely. E.g. a valid key rotation.
 
 #### Inception Event
 Is a type of Establishment Event, it's the first event that establishes an identifier. \
