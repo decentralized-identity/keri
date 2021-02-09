@@ -5,13 +5,21 @@
 
 This document is part one. Part two is [Q-and-A Security](./Q-and-A-Security.md). Both files shares a common [Glossary](./Glossary.md)
 
+Why should you read or step through the Q&A? To get a different angle to the same topic: KERI.
+
+### Critical stance welcomed, just don't try to rewrite history, nor be lazy
+KERI receives three types of scrutiny from domain experts:
+1. "KERI can't do it"
+2. "KERI doesn't do something new"
+3. "DID:XYZ has been designed, KERI needs to explain how it's different"
+ - Ad 1. When respected colleagues think KERI can't keep up to its promises, we value the well-founded questions and suggestions of domain experts __after__ they thoroughly read the KERI [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf). We'll happilly keep explaining KERI because we'd hate it when respected experts misunderstand the design.\
+ - Ad 2. After a while some experts say 'well then KERI doesn't do something new'. That's acceptable for us, because we're able proof the design history of KERI and that it simply hasn't been done before.\
+ - Ad 3. However, we can't accept having to explain the differences to people who just "invented" new, someting similar to KERI, using the same terms and thereby spreading confusion. Let the newbees benchmark themselves against KERI, we are too busy for those kind of things. By the way, this Q&A may be able to help you out! 
+
 **The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**\
 *Q = one star question. Novice to KERI, advanced in DIDs\
 **Q = two star question. Proficient in DIDs and advanced in KERI\
 ***Q = three star question. Expert in DIDs and proficient in KERI
-
-Why should you read or step through the Q&A? To get a different angle to the same topic: KERI.
-
 
 ```
 {TBW} means: to be written
@@ -122,6 +130,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Watchers](./Q-and-A-Security.md#qa-section-watcher)
 - [KERI and blockchain settled DIDs](./Q-and-A-Security.md#qa-keri-and-blockchain-settled-dids)
 - [Security Guarantees](./Q-and-A-Security.md#qa-security-guarantees)
+
 
 # Q&A section General
 
