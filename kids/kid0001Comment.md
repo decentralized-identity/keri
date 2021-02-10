@@ -340,30 +340,22 @@ This provides an extremely compact and elegant stream parsing formula that gener
 
 There are two families or classes of framing codes. The first class are count codes for composition of groups of crypto material primitives and they all start with the dash, "-", character in Base64. The second class are opcodes and they all start with the underscore, "_", character in Base64. This second class of opcodes are yet to be defined. Their purpose is to provide future support for custom scripted processing and verification of attached signatures. This may include, for example, collective signatures. These codes would enable a compact representation of such a signature processing language. An example of a language that might be encoded this way is the Crypto Construction Language (CCLang) [[20]]. In general these opcodes are meant to provide support for custom processing of attached crypto material with something analogous to Bitcoin's pay-to-script-hash capability [[21]].
 
-The current count code table has two entries in it. A newly proposed expanded table of count codes, which includes the existing two codes unchanged, is as follows:
+The current count code table has two entries in it. A newly proposed expanded table of count codes (see below), keeps the first code from the old table but removes the second code. The old second code function is now obsolete. The second code specified a domain switch to streaming binary  (qb2) of the attached counted group. However the revised stream start/restart rules described above allow a parser to use the domain that the count code appears in, text Base64 qb64 or binary base2 qb2, to indicate the domain that the attached group appears in. The attached group's domain must always match the preceding count code's domain. This removes the need for domain specific codes that switch domains. A stream may switch domains mid stream but a group may not switch domains mid-group. This would break composability of the group. So a domain switching count code could only appear at the top level of the stream anyway and the new stream restarts rules allow domain switching at that level without special codes. This simplifies the table and removes complexity from the parsing logic without loss of usefulness. To restate, removal of domain switching codes is enabled by the fact that a stream parser can unambiguously detect which domain a composition code is encoded in, eitherqb64 or qb2. The Table below is for composition in the qb64 domain. An equivalent binary (octal) table would allow direct composition in the qb2 domain. 
+
+
 
 | Count Code | Description                                                                    | Max Count     | Chars qb64 | Bytes qb2 |
 |:----------:|--------------------------------------------------------------------------------|---------------|------------|-----------|
 |       **-A***XX* | Count of attached qualified Base64 indexed controller signatures               |         4,095 |          4 |         3 |
-|       **-B***XX* | Count of attached qualified Base2 indexed  controller signatures               |         4,095 |          4 |         3 |
-|       **-C***XX* | Count of attached qualified Base64 indexed witness signatures                  |         4,095 |          4 |         3 |
-|       **-D***XX* | Count of attached qualified Base2 indexed witness signatures                   |         4,095 |          4 |         3 |
-|       **-E***XX* | Count of attached qualified Base64 nontransferable identifier receipt couplets |         4,095 |          4 |         3 |
-|       **-F***XX* | Count of attached qualified Base2 nontransferable identifier receipt couplets  |         4,095 |          4 |         3 |
-|       **-G***XX* | Count of attached qualified Base64 transferable identifier receipt quadlets    |         4,095 |          4 |         3 |
-|       **-H***XX* | Count of attached qualified Base2 transferable identifier receipt quadlets     |         4,095 |          4 |         3 |
-|       **-u***XX* | Count of attached qualified Base64 groups or primitives in group               |         4,095 |          4 |         3 |
-|       **-v***XX* | Count of attached qualified Base2 groups or primitives in group                |         4,095 |          4 |         3 |
-|       **-w***XX* | Count of attached qualified Base64 groups or primitives in message             |         4,095 |          4 |         3 |
-|       **-x***XX* | Count of attached qualified Base2 groups or primitives in message              |         4,095 |          4 |         3 |
-|       **-y***XX* | Count of attached grouped crypto material qualified Base64 characters          |         4,095 |          4 |         3 |
-|       **-z***XX* | Count of attached grouped crypto material qualified  Base2 bytes               |         4,095 |          4 |         3 |
-|      **-0y***XX* | Count of attached Base64 characters                                            |         4,095 |          5 |         * |
-|      **-0z***XX* | Count of attached Base2 bytes                                                  |         4,095 |          5 |         * |
-|     **-1y***XXX* | Count of attached Base64 characters                                            |       262,143 |          6 |         * |
-|     **-1z***XXX* | Count of attached Base2 bytes                                                  |       262,143 |          6 |         * |
-|   **-2y***XXXXX* | Count of attached grouped crypto material qualified Base64 characters          | 1,073,741,823 |          8 |         6 |
-|   **-2z***XXXXX* | Count of attached grouped crypto material qualified  Base2 bytes               | 1,073,741,823 |          8 |         6 |
+|       **-B***XX* | Count of attached qualified Base64 indexed witness signatures                  |         4,095 |          4 |         3 |
+|       **-C***XX* | Count of attached qualified Base64 nontransferable identifier receipt couplets |         4,095 |          4 |         3 |
+|       **-D***XX* | Count of attached qualified Base64 transferable identifier receipt quadlets    |         4,095 |          4 |         3 |
+|       **-x***XX* | Count of attached qualified Base64 groups or primitives in group               |         4,095 |          4 |         3 |
+|       **-y***XX* | Count of attached qualified Base64 groups or primitives in message             |         4,095 |          4 |         3 |
+|       **-z***XX* | Count of attached grouped crypto material qualified Base64 characters          |         4,095 |          4 |         3 |
+|      **-0z***XX* | Count of attached Base64 characters                                            |         4,095 |          5 |         * |
+|     **-1z***XXX* | Count of attached Base64 characters                                            |       262,143 |          6 |         * |
+|   **-2z***XXXXX* | Count of attached grouped crypto material qualified Base64 characters          | 1,073,741,823 |          8 |         6 |
 
 
 Italicized *XX* or *XXXXX* in the count codes represent variables to be replaced with Base64 equivalent of the actual count. The "*" means full length
@@ -378,6 +370,7 @@ The expanded table includes framing codes for full replay of events from a KEL w
 5) Composable groups of groups or primitives (new)
 6) Composable groups or primitives in a messages, not JSON, CBOR, or MGPK (new)  
 7) Byte/Character counts of composable groups for concurrent stream processing (new)  
+8) Composed primitives of attached characters that include the count code. Ie a generic primitive whose role is determined solely from context. (new)
 
 
 
