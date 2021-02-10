@@ -369,7 +369,7 @@ The expanded table includes framing codes for full replay of events from a KEL w
 4) Transferable identifier receipt quadlets (new)  
 5) Composable groups of groups or primitives (new)
 6) Composable groups or primitives in a messages, not JSON, CBOR, or MGPK (new)  
-7) Byte/Character counts of composable groups for concurrent stream processing (new)  
+7) Byte/Character counts of composable groups for pipelining and concurrent stream processing (new)  
 8) Composed primitives of attached characters that include the count code. Ie a generic primitive whose role is determined solely from context. (new)
 
 
