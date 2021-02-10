@@ -25,6 +25,7 @@ PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PoA = Proof of Authority\
 PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
+SASCI = [Self Addressing self certifying Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
 SSI = [Self Sovereign Identity](#self-sovereign-identity)\
 VC = Verifiable Credential, look up W3D DID standardization for more info\

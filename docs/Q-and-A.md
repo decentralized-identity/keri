@@ -488,6 +488,7 @@ The more entities are getting used to play the different KERI specific roles the
 
 ## *Q: Is there a KERI course or webinar available?
 The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.\
+There is lots of course material available on [prosapien.com](https://www.prosapien.com).\
 _(@henkvancann)_
 
 ## *Q: Could KERI work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
