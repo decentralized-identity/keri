@@ -12,7 +12,7 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 
 #### Links: 
 [ID WG Charter](https://bit.ly/DIF-WG-select1) | Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD) |
- Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://keri.one/) | Helpful bibliography [ Wasm1 | Wasm2 | MSFT CQRS ] | ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589 Password: 293152
+ Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://keri.one/) | Meeting [Recordings](https://docs.google.com/spreadsheets/d/1wgccmMvIImx30qVE9GhRKWWv3vmL2ZyUauuKx3IfRmA/edit#gid=1393617996) | ZOOM [ROOM](https://us02web.zoom.us/j/87321306589?pwd=MSs5dlJYR0hOYjBCbWJOSmR3TDQwdz09) Meeting ID: 873 2130 6589 Password: 293152
 
 ## Future/Pending Topics
 
