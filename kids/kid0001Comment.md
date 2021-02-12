@@ -336,7 +336,7 @@ This provides an extremely compact and elegant stream parsing formula that gener
 
 ##  Derivation Codes
 
-#### Framing Codes
+### Framing Codes
 
 There are two families or classes of framing codes. The first class are count codes for composition of groups of crypto material primitives and they all start with the dash, "-", character in Base64. The second class are opcodes and they all start with the underscore, "_", character in Base64. This second class of opcodes are yet to be defined. Their purpose is to provide future support for custom scripted processing and verification of attached signatures. This may include, for example, collective signatures. These codes would enable a compact representation of such a signature processing language. An example of a language that might be encoded this way is the Crypto Construction Language (CCLang) [[20]]. In general these opcodes are meant to provide support for custom processing of attached crypto material with something analogous to Bitcoin's pay-to-script-hash capability [[21]].
 
@@ -374,7 +374,7 @@ The expanded table includes framing codes for full replay of events from a KEL w
 
 
 
-#### Crypto Material Codes
+### Crypto Material Codes
 
 Existing crypto material codes and indexed signature code tables are defined elsewhere.
 
@@ -384,14 +384,102 @@ ToDo:
 - Define native composable Base64 encoding of messages using composition operators and composable elements
 - 
 
+## Why Composability?
 
 
+### Text Domain Streaming Protocols
+
+A text domain streaming protocol that is also composable as a stream in the binary domain is a novel approach and as a result is largely unfamiliar to developers coming up to speed on KERI. Its primary feature is that the stream may be used, viewed, read, interpreted, processed in the text domain while enabling convenient lossless compression via wholesale conversion as a stream to/from the binary domain. A text domain streaming protocol may be conveniently tunneled or interleaved or annotated within some other text domain representation and then extracted back into a compact form without loss. Most developer's exposure to streaming protocols is exclusively in the binary domain. And with rare exception, binary domain streaming protocols are not not composable (round tripable) to a text domain streaming representation at the stream level.  Thus KERI's approach may even feel somewhat odd. Some historical background and anticipated use case examples might help with better understanding the motivation for and importance of such a feature.  
+
+The early days of computing were governed by extremely limited resources (both computing and bandwidth) that mandated extremely efficient binary protocols. But these came at a cost. They are painful to maintain, debug, parse etc. And binary streaming protocols are the most painful of all.
+
+  
+An inflection point in protocol design happened with the advent of JSON. Instead of crafting relatively inflexible binary data structures as the core conveyances in a protoco, JSON enabled flexible self-describing data structures expressed the the human readable text domain. This made protocols defined in JSON not merely human readable, but text parseable, pretty printable, yet still machine interpretable.  Whole families of protocols based on JSON were developed whose major motivation was the native text domain representation. It was certainly not because they were more efficient in any sense of the word for machine processing, transmission, or storage etc. JSON based protocols suffer greatly in terms of efficiency.  In general, once a protocol stack has been developed and hardened, one could argue there was little reason for a human to ever look at the JSON representation itself. Tooling could expose the packets in a human friendly way obviating the need for a native text representation.  But that argument did not win. Computing power had risen enough that the efficiency argument was not decisive. Text representation won instead because the cost of developing the protocol in the first place and making it easy for developers to come up to speed wins adoption battles over binary non-text based protocols. 
+
+  
+But we never had the JSON equivalent of a text representation for streaming protocols. JSON is block delimited and enveloped so it is inherently incompatible with streaming protocols. Streaming protocols want to have prepended framing delimiters that allow open ended non-enveloped additive asynchronous transmission of information. But with one exception the core internet streaming protocols are binary. Because well binary is more efficient. But for the same reasons that in spite of its relative gross inefficiency, text domain representation of block delimited data structures (JSON) revolutionized protocol development for non-streaming protocols, we believe that a composable text domain streaming protocol may revolutionize streaming protocol development.  The key feature is that if a stream in text is composable then one may have the considerable advantages of a native text domain representation while enabling convenient lossless conversion at the stream level to a more efficient binary representation. The best of both domains as it were. The composiblity property means that one may convert the text stream to/from a binary stream en mass. It’s a cheap lossless data compression/decompression feature.  
+
+  
+Analogously one reason MsgPack and now CBOR have been gaining adoption is that they provide 20-30% compression over JSON but are easily converted to and from JSON. So although they are not human readable they are composable with JSON. One can round trip with no loss between the formats. So processing back ends that benefit from this 30% data compression advantage may seamlessly switch back and forth between MsgPack or CBOR and JSON. They realize the compression efficiency of the binary domain representation while retaining composability to/from the native text domain representation.
+
+ 
+As mentioned above there is one exception to the fact that legacy streaming protocols are native binary domain only. This exception is a family of native text domain streaming protocols of which the SysLog protocol, IETF RFC-5424 [[22]][[23]], is the prime example. This family includes other text domain, monitoring, audit compliance and computer security based logging protocols [[24]].  These typically use human readable/printable line (white space) delimited streams of structured machine interpretable parsable text. One can convert or compress a Syslog stream into a binary format stream. However, human readability is paramount, therefore the native domain for Syslog is text. The core feature of Syslog like protocols is that they enable the asynchronous streaming of events related to system operation. The set of events is open ended. One may take a snap-shot of the events but inherently the data is best represented, transmitted and stored as an append only event log. Text based streaming protocols, like Syslog, however have very limited composability with binary, usually nothing higher than at a line by line basis so do not benefit from full composability. 
+
+There are obviously similarities between Syslogs and KERI because of the append only event log. This motivates revisiting text streaming protocol design in general, especially with the view of more completely realizing the benefits of total composabilty with an equivalent binary streaming representation.  
+
+But unlike Syslogs which are by-in-large insecure, KERI is a security first protocol. KERI's content is largely cryptographic material and of that digital signatures are by far the most prevalent type. Although less prevalent, public keys, digests and self-certifying identifiers derived from public keys are also vitally important crypto material types in KERI. As described above the most appropriate representation of cryptographic material in the text domain is Base64 with a stable prepended Base64 derivation code.  Protocols in the identity world are by-in-large expressed in the text domain using JSON. These protocols include raw cryptographic material in JSON friendly form usually with either Base64 or Base58. However as discussed above, JSON is incompatible with streaming. Although, embedding JSON within some other streaming protocol that manages the framing of the embedded JSON is possible it is not optimal. JSON is fundamentally a close ended data envelope. At a very fundamental level this is a representation scheme that is diametrically incoherent with the open ended streaming of asynchronous events. We need something better. That something better is a native text domain streaming protocol that supports the conveyance of cryptographic information in a secure manner and is composable to the binary domain to gain transmission efficiency when needed.  The former sentence succinctly expresses the primary goals of KERI's streaming protocol design. This makes composability between the native text and compact binary domains an essential feature. 
+
+### Auditable Secure Text Streams  
+
+The seminal use case for KERI's secure text streaming protocol may be a family of use cases that combine security, legal, and archival requirements. This family include legally binding electronically signed documents and document streams, compliance logs, and audit trails. These all may be very important adoption vectors for KERI. Of the three requirements, security, legal, and archival, let's first start with the latter and work backwards. 
+
+#### Preservation
+
+The ISO ISO 14641:2018 standard for the preservation of electronic documents, lists four important features of a legally defensible archive [[33]][[34]]. These are long-term preservation, data integrity, data security, and traceability. A KERI Key Event Receipt Log (KERL) is already in a form that provides, to a large extent, data integrity, data security, and traceability. All that is needed is to ensure long-term preservation capability. The standard formats for long-term document archival are by-in-large text based (with some exceptions) [[30]]. With PDF/A being the primary preferred format and ASCII text as the secondary preferred format [[30]]. PDF/A (ISO-19005-1) is the archival version of PDF with some restrictions to constrain the inclusion of various types of non-textual information [[32]].  PDF is based on PostScript, a text language [[31]]. PDf can be entirely represented using characters from the visible printable ASCII characters set [[31]]. PDF/A guarantees that the document text is extractable and that the logical structure and content of the integrated text material remain intact [[32]]. What this means is that a KERI event log stream in a native text format is inherently compatible with archival requirements. Indeed because a KERL text stream with composition operators only uses the Base64URL character set, that is, 
+```regex
+[A-Z,a-z,0-9,-,_]
+```
+then any of the other characters in the ASCII set may be used to losslessly annotate a KERI text event stream. These include white space characters. Primitives and groups of framed primitives within the text KERL could then be line delimited and white spaced and comments added using the "#" symbol for example. A text parser could easily strip all non Base-64 characters, line delimiters and comments to reconstitute the KERL stream which could then be converted en mass for transmission. The archivist never need access or convert to the raw binary format. In other words the archivist may always stay in either the T or S domains and never need convert to the R domain. 
+
+There is one complication. Although KERI attachments have an ASCII text compliant representation, KERI message data may not. Serialized KERI message data may be in either JSON, CBOR or MsgPack. The former, JSON, is ASCII text but the latter two are not ASCII text. However the non ASCII bytes in CBOR or MsgPack serializations may be expressed using a more verbose (compared to Base64) escaped text representation. This requires breaking any KERL stream into streamlets at message boundaries. To clarify, a streamlet is a message followed by attachments. As mentioned above, however, a work item is to define a composable Base64 representation for KERI messages. When messages are represented in composable Base64 then a KERL stream would not have to be broken into streamlets at message boundaries.   
+
+A text domain KERL could be tunneled via a Syslog. Syslog events may include structured data. Syslog compliant structured data must be 7-bit ASCII text [[22]]. A Syslog with embedded KERL events and attachments could be considered an annotated KERL. Similarly, a PDF/A document with embedded KERL may be described as an annotated text format.
+
+To restate, with a text domain streaming representation for a KERL, a legally defensible archive that includes KERLs never need to ever access the raw binary, (dc, rm) for archival purposes but benefits from conversion to streaming binary, qb2, for streaming to/from the archival format, qb64.
+
+#### Legal Digital Signatures
+
+KERI's main purpose is to securely establish control authority over a self-certifying identifier. Control authority is held by the entity that controls the associated private keys belonging to a set of asymmetric (public, private) key pairs. Establishment of control authority is provided by cryptographically verifiable proof of key state, that is, a proof that a given set of key pairs are the authoritative ones. This proof is expressed as a KERI KERL (Key Event Receipt Log) which is a hash chained signed data structure.  In KERI parlance, the holder of the authoritative private keys is the *controller* of the associated identifier.
+
+When a set of legally defined conditions are met, a cryptographic digital signature based on asymmetric key pairs like the ones KERI uses has legal standing. In other words the key pairs used to control a KERI self-certifying identifier may also be used to create legally binding electronic signatures on electronic documents.
+
+The most relevant condition (to KERI) that a legally binding signature must satisfy is proof or assurance that the entity creating the electronic signature is also the entity that is the controller of the associated private keys. A KERI KERL may be used to support that proof or assurance. An annoted text domain KERL could be attached to the signed legal document as an appendix or provided to an electronic signature notary. This text based annotated KERL appendix could be archived with all the associated legal documents. This greatly facilitate the broader adoption of electronic signatures and KERI. This could also help reduce trust transaction costs for the authentic data economy.
+
+The relevant legislation for legally compliant electronic signatures are the USA Electronic Signatures in Global and National Commerce Act (ESIGN), the USA Uniform Eletronic Transactions Act (UETA) and the
+EU Regulation for Electronic Identification and Electronic Trust Services (eIDAS) [[27]][[28]][[29]]. The legislation have similar conditions at least those relevant to KERI. But as an illustrative example let's consider eIDAS.
 
 
+> Legal effects of eSignatures.
+> 
+> An advanced eSignature based on a qualified certificate satisfies the legal requirements of a signature in relation to data in electronic form in the same way as a handwritten signature satisfies those requirements in relation to paper-based data. For convenience, this type of signature can be called a ‘qualified eSignature’.  It is also admissible as evidence in legal proceedings. An advanced electronic signature, meets the following requirements: it is uniquely linked to the signatory; it is capable of identifying the signatory; it is created using means that signatories can maintain under their sole control; it is linked to the electronic document to be authenticated. This is to ensure that any subsequent change in that document is detectable.
+
+The unique signatory identification and sole control conditions are closely aligned with KERI's inherent capability to provide proof of control authority over an identifier via a KERL.
+
+> Liability of qualified eSignatures.
+> 
+> EU countries must ensure that a certification-service provider which issues a qualified certificate takes certain responsibilities. These include liability for damages in regard to any person or entity who reasonably relies on the certificate for: the accuracy of all information in the qualified certificate at the time of its issue, the fact that the certificate contains all the details prescribed for a qualified certificate at the time of its issue, and that the signatory identified in the certificate is the person to whom it was issued.
+
+A certification-service provider is a type of notary. A certification service provider may be considered as a special type of judge in the KERI parlance. A W3C verifiable credential (VC) issued by a KERI identified issuer (notary) and to a KERI identified issuee (signatory), that certifies a signature by the signatory on a document may be a prime use case for KERI. It would appear that a KERI signatory plus an appropriate notarizing VC may qualify as a legal signature under this legislation. In such a case, text domain archivable KERLs could be attached to provide proof of control over the associated identifiers and key pairs not only of the signatory, but the notary, the certificate, and the signed document itself. KERI's features have the potential to make e-signing universal for all transactions.
+
+Recall that in KERI, the controller of an identifier via its authoritative controlling key pairs is solely responsible for event creation and ordering and commits to that via non-repudiable digital signatures on the events. This is compatible with the legal requirement for sole-control. A shared distributed ledger, on the other hand, may not impose equivalent liability because the controller using a ledger is not solely responsible for event creation and event ordering and may not therefore similarly establish sole-control. Access to the shared ledger is via some other set of key-pairs not those controlling the identifier. Thus lack of proof of sole control over the private keys for identifiers established on a shared ledger may invalidate the legal status for liability under the legislation.
+
+#### Audit Trails
+
+In general data integrity with non-repudiation is an important requirement in compliance audits. A simpler way of describing that requirement is provenance. An audit log is used to provenance something. An annotated text domain KERL could be used to support a securely attributed tamper evident archival audit trail [[24]][[25]][[26]]. Composability would allow archival in streaming text form while also enabling rapid transmission en mass in streaming binary form.
 
 
+For example the Electronic Code of Federal Regulations: Electronic Signatures (E-CFR) regulation requires audit trails on electronic data including nonredudiable attribution via digital signatures. Relevant clauses are provided below as follows [[25]]:
+
+> E-CFR
+> 
+> (e) Use of secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records. Record changes shall not obscure previously recorded information. Such audit trail documentation shall be retained for a period at least as long as that required for the subject electronic records and shall be available for agency review and copying.
+> 
+> (f) Use of operational system checks to enforce permitted sequencing of steps and events, as appropriate.
+> 
+> (g) Use of authority checks to ensure that only authorized individuals can use the system, electronically sign a record, access the operation or computer system input or output device, alter a record, or perform the operation at hand.
+> 
+> (j) The establishment of, and adherence to, written policies that hold individuals accountable and responsible for actions initiated under their electronic signatures, in order to deter record and signature falsification.
+
+The Alliance for Telecommunications Industry Solutions (ATIS ) provides various definitions for audit trail as follows [[26]]:
+
+> A record of both completed and attempted accesses and service. Data in the form of a logical path linking a sequence of events, used to trace the transactions that have affected the contents of a record. Chronological record of system activities to enable the reconstruction and examination of the sequence of events and/or changes in an event.  The set of records generated by a system in response to accounting operations, providing the basis for audit. A set of records that collectively provide documentary evidence of processing used to aid in tracing from original transactions forward to related records and reports, and/or backwards from records and reports to their component source transactions.
+
+KERI supports secure attribution via non-repudiable signatures on any data in such a compliance log. The proof of control authority over such signatures is provided via a KERL. The key events in the KERL may be interspersed in the audit trail so that the timing of key events that rotate keys may be correlated to the audit log signed data. The audit trail may be viewed as an annotated KERL. Moreover, if the auditable data is anchored to the KERL itself, then that anchored data may be interspersed with the associated KEY events that establish control over the signatures on the auditable data itself. A text processor could extract the KERL from any archived audit trail and then convert it to streaming binary for compact transmission to a processor to perform the cryptographic verification operations. This provides efficient scalable provenance.
 
 
+### Summary
+
+The foregoing examples illustrate why one might consider composability of KERLs between the streaming text and streaming binary domains an essential feature of KERI that better enables the authentic data economy.
 
 
 
@@ -481,6 +569,59 @@ A 21st Century Dream
 [21]: Bitcoin pay-to-script-hash  
 
 [21]: https://en.bitcoin.it/wiki/Pay_to_script_hash  
+
+[22]. IETF Syslog Protocol RFC-5424   
+
+[22]: https://www.rfc-editor.org/rfc/rfc5424.txt  
+
+[23]. Syslog Tutorial  
+
+[23]: https://stackify.com/syslog-101/  
+
+[24]. Audit Trail
+
+[24]: https://en.wikipedia.org/wiki/Audit_trail
+
+[25]. E-CFR Electronic Code of Federal Regulations: Electronic Signatures
+
+[25]: https://web.archive.org/web/20100608090316/http://ecfr.gpoaccess.gov/cgi/t/text/text-idx?c=ecfr&sid=3094bb76639c37239557767756fd7878&rgn=div5&view=text&node=21%3A1.0.1.1.7&idno=21
+
+[26]. ATIS Alliance for Telecommunications Industry Solutions: Audit Trail  
+
+[26]: https://web.archive.org/web/20130313232104/http://www.atis.org/glossary/definition.aspx?id=5572  
+
+[27]. Electronic Signatures and the Law.
+
+[27]: https://en.wikipedia.org/wiki/Electronic_signatures_and_law
+
+[28]. Legality of Electronic Signatures.  
+
+[28]. https://acrobat.adobe.com/us/en/sign/compliance/electronic-signature-legality.html  
+
+[29]. Legal Guide to Electronic Signatures.
+
+[29]: https://www.adobe.com/content/dam/dx-dc/pdf/ue/adobe-sign-us-guide-e-signatures-wp-ue.pdf
+
+[30]. Smithsonian Preservation Formats  
+
+[30]: https://siarchives.si.edu/what-we-do/digital-curation/recommended-preservation-formats-electronic-records  
+
+[31]. PDF Document Format  
+
+[31]. https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf  
+
+[32]. PDF/A ISO-19005-1 The Standard for Long-term Archiving  
+
+[32]: https://www.pdfa.org/wp-content/until2016_uploads/2011/08/PDFA_The-Basics_A-new-standard-for-long-term-archiving.pdf  
+
+[33]. Legally Defensible Archiving  
+
+[33]: https://www.netgovern.com/blog-post/compliance/four-key-requirements-legally-defensible-archive  
+
+[34]. ISO 14641:2018  Design and operation of an information system for the preservation of electronic documents.  
+
+[34]: https://www.iso.org/standard/74338.html  
+
 
 
 ## Notes:
