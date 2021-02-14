@@ -352,10 +352,10 @@ The current count code table has two entries in it. A newly proposed expanded ta
 |       **-D***XX* | Count of attached qualified Base64 transferable identifier receipt quarlets    |         4,095 |          4 |         3 |
 |       **-x***XX* | Count of attached qualified Base64 groups or primitives in group               |         4,095 |          4 |         3 |
 |       **-y***XX* | Count of attached qualified Base64 groups or primitives in message             |         4,095 |          4 |         3 |
-|       **-z***XX* | Count of attached grouped crypto material qualified Base64 characters          |         4,095 |          4 |         3 |
+|       **-z***XX* | Count of attached grouped crypto material qualified Base64 4 char quadlets     |         4,095 |          4 |         3 |
 |      **-0z***XX* | Count of attached Base64 characters                                            |         4,095 |          5 |         * |
 |     **-1z***XXX* | Count of attached Base64 characters                                            |       262,143 |          6 |         * |
-|   **-2z***XXXXX* | Count of attached grouped crypto material qualified Base64 characters          | 1,073,741,823 |          8 |         6 |
+|   **-2z***XXXXX* | Count of attached grouped crypto material qualified Base64 4 char quadlets     | 1,073,741,823 |          8 |         6 |
 
 
 Italicized *XX* or *XXXXX* in the count codes represent variables to be replaced with Base64 equivalent of the actual count. The "*" means full length
