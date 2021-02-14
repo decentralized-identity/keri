@@ -349,7 +349,7 @@ The current count code table has two entries in it. A newly proposed expanded ta
 |       **-A***XX* | Count of attached qualified Base64 indexed controller signatures               |         4,095 |          4 |         3 |
 |       **-B***XX* | Count of attached qualified Base64 indexed witness signatures                  |         4,095 |          4 |         3 |
 |       **-C***XX* | Count of attached qualified Base64 nontransferable identifier receipt couplets |         4,095 |          4 |         3 |
-|       **-D***XX* | Count of attached qualified Base64 transferable identifier receipt quadlets    |         4,095 |          4 |         3 |
+|       **-D***XX* | Count of attached qualified Base64 transferable identifier receipt quarlets    |         4,095 |          4 |         3 |
 |       **-x***XX* | Count of attached qualified Base64 groups or primitives in group               |         4,095 |          4 |         3 |
 |       **-y***XX* | Count of attached qualified Base64 groups or primitives in message             |         4,095 |          4 |         3 |
 |       **-z***XX* | Count of attached grouped crypto material qualified Base64 characters          |         4,095 |          4 |         3 |
@@ -366,7 +366,7 @@ The expanded table includes framing codes for full replay of events from a KEL w
 1) Indexed controller signatures (existing)  
 2) Indexed witness signatures (new)  
 3) Nontransferable identifier receipt couplets (new)  
-4) Transferable identifier receipt quadlets (new)  
+4) Transferable identifier receipt quarlets (new)  
 5) Composable groups of groups or primitives (new)
 6) Composable groups or primitives in a messages, not JSON, CBOR, or MGPK (new)  
 7) Byte/Character counts of composable groups for pipelining and concurrent stream processing (new)  
