@@ -346,29 +346,31 @@ The current count code table has two entries in it. A newly proposed expanded ta
 
 | Count Code | Description                                                                    | Max Count     | Chars qb64 | Bytes qb2 |
 |:----------:|--------------------------------------------------------------------------------|---------------|------------|-----------|
-|       **-A**## | Count of attached qualified Base64 indexed controller signatures               |         4,095 |          4 |         3 |
-|       **-B**## | Count of attached qualified Base64 indexed witness signatures                  |         4,095 |          4 |         3 |
-|       **-C**## | Count of attached qualified Base64 nontransferable identifier receipt couples  |         4,095 |          4 |         3 |
-|       **-D**## | Count of attached qualified Base64 transferable identifier receipt quadruples  |         4,095 |          4 |         3 |
-|       **-V**## | Count of qualified Base64 groups or primitives in group                        |         4,095 |          4 |         3 |
-|       **-W**## | Count of qualified Base64 groups or primitives in message data                 |         4,095 |          4 |         3 |
-|       **-X**## | Count of total attached grouped material qualified Base64 4 char quadlets      |         4,095 |          4 |         3 |
-|       **-Y**## | Count of total message data grouped material qualified Base64 4 char quadlets  |         4,095 |          4 |         3 |
-|       **-Z**## | Count of grouped material qualified Base64 4 char quadlets                     |         4,095 |          4 |         3 |
-|       **-a**## | Count of anchor seal groups in list                                            |         4,095 |          4 |         3 |
-|       **-c**## | Count of config traits (each trait is is a 4 char quadlet)                     |         4,095 |          4 |         3 |
-|       **-d**## | Count of digest seal Base64 four char quadlets in digest (d)                   |         4,095 |          4 |         3 |
-|       **-e**## | Count of event seal Base64 four char quadlets in triple of (i, s, d)           |         4,095 |          4 |         3 |
-|       **-k**## | Count of keys in list                                                          |         4,095 |          4 |         3 |
-|       **-l**## | Count of location seal Base64 four char quadlets in quadruple of (i, s, t, p)  |         4,095 |          4 |         3 |
-|       **-r**## | Count of root digest seal Base64 four char quadlets in  root digest (rd)       |         4,095 |          4 |         3 |
-|       **-w**## | Count of witnesses in list                                                     |         4,095 |          4 |         3 |
-|   **-2V**##### | Count of qualified Base64 groups or primitives in group                        | 1,073,741,823 |          8 |         6 |
-|   **-2W**##### | Count of qualified Base64 groups or primitives in message data                 | 1,073,741,823 |          8 |         6 |
-|   **-2X**##### | Count of total attached grouped material qualified Base64 4 char quadlets      | 1,073,741,823 |          8 |         6 |
-|   **-2Y**##### | Count of total message data grouped material qualified Base64 4 char quadlets  | 1,073,741,823 |          8 |         6 |
-|   **-2Z**##### | Count of grouped material qualified Base64 4 char quadlets                     | 1,073,741,823 |          8 |         6 |
-|   **-2a**##### | Count of anchor seals  (seal groups in list)                                   | 1,073,741,823 |          8 |         6 |
+|       **-A**## | Count of attached qualified Base64 indexed controller signatures                   |         4,095 |          4 |         3 |
+|       **-B**## | Count of attached qualified Base64 indexed witness signatures                      |         4,095 |          4 |         3 |
+|       **-C**## | Count of attached qualified Base64 nontransferable identifier receipt couples      |         4,095 |          4 |         3 |
+|       **-D**## | Count of attached qualified Base64 transferable identifier receipt quadruples      |         4,095 |          4 |         3 |
+|       **-U**## | Count of qualified Base64 groups or primitives in message data                     |         4,095 |          4 |         3 |
+|       **-V**## | Count of total attached grouped material qualified Base64 4 char quadlets          |         4,095 |          4 |         3 |
+|       **-W**## | Count of total grouped message data material qualified Base64 4 char quadlets      |         4,095 |          4 |         3 |
+|       **-X**## | Count of total grouped message data + attachments qualified Base64 4 char quadlets |         4,095 |          4 |         3 |
+|       **-Y**## | Count of qualified Base64 groups or primitives in group (context dependent)        |         4,095 |          4 |         3 |
+|       **-Z**## | Count of grouped material qualified Base64 4 char quadlets (context dependent)     |         4,095 |          4 |         3 |
+|       **-a**## | Count of anchor seal groups in list                                                |         4,095 |          4 |         3 |
+|       **-c**## | Count of config traits (each trait is is a 4 char quadlet)                         |         4,095 |          4 |         3 |
+|       **-d**## | Count of digest seal Base64 four char quadlets in digest (d)                       |         4,095 |          4 |         3 |
+|       **-e**## | Count of event seal Base64 four char quadlets in triple of (i, s, d)               |         4,095 |          4 |         3 |
+|       **-k**## | Count of keys in list                                                              |         4,095 |          4 |         3 |
+|       **-l**## | Count of location seal Base64 four char quadlets in quadruple of (i, s, t, p)      |         4,095 |          4 |         3 |
+|       **-r**## | Count of root digest seal Base64 four char quadlets in  root digest (rd)           |         4,095 |          4 |         3 |
+|       **-w**## | Count of witnesses in list                                                         |         4,095 |          4 |         3 |
+|   **-2U**##### | Count of qualified Base64 groups or primitives in message data                     | 1,073,741,823 |          8 |         6 |
+|   **-2V**##### | Count of total attached grouped material qualified Base64 4 char quadlets          | 1,073,741,823 |          8 |         6 |
+|   **-2W**##### | Count of total message data grouped material qualified Base64 4 char quadlets      | 1,073,741,823 |          8 |         6 |
+|   **-2X**##### | Count of total group message data + attachments qualified Base64 4 char quadlets   | 1,073,741,823 |          8 |         6 |
+|   **-2Y**##### | Count of qualified Base64 groups or primitives in group (context dependent)        | 1,073,741,823 |          8 |         6 |
+|   **-2Z**##### | Count of grouped material qualified Base64 4 char quadlets (context dependent)     | 1,073,741,823 |          8 |         6 |
+|   **-2a**##### | Count of anchor seals  (seal groups in list)                                       | 1,073,741,823 |          8 |         6 |
 
 
 The pound groups ## or#####* in the count codes represent variables to be replaced with Base64 expression of the actual count. Count codes may be stacked to enable concurrent processing. Where first code in stack provides total quadlet character count for the group given by the following group count. For example **-Z*##***-C**## or **-Z**##**-w**##
