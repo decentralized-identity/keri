@@ -364,13 +364,13 @@ The current count code table has two entries in it. A newly proposed expanded ta
 |       **-l**## | Count of location seal Base64 four char quadlets in quadruple of (i, s, t, p)      |         4,095 |          4 |         3 |
 |       **-r**## | Count of root digest seal Base64 four char quadlets in  root digest (rd)           |         4,095 |          4 |         3 |
 |       **-w**## | Count of witnesses in list                                                         |         4,095 |          4 |         3 |
-|   **-2U**##### | Count of qualified Base64 groups or primitives in message data                     | 1,073,741,823 |          8 |         6 |
-|   **-2V**##### | Count of total attached grouped material qualified Base64 4 char quadlets          | 1,073,741,823 |          8 |         6 |
-|   **-2W**##### | Count of total message data grouped material qualified Base64 4 char quadlets      | 1,073,741,823 |          8 |         6 |
-|   **-2X**##### | Count of total group message data + attachments qualified Base64 4 char quadlets   | 1,073,741,823 |          8 |         6 |
-|   **-2Y**##### | Count of qualified Base64 groups or primitives in group (context dependent)        | 1,073,741,823 |          8 |         6 |
-|   **-2Z**##### | Count of grouped material qualified Base64 4 char quadlets (context dependent)     | 1,073,741,823 |          8 |         6 |
-|   **-2a**##### | Count of anchor seals  (seal groups in list)                                       | 1,073,741,823 |          8 |         6 |
+|   **-0U**##### | Count of qualified Base64 groups or primitives in message data                     | 1,073,741,823 |          8 |         6 |
+|   **-0V**##### | Count of total attached grouped material qualified Base64 4 char quadlets          | 1,073,741,823 |          8 |         6 |
+|   **-0W**##### | Count of total message data grouped material qualified Base64 4 char quadlets      | 1,073,741,823 |          8 |         6 |
+|   **-0X**##### | Count of total group message data + attachments qualified Base64 4 char quadlets   | 1,073,741,823 |          8 |         6 |
+|   **-0Y**##### | Count of qualified Base64 groups or primitives in group (context dependent)        | 1,073,741,823 |          8 |         6 |
+|   **-0Z**##### | Count of grouped material qualified Base64 4 char quadlets (context dependent)     | 1,073,741,823 |          8 |         6 |
+|   **-0a**##### | Count of anchor seals  (seal groups in list)                                       | 1,073,741,823 |          8 |         6 |
 
 
 The pound groups ## or#####* in the count codes represent variables to be replaced with Base64 expression of the actual count. Count codes may be stacked to enable concurrent processing. Where first code in stack provides total quadlet character count for the group given by the following group count. For example **-Z*##***-C**## or **-Z**##**-w**##
@@ -503,6 +503,7 @@ The foregoing examples illustrate why one might consider composability of KERLs 
 [1]. Smith, S. M., "Key Event Receipt Infrastructure (KERI) Design"  
 
 [1]: https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf  
+
 [2]. URI Standard RFC3986  
 
 [2]: https://tools.ietf.org/html/rfc3986  
