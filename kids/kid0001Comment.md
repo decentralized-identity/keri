@@ -313,9 +313,9 @@ The easy solution is to use a framing code before each serialized message data m
 
 Lets examine the start bits for JSON, CBOR, and MGPK encoded mapping objects to see if this is even possible [[16]][[17]][[18]].  
 
-Amongst the codes for mapping objects in the three serialization only the first three bits are fixed and not dependent on mapping size. In JSON a serialized mapping object always starts with "{". This is encoded as 0x7b. the first three bits are 0b011. In CBOR the first three bits of the major type of a serialized mapping object are 0b101. In MsgPack there are three different mapping object codes. The FixMap code starts with 0b100. Both the Map16 code and Map32 code both start with 0b110.
+Amongst the codes for mapping objects in the three serialization only the first three bits are fixed and not dependent on mapping size. In JSON a serialized mapping object always starts with "{". This is encoded as 0x7b. the first three bits are 0b011. In CBOR the first three bits of the major type of a serialized mapping object are 0b101. In MsgPack there are three different mapping object codes. The FixMap code starts with `0b100`. Both the Map16 code and Map32 code both start with `0b110`.
 
-So we have the set of used tritet start bits (3 bits) in numeric order of 0b011, 0b100, 0b101, and 0b110. This leaves 0b000, 0b001, 0b010, and 0b111 available to use for framing code start bits. In Base64 there are two codes that satisfy our constraints. These are "-" and "_". The dash character is encoded as 0x2d. Its first three bits are 0b001. The underscore character is encoded as 0x5f. Its first three bits are 0b010. Both of this are distinct from the first three bits of any of the JSON, CBOR, and MGPK encodings. Moreover the first three bits of the corresponding Base64 binary encodings of "-" and "_" are both 0b111 which is also distinct from the all the others. Base64 maps "-" to position 62 or 0o76 (octal) and "_" to position 63 or 0o77 (octal). This gives us two different characters we can use for the first character of any framing codes which we gives us two different classes of framing codes. This also provides a BOM like capability to determine if a framing code is expressed in binary or Base64. If a framing code starts with 0b111 then its binary and the parser knows how to convert the first sextet of the framing code. If on the other hand it starts with either 0b001 or 0b010 then its in Base64 and the parser knows how to convert the first character (octet) of the framing code.
+So we have the set of used tritet start bits (3 bits) in numeric order of `0b011`, `0b100`, `0b101`, and `0b110`. This leaves `0b000`, `0b001`, `0b010`, and `0b111` available to use for framing code start bits. In Base64 there are two codes that satisfy our constraints. These are `-` and `_`. The dash character is encoded as `0x2d`. Its first three bits are `0b001`. The underscore character is encoded as `0x5f`. Its first three bits are `0b010`. Both of these are distinct from the first three bits of any of the JSON, CBOR, and MGPK encodings. Moreover the first three bits of the corresponding Base64 binary encodings of `-` and `_` are both `0b111` which is also distinct from the all the others. Base64 maps "-" to position 62 or 0o76 (octal) and "_" to position 63 or 0o77 (octal). This gives us two different characters we can use for the first character of any framing codes. This also means we can have two different classes of framing codes. This also provides a BOM like capability to determine if a framing code is expressed in binary or Base64 [[19]]. If a framing code starts with `0b111` then its in binary format, `qb2`, and the parser knows how to convert the first sextet of the framing code. If on the other hand it starts with either `0b001` or `0b010` then its in  text Base64, `qb64`, and the parser likewise knows how to convert the first character (octet) of the framing code.
 
 #### Stream Parsing Rules
 
@@ -338,9 +338,9 @@ This provides an extremely compact and elegant stream parsing formula that gener
 
 ### Framing Codes
 
-There are two families or classes of framing codes. The first class are count codes for composition of groups of crypto material primitives and they all start with the dash, "-", character in Base64. The second class are opcodes and they all start with the underscore, "_", character in Base64. This second class of opcodes are yet to be defined. Their purpose is to provide future support for custom scripted processing and verification of attached signatures. This may include, for example, collective signatures. These codes would enable a compact representation of such a signature processing language. An example of a language that might be encoded this way is the Crypto Construction Language (CCLang) [[20]]. In general these opcodes are meant to provide support for custom processing of attached crypto material with something analogous to Bitcoin's pay-to-script-hash capability [[21]].
+There are two families or classes of framing codes. The first class are count codes for composition of groups of crypto material primitives and they all start with the dash, `-`, character in Base64. The second class are opcodes and they all start with the underscore, `_`, character in Base64. This second class, opcodes, are yet to be defined. Their purpose is to provide future support for custom scripted processing and verification of attached signatures or other related cryptographic material. This may include, for example, collective or group signatures [[35]][[36]][[37]]. These codes would enable a compact representation of such a signature processing language. An example of a language that might be encoded this way is the Crypto Construction Language (CCLang) [[20]]. In general these opcodes are reserved to provide future support for custom processing of attached crypto material with something analogous to Bitcoin's pay-to-script-hash capability [[21]].
 
-The current count code table has two entries in it. A newly proposed expanded table of count codes (see below), keeps the first code from the old table but removes the second code. The old second code function is now obsolete. The second code specified a domain switch to streaming binary  (qb2) of the attached counted group. However the revised stream start/restart rules described above allow a parser to use the domain that the count code appears in, text Base64 qb64 or binary base2 qb2, to indicate the domain that the attached group appears in. The attached group's domain must always match the preceding count code's domain. This removes the need for domain specific codes that switch domains. A stream may switch domains mid stream but a group may not switch domains mid-group. This would break composability of the group. So a domain switching count code could only appear at the top level of the stream anyway and the new stream restarts rules allow domain switching at that level without special codes. This simplifies the table and removes complexity from the parsing logic without loss of usefulness. To restate, removal of domain switching codes is enabled by the fact that a stream parser can unambiguously detect which domain a composition code is encoded in, eitherqb64 or qb2. The Table below is for composition in the qb64 domain. An equivalent binary (octal) table would allow direct composition in the qb2 domain. 
+The current count code table has two entries in it. A newly proposed expanded table of count codes (see below), keeps the first code from the old table but removes the second code. The old second code function is now obsolete. The second code specified a domain switch to streaming binary, `qb2`, of the attached counted group. However the revised stream start/restart rules described above allow a parser to use the domain that the count code appears in, text Base64, `qb64`, or binary base2, `qb2`, to indicate the domain that the attached group much also appear in. To clarify, the attached group's domain, `qb64` or `qb2`, must always match the preceding count code's domain. This removes the need for domain specific codes that switch domains. A stream may switch domains mid stream but a group may not switch domains mid-group. Mid group switching  would break composability of the group. A special domain switching count code could only appear at the top level of a stream anyway, but the new stream restart rules now allow domain switching at the top level without special domain switching codes. This simplifies the table and removes complexity from the parsing logic without loss of generality. To restate, removal of domain switching codes is enabled by the fact that with the new stream restart rules, a stream parser can unambiguously detect which domain a composition code is encoded in, either, `qb64` or `qb2`. The Table below is for composition in the `qb64` domain. An equivalent dual binary table of sextets (octal)  would allow direct composition in the `qb2` domain. 
 
 
 
@@ -373,9 +373,9 @@ The current count code table has two entries in it. A newly proposed expanded ta
 |   **-0a**##### | Count of anchor seals  (seal groups in list)                                       | 1,073,741,823 |          8 |         6 |
 
 
-The pound groups ## or#####* in the count codes represent variables to be replaced with Base64 expression of the actual count. Count codes may be stacked to enable concurrent processing. Where first code in stack provides total quadlet character count for the group given by the following group count. For example **-Z*##***-C**## or **-Z**##**-w**##
+The pound groups `##` or `#####` in the count codes represent variables to be replaced with a Base64 expression of the actual count. Count codes may be stacked to enable concurrent processing. The first code in each stack provides the total quadlet character count for the following group given by the following group count. For example `-Z##-C##` or `-Z##-w##`
 
-The expanded table includes framing codes for full replay of events from a KEL with four forms of attached crypto material in both fully qualified Base64 (qb64) and fully qualified base2 (qb2). This will enable all forms of  attached crypto material to be provided in the more compact qb2 form. These are:
+The expanded table includes framing codes for full replay of events from a KEL with four forms of attached crypto material in both fully qualified Base64,  `qb64`, and via composition the equivalent fully qualified base2, `qb2`. This will enable all forms of  attached crypto material to be provided in the more compact `qb2` form by merely converting the stream as a whole from Base64 to binary. These are:
 
 1) Indexed controller signatures (existing)  
 2) Indexed witness signatures (new)  
@@ -637,37 +637,15 @@ A 21st Century Dream
 
 [34]: https://www.iso.org/standard/74338.html  
 
+[35]. IETF Collective Edwards-Curve Digital Signature Algorithm Draft  Proposal
 
+[35]: https://tools.ietf.org/id/draft-ford-cfrg-cosi-00.html
 
-## Notes:
+[36]. "Boneh, Dan; Boyen, Xavier; and Shacham, Hovav "Short Group Signatures" (BBS Signatures)
 
-Latex math to Markdown:  
+[36]: http://ai.stanford.edu/~xb/crypto04a/groupsigs.pdf
 
-https://www.codecogs.com/latex/eqneditor.php  
+[37]. Camenisch, Jan; Drijvers, Manu; and Lehmann, Anja ; "Anonymous Attestation Using the Strong Diffie Hellman Assumption Revisited"  
 
-Latex expressions:
+[37]: https://eprint.iacr.org/2016/663.pdf
 
-x_{}^{t}
-
-x_{}^{s}
-
-x_{}^{t} =T\left ( x_{}^{s} \right )
-
-x_{}^{s} =S\left ( x_{}^{t} \right )
-
-x_{}^{t}+y_{}^{t} =T\left ( x_{}^{s}+y_{}^{s} \right )
-
-x_{}^{s}+y_{}^{s} =S\left ( x_{}^{t}+y_{}^{t} \right )
-
-\sum_{i=0}^{N-1}x_{i}^{}
-
-S\left (\sum_{i=0}^{N-1}x_{i}^{t}  \right ) =\sum_{i=0}^{N-1}x_{i}^{s}
-
-T\left (\sum_{i=0}^{N-1}x_{i}^{s}  \right ) =\sum_{i=0}^{N-1}x_{i}^{t}
-
-
-Tables to Markdown:
-
-https://www.tablesgenerator.com/markdown_tables
-
-https://tableconvert.com
