@@ -19,34 +19,110 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 - direct-mode interop updates post breaking changes
 - replay mode refactor & witness logic rev
 
-## Agenda 16 Feb
+## Agenda 23 Feb
 
 Use Case hour
 - Guest lawyer to help with GDPR appendix to spec?
-- Kid0001Comment updates
-- Recommend reading: Keri versus CT [thread](https://github.com/decentralized-identity/keri/issues/94)
-    - might be helpful for spec authoring? non-normative appendix
-    - cf also [did:orb](https://trustbloc.github.io/did-method-orb/#self-certifying-decentralized-identifiers) - might be good to be able to map their propagation and witnessing terminology to KERI's for public-facing documentation
 
-Tech Talk:
-- Test scripts
-    - worth versioning Python so that test scripts could be commit-specific?
-        - fractionally-weighted signatures and escrow not yet included in scripts
-- Replay logic
-
+Tech Talk hour
+- Interop testing (*cough, cough*)
 
 <summary>
 <details>Minutes</details>
 
 GDPR issues
-``
+```
 Q and A prio 1 General
  If you're using delegated id you have to delete the whole KEL?
  "tombstoning": the network can ask all nodes to ignore/not-process a dead identifier, which might not fulfill the right to erasure (even if it is right to be forgotten)
      - until this question is settled, KELs seem more definitive/compliant erasure
      - erasure corner case: if a legit request for erasure of identifier controlled by requestor comes in, but without keeping a "blocklist" of forgotten identifiers, I can't guarantee I won't replicate that KEL again later
          - Sam: as long as "internal" blacklist doesn't infringe, and erasure is only outward, this would seem to be fine?
-``          
+```      
+
+</summary>
+
+## Agenda 16 Feb
+
+#### Use Case hour
+- ~~Guest lawyer to help with GDPR appendix to spec?~~
+- Kid0001Comment  KID0001  updates  expanded count code table for replay support
+- [Replay Roadmap](https://github.com/decentralized-identity/keri/issues/108)
+    - WG consensus: build B1 and C first in reference implementation, then return to other items in B list
+    - walkthrough of B2-B5
+        - Seth: re: B3, allowlisting: How opinionated should the spec be on controller-witness relationship, i.e., replay mechanics? 
+        - Sam: reference implementation for v1 should be general-purpose, but we can assume that over time, diversity of implementations and use cases will make complex variations on this
+- Recommend reading: Keri versus CT [thread](https://github.com/decentralized-identity/keri/issues/94)
+    - might be helpful for spec authoring? non-normative appendix
+    - cf also [did:orb](https://trustbloc.github.io/did-method-orb/#self-certifying-decentralized-identifiers) - might be good to be able to map their propagation and witnessing terminology to KERI's for public-facing documentation
+
+#### Tech Talk:
+    
+- Kid0001Comment Audit/compliance use-cases section
+    - Composability
+- Sam explains [Kid0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001.md)
+    - counter codes (=count codes) An index code is form of a count code, but counter codes are grouping codes, whereas index code refer to a given primitive, a count or an index.
+    - we use the ordering in the list, which becomes important as soon as we're going to work on witnesses
+    - There a cornercases explained in whitepaper (Section 11.5 Witness Rotations, starting with the paragraph that starts with,  "As an additional protection   ...")
+    
+> Sam: In the next version of the white paper I will create a subsection to better isolate that language. 
+
+> As a note, This (joint confirmed witness rotation) may be an optional feature. It may benefit from adding a unique confirming witness prior threshold to establishment events. It could use as a default the prior threshold from the previous establishment event. However a any validator could choose their own prior confirming threshold. The only requirement is that old honest witnesses are required to also witness the event that removes them as a witness.
+ - Post Quatum level X security + SHA3 discussed by Sam
+ - Sam discusses JSON, CBOR, etc mappings in [Kid0001Comment](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)
+     - KERI supports all of the legal signatures [explained here](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md#legal-digital-signatures
+ )
+     - E-signing: Notaries are liable for digital signatures of their customers. So they want to make sure that customers have full control over the keys that they sign with. So that's why you have to pay for a notarized signature. For KERI this means that signature for the web are a totally different ball game than in the legal field. KERI makes the life easier of the notaries. "Have there been any compromises of keys for this signatory?
+      - defensible audittrail -> "There is no duplicity today". That's where KERI comes in to play a role in the "traditional" adagia in cryptocurrency key management: I can't prove I am the only one controlling the keys to my funds and I can't prove that I've lost control over the funds". KERI says: If you think your keys have been compromised, rotate your keys. And this is exactly why people using ledger based systems like bitcoin or ethereum have a hard time managing their keys: you can't rotate them. The best thing you can do is move the funds around anc chard them.
+
+
+- Test scripts
+    - worth versioning Python so that test scripts could be commit-specific?
+        - fractionally-weighted signatures and escrow not yet included in scripts
+
+
+- Replay logic
+
+
+<summary>
+<details>Minutes</details>
+
+- Replay Roadmap
+    - signature accrual
+    - translating between KERI native format and JWS 
+        + Jolocom does this today?
+        + harder to translate between distinct messaging and streaming; thus TCP as core engine for async engine
+    - Async event verification engine (TCP-native) - more flexible on chunking, partic with escrow
+    - Proposals for [roadmap](https://github.com/decentralized-identity/keri/issues/108):
+        - A. redundant once B1 is implemented?
+        - B1 + C = path of least resistance, unless people need B2-B4
+        - Walkthrough of optional features to turn to after working on C
+            - b2 - qb2 (30% more efficient over the wire versus qb64, which we're doing for now)
+            - b2-2- cloned replay= all events + attachments in first-seen order versus sequence-number order 
+                - Robert: do we need to replay every time? 
+                - Sam: This is more like a bootstrap for propagating KERLs when you don't have confidence in the chain of custody and/or storage situation; if you trust your own storage since inception, no need!
+            - b3 allowlisting 
+                - no allowlist = "permiscuous mode" (aka development/debugging mode)
+                - watchers keep it permiscuous (and accept all the )
+                - Seth: how much is specified in the spec? Can't implementation vary in their allowlist policies or their roles?
+                - Sam: The reference implementations should have this, but we shouldn't overspecify in the specs, as use cases vary on the volume and needs of watcher network, or witness security, etc; for example [#103](https://github.com/decentralized-identity/keri/issues/103) - controller-witness relationships vary, we're just implementing a general-purpose one (future witnessing models, incl witnessing-aaS, could evolve over time)
+            - b4 - composable counter codes + text mode --> qb2, CBOR, etc
+        - A: "Query replay" msg - way for two parties to request a replay from one another (and parameters)
+        - C - needed for interop with existing systems, DIDComm, LibIndy, etc
+            - c1 - Throw a KERI message in any encoding into an empty HTTPS body and set the mime-type and you're good
+            - c2 - other headers
+            - c3 - SSE stream (quick to implement if b1 already built) or web socket response?
+            - response body that is a large JSON envelope (think DID Doc Resolution metadata - big top-level blocks for diff kinds of data: )
+        - What should the spec specify?
+            - query msg and syntax for replay
+            - headers
+            - SSE
+            
+After this we will do witness, watchers, jurors, etc
+                
+A query parameter (message, string) issue has been opened: discusses replay modes and options. -> [Query Mode Format](https://github.com/decentralized-identity/keri/issues/109)
+    
+
 
 </summary>
 
