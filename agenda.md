@@ -22,7 +22,8 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 ## Agenda 23 Feb
 
 Use Case hour
-- Guest lawyer to help with GDPR appendix to spec?
+- Guest solicitor Alex Tweeddale (Spherity GmbH) will be here to discuss GDPR appendix/KID for the spec
+- WG Charter - final edits requested (minor enough to do on the call) --> DocuSign this week?
 
 Tech Talk hour
 - Interop testing (*cough, cough*)
