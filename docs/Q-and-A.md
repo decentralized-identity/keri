@@ -4,7 +4,6 @@
 
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
-
 This document is part one. Part two is [Q-and-A Security](./Q-and-A-Security.md). Both files shares a common [Glossary](./Glossary.md)
 
 Why should you read or step through the Q&A? To get a different angle to the same topic: KERI.
