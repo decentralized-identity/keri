@@ -256,11 +256,20 @@ In brief:
 
 Self-addressing identifiers provide a mechanism for a content addressable database to enforce nonrepudiable unique attribution to the content creator as controller. This binds the content to the creator in the content address. Different creator means different address. This makes confidential (encrypted) content more usable as the content address is bound to the controller from whom a decryption key must be obtained.
 
-## ***Q How can I prevent a direct mode interaction being publicized and breach a controller's privacy?
+## ***Q How can I prevent a direct mode interaction being published and breach a controller's privacy?
 The assumption is that direct mode is meant to be private communication.
 1. There is understanding when you use direct mode that it needs to stay private
 2. There is a possibility to impose a liability, under consent at the time of issuance
 3. There is no way to enforce the KEL from being kept private
+
+## **Q: What is tombstoning and could it help to preserve privacy of identifiers in KERI?
+Tombstoning in Self Sov Identity and DIDs has a very different meaning than in everyday's language (where it means _'the act of jumping in a straight, upright vertical posture into the sea or other body of water from a high jumping platform, such as a cliff, bridge or harbour edge.'_) 
+
+It stems from the development of ledger-based identities like Sovrin. Tombstoning means "Burry the transactions" Because Sovrin is a permissioned ledger, the steward lets you read it - or won't let you read the transactions, depending of the situation whether the subject of the personal information has requested to be forgotten. A steward could say 'see, I've not published the personal information, so I am good.'. 
+For other reasons, `tombstoning` has never been accepted as a viable solution to get rid of the liability issue.
+
+Tombstoning does not apply to KERI because in indirect mode KEL and KERLs will be ambient available and in direct mode their are only to parties involved. If a third party would be involved in direct mode, somebody would breach the understanding that it's private communication by design.
+_(@henkvancann)_
 
 ## What do I need a multi-sig self-addressing identifier for?
 To get even more security in terms of your signing scheme.\
@@ -392,6 +401,10 @@ The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/present
 Witnesses do not make any statement about the content of what is being proved. KERI does not
 enable someone to proof the *veracity* of a statement only the *authenticity* of the statement. {TBW} \
 (_SamMSmith_)
+
+## ***Q: Why does the Witness run in restricted mode?
+It’s not **"first seen"** until it’s fully seen by the whole set of witnesses needed (threshold). In the meanwhile the witness in this instance, has to add an escrow. And wait for the witness receipts coming in. And then accept the KEL.
+_(@henkvancann)_
 
 # Q&A section Watchers
 
