@@ -219,9 +219,12 @@ _(@henkvancann)_
 In the direct mode (peer to peer) KERI can be used to keep identifiers private to the peers or group involved. In the indirect mode all identifiers are public. The privacy of the individual, group or object described by the identifier is weak because anyone can bind and indentifier to a subject anytime and anywhere. Fortunately, this binding is weak too, As soon as controllers and verfiers sign statements / events related to an identifier, that's when the binding gets strong and subjects publicly exposed.\
 _(@henkvancann)_
 
-## Is a KERI identifier GPDR proof?
-KERI enables support for GDPR’s right to be forgotten.\
-{TBW prio 1}\
+## Is a KERI identifier GDPR proof?
+KERI enables support for protection against liability that could stem from gdpr’s right to be forgotten (passive approach) and the right of erase (active). There are two exceptions to the general rule that you have to remove an identifier fro your database, if a subject and / or controller requests removal of an identifier from your database:
+1. As long as you're a party in a transaction involving the identifier that has been revoked, then you can keep that log.
+2. For archival integrity - given that KERI’s whole reason for existence is keep track of duplicity in identity events it is important to know that an identifier has been erased before, because we don't lose that notion. Because somebody could come up with the same identitifier in the future and we wouldn't know that it existed before. 
+
+Beware that most of GDPR rules are there to protect you from being exploited. So you're not being prossecuted or being labelled as a criminal activity. It might only be illegal and somebody could hold you liable for that.
 _(@henkvancann)_
 
 ## What do I need a self-certifying identifier for?
@@ -277,10 +280,6 @@ So that means the only way to know which inception statement is the right one is
 ## Could you give an example of strongly binding the inception statement to the identifier
 This a self-addressing self-certifying identifier (`SASCI`) In this case the identifier itself is derived from the inception statement. Now there can only be one inception statement for this identifier. If you'd change just a single bit, other than the identifier field itself, and it's *different* identifier. You can't have duplicitious inception statements. It's not possible. It locks down at least the  inception part and that help in duplicity detection. There can only be one inception statement to start a duplicity log with. From that point on you can have duplicitous next events, but not before. But it still means the effort it takes has to engage in CreatING duplicity, becomes much harder because for example if you include witnesses in the inception statement then any duplicitous event has to publish through the witnesses, and that adds a barrier. Basically it locks down at least the inception part, You can't change it.
 In some cases it would be useful to be able to strongly bind the inception statement to the identifier and not merely rely on a cryptographically verifiable inception statement for the associated identifier. 
-
-
-
-
 
 ## Why ever go for a basic self-certifying identifier (`SCI`) when KERI offers self addressing SCI (`SASCI`) with a better security guarantee?
 Because there are many applications where you don't want to have to depend on a KEL because a basic SCI is self-certifying without a KEL. It's more light-weight. For example the non-transferable version of a SCI you can still have an inception event so that basically any tracking anybody does there is still a nominal KEL for that identifier so you can look it up that way, discovering everything, there is always a legitimate version of an inception event for every identifier. 
@@ -524,7 +523,7 @@ _...you would be fundamentally arguing that you can record a singular, immutable
 
 Read the answer to [this](#keri-is-basically-a-series-of-pay2publickeyhash-transactions) first.
 
-If you read Szabo's paper on threshold structures, you get security of the same type when ever you use a threshold structure, be it MFA, Multi-Sig, or Distributed consensus. They all are using a combination of multiple relatively weak attack surfaces that must be simulatenously compromised for a successful attack. So multiplying simulatneous weak surfaces = functional equivalent of a stronger attack surface.  So when you look at KERI you see that the security is primarily due to cryptographic strength and the witnesses are not the primary source of security but merely secure one thing, that is the availability of the KEL for an identifier. Not the KEL itself. The KEL iteself is secured by signatures.\
+If you read Szabo's paper on threshold structures, you get security of the same type when ever you use a threshold structure, be it MFA, Multi-Sig, or Distributed consensus. They all are using a combination of multiple relatively weak attack surfaces that must be simulatenously compromised for a successful attack. So multiplying simulatneous weak surfaces = functional equivalent of a stronger attack surface.  So when you look at KERI you see that the security is primarily due to cryptographic strength and the witnesses are not the primary source of security but merely secure one thing, that is the availability of the KEL for an identifier. Not the KEL itself. The KEL iteself is secured by signatures.\
 From a Validator perspective their security is due to duplicity detection. Successful attack against duplicity detection requires an eclipse attack. Ledgers such as bitcoin are also susceptible to eclipse attacks. So in an apples to apples (resistance to eclipse attack) a KERI watcher network of comparable reach (1000's of watchers) would have comparable resistance to an eclipse attack.
 
 #### ***Q: Differences between blockchain-based security and KERI security
