@@ -220,8 +220,8 @@ In the direct mode (peer to peer) KERI can be used to keep identifiers private t
 _(@henkvancann)_
 
 ## Is a KERI identifier GDPR proof?
-KERI enables support for protection against liability that could stem from gdpr’s right to be forgotten (passive approach) and the right of erase (active). There are two exceptions to the general rule that you have to remove an identifier fro your database, if a subject and / or controller requests removal of an identifier from your database:
-1. As long as you're a party in a transaction involving the identifier that has been revoked, then you can keep that log.
+KERI enables support for protection against liability that could stem from gdpr’s right to be forgotten (passive approach) and the right of erasure (active). There are two exceptions to the general rule that you have to remove an identifier from your database, if a subject and / or controller requests so:
+1. As long as you're a party in a transaction involving the identifier that has been revoked, then you can keep that identifier in your log.
 2. For archival integrity - given that KERI’s whole reason for existence is keep track of duplicity in identity events it is important to know that an identifier has been erased before, because we don't lose that notion. Because somebody could come up with the same identitifier in the future and we wouldn't know that it existed before. 
 
 Beware that most of GDPR rules are there to protect you from being exploited. So you're not being prossecuted or being labelled as a criminal activity. It might only be illegal and somebody could hold you liable for that.
@@ -255,6 +255,12 @@ In brief:
 2. confidentiality: a decryption key must be obtained from the controller
 
 Self-addressing identifiers provide a mechanism for a content addressable database to enforce nonrepudiable unique attribution to the content creator as controller. This binds the content to the creator in the content address. Different creator means different address. This makes confidential (encrypted) content more usable as the content address is bound to the controller from whom a decryption key must be obtained.
+
+## ***Q How can I prevent a direct mode interaction being publicized and breach a controller's privacy?
+The assumption is that direct mode is meant to be private communication.
+1. There is understanding when you use direct mode that it needs to stay private
+2. There is a possibility to impose a liability, under consent at the time of issuance
+3. There is no way to enforce the KEL from being kept private
 
 ## What do I need a multi-sig self-addressing identifier for?
 To get even more security in terms of your signing scheme.\
