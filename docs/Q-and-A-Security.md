@@ -220,9 +220,13 @@ In the direct mode (peer to peer) KERI can be used to keep identifiers private t
 _(@henkvancann)_
 
 ## Is a KERI identifier GDPR proof?
-KERI enables support for protection against liability that could stem from gdpr’s right to be forgotten (passive approach) and the right of erasure (active). There are two exceptions to the general rule that you have to remove an identifier from your database, if a subject and / or controller requests so:
+KERI enables support for protection against liability that could stem from gdpr’s right to be forgotten (passive approach) and the right of erasure (active approach). There are two exceptions to the general rule that you have to remove an identifier from your database, if a subject and / or controller requests so:
 1. As long as you're a party in a transaction involving the identifier that has been revoked, then you can keep that identifier in your log.
-2. For archival integrity - given that KERI’s whole reason for existence is keep track of duplicity in identity events it is important to know that an identifier has been erased before, because we don't lose that notion. Because somebody could come up with the same identitifier in the future and we wouldn't know that it existed before. 
+2. For archival integrity - given that KERI’s whole reason for existence is keep track of duplicity in identity events it is important to know that an identifier has been erased before, because we don't lose that notion. Because somebody could come up with the same identitifier in the future and we wouldn't know that it existed before.
+
+Within the assumption of both exceptions KERI complies with the GDPR rules: 
+1. block-list of “deleted” KELs: a reciept of a request for erasure must naturally hold some PII, a two-party interaction might allow this to be recorded.
+2. a need to maintain system integrity/archival purposes can be a reason for maintaining some info right of erasure versus right to be forgotten. This active and passive approach reflects two slightly different interpretations of the same article (which one people use is a hint of their school of thought).
 
 Beware that most of GDPR rules are there to protect you from being exploited. So you're not being prossecuted or being labelled as a criminal activity. It might only be illegal and somebody could hold you liable for that.
 _(@henkvancann)_
