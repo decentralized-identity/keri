@@ -1,18 +1,15 @@
-# KERI Project Work Item
-
-(DIF Identifiers and Discovery WG)
+# KERI Working Group
 
 [![hackmd-github-sync-badge](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ/badge)](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ)
 
 ## Weekly Meeting Page
-``
 This page is for agendas and minutes of the weekly KERI-related work-item meetings of the Identifiers and Discovery (ID) Working Group, who are collaborating on topics related to DIDs and other identifiers. Meeting agendas are listed in reverse chronological order. Meetings will be recorded. This is an IPR-protected meeting, so please refrain from making substantial contributions orally on calls or on github before joining both DIF and the WG. You can get more information from the chairs or at [membership@identity.foundation](mailto:membership@identity.foundation). DIF membership info can be found [here](https://link.medium.com/PCtPmbHJV7).
 
 Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https://bit.ly/dif-calendar))
 
 #### Links: 
-[ID WG Charter](https://bit.ly/DIF-WG-select1) | Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD) |
- Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://keri.one/) | A [note](https://tools.ietf.org/id/draft-knodel-terminology-02.html) on nomenclature used in this spec | Meeting [Recordings](https://docs.google.com/spreadsheets/d/1wgccmMvIImx30qVE9GhRKWWv3vmL2ZyUauuKx3IfRmA/edit#gid=1393617996) | ZOOM [ROOM](https://us02web.zoom.us/j/81492837711?pwd=OU01ZVpYYmdrcGJDNHhUWU5VNDkxdz09) Meeting ID: 873 2130 6589 Password: 293152
+[KERI WG Charter](https://bit.ly/DIF-WG-select1) | Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD) |
+ Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://identity.foundation/working-groups/keri.html) | A [note](https://tools.ietf.org/id/draft-knodel-terminology-02.html) on nomenclature used in this spec | Meeting [Recordings](https://docs.google.com/spreadsheets/d/1wgccmMvIImx30qVE9GhRKWWv3vmL2ZyUauuKx3IfRmA/edit#gid=1393617996) | ZOOM [ROOM](https://us02web.zoom.us/j/81492837711?pwd=OU01ZVpYYmdrcGJDNHhUWU5VNDkxdz09) Meeting ID: 814 9283 7711 Password: 268606
 
 ## Future/Pending Topics
 
