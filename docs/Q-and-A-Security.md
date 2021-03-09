@@ -142,21 +142,29 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 **(@OR13) argues the following:**\
 _In order to share code / we would need shared building blocks. `Sidetree` is built on JWS / JWK. KERI is inventing its own key representation and signature format. These are the lowest level building blocks, so them being different will prevent a lot of potential code reuse._
 
-{TBW prio 2:
+In brief these are the reasons:
 - the **desire to control the entire stack**, and not use anyone else's tooling
 - DID and VC layers are the **appopriate layers for interopability**
 - The **performance/security goals** of KERI drive its design which makes incompatible with Linked Data tooling
-}
 
 ## ***Q: Why did KERI WG decide to reinvent multicodec?
 **(@OR13) argues the following:**\
 _There was a potential for KERI to align with Ceramic / IPFS / IPLD, but that door closed when the KERI WG decided to reinvent multicodec._
 
-{TBW prio 2:
-- the **desire to control the entire stack**, and not use anyone else's tooling
-- DID and VC layers are the **appopriate layers for interopability**
-- The **performance/security goals** of KERI drive its design which makes incompatible with Linked Data tooling
-}
+#### The **desire to control the entire stack**, and not use anyone else's tooling
+Have a look at the [Kid0001Comment] Summary (https://github.com/henkvancann/keri/blob/master/kids/kid0001Comment.md#summary) whey we needed to divert from `multicodec`; which may not be such a stable standard to be breaking or abandoning.
+
+`Multicodec` is a draft standard, a rather chaotic mix of binary and text-basedd entries in a crowd-sourced registry/table. Most implementers are doing a subset of the Multicodec chart anyways, making it even more unstable for interop purposes
+
+To go in further detail why multicodec can't do for KERI: the length of item not included in encoding table - incompatible structure (Multicodec assumes enveloped data structure) Moreover we need KERI's composability (via concatenation) for framing events
+#### DID and VC layers are the appopriate layers for interoperability
+    - streaming support > interop at signature layer?
+#### The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling
+KERI can't use enveloped data formats
+    - enveloped data format -> signatures have to put on/outside the payload
+    - MsgPack and CBOR-> work with block-delimited structures
+    - JWS/JWK - also enveloped, also incompatable with streaming
+    - framing events = better streaming support
 
 ## **Q: Will KERI be interoperable with DID;peer and Sidetree?
 **(@OR13) argues the following:**\
