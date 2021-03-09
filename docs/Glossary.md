@@ -189,6 +189,10 @@ The KES is never signed by the controller of the AID\
 #### KERI Implementation/Improvement Docs
 Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
+####  MultiCodec 
+Is a self-describing multiformat, it wraps other formats with a tiny bit of self-description. A multicodec identifier is both a varint and the code identifying data. See more at [GitHub Multicodec](https://github.com/multiformats/multicodec)
+Multicodec is an agreed-upon codec table. It is designed for use in binary representations, such as keys or identifiers (i.e CID). It is then used as a prefix to identify the data that follows.
+
 #### Level of Assurance
 LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
@@ -254,7 +258,7 @@ Information controlled by an identity. MAY be used to derive _key_s.
 
 <img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="800">
 
-The binding in a Self-Addressing Identifier between inception data and private key can be created by replacing the public key in the identifier prefix with a content digest (hash) of the inception statement (that includes the public key). So it's a further step of commitment to identifier information and also another level of hiding information at face vlaue by one-way encryption beyond the inception statement. However all the information is end-verifiable.
+The binding in a Self-Addressing Identifier between inception data and private key can be created by replacing the public key in the identifier prefix with a content digest (hash) of the inception statement (that includes the public key). So it's a further step of commitment to identifier information and also another level of hiding information at face value by one-way encryption beyond the inception statement. However all the information is end-verifiable.
 
 #### Self Certifying Identifier
 In brief: A self-certifying identifier cryptographically binds an identifier to a key-pair.\
