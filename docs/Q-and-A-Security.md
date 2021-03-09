@@ -166,7 +166,13 @@ KERI can't use enveloped data formats
     - JWS/JWK - also enveloped, also incompatable with streaming
     - framing events = better streaming support
 
-## **Q: Will KERI be interoperable with DID;peer and Sidetree?
+## *Q: Will KERI be interoperable with DID:peer and Sidetree?
+You can implement Sidetree with KERI but we can’t implement KERI with Sidetree.\
+Because KERI operates on a lower level.\
+If we were to do that, we have to tunnel KERI identifiers to create to Ledger-entries.\
+(_SamMSmith_)
+
+## ***Q: Will KERI be interoperable with DID:peer and Sidetree?
 **(@OR13) argues the following:**\
 Afaik this ship sailed when KERI decided to define its own event format. I don't think KERI shares any commonality with sidetree or did peer, and it's no longer possible to align them, so while you can start with the same key material, doing similar operations will very quickly result in totally different event structures.
 
