@@ -160,16 +160,17 @@ To go in further detail why multicodec can't do for KERI: the length of item not
 #### DID and VC layers are the appopriate layers for interoperability
 - streaming support > interop at signature layer?
 #### The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling
-KERI can't use enveloped data formats\
+KERI can't use enveloped data formats:
  - enveloped data format -> signatures have to put on/outside the payload
  - MsgPack and CBOR-> work with block-delimited structures
  - JWS/JWK - also enveloped, also incompatable with streaming
  - framing events = better streaming support
+ (@by_caballero and _@henkvancann_)
 
 ## *Q: Will KERI be interoperable with DID:peer and Sidetree?
-You can implement Sidetree with KERI but we can’t implement KERI with Sidetree.\
+You can implement did;peer and Sidetree with KERI but we can’t implement KERI with Sidetree or did:peer.\
 Because KERI operates on a lower level.\
-If we were to do that, we have to tunnel KERI identifiers to create to Ledger-entries.\
+If we were to do that, we have to tunnel KERI identifiers to create corresponding Ledger-entries.\
 (_SamMSmith_)
 
 ## ***Q: Will KERI be interoperable with DID:peer and Sidetree?
