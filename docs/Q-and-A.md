@@ -243,6 +243,16 @@ A [KID](../kids) is focussed on Implementation; "this is how we do it"  We add c
 <img src="../images/trade-space-limitations.png" alt="trade-space-limitations" border="0" width="300">
 {TBW prio 2}
 
+## *Q: Are smart contracts possible with KERI?
+Yes, KERI gives you the security. And by supplying secure state machines. But you have to gather the right transactions yourself.
+
+Ledgers co-mingle secure state machines into one another, Ledger are total ordering. We don’t need totla ordering in KERI. The absence of a ledger  gives us the ability to create totally private smart contracts between Bob and Alice.
+
+You use the KERI Duplicity detection to determine the authoritive key is used at a certain point in time. 
+
+Since March 2021 KERI is a seperate DIF working group and it would possible to create a dedicated project within the working group to research smart contracting with KERI.
+_(@henkvancann)_
+
 # Q&A section Why the internet is broken
 
 ## *Q: Why would the internet be broken?
