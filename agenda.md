@@ -1,15 +1,26 @@
-# KERI Working Group
+# KERI Project Work Item
+
+(DIF Identifiers and Discovery WG)
 
 [![hackmd-github-sync-badge](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ/badge)](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ)
 
 ## Weekly Meeting Page
+``
 This page is for agendas and minutes of the weekly KERI-related work-item meetings of the Identifiers and Discovery (ID) Working Group, who are collaborating on topics related to DIDs and other identifiers. Meeting agendas are listed in reverse chronological order. Meetings will be recorded. This is an IPR-protected meeting, so please refrain from making substantial contributions orally on calls or on github before joining both DIF and the WG. You can get more information from the chairs or at [membership@identity.foundation](mailto:membership@identity.foundation). DIF membership info can be found [here](https://link.medium.com/PCtPmbHJV7).
 
 Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https://bit.ly/dif-calendar))
 
 #### Links: 
-[KERI WG Charter](https://bit.ly/DIF-WG-select1) | Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD) |
- Github Repos:  core , rust, python, javascript, go, and java | Public [website](https://identity.foundation/working-groups/keri.html) | A [note](https://tools.ietf.org/id/draft-knodel-terminology-02.html) on nomenclature used in this spec | Meeting [Recordings](https://docs.google.com/spreadsheets/d/1wgccmMvIImx30qVE9GhRKWWv3vmL2ZyUauuKx3IfRmA/edit#gid=1393617996) | ZOOM [ROOM](https://us02web.zoom.us/j/81492837711?pwd=OU01ZVpYYmdrcGJDNHhUWU5VNDkxdz09) Meeting ID: 814 9283 7711 Password: 268606
+[DIF WG Page](https://identity.foundation/working-groups/keri.html)    
+[ID WG Charter](https://bit.ly/DIF-WG-select1)  
+Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD)  
+Github Repos:  core , rust, python, javascript, go, and java (need to add links here)  
+Publicity [website](https://keri.one/)   
+ A [note](https://tools.ietf.org/id/draft-knodel-terminology-02.html) on nomenclature used in this spec   
+ Meeting [Recordings](https://docs.google.com/spreadsheets/d/1wgccmMvIImx30qVE9GhRKWWv3vmL2ZyUauuKx3IfRmA/edit#gid=1393617996) 
+ 
+ ZOOM [ROOM](https://us02web.zoom.us/j/81492837711?pwd=OU01ZVpYYmdrcGJDNHhUWU5VNDkxdz09) Meeting ID: 814 9283 7711 Passcode: 268606
+ 
 
 ## Future/Pending Topics
 
@@ -17,26 +28,120 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 - replay mode refactor & witness logic
 - interactive authentication mechanism for query protocol
 
+## Agenda March 16
+
+Specification hour:
+- 
+
+Development:
+- Demo tweaks
+    - python demos updated 
+        - Bob demo now requires out of order escrow
+        - Sam demo adds more events (but will break if tested against older demo script)
+        - logging to /vectors/ in the Py version; verbose b64 logging for now, could be a performant stream
+            - annotation could alternate b64-only and non-b64-containing lines to strip out annotations
+
+Misc:
+- transaction logs secured by KERI
+    - as DID doc updates
+    - as smartcontracts
+-  Question about whitepaper paragraph 11.3.1 Out-of-order KAACE, last part:
+> "An escrow cache of unverified out-of-order event provides an opportunity for malicious attackers to send forged event that may fill up the cache as a type of denial of service attack. For this reason escrow caches are typically FIFO (first-in-first-out) where older events are flushed to make room for newer events."
+
+    Question: How does FIFO prevent effective DOS attack?
+
 ## Agenda March 9
 
 
 Zoom Link: https://us02web.zoom.us/j/81492837711?pwd=OU01ZVpYYmdrcGJDNHhUWU5VNDkxdz09
 
-- [ ] [Check prepared answer in Q-and-A](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A-Security.md#q-keri-is-inventing-its-own-key-representation-and-signature-format-why-did-you-do-that)
+- [X] [Check prepared answer in Q-and-A](https://github.com/henkvancann/keri/blob/master/docs/Q-and-A-Security.md#q-keri-is-inventing-its-own-key-representation-and-signature-format-why-did-you-do-that)
 
-Specification:
+Specification Hour:
 
-Query Design Proposal
-
+- [kid0003 prefix derivation process update](https://github.com/decentralized-identity/keri/pull/115)
+- Query Design Proposal: Feedback on [GH](https://github.com/decentralized-identity/keri/issues/109)
+    - Most recent/elaborated version of proposal, synthesizing a LONG thread [here](https://github.com/decentralized-identity/keri/issues/109#issuecomment-791961368)
+- Best-practice for historical/post-rotation verifications
 
 Development:
 
+- first seen mode
+- seq number mode (replay)
+- conjoined mode
 
 
 <details>
 <summary>Minutes: </summary>
+***Q: KERI is inventing its own key representation and signature format. Why did you do that?
+(@OR13) argues the following:
+In order to share code / we would need shared building blocks. Sidetree is built on JWS / JWK. KERI is inventing its own key representation and signature format. These are the lowest level building blocks, so them being different will prevent a lot of potential code reuse.
 
-- 
+{TBW prio 2:
+- the desire to control the entire stack, and not use anyone else's tooling
+    - Kid0001Comment - `multicodec` may not be such a stable standard to be breaking or abandoning...
+        - `multicodec` - draft standard, chaotic mix of binary and text-basedd entries in a crowd-sourced registry/table...
+            - Sam: most implementers are doing a subset of the chart anyways, making it even more unstable for interop purposes
+        - length of item not included in encoding table - incompatible structure (assumed enveloped data structure)
+        - composability (via concatenation) for framing
+- DID and VC layers are the appopriate layers for interoperability
+    - streaming support > interop at signature layer?
+- The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling
+    - enveloped data format - signatures have to put on/outside the payload
+    - MsgPack and CBOR- work with block-delimited structures
+    - JWS/JWK - also enveloped, also incompat with streaming
+        - framing events = better streaming support
+    
+Specification Hour:
+
+- [kid0003 prefix derivation process update](https://github.com/decentralized-identity/keri/pull/115)
+- Query Design Proposal: Feedback on [GH](https://github.com/decentralized-identity/keri/issues/109)
+    - Seth : a little clarification now might save an hour of GH writing: I was trying to get to default behaviors and optional flags for authoritative-only, get-all
+        - DDoS: Flooding a witness with "get-all" requests would be a new DDoS vector, maybe?
+        - Sam: two diff replay modes- dups logged separately (in a DEL); a KEL can't have duplicates, DELs can store traces of a recovery/fork-- replay fork events *in order first seen*, then the recovery events that squash the fork
+        - monotonic date-time on signed requests --> protect query system itself from replay attacks (if non-interactive)
+            - for queries over HTTP, interactive seems a no-brainer; for bare-metal 
+    - Most recent/elaborated version of proposal, synthesizing a LONG thread [here](https://github.com/decentralized-identity/keri/issues/109#issuecomment-791961368)
+
+Best-practice for historical/post-rotation verifications
+- slides from "newest slide deck" [version 2.58](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI_Overview.web.pdf)
+    - tripartite data authenticity model versus bipartite model
+    - per-VC revocation in tripartite model versus revoke-all
+        - kveros, oauth-- revoking key = revoking all tokens derived therefrom (periodic revocation because stale tokens are a security liability)
+            - bearer tokens usually managed on [this model](https://findanyanswer.com/how-does-a-bearer-token-work)
+        - OCaps uses delegated bipartite model (attenuated caps)
+
+![](https://i.imgur.com/bf7zIIw.png)
+
+
+- "open loop split model": presentations not trackable by issuer/source 
+    - versus "closed loop split model"
+    - Charles: smart contract transaction logs? Sam: You bet! Offchain smart contracts?
+        - Each state machine (i.e. smart contract), it's own TxnLog
+        - Juan: Requirements? All smart contract languages created equal? Sam:...
+    - Seth: 
+    - peerDID as CRDT - did doc = registry state (microTxnLog)
+        - Sidetree in KERI : CRUD ops on did docs would just be txns ("can't build keri in sidetree but can build sidetree on keri")
+    - any DID method's primitive operations can be anchored on a transaction log IFF it depends on the KERI security model (would allow for did document operations on did:keri and did:XX:keri)
+
+| Closed Loop | Open Loop |
+| -------- | -------- |
+| - correlation possible  | + better privacy     |
+| + easier   | - more work     |
+| - VDR is possible, but disfunctional| + separation of ?  |
+       
+Development:
+
+SCOIR demos: scripts to walk through a fork and recovery 
+- goodguy, badguy, innocent third party; 
+    - first seen mode
+    - seq number mode (replay)
+    - conjoined mode
+- Sam: next step: qb4 for binary compression (concat, not envelope/parse)
+
+![](https://i.imgur.com/lIgRKA9.png)
+
+
 </details>
 
 ## Agenda March 2
