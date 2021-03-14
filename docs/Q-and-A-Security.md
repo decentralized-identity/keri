@@ -448,6 +448,9 @@ enable someone to proof the *veracity* of a statement only the *authenticity* of
 It’s not **"first seen"** until it’s fully seen by the whole set of witnesses needed (threshold). In the meanwhile the witness in this instance, has to add an escrow. And wait for the witness receipts coming in. And then accept the KEL.
 _(@henkvancann)_
 
+## *Q: What is KAACE?
+The primary purpose of the KA2CE algorithm is to protect the controller’s ability to promulgate the authoritative copy of its key event history despite external attack. This includes maintaining a sufficient degree of availability such that any validator may obtain an authoritative copy on demand.
+
 # Q&A section Watchers
 
 ## How can we detect duplicity? Suppose controller has power over witnesses.
