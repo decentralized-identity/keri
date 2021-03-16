@@ -1,6 +1,4 @@
-# KERI Project Work Item
-
-(DIF Identifiers and Discovery WG)
+# KERI Working Group
 
 [![hackmd-github-sync-badge](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ/badge)](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ)
 
@@ -12,10 +10,10 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 
 #### Links: 
 [DIF WG Page](https://identity.foundation/working-groups/keri.html)    
-[ID WG Charter](https://bit.ly/DIF-WG-select1)  
+[KERI WG Charter](https://github.com/decentralized-identity/org/blob/master/Org%20documents/WG%20documents/DIF_KERI_WG_charter_v1.pdf)  
 Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD)  
 Github Repos:  core , rust, python, javascript, go, and java (need to add links here)  
-Publicity [website](https://keri.one/)   
+Publicity [website](https://identity.foundation/working-groups/keri.html)   
  A [note](https://tools.ietf.org/id/draft-knodel-terminology-02.html) on nomenclature used in this spec   
  Meeting [Recordings](https://docs.google.com/spreadsheets/d/1wgccmMvIImx30qVE9GhRKWWv3vmL2ZyUauuKx3IfRmA/edit#gid=1393617996) 
  
