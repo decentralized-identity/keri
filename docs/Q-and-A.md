@@ -365,6 +365,25 @@ We may build trust over time in what was said via histories of verifiably attrib
 Yes, because they can't verify the root of trust. They have to have access to the full log at some point in time. Once they verfied to the root of trust, once, they don't have to keep a copy of the full log. They have to keep the event they've seen and any event since, that they need to verify as they go.
 (_SamMSmith_)
 
+## **Q: What's the difference between interactive - and non-interactive proof (for example proof of Authentication)
+Interactive proof of authentication requires both parties interacting, it uses bandwidth, I can't batch the interactions either. So it's not scalable.
+
+Non-interactive proof of authentication -> digital signature with publ. private key-air.
+Non-interactive has huge advantages for scalability. 
+
+The weakness is of non-interactive proving is replay attack ( the interactive method has built-in mechanism to prevent replay attacks )
+Replay attack is some adversary is replaying a request for access in your name after having gained access to your private keys.
+Solution to replay attack is both `Uniqueness` and `Timeliness`.
+
+#### Uniqueness
+Uniqueness works with a nonce, that's being obtained by a challenge-response mechanism and the requester has to use that nonce to seal the request. 
+
+#### Timeliness
+Timeliness is even better because it can service both properties needed in one go. If we use a Date-time-stamp (monotonic) in time window we can be sure that the sender request is unique and has been established in an acceptable timeframe.
+
+So therefore the non-interactive mechanism to replay attack prevention has been suggested in KERI implemented by Date-time-stamp (monotonic).\
+The time window can be fairly large because you use monotonicity. 
+
 # Q&A section Private Key Management
 
 ## **Q: How multi-tasking is the key infrastructure?

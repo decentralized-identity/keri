@@ -135,6 +135,10 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 ## *Q: Where would you need something quite different than KERI?
 `KERI` does one thing, it establishes control authority using verifiable portable proofs that are `KEL`s.\
 
+#### Liveliness
+If you need liveliness of fungible trust, like cryptocurrencies, you can't use KERI for this.\ 
+In KERI we have compact security for the sake of liveliness, whick means there is no public ledger with total ordering of state. In KERI after duplicity is detected, you don't trust that identifier anymore. That means in KERI you don't have fungible trust. And that is a good thing for trust.
+
 {TBW prio 2}
 (_SamMSmith_)
 
