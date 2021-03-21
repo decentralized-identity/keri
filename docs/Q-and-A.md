@@ -142,7 +142,7 @@ Key Event Receipt Infrastructure; a **secure identifier overlay** for the intern
 Hmm, a mouthful of terms. Let's start with the identifier. One of the basic (!) forms of KERI identifiers is this example: 
 <img src="../images/basic-scid.png" alt="identifier" border="0" width="600">
 
-#### How does KERI look like?
+#### *Q: How does KERI look like?
 This is most probably the form in which you might get to see KERI (just as an example!):
 ```
 BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0   
@@ -152,7 +152,7 @@ did:un:BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0/path/to/resource?name=secure
 <- this is _a call to resolve_ the identifier on the web
 ```
 
-#### How is KERI an overlay?
+#### *Q: How is KERI an overlay?
 It does not require the current internet and it's protocols to change, nor Trust over IP (`ToIP`) system or current blockchains to change. KERI can be added to it and, nevertheless, KERI can function all encompassing.
 (_henkvancann_)
 
@@ -262,7 +262,13 @@ In brief these are these reasons:
 
 ## *Q: In the KERI system design trade space you strike out features, so you must have stroked out application space too; which?
 <img src="../images/trade-space-limitations.png" alt="trade-space-limitations" border="0" width="300">
-{TBW prio 2}
+KERI is not suitable for:
+ - Applications where total ordering of key event is needed, like in cryptocurrencies and non-fungible tokens.
+However, KERI is suitable:
+ - to build smart contracting in a direct peer-to-peer way
+ - to build Sidetree with KERI, vice versa is not possible
+ - to implement blockchain / ledger anchored identifiers
+(_SamMSmith and @henkvancann_)
 
 ## *Q: Are smart contracts possible with KERI?
 Yes, KERI gives you the security. And by supplying secure state machines. But you have to gather the right transactions yourself.
@@ -280,6 +286,10 @@ _(@henkvancann)_
 The Internet Protocol (IP) is broken because it has no security layer.\
 <img src="../images/internet_broken.png" alt="Internet stack shows omissions" border="0" width="500">
 (_SamMSmith_)
+
+#### **@: There is no security on the internet?, are you serious?
+The security measures the internet has are bolt-ons and dependent of intermediary parties. For example the X.509 protocol for DNS. KERI offers a native end-verifiable protocol in a direct (peer-to-peer) and indirect way (duplicity detection in ambient available KERLs). The indirect KERI method removes the need for a middleman, an intermediary, like a Certification Agency for DNS.
+_(@henkvancann)_
 
 ## **Q How can the internet be fixed?
 Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](https://ssimeetup.org/key-event-receipt-infrastructure-KERI-secure-identifier-overlay-internet-sam-smith-webinar-58/) in presentation.
