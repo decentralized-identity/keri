@@ -143,12 +143,13 @@ Hmm, a mouthful of terms. Let's start with the identifier. One of the basic (!) 
 <img src="../images/basic-scid.png" alt="identifier" border="0" width="600">
 
 #### How does KERI look like?
-This is most probably the form in which you might get to see KERI:
+This is most probably the form in which you might get to see KERI (just as an example!):
 ```
 BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0   
-this the bare bones _identifier_
+<- this the bare bones _identifier_
+
 did:un:BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0/path/to/resource?name=secure#really 
-this is _a call to resolve_ the identifier on the web
+<- this is _a call to resolve_ the identifier on the web
 ```
 
 #### How is KERI an overlay?
@@ -208,22 +209,23 @@ _(@henkvancann)_
 2. No verifiable credentials
 _(@henkvancann)_
 
-## *Q: Why use KERI?
-Because there is no secure universal trust layer for the internet, currently (2020).
-
 ## *Q: What problem is KERI solving? How? And why can't it be solved by other solutions?
-KERI solves the problem of **secure attribution to identifiers**. By ambient availability of verifiable Key event Logs that prove authoritive control over identifier's private keys. It can't be solved by onther solutions known so far because those solution have not managed to span identifier interoperability over the internet.
+KERI solves the problem of **secure attribution to identifiers**. By ambient availability of verifiable Key event Logs (`KEL`) that proves authoritive control over identifiers' private keys. It can't be solved by onther solutions known so far because those solution have not managed to span identifier interoperability over the internet and function all the same as an overlay.
 _(@henkvancann)_
 {TBW prio 1}
 
 ## *Q: Who is KERI? Is it a company or a not for profit?
-KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and within that in the *Identity and Discovery* Workgroup.
+KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), in its own working group "KERI".\
+It started of in 2020 under the *Identity and Discovery* Workgroup of DIF.\
 Due to its licensing structure, KERI isn't owned by anyone and everyone at the same time. The Intellectual Property Right of KERI is hosted with `DIF`. It is an open source project.
 
 On github KERI is - and will become even more - a thickening bunch of repositories:
- 1. https://github.com/decentralized-identity/KERI 
- 2. https://github.com/decentralized-identity/KERIpy
- 3. etc
+ 1. https://github.com/decentralized-identity/KERI   Key Event Receipt Infrastructure - the spec and implementation of the KERI protocol
+ 2. https://github.com/decentralized-identity/KERIpy  Python Implementation of the KERI Core Libraries
+ 3. https://github.com/decentralized-identity/kerijs  JavaScript (nodes) Implementation of the KERI core library.
+ 4. https://github.com/decentralized-identity/kerigo  Go implementation of KERI (Key Event Receipt Infrastructure)
+ 5. https://github.com/decentralized-identity/keriox  Rust Implementation of the KERI Core Library
+ 6. https://github.com/decentralized-identity/keri-java  Keri Java implementation repo
 
  Lastly, the important man, who founded KERI is *Samuel M. Smith Ph.D.*, operationing from his firm [prosapien.com](https://www.prosapien.com).
  _(@henkvancann)_
