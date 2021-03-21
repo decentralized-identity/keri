@@ -243,8 +243,8 @@ Where Christopher Allen is talking about *portability of information* related to
 (_SamMSmith_)
 
 ## *Q: Does KERI cooperate with other projects in the self-sovereign Identity field?
-Yes, KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and is part of the *Identity and Discovery* Workgroup. There are also non-formal relation with the newly launched trust-over-ip foundation, and there's good reasons to fit KERI into trust-over-ip.\
-(_SamMSmith_)
+Yes, KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), and was part of the *Identity and Discovery* Workgroup. In 2021 the increased activity around KERI and its specific nature needed to have an own group within DIF. There are also non-formal relation with the newly launched trust-over-ip foundation, and there's good reasons to fit KERI into trust-over-ip.\
+(_SamMSmith and @henkvancann_)
 
 ## *Q: What's the difference between a `normative` and `non-normative` description or theory?
 See the [definitions](#normative) section for what both terms mean. For example, theories of ethics are generally `normative` - you should not kill, you should help that person, etc. Economics is most commonly `non-normative` - instead of asking “how should this person choose which goods to buy?”, we are often more interested in “how does this person choose which commodities they buy?”.
@@ -255,7 +255,10 @@ The [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/
 A [KID](../kids) is focussed on Implementation; "this is how we do it"  We add commentary to the indivudual KIDs that elaborate on the why. It has been split from the _how_ to not bother implementors with the _why_.
 
 ## *Q: KERI has invented its own key representation and signature format. Why not conforn to current standards already available?
-{TBW prio 1}
+In brief these are these reasons:
+- the **desire to control the entire stack**, and not use anyone else's tooling
+- DID and VC layers are the **appopriate layers for interopability**
+- The **performance/security goals** of KERI drive its design and therefore KERI can't use so called _enveloped_ data formats
 
 ## *Q: In the KERI system design trade space you strike out features, so you must have stroked out application space too; which?
 <img src="../images/trade-space-limitations.png" alt="trade-space-limitations" border="0" width="300">
