@@ -143,11 +143,13 @@ Hmm, a mouthful of terms. Let's start with the identifier. One of the basic (!) 
 <img src="../images/basic-scid.png" alt="identifier" border="0" width="600">
 
 #### How does KERI look like?
-This is most probably the form in which you might get to see KERI:\
-> BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0  
-> this the bare bones _identifier_
-> did:un:BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0/path/to/resource?name=secure#really 
-> this is _a call to resolve_ the identifier on the web
+This is most probably the form in which you might get to see KERI:
+```
+BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0   
+this the bare bones _identifier_
+did:un:BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0/path/to/resource?name=secure#really 
+this is _a call to resolve_ the identifier on the web
+```
 
 #### How is KERI an overlay?
 It does not require the current internet and it's protocols to change, nor Trust over IP (`ToIP`) system or current blockchains to change. KERI can be added to it and, nevertheless, KERI can function all encompassing.
