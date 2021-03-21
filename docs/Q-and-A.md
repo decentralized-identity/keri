@@ -139,7 +139,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 ## *Q: What is KERI?
 Key Event Receipt Infrastructure; a **secure identifier overlay** for the internet.\
-Hmm, a mouthful of terms. Let's start with the identifier. One of the basic (!) forms of identifiers is this example: 
+Hmm, a mouthful of terms. Let's start with the identifier. One of the basic (!) forms of KERI identifiers is this example: 
 <img src="../images/basic-scid.png" alt="identifier" border="0" width="600">
 
 #### How is KERI an overlay?
