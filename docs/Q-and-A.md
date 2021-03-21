@@ -340,7 +340,7 @@ _(RobertMitwicki)_
 # Q&A section Wallets
 
 ## *Q: Why do I need a wallet for KERI?
-Yes a wallet is needed. A wallet holds your public private key pairs that embody the root of trust of KERI identifiers. [Universal wallet](https://w3c-ccg.github.io/universal-wallet-interop-spec/) - would do - with a thin layer on top of it. \
+Yes, a wallet is very much needed. A wallet holds your public private key pairs that embody the root of trust of KERI identifiers. [Universal wallet](https://w3c-ccg.github.io/universal-wallet-interop-spec/) - would do - with a thin layer on top of it. \
 A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
 {TBW}\
 (_SamMSmith_) / _(CharlesCunningham)_ / _(@henkvancann)_
@@ -354,7 +354,8 @@ _(@henkvancann)_
 The KERI whitepaper has little about virtual credentials and KERI's place in the W3C SSI space for DIDs and VCs. The reason is that KERI is mainly a level 1 and level 2 solution in the trust-over-ip framework.\
 _(@henkvancann)_
 
-In this presenation of Sam, there's a lot about the relation between KERI and VCs: https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf
+In this presenation of _SamMSmith_, there's a lot about the relation between KERI and VCs: https://github.com/SmithSamuelM/Papers/blob/master/presentations/GLEIF_with_KERI.web.pdf
+
 # Q&A section Signatures
 
 ## **Q: Who can sign off my proofs and identifiers using KERI?
@@ -363,7 +364,7 @@ _(@henkvancann)_
 {TBW prio 1}
 
 ## *Q: What is the practical use of signatures?
-In general they can proof the control of a private key at a certain point back in time.
+In general they can proof the authoritive control over a private key at a certain point back in time.
 _(@henkvancann)_
 
 ## **Q: Do verifiers, validators, witnesses and watchers all sign off `payloads`?
@@ -382,12 +383,13 @@ KERI has the ability to proof various things:
  - {TBW prio 2}
 
 ## *Q: Does KERI know whether any message in the Event Logs are valid or true?
-No, KERI is data-agnostic. KERI does make no statement about the validity of the payload data.\
+No, KERI is data agnostic. KERI does make no statement about the validity of the payload data.\
 _(@henkvancann)_
 
 ## *Q: How can we verify that a statement by a controller is valid?
 We may verify that the controller of a private key, made a statement but not the `validity` of the statement itself.\
 (_SamMSmith_)
+
 ## *Q: How can we trust what was said or written?
 We may build trust over time in what was said via histories of verifiably attributable (to whom) consistent statements, i.e. `reputation`.\
 (_SamMSmith_)
@@ -399,17 +401,17 @@ Yes, because they can't verify the root of trust. They have to have access to th
 ## **Q: What's the difference between interactive - and non-interactive proof (for example proof of Authentication)
 Interactive proof of authentication requires both parties interacting, it uses bandwidth, I can't batch the interactions either. So it's not scalable.
 
-Non-interactive proof of authentication -> digital signature with publ. private key-air.
+Non-interactive proof of authentication -> digital signature with public private key pair.\
 Non-interactive has huge advantages for scalability. 
 
-The weakness is of non-interactive proving is replay attack ( the interactive method has built-in mechanism to prevent replay attacks )
+The weakness is of `non-interactive` proving is replay attack ( the interactive method has built-in mechanism to prevent replay attacks ).\
 Replay attack is some adversary is replaying a request for access in your name after having gained access to your private keys.
 Solution to replay attack is both `Uniqueness` and `Timeliness`.
 
-#### Uniqueness
-Uniqueness works with a nonce, that's being obtained by a challenge-response mechanism and the requester has to use that nonce to seal the request. 
+##### Uniqueness
+Uniqueness works with a `nonce`, that's being obtained by a challenge-response mechanism and the requester has to use that nonce to seal the request. 
 
-#### Timeliness
+##### Timeliness
 Timeliness is even better because it can service both properties needed in one go. If we use a Date-time-stamp (monotonic) in time window we can be sure that the sender request is unique and has been established in an acceptable timeframe.
 
 So therefore the non-interactive mechanism to replay attack prevention has been suggested in KERI implemented by Date-time-stamp (monotonic).\
