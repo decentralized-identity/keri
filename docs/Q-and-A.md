@@ -340,10 +340,10 @@ _(RobertMitwicki)_
 # Q&A section Wallets
 
 ## *Q: Why do I need a wallet for KERI?
-Yes. [Universal wallet](https://w3c-ccg.github.io/universal-wallet-interop-spec/) - would do - with a thin layer on top of it. \
+Yes a wallet is needed. A wallet holds your public private key pairs that embody the root of trust of KERI identifiers. [Universal wallet](https://w3c-ccg.github.io/universal-wallet-interop-spec/) - would do - with a thin layer on top of it. \
 A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
 {TBW}\
-(_SamMSmith_) / _(CharlesCunningham)_
+(_SamMSmith_) / _(CharlesCunningham)_ / _(@henkvancann)_
 ## *Q: How can I backup the KERI identifiers in my wallet?
 {TBW}
 ## Can I receive crypto money in my KERI wallet?
