@@ -287,18 +287,18 @@ The Internet Protocol (IP) is broken because it has no security layer.\
 <img src="../images/internet_broken.png" alt="Internet stack shows omissions" border="0" width="500">
 (_SamMSmith_)
 
-#### **@: There is no security on the internet?, are you serious?
-The security measures the internet has are bolt-ons and dependent of intermediary parties. For example the X.509 protocol for DNS. KERI offers a native end-verifiable protocol in a direct (peer-to-peer) and indirect way (duplicity detection in ambient available KERLs). The indirect KERI method removes the need for a middleman, an intermediary, like a Certification Agency for DNS.
+#### **Q: There is no security on the internet?, are you serious?
+The security measures the internet has are _bolt-on_s and dependent of intermediary parties. For example the X.509 protocol for DNS. KERI offers a native end-verifiable protocol in a direct (peer-to-peer) and indirect way (duplicity detection in ambient available KERLs). The indirect KERI method removes the need for a middleman, an intermediary, like a Certification Agency for DNS.\
 _(@henkvancann)_
 
 ## **Q How can the internet be fixed?
-Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](https://ssimeetup.org/key-event-receipt-infrastructure-KERI-secure-identifier-overlay-internet-sam-smith-webinar-58/) in presentation.
+Establish authenticity between the key pair and the identifier of IP packet’s message payload. [See more](https://ssimeetup.org/key-event-receipt-infrastructure-KERI-secure-identifier-overlay-internet-sam-smith-webinar-58/) in an explanatory presentation.
 
 <img src="../images/identity_system_security_overlay.png" alt="identity system security overlay" border="0" width="800">
 (_SamMSmith_)
 
 ## *Q: What's wrong with SSL certificate intermediairies?
-Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more](https://ssimeetup.org/key-event-receipt-infrastructure-KERI-secure-identifier-overlay-internet-sam-smith-webinar-58/) in presentation.\
+Administrative Identifier Issuance and Binding; especially the binding between keypair and identifier based on an assertion of an intermediairy administrator. This is what's weak and therefore wrong. [See more](https://ssimeetup.org/key-event-receipt-infrastructure-KERI-secure-identifier-overlay-internet-sam-smith-webinar-58/) in an explanatory presentation.\
 _(@henkvancann)_
 
 ## **Q: What's DNS Hijacking
@@ -317,13 +317,13 @@ _(@henkvancann)_
 ## *Q: What role does KERI play in the suggested "repair of the internet"?
 Much of the operation of internet infrastructure is inherently decentralized, but control over the value transported across this infrastructure may be much less so.\
 Centralized value capture systems concentrate value and power and thereby provide both strong temptations for malicious administrators to wield that concentrated power to extract value from participants. \
-We believe that _decentralization of value transfer_ is essential to building trust. Consequently a key compo- nent for a decentralized foundation of trust is an interoperable decentralized identity system. [Source: whitepaper page 7](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+We believe that _decentralization of value transfer_ is essential to building trust. Consequently a key component for a decentralized foundation of trust is an interoperable decentralized identity system. [Source: whitepaper page 7](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
 
 # Q&A section KERI and DIDs
 
 ## **Q: Is KERI a DID?
 `KERI` is not a `DID` method. The proposed related `DID` method is [`did:un`](https://github.com/decentralized-identity/KERI/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-KERI/).\
-However there are also votes for `did:KERI`: _Drummond Reed_ (Dec 2 2020): "at IIW we asked that question and  feedback overwhelmingly favored did:KERI. Furthermore, I’ve proposed that the KERI namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the KERI namespace in the Indy DID method."\
+However there are also votes for `did:KERI`: _Drummond Reed_ (Dec 2 2020): "at IIW we asked that question and feedback overwhelmingly favored did:KERI. Furthermore, I’ve proposed that the KERI namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the KERI namespace in the Indy DID method."\
 _(@henkvancann)_
 
 ## **Q: Some say that with KERI, a DID can be reduced to did:\<identifier>. But that’s not a valid DID?!
@@ -332,11 +332,11 @@ _Every DID must have a method name component before the method-specific ID._
 The first paper mentioning the absence of the method is [Thinking of DID? KERI On](https://humancolossus.foundation/blog/thinking-of-did-KERI-on) by The Human Colossus Foundation, written by Robert Mitwicki. He addressed the concern in the question (the invalidity of the DID method) and made it more clear what the Foundation meant by that: "We look into the future and with that view we think that namespace could be dropped and we could keep only identifier, as the namespace seems to be one of the major drawbacks of decentralized identifiers at the moment. In my opinion `did:KERI:<identifiers>`  would be just intermediate step as the issue addressed by post would still hold. We see that KERI could be a major upgraded for DID; not replacement."
 
 ## **Q: Isn't it a bit arrogant of KERI to say "my new DID method is so good that it can replace all others for all eternity"?
-
-_But by doing that you will also exclude a lot of existing identifier infrastructure._
+_But by doing this, you will also exclude a lot of existing identifier infrastructure._
 
 I am not denying existence of existing DID infrastructure, but I agree a lot of them could be obsolete if we introduce KERI. A lot of business models which are build upon current model would be obsolete. I understand that a lot of people would not like that, but that is called progress.\
 _(RobertMitwicki)_
+
 # Q&A section Wallets
 
 ## *Q: Why do I need a wallet for KERI?
