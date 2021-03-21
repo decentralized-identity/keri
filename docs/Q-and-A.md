@@ -2,7 +2,7 @@
 
 [![hackmd-github-sync-badge](https://hackmd.io/iDVDsqwkTXm16B-cIlVhvg/badge)](https://hackmd.io/iDVDsqwkTXm16B-cIlVhvg)
 
-<img src="../images/KERI_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
+<img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
 This document is part one. Part two is [Q-and-A Security](./Q-and-A-Security.md). Both files shares a common [Glossary](./Glossary.md)
 
