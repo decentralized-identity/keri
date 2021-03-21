@@ -13,9 +13,11 @@ KERI receives three types of scrutiny from domain experts:
 1. "KERI can't do it"
 2. "KERI doesn't do something new"
 3. "DID:XYZ has been designed, KERI needs to explain how it's different"
- - Ad 1. When respected colleagues think KERI can't keep up to its promises, we value the well-founded questions and suggestions of domain experts __after__ they thoroughly read the KERI [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf). We'll happilly keep explaining KERI because we'd hate it when respected experts misunderstand the design.\
- - Ad 2. After a while some experts say 'well then KERI doesn't do something new'. That's acceptable for us, because we're able proof the design history of KERI and that it simply hasn't been done before.\
- - Ad 3. However, we can't accept having to explain the differences to people who just "invented" new, someting similar to KERI, using the same terms and thereby spreading confusion. Let the newbees benchmark themselves against KERI, we are too busy for those kind of things. By the way, this Q&A may be able to help you out! 
+ - Ad 1. When respected colleagues think KERI can't keep up to its promises, we value the well-founded questions and suggestions of domain experts __after__ they thoroughly read the KERI [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf). We'll happilly keep explaining KERI because we'd hate it when respected experts misunderstand the design.
+ - Ad 2. After a while some experts say 'well then KERI doesn't do something new'. That's acceptable for us, because we're able to proof the design history of KERI and that it simply hasn't been done before.
+ - Ad 3. However, we can't accept having to explain the differences to people who just "invented" new, someting similar to KERI, using the same terms and thereby spreading confusion. Let the newbees benchmark themselves against KERI, we are too busy for those kind of things. By the way, this Q&A may be able to help you out.
+
+We welcome every form of positive contribution and will certainly allow for learning time!
 
 **The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**\
 *Q = one star question. Novice to KERI, advanced in DIDs\
@@ -102,7 +104,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - Signatures
 - W3C DIDs
 ## Actions you should be comfortable with
-- Amend knowledge and keep existing knowledge up to date
+- Accrue knowledge and keep existing knowledge up to date
 - create a key pair safely and back it up safely
 - sweep to a new wallet
 
@@ -136,11 +138,17 @@ We've done our best to protect the privacy of the Github by investigating the im
 # Q&A section General
 
 ## *Q: What is KERI?
-Key Event Receipt Infrastructure; a secure identifier overlay for the internet.
+Key Event Receipt Infrastructure; a **secure identifier overlay** for the internet.\
+Hmm, a mouthful of terms. Let's start with the identifier. One of the basic (!) forms of identifiers is this example: 
+<img src="../images/basic-scid.png" alt="identifier" border="0" width="600">
+
+#### How is KERI an overlay?
+It does not require the current internet and it's protocols to change, nor Trust over IP (`ToIP`) system or current blockchains to change. KERI can be added to it and, nevertheless, KERI can function all encompassing.
+(_henkvancann_)
 
 ## *Q: Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).\
-KEI is both privacy preserving and context-independent extensible. That means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.\
+KEI is both privacy preserving and context-independent extensible. This means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.\
 _(@henkvancann)_
 
 ## *Q: What does KERI look like?
@@ -149,14 +157,14 @@ Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of
 _(@henkvancann)_
 
 ## *Q: How does KERI match DIDs?
-There is a whole section to answer this simple question that has many-sided answers.
+There is a whole section to answer this simple question that has many-sided answers: [KERI and DIDs](#qa-KERI-and-dids).
 
 ## **Q: Why do you reinvent blockchains and claim it's something new?
-To begin with KERI has no blockchain, and doesn't depend on blockchains. If an implementation of KERI depends on blockchains at all, KERI operates blockchain agnostic.
-Secondly KERI doesn't support a crypto currency. It doesn't need currency because it can easily connect to one, if needed. And again, KERI is crypto currency agnostic while doing so.
+To begin with KERI has no blockchain, and doesn't depend on blockchains. If an implementation of KERI depends on blockchains at all, KERI operates blockchain agnostic.\
+Secondly KERI doesn't support a crypto currency. It doesn't need currency because it can easily connect to one, if needed. And again, KERI is crypto currency agnostic while doing so.\
 Lastly KERI is fundamentally different from blockchains like Ripple (Permissioned PBFT consensus) or Stellar (imcomplete open public, non-permissioned PBFT consensus): it doesn't need **total ordering**, timestamping and Proof of Authority consensus on transactions registered on a ledger.
 
-It's comparing apples and oranges. But we're happy to do that exercise for the hard-to-convince part of the SSI community.
+Blockchain and KERI is comparing apples and oranges. But we're happy to do that exercise for the hard-to-convince part of the SSI community.
 
 ```
 KERI is nothing like we already know of. It's a mixtures of things. 
@@ -165,11 +173,10 @@ And then you go _"I see, but it gives birth, so it must be a mammal"_.
 It's also not a mammal. It's KERI. 
 It may have the characteristics you describe, but it's a species of its own.
 (_SamMSmith_)
-
 ```
 #### **Q: How can you get away with not complying to the security model (and guarantees) of an open public blockchain?
 KERI better fits the Identity space. Doing away the total ordering in blockchains is a huge performance - and throughput gain, plus less worry about goverance. There's also not such a thing as consensus forks.
-KERI solves (or _"gets away with"_ if you wish) this with duplicity detection. Watchers are all that matter. They garuantee that logs are immutable by one very simple rule: **"first seen wins"**.
+KERI solves (or _"gets away with"_ if you wish) this by a mechanism called **duplicity detection**. Watchers are all that matter. They guarantee that logs are immutable by one very simple rule: **"first seen wins"**.
 
 There is a separate [Q&A Security](./Q-and-A-Security.md) to answer the extensive list of Security related questions.
 
@@ -177,7 +184,7 @@ There is a separate [Q&A Security](./Q-and-A-Security.md) to answer the extensiv
  WASM is certainly on the roadmap, but for the main issue of Sidetree and did:peer interop, see the [core KERI spec repo issue](https://github.com/decentralized-identity/KERI/issues/79) for more info.\
 _(CharlesCunningham)_
 
-## *Q: How does KERI match the `trust-over-ip` model and in the `W3C DID standardization`?
+## *Q: How does KERI match the `trust-over-ip` model and how does KERI fit in the `W3C DID standardization`?
 [Trust-over-IP](#trust-over-ip):
 - Its goal is to be the missing authentication layer of the internet. That's a pretty well matching objective.
 - Layer 1 (settlement layer): Where other `DID`s use blockchains or databases to register identities and settle 'transactions' between between, `DDO`s, and `VC`s, KERI uses homegrown native structures: `KEL` and `KERL`.
