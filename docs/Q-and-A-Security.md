@@ -132,29 +132,67 @@ We've done our best to protect the privacy of the Github by investigating the im
 KERI uses plain old digital signatures from `PKI`, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. `KERI` solves that problem.\
 (_SamMSmith_)
 
-## *Q: Where you would need something quite different than KERI?
+## *Q: Where would you need something quite different than KERI?
 `KERI` does one thing, it establishes control authority using verifiable portable proofs that are `KEL`s.\
+
+#### Liveliness
+If you need liveliness of fungible trust, like cryptocurrencies, you can't use KERI for this.\ 
+In KERI we have compact security for the sake of liveliness, whick means there is no public ledger with total ordering of state. In KERI after duplicity is detected, you don't trust that identifier anymore. That means in KERI you don't have fungible trust. And that is a good thing for trust.
+
+{TBW prio 2}
 (_SamMSmith_)
 
-## *Q: How does KERI scale safely without comprising the security model
-{TBW Prio 2}
+## ***Q: KERI is inventing its own key representation and signature format. Why did you do that?
+**(@OR13) argues the following:**\
+_In order to share code / we would need shared building blocks. `Sidetree` is built on JWS / JWK. KERI is inventing its own key representation and signature format. These are the lowest level building blocks, so them being different will prevent a lot of potential code reuse._
 
-## **Q: Will KERI be interoperable with DID;peer and Sidetree?
+In brief these are the reasons:
+- the **desire to control the entire stack**, and not use anyone else's tooling
+- DID and VC layers are the **appopriate layers for interopability**
+- The **performance/security goals** of KERI drive its design which makes incompatible with Linked Data tooling
+
+## ***Q: Why did KERI WG decide to reinvent multicodec?
+**(@OR13) argues the following:**\
+_There was a potential for KERI to align with Ceramic / IPFS / IPLD, but that door closed when the KERI WG decided to reinvent multicodec._
+
+#### The **desire to control the entire stack**, and not use anyone else's tooling
+Have a look at the [Kid0001Comment](https://github.com/henkvancann/keri/blob/master/kids/kid0001Comment.md#summary) Summary for why we needed to divert from `multicodec`. Multicodec may not be such a stable standard to be breaking or abandoning.
+
+`Multicodec` is a draft standard, a rather chaotic mix of binary and text-based entries in a crowd-sourced registry/table. Most implementers are doing a subset of the Multicodec chart anyways, making it even more unstable for interoperability purposes.
+
+To go in further detail why multicodec can't do for KERI: the length of item not included in encoding table - incompatible structure (Multicodec assumes enveloped data structure) Moreover we need KERI's composability (via concatenation) for framing events.
+#### DID and VC layers are the appopriate layers for interoperability
+- streaming support > interop at signature layer?
+#### The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling
+KERI can't use enveloped data formats:
+ - enveloped data format -> signatures have to put on/outside the payload
+ - MsgPack and CBOR-> work with block-delimited structures
+ - JWS/JWK - also enveloped, also incompatable with streaming
+ - framing events = better streaming support
+ (@by_caballero and _@henkvancann_)
+
+## *Q: Will KERI be interoperable with DID:peer and Sidetree?
+You can implement did;peer and Sidetree with KERI but we can’t implement KERI with Sidetree or did:peer.\
+Because KERI operates on a lower level.\
+If we were to do that, we have to tunnel KERI identifiers to create corresponding Ledger-entries.\
+(_SamMSmith_)
+
+## ***Q: Will KERI be interoperable with DID:peer and Sidetree?
 **(@OR13) argues the following:**\
 Afaik this ship sailed when KERI decided to define its own event format. I don't think KERI shares any commonality with sidetree or did peer, and it's no longer possible to align them, so while you can start with the same key material, doing similar operations will very quickly result in totally different event structures.
 
-I don't see a way for KERI events to be used by anything but KERI for now, certainly not Sidetree. In the future did:peer might use KERI events directly, but then did:peer would not be Sidetree compatible...
+I don't see a way for KERI events to be used by anything but KERI for now, certainly not Sidetree. In the future did:peer might use KERI events directly, but then did:peer would not be Sidetree compatible
 
-In order to share code / we would need shared building blocks. Sidetree is built on JWS / JWK. KERI is inventing its own key representation and signature format. These are the lowest level building blocks, so them being different will prevent a lot of potential code reuse.
+...
 
 The upside is that KERI could be much better than things built on JOSE. The down side is KERI won't be possible to implement with off the shelf JOSE crypto. Having spent a lot of time with linked data, It looks like KERI is setup to feel all the same kind of pain, regarding reinventing the wheel instead of starting with compatibility with JOSE.
 
-There was also a potential for KERI to align with Ceramic / IPFS / IPLD, but that door closed when the KERI WG decided to reinvent multicodec.
+...
 
 I predict a few years from now we will have:
 
 A. JOSE / JWS / JWK / jose based DIDs\
-B. Multicodec / IPFS / IPLD / DAG_CBOR / JWS / JWK / ipld based DIDs\
+B. `Multicodec` / IPFS / IPLD / DAG_CBOR / JWS / JWK / ipld based DIDs\
 C. Linked Data / JSON-LD / CBOR-LD / linked data based DIDs\
 D. KERI / KERI keys / KERI signatures / keri event log based DIDs
 
@@ -171,14 +209,18 @@ From an engineering management and interopability perspective, I would have deci
 
 The DID and VC layers are the appopriate layers for interopability. The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling.\
 (_SamMSmith_)
+
 ## **Q: How does KERI keep identifiers secure?
 By the mechanism of availability, consistency, and duplicity.\
 We have to handle `race conditions` too, just like any other distributed database or blockchain.\
 (_SamMSmith_)
 
+## *Q: How does KERI scale safely without comprising the security model
+{TBW Prio 2}
+
 ## **Q: Is the KERL technically a blockchain/hashed data log, rather than a ledger that implies a balance?
-Yes a KEL/KERL is a hash chained data structure. But not merely hash chained but also signed, so its also a cryptographic proof of key state.\
-It is not tracking balance it is tracking key state.
+Yes a KEL/KERL is a hash chained data structure. But not merely hash chained but also signed, so it's also a cryptographic proof of key state.\
+It's not tracking balance, it's tracking key state.
 (_SamMSmith_)
 
 ## **Q: According to the SSI Book KERI will never be able to substitute the internet conventional PKI infra. Right?
@@ -219,9 +261,16 @@ _(@henkvancann)_
 In the direct mode (peer to peer) KERI can be used to keep identifiers private to the peers or group involved. In the indirect mode all identifiers are public. The privacy of the individual, group or object described by the identifier is weak because anyone can bind and indentifier to a subject anytime and anywhere. Fortunately, this binding is weak too, As soon as controllers and verfiers sign statements / events related to an identifier, that's when the binding gets strong and subjects publicly exposed.\
 _(@henkvancann)_
 
-## Is a KERI identifier GPDR proof?
-KERI enables support for GDPR’s right to be forgotten.\
-{TBW prio 1}\
+## Is a KERI identifier GDPR proof?
+KERI enables support for protection against liability that could stem from gdpr’s right to be forgotten (passive approach) and the right of erasure (active approach). There are two exceptions to the general rule that you have to remove an identifier from your database, if a subject and / or controller requests so:
+1. As long as you're a party in a transaction involving the identifier that has been revoked, then you can keep that identifier in your log.
+2. For archival integrity - given that KERI’s whole reason for existence is keep track of duplicity in identity events it is important to know that an identifier has been erased before, because we don't lose that notion. Because somebody could come up with the same identitifier in the future and we wouldn't know that it existed before.
+
+Within the assumption of both exceptions KERI complies with the GDPR rules: 
+1. block-list of “deleted” KELs: a reciept of a request for erasure must naturally hold some PII, a two-party interaction might allow this to be recorded.
+2. a need to maintain system integrity/archival purposes can be a reason for maintaining some info right of erasure versus right to be forgotten. This active and passive approach reflects two slightly different interpretations of the same article (which one people use is a hint of their school of thought).
+
+Beware that most of GDPR rules are there to protect you from being exploited. So you're not being prossecuted or being labelled as a criminal activity. It might only be illegal and somebody could hold you liable for that.
 _(@henkvancann)_
 
 ## What do I need a self-certifying identifier for?
@@ -253,6 +302,21 @@ In brief:
 
 Self-addressing identifiers provide a mechanism for a content addressable database to enforce nonrepudiable unique attribution to the content creator as controller. This binds the content to the creator in the content address. Different creator means different address. This makes confidential (encrypted) content more usable as the content address is bound to the controller from whom a decryption key must be obtained.
 
+## ***Q How can I prevent a direct mode interaction being published and breach a controller's privacy?
+The assumption is that direct mode is meant to be private communication.
+1. There is understanding when you use direct mode that it needs to stay private
+2. There is a possibility to impose a liability, under consent at the time of issuance
+3. There is no way to enforce the KEL from being kept private
+
+## **Q: What is tombstoning and could it help to preserve privacy of identifiers in KERI?
+Tombstoning in Self Sov Identity and DIDs has a very different meaning than in everyday's language (where it means _'the act of jumping in a straight, upright vertical posture into the sea or other body of water from a high jumping platform, such as a cliff, bridge or harbour edge.'_) 
+
+It stems from the development of ledger-based identities like Sovrin. Tombstoning means "Burry the transactions" Because Sovrin is a permissioned ledger, the steward lets you read it - or won't let you read the transactions, depending of the situation whether the subject of the personal information has requested to be forgotten. A steward could say 'see, I've not published the personal information, so I am good.'. 
+For other reasons, `tombstoning` has never been accepted as a viable solution to get rid of the liability issue.
+
+Tombstoning does not apply to KERI because in indirect mode KEL and KERLs will be ambient available and in direct mode their are only to parties involved. If a third party would be involved in direct mode, somebody would breach the understanding that it's private communication by design.
+_(@henkvancann)_
+
 ## What do I need a multi-sig self-addressing identifier for?
 To get even more security in terms of your signing scheme.\
 (_SamMSmith_)
@@ -271,21 +335,17 @@ Because a non-transferable (ephemeral) identifier is not recoverable in the even
 In either of these cases a non-transferable self-certifying identifier is sufficient.
 
 ## Could you give an example of solely a cryptographically verifiable inception statement 
-This is a basic self certifyin identifier (`SCI`). The identifier itself is derived from a public key that is in the identifier. Nothing is connecting that binding of the identifier to the inception statement. Someone could create an different inception statement with other fields, the only thing that need to be the same is the key list. Everything else in the inception statement could be different.
+This is a basic self certifyin identifier (`SCI`). The identifier itself is derived from a public key that is in the identifier. Nothing is connecting that binding of the identifier to the inception statement. Someone could create an different inception statement with other fields, the only thing that need to be the same is the key list. Everything else in the inception statement could be different.\
 So that means the only way to know which inception statement is the right one is duplicity detection. So `First seen`  becomes the only means you have to check which inception steatement is the authortiative for that identifier, in case you need an inception statement. 
 
 ## Could you give an example of strongly binding the inception statement to the identifier
-This a self-addressing self-certifying identifier (`SASCI`) In this case the identifier itself is derived from the inception statement. Now there can only be one inception statement for this identifier. If you'd change just a single bit, other than the identifier field itself, and it's *different* identifier. You can't have duplicitious inception statements. It's not possible. It locks down at least the  inception part and that help in duplicity detection. There can only be one inception statement to start a duplicity log with. From that point on you can have duplicitous next events, but not before. But it still means the effort it takes has to engage in CreatING duplicity, becomes much harder because for example if you include witnesses in the inception statement then any duplicitous event has to publish through the witnesses, and that adds a barrier. Basically it locks down at least the inception part, You can't change it.
+This a self-addressing self-certifying identifier (`SASCI`) In this case the identifier itself is derived from the inception statement. Now there can only be one inception statement for this identifier. If you'd change just a single bit, other than the identifier field itself, and it's *different* identifier. You can't have duplicitious inception statements. It's not possible. It locks down at least the  inception part and that help in duplicity detection. There can only be one inception statement to start a duplicity log with. From that point on you can have duplicitous next events, but not before. But it still means the effort it takes has to engage in CreatING duplicity, becomes much harder because for example if you include witnesses in the inception statement then any duplicitous event has to publish through the witnesses, and that adds a barrier. Basically it locks down at least the inception part, You can't change it.\
 In some cases it would be useful to be able to strongly bind the inception statement to the identifier and not merely rely on a cryptographically verifiable inception statement for the associated identifier. 
-
-
-
-
 
 ## Why ever go for a basic self-certifying identifier (`SCI`) when KERI offers self addressing SCI (`SASCI`) with a better security guarantee?
 Because there are many applications where you don't want to have to depend on a KEL because a basic SCI is self-certifying without a KEL. It's more light-weight. For example the non-transferable version of a SCI you can still have an inception event so that basically any tracking anybody does there is still a nominal KEL for that identifier so you can look it up that way, discovering everything, there is always a legitimate version of an inception event for every identifier. 
 
-In many cases you want identifiers that are ephemeral, that you know the only event that could be would be is the inception event. You don't need to see the inception event, if you're using it in an ephemeral context.
+In many cases you want identifiers that are ephemeral, that you know the only event that could be would be is the inception event. You don't need to see the inception event, if you're using it in an ephemeral context.\
 E.g. witnesses use ephemeral SCIs so I don't need a key event log for a witness to verify a signature by a witness. You can do that with watchers as well. In applications like `IOT` where you need light-weight identifiers, you will mostly use SCI (1.). So you would use the basic version.
 
 Want you don't need to do with the basic identifiers is you dont have to say 'I got an identifier but I can't verify the keys before I get the KEL so I dont know the key state'. For the witness there is no key state. There is only ever one key. If the witness is ever compromised, then you get rid of the witness. You can rotate keys or rotate identifiers.\
@@ -387,6 +447,13 @@ The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/present
 Witnesses do not make any statement about the content of what is being proved. KERI does not
 enable someone to proof the *veracity* of a statement only the *authenticity* of the statement. {TBW} \
 (_SamMSmith_)
+
+## ***Q: Why does the Witness run in restricted mode?
+It’s not **"first seen"** until it’s fully seen by the whole set of witnesses needed (threshold). In the meanwhile the witness in this instance, has to add an escrow. And wait for the witness receipts coming in. And then accept the KEL.
+_(@henkvancann)_
+
+## *Q: What is KAACE?
+The primary purpose of the KA2CE algorithm is to protect the controller’s ability to promulgate the authoritative copy of its key event history despite external attack. This includes maintaining a sufficient degree of availability such that any validator may obtain an authoritative copy on demand.
 
 # Q&A section Watchers
 
@@ -524,7 +591,7 @@ _...you would be fundamentally arguing that you can record a singular, immutable
 
 Read the answer to [this](#keri-is-basically-a-series-of-pay2publickeyhash-transactions) first.
 
-If you read Szabo's paper on threshold structures, you get security of the same type when ever you use a threshold structure, be it MFA, Multi-Sig, or Distributed consensus. They all are using a combination of multiple relatively weak attack surfaces that must be simulatenously compromised for a successful attack. So multiplying simulatneous weak surfaces = functional equivalent of a stronger attack surface.  So when you look at KERI you see that the security is primarily due to cryptographic strength and the witnesses are not the primary source of security but merely secure one thing, that is the availability of the KEL for an identifier. Not the KEL itself. The KEL iteself is secured by signatures.\
+If you read Szabo's paper on threshold structures, you get security of the same type when ever you use a threshold structure, be it MFA, Multi-Sig, or Distributed consensus. They all are using a combination of multiple relatively weak attack surfaces that must be simulatenously compromised for a successful attack. So multiplying simulatneous weak surfaces = functional equivalent of a stronger attack surface.  So when you look at KERI you see that the security is primarily due to cryptographic strength and the witnesses are not the primary source of security but merely secure one thing, that is the availability of the KEL for an identifier. Not the KEL itself. The KEL iteself is secured by signatures.\
 From a Validator perspective their security is due to duplicity detection. Successful attack against duplicity detection requires an eclipse attack. Ledgers such as bitcoin are also susceptible to eclipse attacks. So in an apples to apples (resistance to eclipse attack) a KERI watcher network of comparable reach (1000's of watchers) would have comparable resistance to an eclipse attack.
 
 #### ***Q: Differences between blockchain-based security and KERI security
