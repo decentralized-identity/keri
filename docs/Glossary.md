@@ -296,6 +296,7 @@ The main innovation of KERI is that it provides a universal decentralized mechan
 
 #### Trust-over-IP
 It's a term related to the effort of a foundation. The Trust over IP Foundation is an independent project hosted at Linux Foundation to enable the trustworthy exchange and verification of data between any two parties on the Internet. [More](https://trustoverip.org/about/faq/).
+<img src="../images/trust-over-ip-stack.png" alt="identifier" border="0" width="600">
 
 #### Validator
 a _validator_ is anybody that wants to estblish control-authority over an identifier, created by the controller of the identifier. Validators verify the log, they apply duplicity detection or they leverage somebody else's duplicity detection or apply any other logic so they can say "Yes these are events I can trust".

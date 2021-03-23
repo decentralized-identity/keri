@@ -158,8 +158,9 @@ It does not require the current internet and it's protocols to change, nor Trust
 
 ## *Q: Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).\
-KEI is both privacy preserving and context-independent extensible. This means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.\
-_(@henkvancann)_
+KEI is both privacy preserving and context-independent extensible. This means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.
+> Sam Smith: KERI essentially repairs internet.
+
 
 ## *Q: What does KERI look like?
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
@@ -195,17 +196,24 @@ There is a separate [Q&A Security](./Q-and-A-Security.md) to answer the extensiv
 _(CharlesCunningham)_
 
 ## *Q: How does KERI match the `trust-over-ip` model and how does KERI fit in the `W3C DID standardization`?
+The ToIP stack has a left side (governance) and the right side (technical)
+<img src="../images/trust-over-ip-stack.png" alt="Trust over IP stack" border="0" width="600">
+KERI is at lower levels of the ToIP. Other DID methods will add KERI to their method and that's how KERI could be present in these layers.
+
 [Trust-over-IP](#trust-over-ip):
 - Its goal is to be the missing authentication layer of the internet. That's a pretty well matching objective.
 - Layer 1 (settlement layer): Where other `DID`s use blockchains or databases to register identities and settle 'transactions' between between, `DDO`s, and `VC`s, KERI uses homegrown native structures: `KEL` and `KERL`.
 _(@henkvancann)_
-- Layer 2 (communication layer): Non existing in KERI, because KERI is end-verifiable. KERI can use any other means of communication between actors in the ecosystem
-- Layer 3 (transaction layer): Since KERI focuses on the more fundamental part of authentication for the internet, you won't find matching functionality for usual trust-over-IP transaction like VCs or money.
-- Layer 4 (application layer): {TBW}
+- Layer 2 (communication layer): Non-existing in KERI, because KERI is end-verifiable. KERI can use any other means of communication between actors in the ecosystem
+- Layer 3 (transaction layer): Since KERI focuses on the more fundamental part of authentication for the internet, you won't find matching functionality for usual trust-over-IP transaction like VCs or money. VCs (layer 3) relate to KERI only as content hashpointers in KELs, there are no native structures for VCs present in KERI.
+- Layer 4 (application layer): Same: KERI is non-existing in this layer.
+
+To summarize: **Once we talk DID, we already talk about layers above KERI.**
+
 _(@henkvancann)_
 
 [W3C DID](https://www.w3.org/TR/did-core/):
-1. The KERI developers provisionally design DID:UN, which might become a mixture of DID:KEY, DID:PEER, and DID:WEB, combinable with more functional DIDs in the Identity spectrum DID:SOV, DID:ETHR, etc.
+1. The KERI developers provisionally design DID:KERI, which might become a mixture of DID:KEY, DID:PEER, and DID:WEB, combinable with more functional DIDs in the Identity spectrum DID:SOV, DID:ETHR, etc.
 2. No verifiable credentials
 _(@henkvancann)_
 
