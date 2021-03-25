@@ -6,7 +6,9 @@
 |     |![](../images/Keri_logo_color_on_white.png)|     |
 
 
-This document is part two of [Q-and-A](./Q-and-A.md). Both files shares a common [Glossary](./Glossary.md)
+This document is part two of [Q-and-A](./Q-and-A.md). Both files shares a common [Glossary](./Glossary.md) that has:
+- an alphabethically ordered list of **abbreviations**
+- an alphabethically ordered list of **definitions**
 
 **The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**\
 *Q = one star question. Novice to KERI, advanced in DIDs\

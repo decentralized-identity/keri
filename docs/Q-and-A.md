@@ -4,7 +4,14 @@
 
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
-This document is part one. Part two is [Q-and-A Security](./Q-and-A-Security.md). Both files shares a common [Glossary](./Glossary.md)
+This document is part one. Part two is [Q-and-A Security](./Q-and-A-Security.md). Both files shares a common [Glossary](./Glossary.md) that has:
+- an alphabethically ordered list of **abbreviations**
+- an alphabethically ordered list of **definitions**
+
+**The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**\
+*Q = one star question. Novice to KERI, advanced in DIDs\
+**Q = two star question. Proficient in DIDs and advanced in KERI\
+***Q = three star question. Expert in DIDs and proficient in KERI
 
 Why should you read or step through the Q&A? To get a different angle to the same topic: KERI.
 
