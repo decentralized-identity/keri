@@ -218,7 +218,22 @@ We have to handle `race conditions` too, just like any other distributed databas
 (_SamMSmith_)
 
 ## *Q: How does KERI scale safely without comprising the security model
-{TBW Prio 2}
+_Safe scaling: is everything more secure as more witnesses and more watchers are added?_
+
+Watchers and witnesses have two separate effects;
+1. Ambient verifiable requires even distribution (and total coverage) of **watchers** to detect duplicity; the more, the better
+2. Enough watchers allow a lower threshold of witnesses that need to stay honest - each controller sets a ratio of witnesses that need to confirm an event, if each of the witnesses is watched enough, the security model is the same (and not improved by more witnesses total)
+(_SamMSmith_)
+
+These two effects have distinctive security characteristic because for 2. the added benefit of an extra witness decrements with every next witness. On the other hand adding watchers in 1. will create a fixed marginal security improvement with every extra watcher.\
+_(@henkvancann)_
+
+Controllers' security increased by more witnesses; validator's assurance is increased by more watchers.\
+Controllers needs to do an eclipse attack to fool a validator, which is impossibly expensive with enough watchers
+(_SamMSmith_)
+
+Put another way, first few witnesses are exponentially more secure than n-1, but after a few witnesses, each additional witness's security gain approaches zero asymptotically.\
+(_@Chunningham_)
 
 ## **Q: Is the KERL technically a blockchain/hashed data log, rather than a ledger that implies a balance?
 Yes a KEL/KERL is a hash chained data structure. But not merely hash chained but also signed, so it's also a cryptographic proof of key state.\
@@ -227,14 +242,44 @@ It's not tracking balance, it's tracking key state.
 
 ## **Q: According to the SSI Book KERI will never be able to substitute the internet conventional PKI infra. Right?
 [SSI Book](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/144): "As powerful as this (read KERI-like) solution appears, completely self-certifying identifiers have _one major Achilles heel_: the controller’s identifier needs to change every time the public key is rotated. As we will explain further in _Chapter 10_ on decentralized key management, key rotation—switching from one public/private key pair to a different one—is a fundamental security best practice in all types of PKI. Thus the inability for self-certifying identifiers alone to support key rotation has effectively prevented their adoption as an alternative to conventional PKI.\
+
+
 {TBW prio 1}
 
-## **Q: How are KERI witnesses and watchers incentived to spread KELs and KERLs and make them available?
-{TBW prio 2}
+## **Q: How are KERI witnesses and watchers incentivized to spread KELs and KERLs and make them available?
+DNS and other infrastructure generally not billed to end-user; relative cost per end-user substantially lower than traditional/first-gen DLTs and blockchains.\
+An assumption we make: **Watchers** will be comparatively cheap and small communities, networks, and services will likely stand one up as a "loss leader".\
+Controllers are incentivized to spin up **witnesses**. Controllers will likely buy/lease at least 1 witness if they want their AID publishized/diseminated. This is cloud-scale infra (2 orders of magnitude lower than DLT infra).
+(_SamMSmith_)
+
+#### **Q: KERI versus Lightning/BTC Layer2: could witnesses and watchers form tiers or "layers"? Will there be cheap secondary/lightning-node witnesses and heavy-duty, enterprise-scale witnesses?
+
+ Communities and networks will pool resources and security and service models will evolve, we assume. (_SamMSmith_)
+
+Freer market closer to blockchain market model or pay-as-you-go clouds; no real moats or lock-ins in the spec as written...
+Implementation guide should maybe go into how to firewall different clients (like virtual machines on a cloud server) or other security-model eccentricities. (_@Chunningham_)
+
+#### **Q: Can a conformance test enforce publication of records or logs to judge them fairly as service providers?
+Maybe but that's layers above the current spec. This spec gives anchors for that kind of tracking, at least? //credit scoring based on opaque algos and unknown data stores and local identifiers - nothing portable to audit, proprietary turtles all the way down.
+
+Decentralizing REPUTATION was a core driver of decentralized identity in its early days (and core ideological thread in IIW); we could be dogfooding our own decentralized infrastructure reputation; pagerank and star-ranking systems are opaque and difficult to audit; publishing algos should still be our goal, and auditable algos is everything.
+(_SamMSmith_)
+
 ## **Q: Could a KEL or KERL be pruned or charded?
-Compared to blockchains KEL and KERL are lean and mean data structures. So pruning or charding might not be necessary. For the sake of security KEL and KERL can't be charded, because they are ambient available. However you could soft-prune a KEL because if you've verified to the root-of-trust once, you don't need to do that again up until the current key event in the KEL {The same holds for KERLs?}\
-{TBW prio 2}\
-_(@henkvancann)_
+Compared to blockchains KEL and KERL are lean and mean data structures. So pruning or charding might not be necessary. 
+KEL and KERL are charded by nature: as soon as delegation comes in or key rotation. _(@henkvancann)_ \
+
+    - Sharding = recombinatory P2P replication
+            - Chunningham: Every KEL is already shardable because each root identifier could be split, combined, moved whenever
+#### **Q How big is KEL in the worst case scenario or corner case? 
+You could chunk or prune huge KERLs; that's overkill unless it's really huge
+You can archive the old state and just keep genesis and last year's updates, for ex.
+
+WCS: high-volume millions of SIGNING events per hour is realistic corner case to worry about, however. If each transaction is sealed as a distinct event, that would make for a pretty big KEL.
+
+That might be kind of an anti-pattern though; implementation guide should probably recommend a merkle every minute in super high-volume signing infrastructures, for example:
+- WCS KELs are 500bytes per event
+- 10-30K txns per second = "visa scale"; load balancing may be needed; horizontal scalability achieved by delegation trees; delegations allow segmentation of storage (i.e. pre-sharding); if audit logs are anchored to delegated events in a pre-sharded log, you achieve very good scalability
 
 ## **Q: Why does KERI demand signing and digesting the full over-the-wire serialization of a message?
 The discussion of `KERI`s approach to *serializing messages and signing and digesting the full over-the-wire serialization* is inconvenient for implementers. The motivation for this approach I am calling Zero Message Malleability as a property of `KERI`. 
