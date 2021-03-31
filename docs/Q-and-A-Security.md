@@ -217,7 +217,7 @@ By the mechanism of availability, consistency, and duplicity.\
 We have to handle `race conditions` too, just like any other distributed database or blockchain.\
 (_SamMSmith_)
 
-## *Q: How does KERI scale safely without comprising the security model
+## **Q: How does KERI scale safely without comprising the security model
 _Safe scaling: is everything more secure as more witnesses and more watchers are added?_
 
 Watchers and witnesses have two separate effects;
@@ -259,7 +259,7 @@ Controllers are incentivized to spin up **witnesses**. Controllers will likely b
 Freer market closer to blockchain market model or pay-as-you-go clouds; no real moats or lock-ins in the spec as written...
 Implementation guide should maybe go into how to firewall different clients (like virtual machines on a cloud server) or other security-model eccentricities. (_@Chunningham_)
 
-#### **Q: Can a conformance test enforce publication of records or logs to judge them fairly as service providers?
+#### **Q: Can a conformance test enforce publication of records or logs to judge them fairly as service providers? (_@bumblefudge_)
 Maybe but that's layers above the current spec. This spec gives anchors for that kind of tracking, at least? //credit scoring based on opaque algos and unknown data stores and local identifiers - nothing portable to audit, proprietary turtles all the way down.
 
 Decentralizing REPUTATION was a core driver of decentralized identity in its early days (and core ideological thread in IIW); we could be dogfooding our own decentralized infrastructure reputation; pagerank and star-ranking systems are opaque and difficult to audit; publishing algos should still be our goal, and auditable algos is everything.
@@ -267,10 +267,11 @@ Decentralizing REPUTATION was a core driver of decentralized identity in its ear
 
 ## **Q: Could a KEL or KERL be pruned or charded?
 Compared to blockchains KEL and KERL are lean and mean data structures. So pruning or charding might not be necessary. 
-KEL and KERL are charded by nature: as soon as delegation comes in or key rotation. _(@henkvancann)_ \
+KEL and KERL are charded by nature: as soon as delegation comes in or key rotation.\
+Every KEL is already shardable because each root identifier could be split, combined, moved whenever (_@Chunningham_)
 
-    - Sharding = recombinatory P2P replication
-            - Chunningham: Every KEL is already shardable because each root identifier could be split, combined, moved whenever
+Sharding = recombinatory P2P replication (_@bumblefudge_)
+
 #### **Q How big is KEL in the worst case scenario or corner case? 
 You could chunk or prune huge KERLs; that's overkill unless it's really huge
 You can archive the old state and just keep genesis and last year's updates, for ex.
