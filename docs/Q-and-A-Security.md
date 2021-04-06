@@ -498,6 +498,35 @@ enable someone to proof the *veracity* of a statement only the *authenticity* of
 It’s not **"first seen"** until it’s fully seen by the whole set of witnesses needed (threshold). In the meanwhile the witness in this instance, has to add an escrow. And wait for the witness receipts coming in. And then accept the KEL.
 _(@henkvancann)_
 
+## ***Q: The Round Robin in indirect mode is more efficient than gossiping
+
+## *Q:  What does "fully signed" mean?
+It means that the threshold has been met, not that all witnesses 
+
+## *Q: What does 'fully witnessed" mean?
+It means that the threshold has been met
+
+## ***Q: So if a controller rotates 100% of the witnesses out.
+{TBW, just soundbites from the meeting KERI WG April 6 2021 listed below}
+There is an additional requirement to add to the key state.
+
+In this situation a validator can't find the witnesses. Than you have to bootstrap.
+
+The previous witness set needs to be able to (to have the add and remove list)
+
+It's a bridge, it's a forwarding service. That is a temporary provision. Until all the validators have seen the more recent keystate.
+Witnesses witness an event that rotates them out. They don't sign the rotation event. It doesn't have to contribute to the first seen. It will be included in the key event log. 
+
+The Witness will provide meta data for how long it will keep up the forwarding service if it will become rotated out. The pull of the event by the validator has to be more frequent than that given time per witness that it will keep the forwarding service up & running.
+
+#### Which trade-off is there for the validator?
+This is listed as an option in the white paper: 
+
+The validator can include what he/she considers first seen: the previous set of witness and the current set of witnesses (after rotation) has to be fully signed. This makes it extremely difficult to perform a dead key attack (eclipse attack).
+
+The backside of this is that more and more controllers will become duplicitious as the requirements on _first seen_ are so strong.
+
+
 ## *Q: What is KAACE?
 The primary purpose of the KA2CE algorithm is to protect the controller’s ability to promulgate the authoritative copy of its key event history despite external attack. This includes maintaining a sufficient degree of availability such that any validator may obtain an authoritative copy on demand.
 

@@ -409,6 +409,9 @@ We may verify that the controller of a private key, made a statement but not the
 We may build trust over time in what was said via histories of verifiably attributable (to whom) consistent statements, i.e. `reputation`.\
 (_SamMSmith_)
 
+## *Q:  What does "fully signed" mean in KERI?
+It means that the required _threshold_ of signatures has been met. It doesn't mean that all signatures have been provided.
+
 ## **Q: Do I need to show the full log (KEL) to anybody I transact with, even though I'd only like to show a part of it, for example a virtual credential?
 Yes, because they can't verify the root of trust. They have to have access to the full log at some point in time. Once they verfied to the root of trust, once, they don't have to keep a copy of the full log. They have to keep the event they've seen and any event since, that they need to verify as they go.
 (_SamMSmith_)
