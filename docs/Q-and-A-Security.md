@@ -499,10 +499,11 @@ It’s not **"first seen"** until it’s fully seen by the whole set of witnesse
 _(@henkvancann)_
 
 ## ***Q: The Round Robin in indirect mode is more efficient than gossiping?
-Yes. It has 2n complexity where as gossiping has the more expensive nlogn
-{TBW}
+Yes. It has _ complexity where as gossiping has the more "expensive" _nlogn_ complexity. However, _Round Robin_ has the characteristic of building up latency, which can be a burden in speed-sensitive usecases. A provison has been planned in KERI to offer best of both worlds.\
+_(@henkvancann)_
+
 ## *Q: What does 'fully witnessed" mean?
-It means that the threshold has been met, not that all witnesses have witnessed the event.
+It means that the _threshold_ of the number of witnesses has been met, It doesn't mean that all witnesses have witnessed the event.
 
 ## ***Q: So what if a controller rotates 100% of the witnesses out?
 {TBW, just soundbites from the meeting KERI WG April 6 2021 listed below}
