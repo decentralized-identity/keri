@@ -12,7 +12,7 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 [DIF WG Page](https://identity.foundation/working-groups/keri.html)    
 [ID WG Charter](https://bit.ly/DIF-WG-select1)  
 Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD)  
-Github Repos:  core , rust, python, javascript, go, and java (need to add links here)  
+Github Repos:  [core](https://github.com/decentralized-identity/keri), [rust](https://github.com/decentralized-identity/keriox), [python](https://github.com/decentralized-identity/keripy), [javascript](https://github.com/decentralized-identity/kerijs), [go](https://github.com/decentralized-identity/kerigo), and [java](https://github.com/stevetodd/keri-java).  
 Publicity [website](https://keri.one/)   
  A [note](https://tools.ietf.org/id/draft-knodel-terminology-02.html) on nomenclature used in this spec   
  Meeting [Recordings](https://docs.google.com/spreadsheets/d/1wgccmMvIImx30qVE9GhRKWWv3vmL2ZyUauuKx3IfRmA/edit#gid=1393617996) 
