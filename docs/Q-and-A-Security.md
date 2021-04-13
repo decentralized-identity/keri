@@ -301,15 +301,15 @@ _(@henkvancann)_
 
 # Q&A section Identifiers
 
-## How is a KERI identifier different than a regular identifier in DID methods?
+## **Q: How is a KERI identifier different than a regular identifier in DID methods?
 A self-sovereign identifier that is not self-certifying is dependent of infrastructure and is not fully autonomous and not fully porteable. KERI uses autonomic identifiers, fully cryptographically derivable and portable.
 _(@henkvancann)_
 
-## Is my KERI identifier public?
+## *Q: Is my KERI identifier public?
 In the direct mode (peer to peer) KERI can be used to keep identifiers private to the peers or group involved. In the indirect mode all identifiers are public. The privacy of the individual, group or object described by the identifier is weak because anyone can bind and indentifier to a subject anytime and anywhere. Fortunately, this binding is weak too, As soon as controllers and verfiers sign statements / events related to an identifier, that's when the binding gets strong and subjects publicly exposed.\
 _(@henkvancann)_
 
-## Is a KERI identifier GDPR proof?
+## **Q: Is a KERI identifier GDPR proof?
 KERI enables support for protection against liability that could stem from gdpr’s right to be forgotten (passive approach) and the right of erasure (active approach). There are two exceptions to the general rule that you have to remove an identifier from your database, if a subject and / or controller requests so:
 1. As long as you're a party in a transaction involving the identifier that has been revoked, then you can keep that identifier in your log.
 2. For archival integrity - given that KERI’s whole reason for existence is keep track of duplicity in identity events it is important to know that an identifier has been erased before, because we don't lose that notion. Because somebody could come up with the same identitifier in the future and we wouldn't know that it existed before.
@@ -321,11 +321,11 @@ Within the assumption of both exceptions KERI complies with the GDPR rules:
 Beware that most of GDPR rules are there to protect you from being exploited. So you're not being prossecuted or being labelled as a criminal activity. It might only be illegal and somebody could hold you liable for that.
 _(@henkvancann)_
 
-## What do I need a self-certifying identifier for?
+## *Q: What do I need a self-certifying identifier for?
 It is a cryptographically derived, strong binding between a controller, a keypair and an identifier. No weak bindings introduced by administration present.
 _(@henkvancann)_
 
-## How does self addressing work for the identifier?
+## **Q: How does self addressing work for the identifier?
 Using a content digest not only binds the inception statement to the identifier but also makes it easy to use the identifier prefix to retrieve the inception statement from a content addressable database. 
 
 ```
@@ -343,7 +343,7 @@ Check sig with public key ->
 non-repudiable unique attribution to the content by whoever controls the private key
 ```
 
-## What do I need a self-addressing identifier for?
+## *Q: What do I need a self-addressing identifier for?
 In brief: 
 1. commitment: nonrepudiable unique attribution to the content creator as controller
 2. confidentiality: a decryption key must be obtained from the controller
@@ -365,32 +365,32 @@ For other reasons, `tombstoning` has never been accepted as a viable solution to
 Tombstoning does not apply to KERI because in indirect mode KEL and KERLs will be ambient available and in direct mode their are only to parties involved. If a third party would be involved in direct mode, somebody would breach the understanding that it's private communication by design.
 _(@henkvancann)_
 
-## What do I need a multi-sig self-addressing identifier for?
+## *Q: What do I need a multi-sig self-addressing identifier for?
 To get even more security in terms of your signing scheme.\
 (_SamMSmith_)
 
-## What do I need a delegated self-adressing identifier for?
+## **Q: What do I need a delegated self-adressing identifier for?
 To be able to horizontally scale your identifier system, that consists of a root identifier that manages a bunch of other delegated identifier. Created with a cryptographically derived strong binding, all the way through your infrastructure. Not dependent on any administration at all. \
 (_SamMSmith_)
 
-## What do I need a self-signing identifier for?
+## *Q: What do I need a self-signing identifier for?
 Often it is an efficiecy measure where the identifier includes the signature as your `content-addressable hash`.\
 _(SamMSmith)_
 
-## What do I need a non-transferable identifier for, as KERI supports transferable identifiers?
+## **Q: What do I need a non-transferable identifier for, as KERI supports transferable identifiers?
 Its use is different. Many applications of self-certifying identifiers only require temporary use after which the identifier is abandoned. These are called ephemeral identifiers. Other applications may only attach a limited amount of value to the identifier such that replacing the identifier is not onerous.\
 Because a non-transferable (ephemeral) identifier is not recoverable in the event of compromise, the only recourse is to replace the identifier with another identifier. In some applications this may be preferable, given the comparable simplicity of maintaining key state.\
 In either of these cases a non-transferable self-certifying identifier is sufficient.
 
-## Could you give an example of solely a cryptographically verifiable inception statement 
+## **Q: Could you give an example of solely a cryptographically verifiable inception statement 
 This is a basic self certifyin identifier (`SCI`). The identifier itself is derived from a public key that is in the identifier. Nothing is connecting that binding of the identifier to the inception statement. Someone could create an different inception statement with other fields, the only thing that need to be the same is the key list. Everything else in the inception statement could be different.\
 So that means the only way to know which inception statement is the right one is duplicity detection. So `First seen`  becomes the only means you have to check which inception steatement is the authortiative for that identifier, in case you need an inception statement. 
 
-## Could you give an example of strongly binding the inception statement to the identifier
+## **Q: Could you give an example of strongly binding the inception statement to the identifier
 This a self-addressing self-certifying identifier (`SASCI`) In this case the identifier itself is derived from the inception statement. Now there can only be one inception statement for this identifier. If you'd change just a single bit, other than the identifier field itself, and it's *different* identifier. You can't have duplicitious inception statements. It's not possible. It locks down at least the  inception part and that help in duplicity detection. There can only be one inception statement to start a duplicity log with. From that point on you can have duplicitous next events, but not before. But it still means the effort it takes has to engage in CreatING duplicity, becomes much harder because for example if you include witnesses in the inception statement then any duplicitous event has to publish through the witnesses, and that adds a barrier. Basically it locks down at least the inception part, You can't change it.\
 In some cases it would be useful to be able to strongly bind the inception statement to the identifier and not merely rely on a cryptographically verifiable inception statement for the associated identifier. 
 
-## Why ever go for a basic self-certifying identifier (`SCI`) when KERI offers self addressing SCI (`SASCI`) with a better security guarantee?
+## **Q: Why ever go for a basic self-certifying identifier (`SCI`) when KERI offers self addressing SCI (`SASCI`) with a better security guarantee?
 Because there are many applications where you don't want to have to depend on a KEL because a basic SCI is self-certifying without a KEL. It's more light-weight. For example the non-transferable version of a SCI you can still have an inception event so that basically any tracking anybody does there is still a nominal KEL for that identifier so you can look it up that way, discovering everything, there is always a legitimate version of an inception event for every identifier. 
 
 In many cases you want identifiers that are ephemeral, that you know the only event that could be would be is the inception event. You don't need to see the inception event, if you're using it in an ephemeral context.\
@@ -408,7 +408,7 @@ Look for more info in the KERI slidedeck ["KERI for the DIDified"]({to do}).
 
 # Q&A section Event logs
 
-## What is a Key Event Log?
+## *Q: What is a Key Event Log?
 It's the basis of the source of truth for KERI identifiers. KERI enables cryptographic proof-of-control-authority (provenance) for each identifier. A proof is in the form of an identifier’s key event receipt log (KERL), after a validator verified the registered events, in the chain of events: the key event log (KEL).\
 _(@henkvancann)_
 
@@ -434,43 +434,50 @@ External inconsistency: two versions of the key event log (KEL).
 ## How can it be garantueed than an identifier represents a certain identity and not another one?
 KERI takes advantage of its cryptographic root of trust with strong bindings, to get an inviable guarantee, based on both internal consistency for the cryptographic root of trust and external consistency using ambient duplicity detection.
 
-## What is Duplicity?
+## *Q: What is Duplicity?
 See the [definition](#duplicity). What it means is that we have a way to make judgements about trust in entities.\
 _(@henkvancann)_
 
-## What does duplicity look like?
+## **Q: What does duplicity look like?
 Duplicity takes two forms. In the first form, a `controller` may be deemed duplicitous whenever it produces an event message that is inconsistent with another event message it previously produced. In the second form, a witness may be deemed duplicitous when it produces an event _receipt_ that is in- consistent with another event receipt it previously produced.\
 _(SamMSmith)_
 
-## Why should we care about Duplicity?
+## *Q: Why should we care about Duplicity?
 Duplicity becomes a basis for distrust in a controller or its witnesses. _(SamMSmith)_
 
 # Q&A section Key rotation
 
-## What is Key Rotation?
+## *Q: What is Key Rotation?
 Changing the key, i.e., replacing it by a new key. The places that use the key or keys derived from it (e.g., authorized keys derived from an identity key, legitimate copies of the identity key, or certificates granted for a key) typically need to be correspondingly updated.
 
 the main purpose of key rotation it to either prevent or recover from a successful compromise of one or more private keys by an exploiter.\
 [Source](https://csrc.nist.gov/glossary/term/Key_Rotation).
 
-## Why bother about key rotation?
+## **Q: Why bother about key rotation?
 The primary purpose of rotating encryption keys is not to decrease the probability of a key being broken, but to reduce the amount of content encrypted with that key so that the amount of material leaked by a single key compromise is less.
 
 However, for _signing keys_ there is a concrete reason: say it takes X months of computation (expected value given your threat model) to crack a key, and you rotate your signing key every 𝑋−1 months and revoke the old one, then by the time an attacker has cracked the key, any new signatures produced by the attacker will either be A) rejected by clients because of key expiry, or B) back-dated to before the key revocation (which should also raise warning in clients).\
 [Source](https://crypto.stackexchange.com/questions/41796/whats-the-purpose-of-key-rotation).
 
-## Why does KERI solve interoperability with its key rotation scheme? 
+## **Q: Why does KERI solve interoperability with its key rotation scheme? 
 KERI uses plain old digital signatures from PKI, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. KERI solves that problem.
 
 
-## Wat is Pre-rotation?
+## **Q: What is Pre-rotation?
 Pre-rotation is a _cryptographical commitment (a hash)_ to the _next_ private key in the rotation-scheme. (_@henkvancann_)\
 The pre-rotation scheme provides secure verifiable rotation that mitigates successful exploit of a given set of signing private keys from a set of (public, private) key-pairs when that exploit happens sometime **after** its creation _and_ its first use to issue a `self-certifying identifier`. In other words, it assumes that the private keys remains private **until after** issuance of the associated identifier.\
 [Source: chapter Pre-rotation in whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
 
-## Why hasn't pre-rotation or forward chaining been done before?
+## *Q: Why hasn't pre-rotation or forward chaining been done before?
 I first wrote about in 2018, it's been public knowledge ever since. I guess people just don't read.\
 (_SamMSmith_)
+
+## *Q: What do I need to do step by step to rotate my keys?
+<img src="../images/key-rotation-muggles-steps1-2.png" alt="key rotation for muggles steps 1 and 2" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps3-4.png" alt="key rotation for muggles steps 3 and 4" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps5-6.png" alt="key rotation for muggles steps 5 and 6" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps7-8.png" alt="key rotation for muggles steps 7 and 8" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps9-10.png" alt="key rotation for muggles steps 9 and 10" border="0" width="600">
 
 # Q&A section KEL and KERL
 
