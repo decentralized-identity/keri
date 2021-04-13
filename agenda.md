@@ -39,9 +39,35 @@ Updated KID003 with revised KeyState to include wr and wa lists.
 keripy demos now support parsing hetero attachments with new count codes. 
 
 First Draft of did:keri method specification
+https://identity.foundation/keri/did_methods/
 
 GitHub issue review
 
+#### Minutes April 13
+
+<details>
+<summary>Minutes</summary>
+
+- Round of introductions
+- Review of the IIW session proposals on April 20th
+- Sam: Anyone who has indirect mode running is invited to present.
+- Robert: will create an issue based on the answers in Slack concerning TEL and namespaces. Sam suggest creating a slidedeck set of sheets.
+- IIW Session are an hour long, we have three days and 8 session per day in our KERI track.
+- We should be smart enough to choose a room and a timeslot not competing with popular topics.
+- Juan suggest that KERI community members attend sessions that are close to KERI DID:PEER DID:ORB and join the discussion.
+- DID:PEER is an intermediate step until KERI direct mode is live (in production). Sam is in direct contact with Daniel Hardman about the roadmap.
+- Authentic Chained Data Containers: chain together attestions so you can provenance attestions. https://wiki.trustoverip.org/display/HOME/ACDC+%28Authentic+Chained+Data+Container%29+Task+Force
+- Philip: DID:KERI https://identity.foundation/keri/did_methods/
+     - Sam suggests to reference KID001. 
+     - The normative specs in the KIDS should be referenced in the did method specification.
+     - DID:KERI has the capabilities
+- Robert: EU standardization commission on DLT/blockchain has installed a separate WG on Identity Management based on blockchain. Robert will keep an eye on this and keep us posted.
+     - Sam: suggests to drop this new WG here and there during IIW
+     - https://www.cencenelec.eu/news/brief_news/Pages/TN-2018-085.aspx
+     - https://standards.cen.eu/dyn/www/f?p=204:7:0::::FSP_ORG_ID:2702172&cs=1465AF26367A9ECE85D149F31EF39162E
+     - Robert: The group is called CEN/CLC/JTC 19
+
+</details>
 
 ## Agenda April 6
 
@@ -55,14 +81,18 @@ GitHub issue review
     - KERI Security - Guarantees and attack surfaces
     - KERI Overview (for mudbloods & wizlords) 
     - Drummond will also do a Mugglesfest
-    - Charles? - TEL interop with other txn logs - IPFS/Protocol Labs? (WIP/speculative -- pending Protocol Labs confirmation?)
+    - Kepler IpFS peripheral  Charles Cunningham
+    - KERI TELS Smart Contracts Issue VCs, Issue HMI, etc Charles Robert etc
     - GLEIF will hold a session on vLEIs (issued against KERI AIDs)
     - KERI Q&A - interactive sessions (led by Henk)
-    - HCF - session on... supply chain? personal data agent?
-    - [Non-KERI] - ACDC TF (ToIP)
-    - [Indy](https://wiki.hyperledger.org/display/indy) [DID Method](https://github.com/hyperledger/indy-did-method)
-    - Did:KERI method session (community)
-    - 
+    - Human Colossos Foundation (HCF) - session on... DRI supply chain? personal data agent?
+    - keri-dht-py
+    - ? keri agents to DidCom (Ivan Jolocom)
+    - [Non-KERI] - ACDC TF (ToIP) Sam Robert 
+    - Did:KERI method session (community)  Did:indy:xxx:keri
+        - [Indy](https://wiki.hyperledger.org/display/indy) [DID Method](https://github.com/hyperledger/indy-did-method)
+    - Community attend DID:PEER working group.
+    -   
 
 <details>
 <summary>Minutes</summary>
