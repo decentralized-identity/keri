@@ -283,11 +283,12 @@ In brief these are these reasons:
 ## *Q: In the KERI system design trade space you strike out features, so you must have stroked out application space too; which?
 <img src="../images/trade-space-limitations.png" alt="trade-space-limitations" border="0" width="300">
 KERI is not suitable for:
- - Applications where total ordering of key event is needed, like in cryptocurrencies and non-fungible tokens.
+
+- Applications where total ordering of key event is needed, like in cryptocurrencies and non-fungible tokens.
 However, KERI is suitable:
- - to build smart contracting in a direct peer-to-peer way
- - to build Sidetree with KERI, vice versa is not possible
- - to implement blockchain / ledger anchored identifiers
+- to build smart contracting in a direct peer-to-peer way
+- to build Sidetree with KERI, vice versa is not possible
+- to implement blockchain / ledger anchored identifiers
 (_SamMSmith and @henkvancann_)
 
 ## *Q: Are smart contracts possible with KERI?
@@ -331,7 +332,7 @@ We don't have a trustable interoperability. And that leads to the idea that the 
 (_SamMSmith_)
 
 ## *Q: How to repair the internet trust layer?
-With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="400" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="400" style="float:right">
+With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="300" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="350" style="float:right">
 _(@henkvancann)_
 
 ## *Q: What role does KERI play in the suggested "repair of the internet"?
@@ -342,8 +343,8 @@ We believe that _decentralization of value transfer_ is essential to building tr
 # Q&A section KERI and DIDs
 
 ## **Q: Is KERI a DID?
-`KERI` is not a `DID` method. The proposed related `DID` method is [`did:un`](https://github.com/decentralized-identity/KERI/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-KERI/).\
-However there are also votes for `did:KERI`: _Drummond Reed_ (Dec 2 2020): "at IIW we asked that question and feedback overwhelmingly favored did:KERI. Furthermore, I’ve proposed that the KERI namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the KERI namespace in the Indy DID method."\
+`KERI` is also the name of a `DID` method in the making. The proposed related `DID` method is [`did:keri`](https://github.com/decentralized-identity/KERI/blob/master/did_methods/keri.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-KERI/).\
+_Drummond Reed_ (Dec 2 2020) on `did:KERI`: "at IIW we asked that question and feedback overwhelmingly favored `did:KERI`. Furthermore, I’ve proposed that the KERI namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the KERI namespace in the Indy DID method."\
 _(@henkvancann)_
 
 ## **Q: Some say that with KERI, a DID can be reduced to did:\<identifier>. But that’s not a valid DID?!

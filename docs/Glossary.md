@@ -231,7 +231,9 @@ BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0.
 <img src="../images/prefix.png" alt="Prefix derivation" border="0" width="700">
 
 #### Public Key Infrastructure
-A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
+A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption.
+<img src="../images/pubprivkey-caveat.png" alt="Public Private Key caveat to KERI" border="0" width="400"> 
+[Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
 #### Race condition
 A race condition or race hazard is the condition of an electronics, software, or other system where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. It becomes a bug when one or more of the possible behaviors is undesirable. [Source](https://en.wikipedia.org/wiki/Race_condition).

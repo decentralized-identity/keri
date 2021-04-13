@@ -318,7 +318,7 @@ Within the assumption of both exceptions KERI complies with the GDPR rules:
 1. block-list of “deleted” KELs: a reciept of a request for erasure must naturally hold some PII, a two-party interaction might allow this to be recorded.
 2. a need to maintain system integrity/archival purposes can be a reason for maintaining some info right of erasure versus right to be forgotten. This active and passive approach reflects two slightly different interpretations of the same article (which one people use is a hint of their school of thought).
 
-<img src="../images/keri-gdpr-compliance-muggles.png" alt="KERI GDPR compliance" border="0" width="600">
+<img src="../images/keri-gdpr-compliance-muggles.png" alt="KERI GDPR compliance" border="0" width="500">
 
 Beware that most of GDPR rules are there to protect you from being exploited. So you're not being prossecuted or being labelled as a criminal activity. It might only be illegal and somebody could hold you liable for that.
 _(@henkvancann)_
@@ -475,30 +475,28 @@ I first wrote about in 2018, it's been public knowledge ever since. I guess peop
 (_SamMSmith_)
 
 ## *Q: What do I need to do step by step to rotate my keys?
-<img src="../images/key-rotation-muggles-steps1-2.png" alt="key rotation steps 1 and 2" border="0" width="600">
-<img src="../images/key-rotation-muggles-steps3-4.png" alt="key rotation steps 3 and 4" border="0" width="600">
-<img src="../images/key-rotation-muggles-steps5-6.png" alt="key rotation steps 5 and 6" border="0" width="600">
-<img src="../images/key-rotation-muggles-steps7-8.png" alt="key rotation steps 7 and 8" border="0" width="600">
-<img src="../images/key-rotation-muggles-steps9-10.png" alt="key rotation steps 9 and 10" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps1-2.png" alt="key rotation steps 1 and 2" border="0" width="500"><img src="../images/key-rotation-muggles-steps3-4.png" alt="key rotation steps 3 and 4" border="0" width="500" align="right">
+<img src="../images/key-rotation-muggles-steps5-6.png" alt="key rotation steps 5 and 6" border="0" width="500"><img src="../images/key-rotation-muggles-steps7-8.png" alt="key rotation steps 7 and 8" border="0" width="500" align="right">
+<img src="../images/key-rotation-muggles-steps9-10.png" alt="key rotation steps 9 and 10" border="0" width="500">
 
 # Q&A section KEL and KERL
 
-## What is the difference between KEL and KERL?
+## **Q What is the difference between KEL and KERL?
 The word 'Receipt' explains it all: the sender signs off the verification of the KEL done by the recipient. That _Receipt_ is hosted in the KERL and is the root-of-trust for KERI.\
 <img src="../images/Direct-mode-kel-kerl.png" alt="Direct mode: kel and kerl difference charted" border="0" width="600" style="float:left">
 The analogy is the difference between a _two-way_ - and a _three-way handshake_: Did I, the recepient, only verify that the sender's message was valid (two-way using KEL, arrow left to right) or did the sender _sign off the receipt_ of that verification by the recipient (three-way in KERL, arrow right to left)
 _(@henkvancann)_
 
 # Q&A section Witness
-## Witnesses have no skin in the game, it’s a `nothing at stake` situation, no?
+## **Q: Witnesses have no skin in the game, it’s a `nothing at stake` situation, no?
 The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) has a section called the Duplicity Game.  I suggest reading through that first. Or see the [part of the SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar that tackles this.\
 (_SamMSmith_)
 {TBW prio 2}
 
-## What is the difference between Key Event Receipt Infrastructure (KERI), and distributed hash tables (DHTs)?
+## ***Q: What is the difference between Key Event Receipt Infrastructure (KERI), and distributed hash tables (DHTs)?
 {TBW prio 3}
 
-## As long as witnesses keep lying together no one will ever be able to prove them wrong? 
+## **Q: As long as witnesses keep lying together no one will ever be able to prove them wrong? 
 Witnesses do not make any statement about the content of what is being proved. KERI does not
 enable someone to proof the *veracity* of a statement only the *authenticity* of the statement. {TBW} \
 (_SamMSmith_)
@@ -527,7 +525,7 @@ Witnesses witness an event that rotates them out. They don't sign the rotation e
 
 The Witness will provide meta data for how long it will keep up the forwarding service if it will become rotated out. The pull of the event by the validator has to be more frequent than that given time per witness that it will keep the forwarding service up & running.
 
-#### Which trade-off is there for the validator?
+#### **Q: Which trade-off is there for the validator?
 This is listed as an option in the white paper: 
 
 The validator can include what he/she considers first seen: the previous set of witness _AND_ the current set of witnesses (after rotation) has to be fully signed. This makes it extremely difficult to perform a dead key attack (eclipse attack).
@@ -539,7 +537,7 @@ The primary purpose of the KA2CE algorithm is to protect the controller’s abil
 
 # Q&A section Watchers
 
-## How can we detect duplicity? Suppose controller has power over witnesses.
+## *Q: How can we detect duplicity? Suppose controller has power over witnesses.
 In a Public setting `duplicity detection` protects the validator from any duplicity on the part of the controller and any resources such as witness that are controlled by the controller.
 
 Since a given controller in a public setting may not know who all a given validator is using for duplicity detection (watchers etc), the controller can't ensure that they will not be detected. And once detected any value that their public identifier had is now imperiled because *any entity with both copies can proof irrefutably to any other entity that the controller is duplicitous (i.e. not trustable)*. \
@@ -593,7 +591,7 @@ It's considered a privacy property of KERI, that you cannot enumerate all identi
 Discovery is a layer on top of what KERI provides. KERI doesn't preclude DID, nor does it need to implement all of DID. KERI will participate in the DID ecosystem. (_@_stevetodd__)\
 It doesn't need/want to solve/serve that slice of the use case pie.
 
-#### Follow up question 1: Why does KERI rule out 95% of the DID-based use cases upfront, where we need public discoverability on a decentralized deterministically iterable registry?
+#### **Q: Follow up question 1: Why does KERI rule out 95% of the DID-based use cases upfront, where we need public discoverability on a decentralized deterministically iterable registry?
 ```
 The vast majority of users use apps and services that are exchanges between or about the well-known, 
 publicly resolvable registered persona DIDs of people, places, or things? 
@@ -619,7 +617,7 @@ Or for example TOR hidden services, these are not designed to be discoverable. I
  In many scenarii, what the elaborate question explains makes sense. I can understand a different design goal/priority for KERI, I think the rationale is quite clear in terms of where it stands in the DID space.
 (_@fimbault_)
 
-#### Follow up question 2: That's not deterministic?! 
+#### **Q: Follow up question 2: That's not deterministic?! 
 _You can't have Registry A magically just trust that a DID from Other System B, it would need to be native to it?_
 _Any registry with deterministically resolvable entries requires the entry controllers' IDs and resolutions be native to it. That's an empirical computer science wall type of requirement._ \
 _Imagine I want to register a DID in a decentralized deterministically iterable registry - something anyone can run and deterministically know all entries registered with it, wherein the registry has no central entities or authorities that determine the bindings between entries and those who control them..._\
@@ -631,27 +629,27 @@ It depends on what you mean by resolve. The [white paper](https://github.com/Smi
 {TBW prio 1}
 
 
-## Nowhere in any paper on this planet is this a solved problem, because it's basically NP hard
-Orie Steele (Transmute)  12:30 AM\
-its considered a privacy property of KERI, that you cannot enumerate all identitiess
+## **Q : Nowhere in any paper on this planet is this a solved problem, because it's basically NP hard
+It's considered a privacy property of KERI, that you cannot enumerate all identities.\
+_(@Or13)_
 
 
 # Q&A Security Guarantees
 
-## What are the security risks of KERI with regard to the identity protocol?
+## **Q: What are the security risks of KERI with regard to the identity protocol?
 Harm that can be done to the a `controller`: Unavailability, loss of control authority, externally forced duplicity\
 Harm that can be done to a `validator`: _Inadvertent acceptance_ of verifiable - but forged or duplicitous events 
 
 Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.\
 (_SamMSmith_)
 
-## How secure is the KERI infrastructure?
+## *Q: How secure is the KERI infrastructure?
 KERI changes the discussion about security. From a discussion about the security of _infrastructure_ to a discussion about the security of your _key management infrastructure_. Most people when they think security, the think "oh, blockchain!": permissioned or permissionless, how hard is it to get 51% attack, etc.Non of that matters for KERI. KERI is all about "are your private keys private?!" And if _yes_, that drastically slims down the security discussion to brute force attacks to public keys. And because the next public keys are in fact protected by a hash, you have to brute force the hash algorithm, that is post-quantum secure.
 So that is a very high level of infrastructural security.
 
 So private key management and protection is the root of your security in KERI.
 
-## Can I rotate keys with Tangem in KERI?
+## **Q: Can I rotate keys with Tangem in KERI?
 _Suppose I'd trust a Tangem card for generating public private key pairs at will and the NFC communication allowing to interact with a wallet app._
 
 One of the main concerns is that there is a theoretical link (a binding) between the cards and a user, via the card-ID (CID). However the CID is used only for checking the authenticity and integrity of the chip itself. Tangem publishes and anchors a list of CIDs with corresponding public addresses in a public blockchain. When checking authenticity, the verifier looks up the pub CID and corresponding pub address in the published list, and verifies that the chip controls the correct pub address by means of a challenge-response scheme. 
@@ -665,7 +663,7 @@ TBD: How can it be verified, when and by whom? If the firmware is not open sourc
 On the issue of Rotation:
 {TBW prio 2}
 
-## DHTs are not an immutable linear chronology oracle, which is the heart of the actual security problem. You claim KERI solves the security problem with DHTs?!
+## **Q: DHTs are not an immutable linear chronology oracle, which is the heart of the actual security problem. You claim KERI solves the security problem with DHTs?!
 The immutable linear chronology is provided by the key event log (`KEL`) data structure itself. Getting a full copy is all you need. When retrieving a KEL over a network, then as you say a witness can prune some amount of the latest events, but every witness would have to be compromised for that to be undetectable.\
 If parties are so concerned, they could establish a large collectivised set of witnesses that sign and distribute all key events presented to this network (this would essentially be a `Proof of Authority`/federated blockchain but would require (configurable)% compromise for undetectable pruning of recent history. Only PoA/federated because the witness sets are designated by the controllers, so you could not just use arbitrary witnesses who join and leave the network at leisure (afaik).
 
@@ -675,7 +673,7 @@ _(CharlesCunningham)_
 The point of KERI is to encapsulate all the guarantees within `KEL`s nothing else is needed. DHT is just for resolution process to find a place from where I can get it. This place can change as you like I could even get it in p2p interaction from someone else. DHT seems to be the most reasonable way to build solid infrastructure for resolution process but none of the nodes can actually inject or tamper KELs so you don't have to trust them or get any guarantees from them. Since if the node will miss behave it is very easy to detect that.\
 _(RobertMitwicki)_
 
-## You are arguing KERI affords greater security than a decentralized linear event system like Bitcoin?
+## **Q: You are arguing KERI affords greater security than a decentralized linear event system like Bitcoin?
 _...you would be fundamentally arguing that you can record a singular, immutable linear event history more securely than Bitcoin, and I see nothing in KERI that would indicate that._
 
 Read the answer to [this](#keri-is-basically-a-series-of-pay2publickeyhash-transactions) first.
