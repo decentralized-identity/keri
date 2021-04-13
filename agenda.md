@@ -38,6 +38,8 @@ Review update IIW proposed Sessions
 Updated KID003 with revised KeyState to include wr and wa lists.
 keripy demos now support parsing hetero attachments with new count codes. 
 
+First Draft of did:keri method specification
+
 GitHub issue review
 
 
