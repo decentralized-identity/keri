@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--suppress HtmlDeprecatedTag -->
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>The did:keri Method v0.1</title>
+    <script
+            src="https://www.w3.org/Tools/respec/respec-w3c"
+            class="remove"
+            defer
+    ></script>
+    <script class="remove">
+        // All config options at https://respec.org/docs/
+        var respecConfig = {
+            specStatus: "unofficial",
+            editors: [{name: "Dr. Sam Smith (ProSapien)", url: "https://keri.one/"}],
+            authors: [
+                {name: "Dr. Sam Smith (ProSapien)", url: "https://keri.one/"},
+                {name: "Charles Cunningham (Jolocom, Spruce)", url: "https://www.spruceid.com/"},
+                {name: "Phil Feairheller (CanisLabs)", url: "https://keri.one/"}
+            ],
+            subtitle: "A DID Method for KERI Identifiers",
+            localBiblio: {
+                KERI: {
+                    title: "KERI v2.5.9",
+                    href: "https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf",
+                    authors: ["S. Smith"],
+                    publisher: "Decentralized Identity Foundation"
+                },
+                "DID-RESOLUTION": {
+                    title: "Decentralized Identifier Resolution",
+                    href: "https://w3c-ccg.github.io/did-resolution/",
+                    authors: ["Markus Sabadello", "Dmitri Zagidulin"],
+                    publisher: "Credentials Community Group"
+                }
+            },
+            github: "https://github.com/decentralized-identity/keri",
+            shortName: "keri",
+            xref: "web-platform"
+        };
+    </script>
+</head>
+<body>
+<section id="abstract">
+    <p>KERI provides a means for secure and decentralised key management. This specification defines a DID method based
+        on KERI.</p>
+</section>
+<section id="sotd">
+</section>
+<section class="informative">
+    <h2>Introduction</h2>
+    <p>The Key Event Receipt Infrastructure is a system for secure self-certifying Identifiers which aims at minimum
+        sufficiency and maximum security. It defines mechanisms for proving the Root of Trust for self-certifying
+        Identifiers and their associated Key State. This spec defines a transform from Key State to DID Document, such
+        that any valid Key Event Log can be processed into a DID Document.</p>
+
+    <p>A close analogy is <tt>did:peer</tt>, except that where the data model of <tt>did:peer</tt> is a DID Document and JSON patches on
+        said Document, the basic data model of <tt>did:keri</tt> is an append-only log of Key Events. KERI-based
+        Identifiers are suitable for both any-wise and n-wise purposes.</p>
+
+</section>
+<section class="normative">
+    <h2>Concepts</h2>
+
+
+    <section class="normative">
+        <h3>Events</h3>
+        <p>
+            A Key Event is an atomic transaction over the Key State of an Identifier. While all events have some
+            semantic meaning within KERI, only a subset will change the keys in a Key State (rotation and delegated rotation).
+        </p>
+    </section>
+    <section class="normative">
+        <h3>Key Event Log</h3>
+        <p>
+            The Key Event Log is a type of hash-chained data structure from which the Key State of an Identifier can be
+            derived. It can always be used to recreate the state at any point ("event-sourcing").
+        </p>
+    </section>
+    <section class="normative">
+        <h3>Key Event Receipt Log</h3>
+        <p>
+            The Key Event Receipt Logs are built from receipts of events signed by the witnesses of those events (these
+            are called <code>commitments</code>); these are also append-only but not hash-chained.
+        </p>
+
+    </section>
+    <section class="normative" id="keyState">
+        <h3>Key State</h3>
+        <p>
+            Key State represents the current values for the keys, witnesses and thresholds for a given identifier, signed by a provider.
+            The signature from the provider signifies that the provider has verified the KEL for the identifier and the result of that
+            verification is the key state.  The key state is represented in a Key State Notification Message detailed fully in
+            <a href="https://github.com/decentralized-identity/keri/blob/master/kids/kid0003.md#key-state-messages">Event Serialization Key State Messages</a>.
+            The following fields are defined for a Key State Notification Message:
+        </p>
+            <ul>
+                <li><code>v</code>:	Version String</li>
+                <li><code>i</code>: Identifier Prefix</li>
+                <li><code>s</code>:	Sequence Number</li>
+                <li><code>t</code>:	Message Type</li>
+                <li><code>d</code>:	Event Digest (Seal or Receipt)</li>
+                <li><code>p</code>:	Prior Event Digest</li>
+                <li><code>kt</code>: Keys Signing Threshold</li>
+                <li><code>k</code>:	List of Signing Keys (ordered key set)</li>
+                <li><code>n</code>:	Next Key Set Commitment</li>
+                <li><code>wt</code>: Witnessing Threshold</li>
+                <li><code>w</code>:	List of Witnesses (ordered witness set)</li>
+                <li><code>wr</code>: List of Witnesses to Remove (ordered witness set)</li>
+                <li><code>wa</code>: List of Witnesses to Add (ordered witness set)</li>
+                <li><code>c</code>:	List of Configuration Traits/Modes</li>
+                <li><code>a</code>:	List of Anchors (seals)</li>
+                <li><code>da</code>: Delegator Anchor Seal in Delegated Event (Location Seal)</li>
+                <li><code>di</code>: Delegator Identifier Prefix in Key State</li>
+                <li><code>rd</code>: Merkle Tree Root Digest</li>
+                <li><code>e</code>:	Last received Event Map in Key State</li>
+                <li><code>ee</code>: Last Establishment Event Map in Key State</li>
+                <li><code>vn</code>: Version Number ("major.minor")</li>
+            </ul>
+
+        <p>
+            Key state notification messages differ depending on the transferability of the the prefix signer and whether
+            the signer is using a delegated identifier.  The follow examples detail the fields needed for each permutation.
+        </p>
+
+        <pre class="example highlight" title="Non-transferable Prefix Signer Key State Message">
+            {
+              "v": "KERI10JSON00011c_",
+              "i": "EaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM",
+              "t": "ksn",
+              "kt": "1",
+              "k": ["DaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM"],
+              "n": "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
+              "wt": "1",
+              "w": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"],
+              "c": ["eo"],
+              "e":
+                {
+                  "s": "2",
+                  "t": "rot",
+                  "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                },
+              "ee":
+                {
+                  "s": "1",
+                  "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                  "wr": ["Dd8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CMZ-i0"],
+                  "wa": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"]
+                },
+              "di": "",
+              "a": {}
+            }
+        </pre>
+        <pre class="example highlight" title="Delegated Non-transferable Prefix Signer Key State Message">
+            {
+              "v": "KERI10JSON00011c_",
+              "i": "EaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM",
+              "t": "ksn",
+              "kt": "1",
+              "k": ["DaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM"],
+              "n": "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
+              "wt": "1",
+              "w": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"],
+              "c": ["eo"],
+              "e":
+                {
+                  "s": "2",
+                  "t": "rot",
+                  "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                },
+              "ee":
+                {
+                  "s": "1",
+                  "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                  "wr": ["Dd8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CMZ-i0"],
+                  "wa": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"]
+                },
+              "di": "EJZAoTNZH3ULvYAfSVPzhzS6b5CMaU6JR2nmwyZ-i0d8"
+              "a": {}
+            }
+        </pre>
+        <pre class="example highlight" title="Transferable Prefix Signer Key State Message">
+            {
+              "v": "KERI10JSON00011c_",
+              "i": "EaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM",
+              "t": "kst",
+              "kt": "1",
+              "k": ["DaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM"],
+              "n": "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
+              "wt": "1",
+              "w": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"],
+              "c": ["eo"],
+              "e":
+                {
+                  "s": "2",
+                  "t": "rot",
+                  "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                },
+              "ee":
+                {
+                  "s": "1",
+                  "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                  "wr": ["Dd8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CMZ-i0"],
+                  "wa": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"]
+                },
+              "di": "",
+              "a":
+                {
+                  "i": "EJZAoTNZH3ULvYAfSVPzhzS6b5aU6JR2nmwyZ-i0d8CM",
+                  "s": "1",
+                  "d": "EULvaU6JR2nmwyAoTNZH3YAfSVPzhzZ-i0d8JZS6b5CM"
+                }
+            }
+        </pre>
+        <pre class="example highlight" title="Delegated Transferable Prefix Signer Key State Message">
+            {
+              "v": "KERI10JSON00011c_",
+              "i": "EaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM",
+              "t": "kst",
+              "kt": "1",
+              "k": ["DaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM"],
+              "n": "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
+              "wt": "1",
+              "w": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"],
+              "c": ["eo"],
+              "e":
+                {
+                  "s": "2",
+            	  "t": "rot",
+                  "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                },
+              "ee":
+                {
+                  "s":  "1",
+                  "d":  "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                  "wr": ["Dd8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CMZ-i0"],
+                  "wa": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"]
+                },
+              "di": "EJZAoTNZH3ULvYAfSVPzhzS6b5CMaU6JR2nmwyZ-i0d8",
+              "a":
+                {
+                  "i":  "EJZAoTNZH3ULvYAfSVPzhzS6b5aU6JR2nmwyZ-i0d8CM",
+                  "s":  "1",
+                  "d":  "EULvaU6JR2nmwyAoTNZH3YAfSVPzhzZ-i0d8JZS6b5CM"
+                }
+            }        </pre>
+    </section>
+    <section class="normative" id="resolvermetadata">
+        <h3>Resolver Metadata</h3>
+        <p>
+            <tt>did:keri</tt> defines <code>keyState</code> DID Document Metadata (see
+            <a href="https://w3c-ccg.github.io/did-resolution/#output-documentmetadata">DID Document Metadata</a> in [[?DID-RESOLUTION]]).
+        </p>
+        <ul>
+            <li><code>keyState</code> is the verified state of the KEL for the identifier represented by this DID Doc (See <a href="#keyState"></a>).</li>
+        </ul>
+
+        <pre class="example highlight" title="DID Document Metadata in Resolution Response">
+        {
+            "didDocument": DID_DOCUMENT_OBJECT,
+            "didDocumentMetadata": {
+                "keyState":  {
+                  "v": "KERI10JSON00011c_",
+                  "i": "EaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM",
+                  "t": "ksn",
+                  "kt": "1",
+                  "k": ["DaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM"],
+                  "n": "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
+                  "wt": "1",
+                  "w": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"],
+                  "c": ["eo"],
+                  "e":
+                    {
+                      "s": "2",
+                      "t": "rot",
+                      "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                    },
+                  "ee":
+                    {
+                      "s": "1",
+                      "d": "EAoTNZH3ULvaU6JR2nmwyYAfSVPzhzZ-i0d8JZS6b5CM",
+                      "wr": ["Dd8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CMZ-i0"],
+                      "wa": ["DnmwyYAfSVPzhzS6b5CMZ-i0d8JZAoTNZH3ULvaU6JR2"]
+                    },
+                  "di": "",
+                  "a": {}
+                }
+            }
+        }
+        </pre>
+    </section>
+
+    <h3>The DID Document</h3>
+    <p>
+        Optionally, a public key could be the only thing in the DID Doc (for interop with other W3C DID components and
+        systems). Technically, it could be empty if only being used to prove DID control.
+    </p>
+    <p>
+        Non-normative note: multiple namespaces using the same DID method could prove control or replay history for one
+        controlling keypair that has been used across multiple ledgers. KERL logs could be stored in a secondary root of
+        trust (i.e., a ledger), and similar or identical resolver metadata could be returned by querying the same
+        identifier there.
+    </p>
+
+
+</section>
+<section>
+    <h2>The did:keri Format</h2>
+    <p>The format for the <tt>did:keri</tt> method conforms to the [[DID-CORE]]
+        specification and is simple. It consists of the <code>did:keri:</code> prefix,
+        followed by the identifier prefix.</p>
+
+    <section>
+        <h3>Method Name</h3>
+        <p>The method name that identifies this DID method SHALL be: <code>keri</code></p>
+
+        A DID that uses this method MUST begin with the following prefix: <code>did:keri:</code>. Per the DID specification, this
+        string MUST be in lowercase.  The remainder of the DID, after the prefix, is the method specific identifier (MSI) described below.
+    </section>
+
+    <section>
+        <h3>Method Specific Identifier</h3>
+        <p>The method specific identifier for the <tt>did:keri</tt> method is the prefix for a content self-addressing
+            self-certifying identifier.  The derivation of such an identifier is described in detail in [[KERI]]</p>
+
+        <pre class="example" title="A KERI DID that uses Blake3 content hashing">
+         did:keri:EXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148
+        </pre>
+    </section>
+</section>
+
+<section class="normative">
+    <h2>Operations</h2>
+    <p>The following section outlines the DID operations for the <tt>did:keri</tt> method.</p>
+
+    <section class="normative">
+        <h3>Create</h3>
+        <p>
+            Creation of a <tt>did:keri</tt> DID is accomplished by creating, signing and publishing an Inception event. If witnesses are listed
+            in the inception event, the receipts are also required for DID creation to be complete.
+        </p>
+
+        <p>
+            Detailed steps are specified in [[KERI]]
+        </p>
+    </section>
+    <section class="normative">
+        <h3>Read</h3>
+        <p>
+            Steps to resolve a `did:keri:$PREFIX` DID:
+        <ol>
+            <li>Find the Key Event Log for the prefix `$PREFIX`.  The method for discovering the Key Event Log is outside the scope of
+                this specification.  Possible implementations include the use of a Distributed Hash Table (DHT), anchoring a KEL in a ledger or the use of a gossip
+                protocol involving a witness network.
+            </li>
+            <li>Process the KEL into a Key State, according to the state validation rules/semantics of KERI as defined in [[KERI]]
+            </li>
+            <li>Create a DID Document with the DID `did:keri:$PREF`</li>
+            <li>For each key K in the Key State, add a Verification Method to the DID Doc containing K and the
+                appropriate type, with the ID of K being K's prefix form (alternatively, the ID could be an integer of
+                K's index in the current signer list)
+            </li>
+            <li>Add the Key State as DID Document Metadata as defined in <a href="#resolvermetadata"></a>
+            </li>
+        </ol>
+        </p>
+        <p>
+
+            Establishment of control authority can be done independently of DID document contents, as long as the Key
+            State is provided in the DID Document Metadata. See <a href="#resolvermetadata"></a> .
+        </p>
+    </section>
+    <section class="normative">
+        <h3>Update</h3>
+        <p>
+            Updating a <tt>did:keri</tt> DID is accomplished by publishing establishment events to the KEL for performing operations
+            such as key rotation and updating signature thresholds, witnesses and delegates.
+        </p>
+
+        <p>
+            Detailed steps are specified in [[KERI]]
+        </p>
+
+    </section>
+    <section class="normative">
+        <h3>Delete</h3>
+        <p>
+            Deletion of a <tt>did:keri</tt> DID consists of rotation to 0 controlling keys, which terminates the ability
+            to recover the identifier and indicates that the identifier has been abandoned. Identifiers which are delegated
+            to by an abandoned Identifier are also considered abandoned (delegating Ixn events can no longer be created).
+        </p>
+
+        <p>
+            Detailed steps are specified in [[KERI]]
+        </p>
+
+    </section>
+</section>
+<section id="informative">
+    <h2>Security and Privacy Considerations</h2>
+    <p>
+        Security and privacy considerations are provided in conformance with [[DID-CORE]].
+    </p>
+</section>
+<section class="appendix">
+    <h2>Change log</h2>
+    <p>Recent changes to this specification from GitHub:</p>
+    <rs-changelog from="some-git-tag"></rs-changelog>
+</section>
+</body>
+</html>
