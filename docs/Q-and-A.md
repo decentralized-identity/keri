@@ -343,7 +343,7 @@ We believe that _decentralization of value transfer_ is essential to building tr
 # Q&A section KERI and DIDs
 
 ## **Q: Is KERI a DID?
-`KERI` is also the name of a `DID` method in the making. The proposed related `DID` method is [`did:keri`](https://github.com/decentralized-identity/KERI/blob/master/did_methods/keri.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-KERI/).\
+`KERI` is also the name of a `DID` method in the making [Method spec](https://identity.foundation/keri/did_methods/). The proposed related `DID` method is [`did:keri`](https://github.com/decentralized-identity/KERI/blob/master/did_methods/keri.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-KERI/).\
 _Drummond Reed_ (Dec 2 2020) on `did:KERI`: "at IIW we asked that question and feedback overwhelmingly favored `did:KERI`. Furthermore, I’ve proposed that the KERI namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the KERI namespace in the Indy DID method."\
 _(@henkvancann)_
 
