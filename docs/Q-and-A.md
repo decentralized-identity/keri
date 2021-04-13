@@ -4,7 +4,14 @@
 
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="300">
 
-This document is part one. Part two is [Q-and-A Security](./Q-and-A-Security.md). Both files shares a common [Glossary](./Glossary.md)
+This document is part one. Part two is [Q-and-A Security](./Q-and-A-Security.md). Both files shares a common [Glossary](./Glossary.md) that has:
+- an alphabethically ordered list of **abbreviations**
+- an alphabethically ordered list of **definitions**
+
+**The questions are of a varied level: basic and detailed. The answers are mostly directed towards generally interested people and newbies.**\
+*Q = one star question. Novice to KERI, advanced in DIDs\
+**Q = two star question. Proficient in DIDs and advanced in KERI\
+***Q = three star question. Expert in DIDs and proficient in KERI
 
 Why should you read or step through the Q&A? To get a different angle to the same topic: KERI.
 
@@ -158,12 +165,16 @@ It does not require the current internet and it's protocols to change, nor Trust
 
 ## *Q: Why use KERI?
 Because there is no secure universal trust layer for the internet, currently (2020).\
-KEI is both privacy preserving and context-independent extensible. This means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.\
-_(@henkvancann)_
+KEI is both privacy preserving and context-independent extensible. This means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.
+> Sam Smith: KERI essentially repairs internet.
+
 
 ## *Q: What does KERI look like?
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
 Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
+
+<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
+
 _(@henkvancann)_
 
 ## *Q: How does KERI match DIDs?
@@ -195,24 +206,33 @@ There is a separate [Q&A Security](./Q-and-A-Security.md) to answer the extensiv
 _(CharlesCunningham)_
 
 ## *Q: How does KERI match the `trust-over-ip` model and how does KERI fit in the `W3C DID standardization`?
+The ToIP stack has a left side (governance) and the right side (technical)
+<img src="../images/trust-over-ip-stack.png" alt="Trust over IP stack" border="0" width="600">
+KERI is at lower levels of the ToIP. Other DID methods will add KERI to their method and that's how KERI could be present in these layers.
+
 [Trust-over-IP](#trust-over-ip):
 - Its goal is to be the missing authentication layer of the internet. That's a pretty well matching objective.
 - Layer 1 (settlement layer): Where other `DID`s use blockchains or databases to register identities and settle 'transactions' between between, `DDO`s, and `VC`s, KERI uses homegrown native structures: `KEL` and `KERL`.
 _(@henkvancann)_
-- Layer 2 (communication layer): Non existing in KERI, because KERI is end-verifiable. KERI can use any other means of communication between actors in the ecosystem
-- Layer 3 (transaction layer): Since KERI focuses on the more fundamental part of authentication for the internet, you won't find matching functionality for usual trust-over-IP transaction like VCs or money.
-- Layer 4 (application layer): {TBW}
+- Layer 2 (communication layer): Non-existing in KERI, because KERI is end-verifiable. KERI can use any other means of communication between actors in the ecosystem
+- Layer 3 (transaction layer): Since KERI focuses on the more fundamental part of authentication for the internet, you won't find matching functionality for usual trust-over-IP transaction like VCs or money. VCs (layer 3) relate to KERI only as content hashpointers in KELs, there are no native structures for VCs present in KERI.
+- Layer 4 (application layer): Same: KERI is non-existing in this layer.
+
+To summarize: **Once we talk DID, we already talk about layers above KERI.**
+
 _(@henkvancann)_
 
 [W3C DID](https://www.w3.org/TR/did-core/):
-1. The KERI developers provisionally design DID:UN, which might become a mixture of DID:KEY, DID:PEER, and DID:WEB, combinable with more functional DIDs in the Identity spectrum DID:SOV, DID:ETHR, etc.
+1. The KERI developers provisionally design DID:KERI, which might become a mixture of DID:KEY, DID:PEER, and DID:WEB, combinable with more functional DIDs in the Identity spectrum DID:SOV, DID:ETHR, etc.
 2. No verifiable credentials
 _(@henkvancann)_
 
 ## *Q: What problem is KERI solving? How? And why can't it be solved by other solutions?
-KERI solves the problem of **secure attribution to identifiers**. By ambient availability of verifiable Key event Logs (`KEL`) that proves authoritive control over identifiers' private keys. It can't be solved by onther solutions known so far because those solution have not managed to span identifier interoperability over the internet and function all the same as an overlay.
+KERI solves the problem of **secure attribution to identifiers**. By using self-certifying identifiers (`SCI`s) and ambient availability of verifiable Key Event Logs (`KEL`) that prove authoritive control over identifiers' private keys. It can't be solved by onther solutions known so far because those solution have not managed to span identifier interoperability over the internet and function all the same as an overlay.
 _(@henkvancann)_
-{TBW prio 1}
+<img src="../images/sci-muggles.png" alt="self-certifying identifiers" border="0" width="400">
+<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
+
 
 ## *Q: Who is KERI? Is it a company or a not for profit?
 KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), in its own working group "KERI".\
@@ -263,11 +283,12 @@ In brief these are these reasons:
 ## *Q: In the KERI system design trade space you strike out features, so you must have stroked out application space too; which?
 <img src="../images/trade-space-limitations.png" alt="trade-space-limitations" border="0" width="300">
 KERI is not suitable for:
- - Applications where total ordering of key event is needed, like in cryptocurrencies and non-fungible tokens.
+
+- Applications where total ordering of key event is needed, like in cryptocurrencies and non-fungible tokens.
 However, KERI is suitable:
- - to build smart contracting in a direct peer-to-peer way
- - to build Sidetree with KERI, vice versa is not possible
- - to implement blockchain / ledger anchored identifiers
+- to build smart contracting in a direct peer-to-peer way
+- to build Sidetree with KERI, vice versa is not possible
+- to implement blockchain / ledger anchored identifiers
 (_SamMSmith and @henkvancann_)
 
 ## *Q: Are smart contracts possible with KERI?
@@ -311,7 +332,7 @@ We don't have a trustable interoperability. And that leads to the idea that the 
 (_SamMSmith_)
 
 ## *Q: How to repair the internet trust layer?
-With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="400" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="400" style="float:right">
+With a waist and a neck. <img src="../images/platform_locked_trust.png" alt="Platform locked trust" border="0" width="300" style="float:left"><img src="../images/waist_neck.png" alt="Waist and neck" border="0" width="350" style="float:right">
 _(@henkvancann)_
 
 ## *Q: What role does KERI play in the suggested "repair of the internet"?
@@ -322,8 +343,8 @@ We believe that _decentralization of value transfer_ is essential to building tr
 # Q&A section KERI and DIDs
 
 ## **Q: Is KERI a DID?
-`KERI` is not a `DID` method. The proposed related `DID` method is [`did:un`](https://github.com/decentralized-identity/KERI/blob/master/did_methods/un.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-KERI/).\
-However there are also votes for `did:KERI`: _Drummond Reed_ (Dec 2 2020): "at IIW we asked that question and feedback overwhelmingly favored did:KERI. Furthermore, I’ve proposed that the KERI namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the KERI namespace in the Indy DID method."\
+`KERI` is also the name of a `DID` method in the making. The proposed related `DID` method is [`did:keri`](https://github.com/decentralized-identity/KERI/blob/master/did_methods/keri.md). A session at the recent **IIW31** presented by Jolocom’s *Charles Chunningham* examines overlap between data models of DID documents and `KERI` identifiers [here](https://jolocom.io/blog/as-seen-at-iiw31-KERI/).\
+_Drummond Reed_ (Dec 2 2020) on `did:KERI`: "at IIW we asked that question and feedback overwhelmingly favored `did:KERI`. Furthermore, I’ve proposed that the KERI namespace be reserved within the method-specific ID spaces of other DID methods as well, The Indy community has agreed to reserve the KERI namespace in the Indy DID method."\
 _(@henkvancann)_
 
 ## **Q: Some say that with KERI, a DID can be reduced to did:\<identifier>. But that’s not a valid DID?!
@@ -371,6 +392,11 @@ _(@henkvancann)_
 Yes they do. For every cause there is a different payload. The main reason why all roles sign off cryptographical references is commitment to those sources (the payload in KERI is often a digest of sources) at a certain point in time.\
 _(@henkvancann)_
 
+## *Q: What is delegation in KERI and what does it benefit?
+ KERI identifiers can be “delegated”, meaning one identifier can create another one that can prove its relationship with its parent. This way you can create any hierarchy of identifiers & keys.
+
+<img src="../images/delegation-keri-muggles.png" alt="key delegation illustration" border="0" width="600">
+
 # Q&A section Proofs
 
 ## *Q: What does KERI proof?
@@ -393,6 +419,9 @@ We may verify that the controller of a private key, made a statement but not the
 ## *Q: How can we trust what was said or written?
 We may build trust over time in what was said via histories of verifiably attributable (to whom) consistent statements, i.e. `reputation`.\
 (_SamMSmith_)
+
+## *Q:  What does "fully signed" mean in KERI?
+It means that the required _threshold_ of signatures has been met. It doesn't mean that all signatures have been provided.
 
 ## **Q: Do I need to show the full log (KEL) to anybody I transact with, even though I'd only like to show a part of it, for example a virtual credential?
 Yes, because they can't verify the root of trust. They have to have access to the full log at some point in time. Once they verfied to the root of trust, once, they don't have to keep a copy of the full log. They have to keep the event they've seen and any event since, that they need to verify as they go.
@@ -436,9 +465,13 @@ When you rotate keys, you can always rotate to a different format.
 Yes, you can derive your keys from that scheme. But KERI is agnostic about it, it wouldn't know.
 
 ## *Q: Not your keys, not your identity?
-In KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.\
+To begin with, yes, KERI fully depends on `PKI` cryptography. KERI was built upon the assumption of unbreakable public private keys.
+<img src="../images/pubprivkey-caveat.png" alt="Public Private Key caveat to KERI" border="0" width="500">
+
+By the way, in KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.
+
 Pre rotated keys are best practise to keep control of your identifiers. \
-If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
+If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}
 _(@henkvancann)_
 
 ## *Q: A wallet is there to store my KERI private keys safely, no?

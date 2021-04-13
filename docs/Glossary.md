@@ -231,7 +231,9 @@ BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0.
 <img src="../images/prefix.png" alt="Prefix derivation" border="0" width="700">
 
 #### Public Key Infrastructure
-A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
+A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption.
+<img src="../images/pubprivkey-caveat.png" alt="Public Private Key caveat to KERI" border="0" width="400"> 
+[Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
 #### Race condition
 A race condition or race hazard is the condition of an electronics, software, or other system where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. It becomes a bug when one or more of the possible behaviors is undesirable. [Source](https://en.wikipedia.org/wiki/Race_condition).
@@ -262,6 +264,7 @@ The binding in a Self-Addressing Identifier between inception data and private k
 
 #### Self Certifying Identifier
 In brief: A self-certifying identifier cryptographically binds an identifier to a key-pair.\
+It is an identifier that can be proven to be the one and only identifier tied to a public key using cryptography alone.\
 A controller issues an own Identifier by binding a generated public private keypair to an identifier. After this a controller is able to sign the identifier and create a certificate. Also called a _cryptonym_. The simplest form of a self-certifying identifier includes either the public key or a unique fingerprint of the public key as a `prefix` in the identifier.
 
 <img src="../images/sci_issue_bind.png" alt="Self Certifying Identifier issuance and binding" border="0" width="400">
@@ -296,6 +299,7 @@ The main innovation of KERI is that it provides a universal decentralized mechan
 
 #### Trust-over-IP
 It's a term related to the effort of a foundation. The Trust over IP Foundation is an independent project hosted at Linux Foundation to enable the trustworthy exchange and verification of data between any two parties on the Internet. [More](https://trustoverip.org/about/faq/).
+<img src="../images/trust-over-ip-stack.png" alt="Trust over IP stack" border="0" width="600">
 
 #### Validator
 a _validator_ is anybody that wants to estblish control-authority over an identifier, created by the controller of the identifier. Validators verify the log, they apply duplicity detection or they leverage somebody else's duplicity detection or apply any other logic so they can say "Yes these are events I can trust".
