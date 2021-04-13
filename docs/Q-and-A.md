@@ -386,6 +386,11 @@ _(@henkvancann)_
 Yes they do. For every cause there is a different payload. The main reason why all roles sign off cryptographical references is commitment to those sources (the payload in KERI is often a digest of sources) at a certain point in time.\
 _(@henkvancann)_
 
+## *Q: What is delegation in KERI and what does it benefit?
+ KERI identifiers can be “delegated”, meaning one identifier can create another one that can prove its relationship with its parent. This way you can create any hierarchy of identifiers & keys.
+
+<img src="../images/delegation-keri-muggles.png" alt="key delegation illustration" border="0" width="600">
+
 # Q&A section Proofs
 
 ## *Q: What does KERI proof?

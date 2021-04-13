@@ -318,6 +318,8 @@ Within the assumption of both exceptions KERI complies with the GDPR rules:
 1. block-list of “deleted” KELs: a reciept of a request for erasure must naturally hold some PII, a two-party interaction might allow this to be recorded.
 2. a need to maintain system integrity/archival purposes can be a reason for maintaining some info right of erasure versus right to be forgotten. This active and passive approach reflects two slightly different interpretations of the same article (which one people use is a hint of their school of thought).
 
+<img src="../images/keri-gdpr-compliance-muggles.png" alt="KERI GDPR compliance" border="0" width="600">
+
 Beware that most of GDPR rules are there to protect you from being exploited. So you're not being prossecuted or being labelled as a criminal activity. It might only be illegal and somebody could hold you liable for that.
 _(@henkvancann)_
 
@@ -473,11 +475,11 @@ I first wrote about in 2018, it's been public knowledge ever since. I guess peop
 (_SamMSmith_)
 
 ## *Q: What do I need to do step by step to rotate my keys?
-<img src="../images/key-rotation-muggles-steps1-2.png" alt="key rotation for muggles steps 1 and 2" border="0" width="600">
-<img src="../images/key-rotation-muggles-steps3-4.png" alt="key rotation for muggles steps 3 and 4" border="0" width="600">
-<img src="../images/key-rotation-muggles-steps5-6.png" alt="key rotation for muggles steps 5 and 6" border="0" width="600">
-<img src="../images/key-rotation-muggles-steps7-8.png" alt="key rotation for muggles steps 7 and 8" border="0" width="600">
-<img src="../images/key-rotation-muggles-steps9-10.png" alt="key rotation for muggles steps 9 and 10" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps1-2.png" alt="key rotation steps 1 and 2" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps3-4.png" alt="key rotation steps 3 and 4" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps5-6.png" alt="key rotation steps 5 and 6" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps7-8.png" alt="key rotation steps 7 and 8" border="0" width="600">
+<img src="../images/key-rotation-muggles-steps9-10.png" alt="key rotation steps 9 and 10" border="0" width="600">
 
 # Q&A section KEL and KERL
 
