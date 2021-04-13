@@ -189,6 +189,10 @@ The KES is never signed by the controller of the AID\
 #### KERI Implementation/Improvement Docs
 Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
+####  MultiCodec 
+Is a self-describing multiformat, it wraps other formats with a tiny bit of self-description. A multicodec identifier is both a varint and the code identifying data. See more at [GitHub Multicodec](https://github.com/multiformats/multicodec)
+Multicodec is an agreed-upon codec table. It is designed for use in binary representations, such as keys or identifiers (i.e CID). It is then used as a prefix to identify the data that follows.
+
 #### Level of Assurance
 LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
@@ -254,7 +258,7 @@ Information controlled by an identity. MAY be used to derive _key_s.
 
 <img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="800">
 
-The binding in a Self-Addressing Identifier between inception data and private key can be created by replacing the public key in the identifier prefix with a content digest (hash) of the inception statement (that includes the public key). So it's a further step of commitment to identifier information and also another level of hiding information at face vlaue by one-way encryption beyond the inception statement. However all the information is end-verifiable.
+The binding in a Self-Addressing Identifier between inception data and private key can be created by replacing the public key in the identifier prefix with a content digest (hash) of the inception statement (that includes the public key). So it's a further step of commitment to identifier information and also another level of hiding information at face value by one-way encryption beyond the inception statement. However all the information is end-verifiable.
 
 #### Self Certifying Identifier
 In brief: A self-certifying identifier cryptographically binds an identifier to a key-pair.\
@@ -269,6 +273,8 @@ The root-of-trust is fully cryptographic, there is no infrastructure associated 
 [Source](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/141) is #SSI book.
 
 #### Self Sovereign Identity
+It is information given out by a party involved. It is empowering the individual to help governments doing their job.  With SSI a criminal can’t cheat without being caught. SSI reduces the state's expense per individual.  SSI makes tough investigation easier and false judgements rarer. The mechanism verifies automaticly and handles broken cases gracefully.
+
 SSI is a new model for Internet-scale digital identity based on an emerging set of protocols, cutting edge cryptography and open standards. Technological and social movements have come together that make SSI possible. ([Source](https://livebook.manning.com/book/self-sovereign-identity/chapter-1/v-8/14)).\
 Decentralisation of the `root-of-trust` and `verifiable credentials` come into play and delivers  “user-centric identity”: more control and self-determination of individuals, individuals machines and combinations of these, that identify as one.\
 _(@henkvancann)_
@@ -297,6 +303,8 @@ a _validator_ is anybody that wants to estblish control-authority over an identi
 During validation of virtual credentials for example, a `verifier` checks to see if a `verifiable credential` (VC) has been signed by the controller of this VC using the applicable verification method.
 
 #### Verifiable Credential
+Verifiable Credentials standardize formal conversation.  VCs structure discussion between two [or more] parties, it’s private and the proofs that an indvidual has got from  an authority can’t be denied.  Every statement can be checked, and no statement can be either deleted or changed.
+
 VC; A data model for conveying claims made by an issuer about a subject. See [vc-data-model](https://www.w3.org/TR/vc-data-model/) for more.\
 Credentials are a part of our daily lives; driver's licenses are used to assert that we are capable of operating a motor vehicle, university degrees can be used to assert our level of education, and government-issued passports enable us to travel between countries. This specification provides a mechanism to express these sorts of credentials on the Web in a way that is cryptographically secure, privacy respecting, and machine-verifiable. [Know more](https://www.w3.org/TR/vc-data-model/)
 
