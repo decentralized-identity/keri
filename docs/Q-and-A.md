@@ -172,6 +172,9 @@ KEI is both privacy preserving and context-independent extensible. This means KE
 ## *Q: What does KERI look like?
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
 Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
+
+<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
+
 _(@henkvancann)_
 
 ## *Q: How does KERI match DIDs?
@@ -225,9 +228,11 @@ _(@henkvancann)_
 _(@henkvancann)_
 
 ## *Q: What problem is KERI solving? How? And why can't it be solved by other solutions?
-KERI solves the problem of **secure attribution to identifiers**. By ambient availability of verifiable Key event Logs (`KEL`) that proves authoritive control over identifiers' private keys. It can't be solved by onther solutions known so far because those solution have not managed to span identifier interoperability over the internet and function all the same as an overlay.
+KERI solves the problem of **secure attribution to identifiers**. By using self-certifying identifiers (`SCI`s) and ambient availability of verifiable Key Event Logs (`KEL`) that prove authoritive control over identifiers' private keys. It can't be solved by onther solutions known so far because those solution have not managed to span identifier interoperability over the internet and function all the same as an overlay.
 _(@henkvancann)_
-{TBW prio 1}
+<img src="../images/sci-muggles.png" alt="self-certifying identifiers" border="0" width="400">
+<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
+
 
 ## *Q: Who is KERI? Is it a company or a not for profit?
 KERI sits under the *Decentralized Identity Foundation*, [DIF](https://identity.foundation), in its own working group "KERI".\
@@ -459,9 +464,13 @@ When you rotate keys, you can always rotate to a different format.
 Yes, you can derive your keys from that scheme. But KERI is agnostic about it, it wouldn't know.
 
 ## *Q: Not your keys, not your identity?
-In KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.\
+To begin with, yes, KERI fully depends on `PKI` cryptography. KERI was built upon the assumption of unbreakable public private keys.
+<img src="../images/pubprivkey-caveat.png" alt="Public Private Key caveat to KERI" border="0" width="500">
+
+By the way, in KERI we say _identifier_, because **identity** is a loaded term, lots of misunderstanding around it.
+
 Pre rotated keys are best practise to keep control of your identifiers. \
-If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}\
+If you lose unique control of a key right after inception, before rotation, are there no garantuees to be given for KERLs via witnesses / watchers or whatever. Is the only thing you can do about it, is revoke the key in that case?}
 _(@henkvancann)_
 
 ## *Q: A wallet is there to store my KERI private keys safely, no?
