@@ -27,6 +27,48 @@
                     authors: ["S. Smith"],
                     publisher: "Decentralized Identity Foundation"
                 },
+                KID0003: {
+                    title: "KID0003 - Event Serialization",
+                    href: "https://github.com/decentralized-identity/keri/blob/master/kids/kid0003.md",
+                    authors: ["S. Smith"],
+                    publisher: "Decentralized Identity Foundation"
+                },
+                KID0001: {
+                    title: "KID0001 - Prefixes, Derivation and derivation reference tables",
+                    href: "https://github.com/decentralized-identity/keri/blob/master/kids/kid0001.md",
+                    authors: ["S. Smith"],
+                    publisher: "Decentralized Identity Foundation"
+                },
+                KID0004: {
+                    title: "KID0004 - Key Configuration (Signing threshold & key set)",
+                    href: "https://github.com/decentralized-identity/keri/blob/master/kids/kid0004.md",
+                    authors: ["S. Smith"],
+                    publisher: "Decentralized Identity Foundation"
+                },
+                KID0005: {
+                    title: "KID0005 - Next Key Configuration Commitment",
+                    href: "https://github.com/decentralized-identity/keri/blob/master/kids/kid0005.md",
+                    authors: ["S. Smith"],
+                    publisher: "Decentralized Identity Foundation"
+                },
+                KID0007: {
+                    title: "KID0007 - Delegation",
+                    href: "https://github.com/decentralized-identity/keri/blob/master/kids/kid0007.md",
+                    authors: ["S. Smith"],
+                    publisher: "Decentralized Identity Foundation"
+                },
+                KID0009: {
+                    title: "KID0009 - Indirect Mode & Witnesses",
+                    href: "https://github.com/decentralized-identity/keri/blob/master/kids/kid0009.md",
+                    authors: ["S. Smith"],
+                    publisher: "Decentralized Identity Foundation"
+                },
+                KID0010: {
+                    title: "KID0010 - Recovery/consensus Algorithm (KAACE)",
+                    href: "https://github.com/decentralized-identity/keri/blob/master/kids/kid0010.md",
+                    authors: ["S. Smith", "P. Feairheller"],
+                    publisher: "Decentralized Identity Foundation"
+                },
                 "DID-RESOLUTION": {
                     title: "Decentralized Identifier Resolution",
                     href: "https://w3c-ccg.github.io/did-resolution/",
@@ -183,7 +225,7 @@
             {
               "v": "KERI10JSON00011c_",
               "i": "EaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM",
-              "t": "kst",
+              "t": "ksn",
               "kt": "1",
               "k": ["DaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM"],
               "n": "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
@@ -216,7 +258,7 @@
             {
               "v": "KERI10JSON00011c_",
               "i": "EaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM",
-              "t": "kst",
+              "t": "ksn",
               "kt": "1",
               "k": ["DaU6JR2nmwyZ-i0d8JZAoTNZH3ULvYAfSVPzhzS6b5CM"],
               "n": "EZ-i0d8JZAoTNZH3ULvaU6JR2nmwyYAfSVPzhzS6b5CM",
@@ -321,7 +363,11 @@
     <section>
         <h3>Method Specific Identifier</h3>
         <p>The method specific identifier for the <tt>did:keri</tt> method is the prefix for a content self-addressing
-            self-certifying identifier.  The derivation of such an identifier is described in detail in [[KERI]]</p>
+            self-certifying identifier.</p>
+
+        <p>A self-addressing, self-certifying identifier is cryptographically bound to the inception keys used to create it.  The
+            rationale and process for the derivation of an identifier is described in detail in the
+            <a href="https://github.com/decentralized-identity/keri/blob/master/kids/kid0001.md#derivation-codes">Derivation Codes</a> section of [[KID0001]]</p>
 
         <pre class="example" title="A KERI DID that uses Blake3 content hashing">
          did:keri:EXq5YqaL6L48pf0fu7IUhL0JRaU2_RxFP0AL43wYn148
@@ -341,7 +387,8 @@
         </p>
 
         <p>
-            Detailed steps are specified in [[KERI]]
+            Detailed steps for prefix derivation are in [[KID0001]] and witness configuration in [[KID0009]].  Inception events are
+            covered in [[KID0003]].
         </p>
     </section>
     <section class="normative">
@@ -367,7 +414,7 @@
         <p>
 
             Establishment of control authority can be done independently of DID document contents, as long as the Key
-            State is provided in the DID Document Metadata. See <a href="#resolvermetadata"></a> .
+            State is provided in the DID Document Metadata. See <a href="#resolvermetadata"></a>.
         </p>
     </section>
     <section class="normative">
@@ -378,7 +425,7 @@
         </p>
 
         <p>
-            Detailed steps are specified in [[KERI]]
+            A detailed description of event types, their semantics and uses can be found in [[KID0003]].
         </p>
 
     </section>
@@ -391,16 +438,162 @@
         </p>
 
         <p>
-            Detailed steps are specified in [[KERI]]
+            Detailed steps are specified in [[KID0003]].
         </p>
 
     </section>
 </section>
-<section id="informative">
-    <h2>Security and Privacy Considerations</h2>
+<section class="informative">
+    <h2>Privacy Considerations</h2>
     <p>
-        Security and privacy considerations are provided in conformance with [[DID-CORE]].
+        A breakdown of the privacy considerations from [[RFC6973]] section 5 is provided below.
     </p>
+
+    <section>
+        <h3>Surveillance</h3>
+        <p>
+            A robust witness network along with consistent witness rotation provides protection from monitoring and association of
+            an individual's activity inside a KERI network.
+        </p>
+    </section>
+    <section>
+        <h3>Stored Data Compromise</h3>
+        <p>
+            For resolvers that simply discover the Key State endorsed by another party in a discovery network, caching policies
+            of that network would guide stored data security considerations.  In the event that a resolver is also the endorsing party,
+            meaning they have their own KERI identifier and are verifying the KEL and signing the Key State themselves, leveraging the
+            facilities provided by the KERI protocol (key rotation, witness maintenance, multi-sig) should be used to protect the identities
+            used to sign the Key State.
+        </p>
+        <p>
+            See [[KID0005]] for information on KERI key rotation, [[KID0009]] for a discussion on witnesses and [[KID0004]] for KERI's support
+            of multi-sig.
+        </p>
+    </section>
+    <section>
+        <h3>Unsolicited Traffic</h3>
+        <p>
+            DID Documents are not required to provide endpoints and thus not subject to unsolicited traffic.
+        </p>
+    </section>
+    <section>
+        <h3>Misattribution</h3>
+        <p>
+            This DID Method relies on KERI's duplicity detection to determine when the non-repudiable controller of a DID
+            has been inconsistent and can no longer be trusted.  This establishment of non-repudiation enables consistent attribution.
+        </p>
+
+        <p>
+            See [[KID0010]] for a detailed description of KERI’S Agreement Algorithm for Control Establishment (KAACE).
+        </p>
+    </section>
+    <section id="correlation">
+        <h3>Correlation</h3>
+        <p>
+            The root of trust for KERI identifiers is entropy and therefore offers no direct means of correlation.  In addition, KERI provides
+            two modes of communication, direct mode and indirect mode.  Direct mode allows for pairwise (n-wise as well) relationships that
+            can be used to establish private relationships.
+        </p>
+        <p>
+            See [[KID0001]] for a description of KID prefix generation and [[KID0009]] for a comparison between Direct and Indirect modes.
+        </p>
+    </section>
+
+    <section id="identification">
+        <h3>Identification</h3>
+        <p>
+            The root of trust for KERI identifiers is entropy and therefore offers no direct means of identification.  In addition, KERI provides
+            two modes of communication, direct mode and indirect mode.  Direct mode allows for pairwise (n-wise as well) relationships that
+            can be used to establish private relationships.
+        </p>
+        <p>
+            See [[KID0001]] for a description of KID prefix generation and [[KID0009]] for a comparison between Direct and Indirect modes.
+        </p>
+    </section>
+
+    <section>
+        <h3>Secondary Use</h3>
+        <p>
+            The Key State made available in the metadata of this DID method is generally available and can be used by any party
+            to retrieve and verify the state of the KERL for the given identifier.
+        </p>
+    </section>
+
+    <section id="disclosure">
+        <h3>Disclosure</h3>
+        <p>
+            No data beyond the Key State for the identifier is provided by this DID method.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exclusion</h3>
+        <p>
+            This DID method provides no opportunity for correlation (See <a href="#correlation"></a>), identification (See <a href="#identification"></a>) or
+            disclosure (See <a href="#disclosure"></a>) and therefore there is no opportunity to exclude the controller from knowing about data that others have
+            about them.
+        </p>
+    </section>
+
+</section>
+<section class="informative">
+    <h2>Security Considerations</h2>
+    <p>
+        A breakdown of the security considerations from [[RFC3552]] is provided below.
+    </p>
+
+    <section>
+        <h3>Confidentiality Violations, Password Sniffing</h3>
+        <p>
+            All private keys used to establish control over the KERI identifier of a KERI DID method DID should be held secret.
+            KERI's use of delegation ensures that private keys for each identifier never need to be transferred.  DID controllers
+            can delegate levels of authority of other identities to enable remote agents.
+        </p>
+
+        <p>
+            See [[KID0007]] for a discussion of delegation.
+        </p>
+
+        <p>
+            In addition, pre-rotation mechanism provides key rotation capabilities while eliminating exposure of the next
+            public key until it is rotated into the current signing key.  Enforcing key rotation for every event of a given identifier
+            provides further protection against key exposure.
+        </p>
+
+        <p> See [[KID0005]] for a description of pre-rotation and the protections it provides</p>
+    </section>
+
+    <section id="replayattacks">
+        <h3>Replay Attacks</h3>
+        <p>
+            <tt>did:keri</tt> relies on the KERI protocol which is not susceptible to replay attacks.  The hash linking, signatures
+            and sequence numbers of events ensures that replayed messages do not effect the protocol.
+        </p>
+
+        <p>See [[KID0003]] for a description of KERI events.</p>
+    </section>
+
+    <section id="messageattacks">
+        <h3>Message Insertion, Deletion, Modification</h3>
+        <p>
+            <tt>did:keri</tt> relies on the KERI protocol which is not susceptible to message deletion or modification attacks.
+            The hash linking, signatures and sequence numbers of events ensures that messages can not be modified or deleted without immediate detection.
+            In addition, KERI's duplicity detection mechanisms allow easy detection of inserted messages allowing validators to determine the consistency
+            of a DID controller.
+        </p>
+
+        <p>See [[KID0003]] for a description of KERI events and [[KID0010]] for the KAACE algorithm.</p>
+    </section>
+
+    <section>
+        <h3>Man-In-The-Middle Attacks</h3>
+        <p>
+            The protections mentioned in <a href="#replayattacks"></a> and <a href="#messageattacks"></a> render Man-In-The-Middle
+            attacks ineffective against the KERI protocol and this DID Method.
+        </p>
+    </section>
+
+
 </section>
 <section class="appendix">
     <h2>Change log</h2>
