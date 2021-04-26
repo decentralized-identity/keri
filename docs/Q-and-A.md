@@ -66,6 +66,7 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Autonomic idenity system](./Glossary.md#autonomic-idenity-system)
       - [Content-addressable hash](./Glossary.md#content-addressable-hash)
       - [Controller](./Glossary.md#controller)
+      - [Control Authority](./Glossary.md#control-authority)
       - [Correlation](./Glossary.md#correlation)
       - [Cryptocurrency](./Glossary.md#cryptocurrency)
       - [Decentralized Identity](./Glossary.md#decentralized-identity)

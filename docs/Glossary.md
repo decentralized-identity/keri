@@ -72,6 +72,17 @@ The entity that has the ability to make changes to an _identity_, _cryptocurrenc
 
 The controller of an `autonomous identifier` is the entity (person, organization, or autonomous software) that has the capability, as defined by derivation, to make changes to an `Event Log`. This capability is typically asserted by the control of a single inception key. In DIDs this is typically asserted by the control of set of cryptographic keys used by software acting on behalf of the controller, though it may also be asserted via other mechanisms. In KERI an AID has one single controller. Note that a DID may have more than one controller, and the DID `subject` can be the DID controller, or one of them.
 
+#### Control Authority
+In identity systems Control Authority is _who controls what_ and that is the primary factor in determining the basis for trust in them. The entity with control authority takes action through operations that affect the 
+- creation (inception)
+- updating
+- rotation 
+- revocation 
+- deletion
+- and delegation **of the authentication factors and their relation to the identifier**.
+
+How these events are ordered and their dependence on previous operations is important. The record of these operations is the ***source of truth*** for the identity system.
+
 #### Correlation
 An identifier used to indicate that external parties have observed how wallet contents are related. For example, when a public key is reused, it conveys that some common entity is controlling both identifiers. Tracking correlation allows for software to warn when some new information might be about to be exposed, for example: "Looks like you are about to send crypo currency, from an account you frequently use to a new account you just created."
 
