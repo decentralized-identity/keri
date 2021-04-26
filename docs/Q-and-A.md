@@ -176,6 +176,9 @@ KEI is both privacy preserving and context-independent extensible. This means KE
 ## **Q: What problem does KERI specifically solve?
 In the decentralized identity space KERI solves the **portability** of Self Sovereign Identifiers. Currently you can't move the indentifiers you control from one platform or one infrastructure to another. And that makes your self-sovereign identifiers not truly self sovereign. KERI fixes this.
 
+## *Q: Why would KERI suddenly be a game changer in the decentralized identity field?
+Because we've been reconfiguring and rethinking the security guarantees behind decentralized identity systems since 2015. To overcome the lack of portability in the current decentralized identity systems, we've introduced a few new concepts that some people in the decentralized identity ecosystem have trouble to get their head around. Especially the blockchain oriented part of the community.
+
 ## *Q: How does KERI match DIDs?
 There is a whole section to answer this simple question that has many-sided answers: [KERI and DIDs](#qa-KERI-and-dids).
 
