@@ -85,6 +85,7 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Key](./Glossary.md#key)
       - [Key Event Log](./Glossary.md#key-event-log)
       - [Key Event Receipt Log](./Glossary.md#key-event-receipt-log)
+      - [Namespace](./Glossary.md#namespace)
       - [Non-Establishment Event](./Glossary.md#non-establishment-event)
       - [Payload](./Glossary.md#payload)
       - [Public Key Infrastructure](./Glossary.md#public-key-infrastructure)
@@ -370,6 +371,7 @@ Yes, a wallet is very much needed. A wallet holds your public private key pairs 
 A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
 {TBW}\
 (_SamMSmith_) / _(CharlesCunningham)_ / _(@henkvancann)_
+
 ## *Q: How can I backup the KERI identifiers in my wallet?
 {TBW}
 ## Can I receive crypto money in my KERI wallet?
@@ -452,6 +454,16 @@ So therefore the non-interactive mechanism to replay attack prevention has been 
 The time window can be fairly large because you use monotonicity. 
 
 # Q&A section Private Key Management
+
+## **Q: What difference does the Autonomic Architecture of the KERI Identity System make?
+<img src="../images/autonomic-architecture.png" alt="Autonomic Architecture" border="0" width="600">
+
+The controller uses her `private key` to authoritatively and non-repudiably sign statements about the operations on the keys and their binding to the identifier, storing those in an ordered key event log (`KEL`). One of the important realizations that make autonomic identity systems possible is that the key event log must only be ordered in the context of a single identifier, not globally. __So, a ledger is not needed for recording operations on identifiers that are not public.__ The key event log can be shared with and verified by anyone who cares to see it.
+
+The controller also uses the private key to sign statements that authenticate herself and authorize use of the identifier. A digital signature also provides the means of cryptographically responding to challenges to prove her control of the identifier. These self-authentication and self-authorization capabilities make the identifier self-certifying and self-managing, meaning that there is no external third party, not even a ledger, needed for the controller to manage and use the identifier and prove to others the integrity of the bindings between herself and the identifier. Thus anyone (any entity) can create and establish control over an identifier namespace in a manner that is independent, interoperable, and portable without recourse to any central authority. Autonomic identity systems rely solely on self-sovereign authority.\
+(_@windley_)
+
+More in [The Architecture of Identity Systems](https://www.windley.com/archives/2020/09/the_architecture_of_identity_systems.shtml)
 
 ## **Q: How multi-tasking is the key infrastructure?
 KERI has `univalent`, `bivalent` and `multivalent` infrastructures.\
