@@ -456,7 +456,7 @@ The time window can be fairly large because you use monotonicity.
 # Q&A section Private Key Management
 
 ## **Q: What difference does the Autonomic Architecture of the KERI Identity System make?
-<img src="../images/autonomic-architecture.png" alt="Autonomic Architecture" border="0" width="600">
+<img src="../images/autonomic-architecture.png" alt="Autonomic Architecture" border="0" width="400">
 
 The controller uses her `private key` to authoritatively and non-repudiably sign statements about the operations on the keys and their binding to the identifier, storing those in an ordered key event log (`KEL`). One of the important realizations that make autonomic identity systems possible is that the key event log must only be ordered in the context of a single identifier, not globally. __So, a ledger is not needed for recording operations on identifiers that are not public.__ The key event log can be shared with and verified by anyone who cares to see it.
 

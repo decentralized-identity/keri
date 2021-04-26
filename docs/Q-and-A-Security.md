@@ -652,7 +652,7 @@ _(@Or13)_
 Harm that can be done to the a `controller`: Unavailability, loss of control authority, externally forced duplicity\
 Harm that can be done to a `validator`: _Inadvertent acceptance_ of verifiable - but forged or duplicitous events 
 
-Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.\
+Breaking the promise of global consistency by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.\
 (_SamMSmith_)
 
 ## *Q: How secure is the KERI infrastructure?
