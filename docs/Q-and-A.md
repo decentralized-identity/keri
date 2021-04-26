@@ -249,7 +249,7 @@ On github KERI is - and will become even more - a thickening bunch of repositori
  3. https://github.com/decentralized-identity/kerijs  JavaScript (nodes) Implementation of the KERI core library.
  4. https://github.com/decentralized-identity/kerigo  Go implementation of KERI (Key Event Receipt Infrastructure)
  5. https://github.com/decentralized-identity/keriox  Rust Implementation of the KERI Core Library
- 6. https://github.com/decentralized-identity/keri-java  Keri Java implementation repo
+ 6. https://github.com/stevetodd/keri-java  Java implementation of KERI
 
  Lastly, the important man, who founded KERI is *Samuel M. Smith Ph.D.*, operationing from his firm [prosapien.com](https://www.prosapien.com).
  _(@henkvancann)_
