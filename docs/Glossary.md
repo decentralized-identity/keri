@@ -28,6 +28,7 @@ SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SASCI = [Self Addressing self certifying Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
 SSI = [Self Sovereign Identity](#self-sovereign-identity)\
+TEL = [Transaction Event Log](#transaction-event-log)
 VC = Verifiable Credential, look up W3D DID standardization for more info\
 VDS = [Verifiable Data Structure](#verifiable-data-structure)
 WASM = [WebAssembly](#WebAssembly)
@@ -172,7 +173,8 @@ A data structure that consist of a header (Key Event header), a configuration se
 
 #### Key Event Log
 Hash-chained Key Events, these are blockchains in a narrow definition, but not in the sense of ordering (not ordered) or global consensus mechanisms (not needed).
-_(SamMSmith)_
+_(SamMSmith)_ \
+A KEL is KERI's `VDS`: the proof of key state of its identifier.
 
 #### Key Event Receipt Log
 Signed Key Events, keeping track of establishment events. To begin with the inception event and any number of rotation events. We call that the _establishment subsequence_. \
@@ -290,6 +292,12 @@ An all encompassing layer horizontal layer in a software architecture. Each trus
 #### Subject
 A digital subject: A person or thing represented or existing in the digital realm which is being described or dealt with. ([Source](https://www.identityblog.com/?p=352)).
 
+#### Transaction Event Log
+Also `TEL`: An externally anchored transactions via cryptographic commitments in a `KEL`.\
+The set of transactions that determine registry state form a log called a Transaction Event Log (TEL). The TEL provides a cryptographic proof of registry state by reference to the corresponding controlling KEL.
+Any validator may therefore cryptographically verify the authoritative state of the registry.
+<img src="../images/TEL-and-KEL.png" alt="TEL and KEL" border="0" width="600">
+
 #### Transfer
 The process of changing the _controller_ of _cryptocurrency_, _identity_ or _verifiable credential_. MAY require the use of a _key_.
 
@@ -314,7 +322,7 @@ VC; A data model for conveying claims made by an issuer about a subject. See [vc
 Credentials are a part of our daily lives; driver's licenses are used to assert that we are capable of operating a motor vehicle, university degrees can be used to assert our level of education, and government-issued passports enable us to travel between countries. This specification provides a mechanism to express these sorts of credentials on the Web in a way that is cryptographically secure, privacy respecting, and machine-verifiable. [Know more](https://www.w3.org/TR/vc-data-model/)
 
 #### Verifiable Data Structure
-Provides proof of key state for its identifier. In KERI it is the Key Event Log (`KEL`).
+Provides proof of key state for its identifier. In KERI it is the Key Event Log (`KEL`). Key management is embedded in KELs, including recovery from key compromise.
 
 #### W3C DID
 The W3C consortium Decentralized ID standardization. [More](https://w3c.github.io/did-core/).
