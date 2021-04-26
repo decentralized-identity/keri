@@ -52,7 +52,8 @@ Agents can be people, edge computers and the functionality within [`wallets`](#d
 An identifier that is self-certifying and self-sovereign
 
 #### Autonomic Namespace
-A namespace that is self-certifying and hence self-administrating. ANs are therefore portable = truly self sovereign.
+A namespace that is self-certifying and hence self-administrating. ANs are therefore portable = truly self sovereign.\
+See basic explanation of [Namespace](#namespace).
 
 #### Autonomic idenity system
 In the design of an identity system you need to answer a few questions.
@@ -192,13 +193,22 @@ The KES is never signed by the controller of the AID\
 #### KERI Implementation/Improvement Docs
 Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
+#### Level of Assurance
+LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
+KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
+
 ####  MultiCodec 
 Is a self-describing multiformat, it wraps other formats with a tiny bit of self-description. A multicodec identifier is both a varint and the code identifying data. See more at [GitHub Multicodec](https://github.com/multiformats/multicodec)
 Multicodec is an agreed-upon codec table. It is designed for use in binary representations, such as keys or identifiers (i.e CID). It is then used as a prefix to identify the data that follows.
 
-#### Level of Assurance
-LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
-KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
+#### Namespace 
+In an identity system, an identifier can be generalized to a namespace to provide a systematic way of organizing identifiers for related resources and their attributes. A namespace is a grouping of symbols or identifiers for a set of related objects. A namespace employs some scheme for assigning identifiers to the elements of the namespace. A simple name-spacing scheme uses a prefix or prefixes in a hierarchical fashion to compose identifiers. The following is an example of a namespace scheme for addresses within the USA that uses a hierarchy of prefixes:
+```
+state.county.city.zip.street.number. 
+An example element in this namespace may be identified with the following:
+utah.wasatch.heber.84032.main.150S.
+```
+See also [AN](#autonomic-namespace).
 
 #### Non-Establishment Event
 To be able to do something with the identifier, it anchors data to the key event sequence. So you can so things like issue or revoke a verifiable credential or engage in a transaction in which you give a commitment of some form to some other entity and you can anchor that commitment to the KER log and make it verifiable that way.
