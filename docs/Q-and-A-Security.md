@@ -80,10 +80,12 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Self Certifying Identifier](./Glossary.md#self-certifying-identifier)
       - [Self Sovereign Identity](./Glossary.md#self-sovereign-identity)
       - [Spanning layer](./Glossary.md#spanning-layer)
+      - [Transaction Event Log](./Glossary.md#transaction-event-log)
       - [Transfer](./Glossary.md#transfer)
       - [Trust-over-IP](./Glossary.md#trust-over-ip)
       - [Validator](./Glossary.md#validator)
       - [Verifiable Credential](./Glossary.md#verifiable-credential)
+      - [Verifiable Data Storage](./Glossary.md#verifiable-data-structure)
       - [W3C DID](./Glossary.md#w3c-did)
       - [(Digital Identity) Wallet](./Glossary.md#-digital-identity--wallet)
 
