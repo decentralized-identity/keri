@@ -255,6 +255,8 @@ A race condition or race hazard is the condition of an electronics, software, or
 Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key cryptography we may not trust in “what” was said, but we may trust in “who” said it.\
 The root-of-trust is consistent attribution via verifiable integral non-repudiable statements.
 
+A root of trust is a foundational component or process in the identity system that is relied on by other components of the system and whose failure would compromise the integrity of the bindings. A root of trust might be primary or secondary depending on whether or not it is replaceable. Primary roots of trust are irreplaceable. Together, the roots of trust form the trust basis for the system.
+
 #### Rotation Event
 A type of `Establishment event` that allows to change to authoritative public key. So we start with a `root-of-trust` in public private key pair that get down to the identifier, and then we can rotate authoritatively to other keypairs given signed rotation messages. The infrastructure that we need, keeps track of these rotations, or `Key Event Receipt Infrastructure`.
 _(SamMSmith)_
