@@ -453,6 +453,15 @@ Timeliness is even better because it can service both properties needed in one g
 So therefore the non-interactive mechanism to replay attack prevention has been suggested in KERI implemented by Date-time-stamp (monotonic).\
 The time window can be fairly large because you use monotonicity. 
 
+#### How can I use KERI to filter connections with the outside world. Any public enquiry should be filtered upfront.
+_My e-mail address or phone number are publicly available and anyone can contact me, I'd like more privacy._\
+_I you want to talk to me, you send a message to my public identifier._
+
+You don't need to a strong correlation to you as an entity, but only to your "local" reputation. 
+
+The correlation in KERI is never public always private. Spam goes away because of the provable assestation.
+
+
 # Q&A section Private Key Management
 
 ## **Q: What difference does the Autonomic Architecture of the KERI Identity System make?
