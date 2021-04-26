@@ -158,6 +158,11 @@ BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0
 did:un:BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0/path/to/resource?name=secure#really 
 <- this is _a call to resolve_ the identifier on the web
 ```
+Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
+Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
+
+<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
+_(@henkvancann)_
 
 #### *Q: How is KERI an overlay?
 It does not require the current internet and it's protocols to change, nor Trust over IP (`ToIP`) system or current blockchains to change. KERI can be added to it and, nevertheless, KERI can function all encompassing.
@@ -168,14 +173,8 @@ Because there is no secure universal trust layer for the internet, currently (20
 KEI is both privacy preserving and context-independent extensible. This means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.
 > Sam Smith: KERI essentially repairs internet.
 
-
-## *Q: What does KERI look like?
-Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
-Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
-
-<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
-
-_(@henkvancann)_
+## **Q: What problem does KERI specifically solve?
+In the decentralized identity space KERI solves the **portability** of Self Sovereign Identifiers. Currently you can't move the indentifiers you control from one platform or one infrastructure to another. And that makes your self-sovereign identifiers not truly self sovereign. KERI fixes this.
 
 ## *Q: How does KERI match DIDs?
 There is a whole section to answer this simple question that has many-sided answers: [KERI and DIDs](#qa-KERI-and-dids).
