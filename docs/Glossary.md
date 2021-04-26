@@ -29,6 +29,7 @@ SASCI = [Self Addressing self certifying Identifier](#self-addressing-identifier
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
 SSI = [Self Sovereign Identity](#self-sovereign-identity)\
 VC = Verifiable Credential, look up W3D DID standardization for more info\
+VDS = [Verifiable Data Structure](#verifiable-data-structure)
 WASM = [WebAssembly](#WebAssembly)
 
 
@@ -311,6 +312,9 @@ Verifiable Credentials standardize formal conversation.  VCs structure discussio
 
 VC; A data model for conveying claims made by an issuer about a subject. See [vc-data-model](https://www.w3.org/TR/vc-data-model/) for more.\
 Credentials are a part of our daily lives; driver's licenses are used to assert that we are capable of operating a motor vehicle, university degrees can be used to assert our level of education, and government-issued passports enable us to travel between countries. This specification provides a mechanism to express these sorts of credentials on the Web in a way that is cryptographically secure, privacy respecting, and machine-verifiable. [Know more](https://www.w3.org/TR/vc-data-model/)
+
+#### Verifiable Data Structure
+Provides proof of key state for its identifier. In KERI it is the Key Event Log (`KEL`).
 
 #### W3C DID
 The W3C consortium Decentralized ID standardization. [More](https://w3c.github.io/did-core/).
