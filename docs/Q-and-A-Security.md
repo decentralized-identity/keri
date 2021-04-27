@@ -506,6 +506,12 @@ The analogy is the difference between a _two-way_ - and a _three-way handshake_:
 _(@henkvancann)_
 
 # Q&A section Witness
+
+## *Q: Once duplicity is detected for a certain identifier and controller, does the witness service, representing the controller, need to be replaced?
+_For example after a dead key attack_
+
+No. The service can be the same. KERI includes a cryptographic commitment to the identifiers of the nodes in the service. The compromised controller will have its own nodes and service but they are not the same as the original ones. As soon as you have a compromised controller than you also have a duplicitous service. For a validator to back up his choice of which service to choose is not hard, because it can be easily verified which service belongs to the original KEL.
+
 ## **Q: Witnesses have no skin in the game, it’s a `nothing at stake` situation, no?
 The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) has a section called the Duplicity Game.  I suggest reading through that first. Or see the [part of the SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar that tackles this.\
 (_SamMSmith_)
