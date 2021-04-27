@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--suppress HtmlDeprecatedTag -->
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8"/>
     <title>The did:keri Method v0.1</title>
@@ -17,7 +17,7 @@
             authors: [
                 {name: "Dr. Sam Smith (ProSapien)", url: "https://keri.one/"},
                 {name: "Charles Cunningham (Jolocom, Spruce)", url: "https://www.spruceid.com/"},
-                {name: "Phil Feairheller (CanisLabs)", url: "https://keri.one/"}
+                {name: "Phil Feairheller (Scoir, Inc.)", url: "https://www.scoir.com/"}
             ],
             subtitle: "A DID Method for KERI Identifiers",
             localBiblio: {
@@ -265,18 +265,24 @@
         </pre>
     </section>
 
-    <h3>The DID Document</h3>
-    <p>
-        Optionally, a public key could be the only thing in the DID Doc (for interop with other W3C DID components and
-        systems). Technically, it could be empty if only being used to prove DID control.
-    </p>
-    <p>
-        Non-normative note: multiple namespaces using the same DID method could prove control or replay history for one
-        controlling keypair that has been used across multiple ledgers. KERL logs could be stored in a secondary root of
-        trust (i.e., a ledger), and similar or identical resolver metadata could be returned by querying the same
-        identifier there.
-    </p>
-
+    <section class="informative">
+        <h3>The DID Document</h3>
+        <p>
+            The following field MAY appear in a <tt>did:keri</tt> DID document: <code>verificationMethod</code>
+        </p>
+        <p>
+            Non-normative note: multiple namespaces using the same DID method could prove control or replay history for one
+            controlling keypair that has been used across multiple ledgers. KERL logs could be stored in a secondary root of
+            trust (i.e., a ledger), and similar or identical resolver metadata could be returned by querying the same
+            identifier there.
+        </p>
+        <p>
+            The following field is not a core field in a <tt>did:keri</tt> DID document: <code>Services</code>.  The <tt>did:keri</tt> method
+            is provided for interoperability for the purpose of using KERI to establish control authority of the current public keys associated
+            with KERI identifier behind the <tt>keri:did</tt> DID.  It is anticipated that KERI tunnel methods (eg. <tt>did:indy:sov:keri</tt>) will
+            provide these features to enable addition interop.
+        </p>
+    </section>
 
 </section>
 <section>
@@ -471,6 +477,21 @@
 </section>
 <section class="informative">
     <h2>Security Considerations</h2>
+
+    <section>
+        <h3>Key State Verification</h3>
+        <p>
+            Users of a <tt>did:keri</tt> did method resolver MUST verify the key state returned in the document metadata
+            of the resolution result.  The signature of the resolver can be used to determine if the resolver is dysfunctional
+            and should no longer be trusted.  However it should not be used to verify the key state.
+        </p>
+
+        <p>
+            The only definitive method for verifying the key state is to pass the key state to a KERI library and perform the verification of
+            that key state.
+        </p>
+    </section>
+
     <p>
         A breakdown of the security considerations from [[RFC3552]] is provided below.
     </p>
