@@ -152,8 +152,11 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 #### Liveliness
 If you need liveliness of fungible trust, like cryptocurrencies, you can't use KERI for this.\ 
 In KERI we have compact security for the sake of liveliness, whick means there is no public ledger with total ordering of state. In KERI after duplicity is detected, you don't trust that identifier anymore. That means in KERI you don't have fungible trust. And that is a good thing for trust.
+(_SamMSmith_)
 
-{TBW prio 2}
+#### *Q: Does KERI protect a controller against stupid mistakes?
+If a controller of a public identifier has a KEL published and with the same authorotative keypair produces another KEL and does not check it's inconstent with the first one? No, KERI does not protect against that level of stupidity.
+By comparison, public ledger based identity systems do protect against this stupidity.
 (_SamMSmith_)
 
 ## ***Q: KERI is inventing its own key representation and signature format. Why did you do that?
@@ -458,6 +461,9 @@ _(SamMSmith)_
 
 ## *Q: Why should we care about Duplicity?
 Duplicity becomes a basis for distrust in a controller or its witnesses. _(SamMSmith)_
+
+## **Q: What is the main benefit we get from duplicity detection?
+Duplicity detection **buys validators protection** without the need of anything more than a duplicity detection network.
 
 # Q&A section Key rotation
 
