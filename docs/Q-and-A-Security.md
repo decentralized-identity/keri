@@ -423,6 +423,11 @@ In KERI the closest to 1. is DID:Key. Instead of having multiple DID methods, KE
 
 Look for more info in the KERI slidedeck ["KERI for the DIDified"]({to do}).
 
+## ***Q: Identifiers aren’t self-managing or self-certifying. That’s just not a thing?!
+_Identifiers are managed by systems and humans using systems. Identifiers are not actors. That sort of slippery language is the kind of meaningless hyperbole that borders on disingenuous._
+
+{TBW prio 1}
+
 # Q&A section Event logs
 
 ## *Q: What is a Key Event Log?
@@ -507,7 +512,7 @@ _(@henkvancann)_
 
 # Q&A section Witness
 
-## *Q: Once duplicity is detected for a certain identifier and controller, does the witness service, representing the controller, need to be replaced?
+## **Q: Once duplicity is detected for a certain identifier and controller, does the witness service, representing the controller, need to be replaced?
 _For example after a dead key attack_
 
 No. The service can be the same. KERI includes a cryptographic commitment to the identifiers of the nodes in the service. The compromised controller will have its own nodes and service but they are not the same as the original ones. As soon as you have a compromised controller than you also have a duplicitous service. For a validator to back up his choice of which service to choose is not hard, because it can be easily verified which service belongs to the original KEL.
@@ -558,6 +563,10 @@ The backside of this is that more and more controllers will become duplicitious 
 
 ## *Q: What is KAACE?
 The primary purpose of the KA2CE algorithm is to protect the controller’s ability to promulgate the authoritative copy of its key event history despite external attack. This includes maintaining a sufficient degree of availability such that any validator may obtain an authoritative copy on demand.
+
+## ***Q: Each DLT has a strategy that has been vetted and tested, often with billions of dollars at stake. With KERI, the witness strategy seems disturbingly variable?
+
+{TBW prio 1}
 
 # Q&A section Watchers
 
@@ -716,3 +725,10 @@ _Question: how does FIFO prevent effective DOS attacks?_
 By loadbalancing the incoming messages. If you dont have any loadbalancing, the messages are going to be processed First In First Out. Only when an attacker has full bandwith available to overload the buffer, they could frustrate the process to get honest messages in.
 As soon as you’re able to balance the receipt of messages in the buffer, you’ll be able to get the right messages (from honest senders) through.
 (_@henkvancann_)
+
+## ### ***Q: I don’t feel KERI is capable of delivering on all the promises made. It’s trivial to have a witness strategy that fails to meet those promises. 
+_Which is not true for bitcoin. Nobody gets to alter the witness strategy of bitcoin without a HUGE amount of demonstrable proof, politicking, and advocacy. Most of my problems with innovative DLTs or other distributed systems are that I struggle to internalize **how they actually guarantee anything**._
+
+{TBW prio 1}
+
+#### ***Q: The guarantees stated about KERI are inappropriate without a particular witness structure and then you have to evaluate the witness strategy, which means KERI on its own doesn’t have the guarantees that the KERI creator keeps claiming.
