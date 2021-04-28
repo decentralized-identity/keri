@@ -64,6 +64,7 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Autonomic Identifier](./Glossary.md#autonomic-identifier)
       - [Autonomic Namespace](./Glossary.md#autonomic-namespace)
       - [Autonomic idenity system](./Glossary.md#autonomic-idenity-system)
+      - [Byzantine Agreement](./Glossary.md#byzantine-agreement)
       - [Content-addressable hash](./Glossary.md#content-addressable-hash)
       - [Controller](./Glossary.md#controller)
       - [Control Authority](./Glossary.md#control-authority)
@@ -134,6 +135,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Agencies](#qa-key-agencies)
 - [Virtual Credentials](#virtual-credentials)
 ## PART TWO
+- [Q&A section KERI security considerations](./Q-and-A-Security.md#qa-section-keri-security-considerations)
 - [KERI operational security](./Q-and-A-Security.md#qa-section-KERI-operational-security)
 - [Identifiers](./Q-and-A-Security.md#qa-section-identifiers)
 - [Event logs](./Q-and-A-Security.md#qa-section-event-logs)
@@ -453,14 +455,14 @@ Timeliness is even better because it can service both properties needed in one g
 So therefore the non-interactive mechanism to replay attack prevention has been suggested in KERI implemented by Date-time-stamp (monotonic).\
 The time window can be fairly large because you use monotonicity. 
 
-#### How can I use KERI to filter connections with the outside world. Any public enquiry should be filtered upfront.
+#### How can I use KERI to filter connections with the outside world? Any public enquiry should be filtered upfront.
 _My e-mail address or phone number are publicly available and anyone can contact me, I'd like more privacy._\
 _I you want to talk to me, you send a message to my public identifier._
 
-You don't need to a strong correlation to you as an entity, but only to your "local" reputation. 
-
-The correlation in KERI is never public always private. Spam goes away because of the provable assestation.
-
+First use a public identifier and then set up a private pairwise connection.\
+You don't need to a strong correlation of your public identifier to you as an entity, but only to your "local" reputation, expressed by the KEL itself.\
+The correlation in KERI is never public, always private. _Spam_ goes away because of the provable assestation.\
+(_SamMSmith_) and (_@Chunningham_)
 
 # Q&A section Private Key Management
 

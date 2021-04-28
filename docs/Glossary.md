@@ -6,6 +6,7 @@ ACDC = Authentic Chained Data Container Task Force
 AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
+BA = [Byzantine Agreement](#byzantine-agreement)\
 DEL = [Duplicitous Event Log](#duplicitous-event-log)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DIF = Decentralized Identity Foundation\
@@ -23,6 +24,7 @@ KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-do
 LOA = [Levels Of Assurance](#levels-of-assurance)\
 PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PoA = Proof of Authority\
+PoW = Proof of Work\
 PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SASCI = [Self Addressing self certifying Identifier](#self-addressing-identifier)\
@@ -61,6 +63,10 @@ In the design of an identity system you need to answer a few questions.
 <img src="../images/ais.png" alt="Autonomic Identity System" border="0" width="400">
 
 There's nobody that can intervene with the establishment of the authenticity of a control operation because you can verify all the way back to the root-of-trust.
+
+#### Byzantine Agreement (non `PoW`)
+Byzantine Agreement is Byzantine fault tolerance of distributed computing systems that enable them to come to consensus despite arbitrary behavior from a fraction of the nodes in the network. `BA` consensus makes no assumptions about the behavior of nodes in the system. Practical Byzantine Fault Tolerance (pBFT) is the prototypical model for `Byzantine agreement`, and it can reach consensus fast and efficiently while concurrently decoupling consensus from resources (i.e., financial stake in `PoS` or electricity in `PoW`).\
+[More](https://blockonomi.com/stellar-consensus-protocol/)
 
 #### Claim
 An assertion of the truth of something, typically one which is disputed or in doubt. A set of claims might convey personally identifying information: ½name, address, date of birth and citizenship, for example. ([Source](https://www.identityblog.com/?p=352)).
