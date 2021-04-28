@@ -442,7 +442,7 @@ Look for more info in the KERI slidedeck ["KERI for the DIDified"]({to do}).
 _Identifiers are managed by systems and humans using systems. Identifiers are not actors. That sort of slippery language is the kind of meaningless hyperbole that borders on disingenuous._
 
 KERI's creator is using semantics from several different disciplines and then making _new_ semantics when there is not a good fit. So it all sound like new semantics. _But only a few are truly new to KERI._ 
-But since we can't know what the set of new and not new is for any expert exactly, we can't know what to spend more effort on defining vs what to assume. That is why an [adaptive discussion](#qa-section-keri-operational-security) works much more efficiently.
+But since we can't know what the set of new and not new is for any expert exactly, we can't know what to spend more effort on defining vs what to assume. That is why an [adaptive discussion](#q-as-an-ssi-expert-i-totally-can-get-stuck-in-the-semantics-of-keri-how-to-overcome-this) works much more efficiently.
 
 # Q&A section Event logs
 
@@ -584,9 +584,8 @@ The primary purpose of the KA2CE algorithm is to protect the controller’s abil
 
 The witness strategy is variable by design. To which extend this disturbs depends on assertions.
 
-KERI doesn't give similar guarantees then a DLT. For an identifier system you don't need all that a DLT gives, you can do an identifier system without a DLT. All you need is what KERI gives. And then we define what KERI gives both the similarities and the unsimilaries In excruciating detail. And it is not true that a witness structure must do what a DLT does. It's much much simpler, which has been explained in []()
-
-{TBW prio 1}
+KERI doesn't give similar guarantees then a DLT. For an identifier system you don't need all that a DLT gives, you can do an identifier system without a DLT. All you need is what KERI gives. And then we define what KERI gives both the similarities and the unsimilaries In excruciating detail. And it is not true that a witness structure must do what a DLT does. It's much much simpler, which has been explained [here](#q-the-guarantees-stated-about-keri-are-inappropriate-without-a-particular-witness-structure).
+(_SamMSmith_)
 
 # Q&A section Watchers
 
