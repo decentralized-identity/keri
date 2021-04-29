@@ -1,4 +1,4 @@
-# KERI Project - First Work Item - Core Spec
+# KERI Project Agenda
 
 [![hackmd-github-sync-badge](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ/badge)](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ)
 
@@ -13,6 +13,7 @@ Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https
 [ID WG Charter](https://bit.ly/DIF-WG-select1)  
 Slack [channel](https://difdn.slack.com/archives/C0146LH5XQD)  
 Github Repos:  core , rust, python, javascript, go, and java (need to add links here)  
+Publicity [website](https://keri.one/)   
  A [note](https://tools.ietf.org/id/draft-knodel-terminology-02.html) on nomenclature used in this spec   
  Meeting [Recordings](https://docs.google.com/spreadsheets/d/1wgccmMvIImx30qVE9GhRKWWv3vmL2ZyUauuKx3IfRmA/edit#gid=1393617996) 
  
@@ -28,6 +29,31 @@ Github Repos:  core , rust, python, javascript, go, and java (need to add links 
 - non-interactive authentication mechanism for query protocol KRAM (Keri Request Authentication Mechanism)
 - [delegator/delegate coordination for delegated events](https://github.com/decentralized-identity/keri/issues/82)
 - [use cases document](https://github.com/decentralized-identity/keri/issues/53)
+
+## Agenda April 27
+
+- IIW Restrospective
+    - Feedback impressions takeaways?
+    -  Sessions Held:
+        -  KERI Q&A
+        -  KERI TEL
+        -  
+        -  Security Considerations #1,#2,#3
+        -  CESR Composable Event Streaming Representation
+        -  ADPL and KEL interop
+- Agreement ADPL and KEL: restore anchor to inception (required for NFT, essential to TrustFrame). Use more generic term in spec documentation for external support infrastructure, endorser instead of witness. Does not require changing labels existing code.
+    - Should we genericise label? compact labels already consumed e, s  (for endorser, supporter) synomym backer, b is not consumed. Otherwise leave as w.
+
+- [Restore External Content Anchoring to Inception Event #140](https://github.com/decentralized-identity/keri/issues/140)
+- [Revised KSN key state notification message #130](https://github.com/decentralized-identity/keri/issues/130)
+
+Roadmap:
+   Witness support code in KERIpy. ready to test build demo.
+   Added repo for keri-dht-py Conrad Rosenbrock contributor.
+
+## Agenda April 20
+
+Break for IIW
 
 ## Agenda April 13
 
