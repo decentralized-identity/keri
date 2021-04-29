@@ -6,6 +6,7 @@ ACDC = Authentic Chained Data Container Task Force
 AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
+BA = [Byzantine Agreement](#byzantine-agreement)\
 DEL = [Duplicitous Event Log](#duplicitous-event-log)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DIF = Decentralized Identity Foundation\
@@ -23,12 +24,15 @@ KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-do
 LOA = [Levels Of Assurance](#levels-of-assurance)\
 PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PoA = Proof of Authority\
+PoW = Proof of Work\
 PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SASCI = [Self Addressing self certifying Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
 SSI = [Self Sovereign Identity](#self-sovereign-identity)\
+TEL = [Transaction Event Log](#transaction-event-log)
 VC = Verifiable Credential, look up W3D DID standardization for more info\
+VDS = [Verifiable Data Structure](#verifiable-data-structure)
 WASM = [WebAssembly](#WebAssembly)
 
 
@@ -50,7 +54,8 @@ Agents can be people, edge computers and the functionality within [`wallets`](#d
 An identifier that is self-certifying and self-sovereign
 
 #### Autonomic Namespace
-A namespace that is self-certifying and hence self-administrating. ANs are therefore portable = truly self sovereign.
+A namespace that is self-certifying and hence self-administrating. ANs are therefore portable = truly self sovereign.\
+See basic explanation of [Namespace](#namespace).
 
 #### Autonomic idenity system
 In the design of an identity system you need to answer a few questions.
@@ -58,6 +63,10 @@ In the design of an identity system you need to answer a few questions.
 <img src="../images/ais.png" alt="Autonomic Identity System" border="0" width="400">
 
 There's nobody that can intervene with the establishment of the authenticity of a control operation because you can verify all the way back to the root-of-trust.
+
+#### Byzantine Agreement (non `PoW`)
+Byzantine Agreement is Byzantine fault tolerance of distributed computing systems that enable them to come to consensus despite arbitrary behavior from a fraction of the nodes in the network. `BA` consensus makes no assumptions about the behavior of nodes in the system. Practical Byzantine Fault Tolerance (pBFT) is the prototypical model for `Byzantine agreement`, and it can reach consensus fast and efficiently while concurrently decoupling consensus from resources (i.e., financial stake in `PoS` or electricity in `PoW`).\
+[More](https://blockonomi.com/stellar-consensus-protocol/)
 
 #### Claim
 An assertion of the truth of something, typically one which is disputed or in doubt. A set of claims might convey personally identifying information: ½name, address, date of birth and citizenship, for example. ([Source](https://www.identityblog.com/?p=352)).
@@ -68,6 +77,17 @@ Content addressing is a way to find data in a network using its content rather t
 The entity that has the ability to make changes to an _identity_, _cryptocurrency_ or _verifiable credential_. 
 
 The controller of an `autonomous identifier` is the entity (person, organization, or autonomous software) that has the capability, as defined by derivation, to make changes to an `Event Log`. This capability is typically asserted by the control of a single inception key. In DIDs this is typically asserted by the control of set of cryptographic keys used by software acting on behalf of the controller, though it may also be asserted via other mechanisms. In KERI an AID has one single controller. Note that a DID may have more than one controller, and the DID `subject` can be the DID controller, or one of them.
+
+#### Control Authority
+In identity systems Control Authority is _who controls what_ and that is the primary factor in determining the basis for trust in them. The entity with control authority takes action through operations that affect the 
+- creation (inception)
+- updating
+- rotation 
+- revocation 
+- deletion
+- and delegation **of the authentication factors and their relation to the identifier**.
+
+How these events are ordered and their dependence on previous operations is important. The record of these operations is the ***source of truth*** for the identity system.
 
 #### Correlation
 An identifier used to indicate that external parties have observed how wallet contents are related. For example, when a public key is reused, it conveys that some common entity is controlling both identifiers. Tracking correlation allows for software to warn when some new information might be about to be exposed, for example: "Looks like you are about to send crypo currency, from an account you frequently use to a new account you just created."
@@ -171,7 +191,8 @@ A data structure that consist of a header (Key Event header), a configuration se
 
 #### Key Event Log
 Hash-chained Key Events, these are blockchains in a narrow definition, but not in the sense of ordering (not ordered) or global consensus mechanisms (not needed).
-_(SamMSmith)_
+_(SamMSmith)_ \
+A KEL is KERI's `VDS`: the proof of key state of its identifier.
 
 #### Key Event Receipt Log
 Signed Key Events, keeping track of establishment events. To begin with the inception event and any number of rotation events. We call that the _establishment subsequence_. \
@@ -189,13 +210,22 @@ The KES is never signed by the controller of the AID\
 #### KERI Implementation/Improvement Docs
 Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
+#### Level of Assurance
+LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
+KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
+
 ####  MultiCodec 
 Is a self-describing multiformat, it wraps other formats with a tiny bit of self-description. A multicodec identifier is both a varint and the code identifying data. See more at [GitHub Multicodec](https://github.com/multiformats/multicodec)
 Multicodec is an agreed-upon codec table. It is designed for use in binary representations, such as keys or identifiers (i.e CID). It is then used as a prefix to identify the data that follows.
 
-#### Level of Assurance
-LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
-KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
+#### Namespace 
+In an identity system, an identifier can be generalized to a namespace to provide a systematic way of organizing identifiers for related resources and their attributes. A namespace is a grouping of symbols or identifiers for a set of related objects. A namespace employs some scheme for assigning identifiers to the elements of the namespace. A simple name-spacing scheme uses a prefix or prefixes in a hierarchical fashion to compose identifiers. The following is an example of a namespace scheme for addresses within the USA that uses a hierarchy of prefixes:
+```
+state.county.city.zip.street.number. 
+An example element in this namespace may be identified with the following:
+utah.wasatch.heber.84032.main.150S.
+```
+See also [AN](#autonomic-namespace).
 
 #### Non-Establishment Event
 To be able to do something with the identifier, it anchors data to the key event sequence. So you can so things like issue or revoke a verifiable credential or engage in a transaction in which you give a commitment of some form to some other entity and you can anchor that commitment to the KER log and make it verifiable that way.
@@ -241,6 +271,8 @@ A race condition or race hazard is the condition of an electronics, software, or
 #### Root of trust
 Replace human basis-of-trust with cryptographic root-of-trust. With verifiable digital signatures from asymmetric key cryptography we may not trust in “what” was said, but we may trust in “who” said it.\
 The root-of-trust is consistent attribution via verifiable integral non-repudiable statements.
+
+A root of trust is a foundational component or process in the identity system that is relied on by other components of the system and whose failure would compromise the integrity of the bindings. A root of trust might be primary or secondary depending on whether or not it is replaceable. Primary roots of trust are irreplaceable. Together, the roots of trust form the trust basis for the system.
 
 #### Rotation Event
 A type of `Establishment event` that allows to change to authoritative public key. So we start with a `root-of-trust` in public private key pair that get down to the identifier, and then we can rotate authoritatively to other keypairs given signed rotation messages. The infrastructure that we need, keeps track of these rotations, or `Key Event Receipt Infrastructure`.
@@ -289,6 +321,12 @@ An all encompassing layer horizontal layer in a software architecture. Each trus
 #### Subject
 A digital subject: A person or thing represented or existing in the digital realm which is being described or dealt with. ([Source](https://www.identityblog.com/?p=352)).
 
+#### Transaction Event Log
+Also `TEL`: An externally anchored transactions via cryptographic commitments in a `KEL`.\
+The set of transactions that determine registry state form a log called a Transaction Event Log (TEL). The TEL provides a cryptographic proof of registry state by reference to the corresponding controlling KEL.
+Any validator may therefore cryptographically verify the authoritative state of the registry.
+<img src="../images/TEL-and-KEL.png" alt="TEL and KEL" border="0" width="600">
+
 #### Transfer
 The process of changing the _controller_ of _cryptocurrency_, _identity_ or _verifiable credential_. MAY require the use of a _key_.
 
@@ -311,6 +349,9 @@ Verifiable Credentials standardize formal conversation.  VCs structure discussio
 
 VC; A data model for conveying claims made by an issuer about a subject. See [vc-data-model](https://www.w3.org/TR/vc-data-model/) for more.\
 Credentials are a part of our daily lives; driver's licenses are used to assert that we are capable of operating a motor vehicle, university degrees can be used to assert our level of education, and government-issued passports enable us to travel between countries. This specification provides a mechanism to express these sorts of credentials on the Web in a way that is cryptographically secure, privacy respecting, and machine-verifiable. [Know more](https://www.w3.org/TR/vc-data-model/)
+
+#### Verifiable Data Structure
+Provides proof of key state for its identifier. In KERI it is the Key Event Log (`KEL`). Key management is embedded in KELs, including recovery from key compromise.
 
 #### W3C DID
 The W3C consortium Decentralized ID standardization. [More](https://w3c.github.io/did-core/).

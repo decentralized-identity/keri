@@ -50,8 +50,10 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Autonomic Identifier](./Glossary.md#autonomic-identifier)
       - [Autonomic Namespace](./Glossary.md#autonomic-namespace)
       - [Autonomic idenity system](./Glossary.md#autonomic-idenity-system)
+      - [Byzantine Agreement](./Glossary.md#byzantine-agreement)
       - [Content-addressable hash](./Glossary.md#content-addressable-hash)
       - [Controller](./Glossary.md#controller)
+      - [Control Authority](./Glossary.md#control-authority)
       - [Correlation](./Glossary.md#correlation)
       - [Cryptocurrency](./Glossary.md#cryptocurrency)
       - [Decentralized Identity](./Glossary.md#decentralized-identity)
@@ -70,6 +72,7 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Key](./Glossary.md#key)
       - [Key Event Log](./Glossary.md#key-event-log)
       - [Key Event Receipt Log](./Glossary.md#key-event-receipt-log)
+      - [Namespace](./Glossary.md#namespace)
       - [Non-Establishment Event](./Glossary.md#non-establishment-event)
       - [Payload](./Glossary.md#payload)
       - [Public Key Infrastructure](./Glossary.md#public-key-infrastructure)
@@ -80,10 +83,12 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Self Certifying Identifier](./Glossary.md#self-certifying-identifier)
       - [Self Sovereign Identity](./Glossary.md#self-sovereign-identity)
       - [Spanning layer](./Glossary.md#spanning-layer)
+      - [Transaction Event Log](./Glossary.md#transaction-event-log)
       - [Transfer](./Glossary.md#transfer)
       - [Trust-over-IP](./Glossary.md#trust-over-ip)
       - [Validator](./Glossary.md#validator)
       - [Verifiable Credential](./Glossary.md#verifiable-credential)
+      - [Verifiable Data Storage](./Glossary.md#verifiable-data-structure)
       - [W3C DID](./Glossary.md#w3c-did)
       - [(Digital Identity) Wallet](./Glossary.md#-digital-identity--wallet)
 
@@ -103,6 +108,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 
 # Jump table to categories
 ## PART TWO SECURITY
+- [Q&A section KERI security considerations](#qa-section-keri-security-considerations)
 - [KERI operational security](#qa-section-keri-operational-security)
 - [Identifiers](#qa-section-identifiers)
 - [Event logs](#qa-section-event-logs)
@@ -127,8 +133,29 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Agencies](./Q-and-A.md#qa-key-agencies)
 - [Virtual Credentials](./Q-and-A.md#virtual-credentials)
 
+# Q&A section KERI security considerations
+
+## **Q: As an SSI expert I totally can get stuck in the semantics of KERI. How to overcome this?
+If we could sit down with every expert and walk through his concerns, it would change. Our biggest problem is that when we write technical stuff, we are writing for an _imagined technical audience_ that cares about the same things at the same technical level that we care about.
+
+In other words our default audience is ourselves (in the KERI team). It reminds us what we thought at the time of writing.
+Even if we are writing for a known audience, we can't adapt in real time, because its not interactive so we usually only get it half right, just half convincing, which is as good as nothing in internet security.
+
+But when we **talk to people one-on-one** we can _adapt_ what we say to match their level of understanding and what they care about. _In real time_. We can go as deep as needed but no deeper or a broad as needed but no broader. 
+
+## **Q: Why is KERI so confusing, even for SSI experts?
+KERI is confusing because it is new and can' be assumed. Whole books exists and hundreds of papers on "eventual consistency" algorithms (which CouchDB uses) but they are just assumed away. Because KERI is new, I can't just assume it away. **But KERI is not magic or scary or anywhere as near as difficult as BFT** 
+BA which is assumed away or PoW which is also assumed away. Conversely, most people make assumptions about the security guarantees of DLT that are false. There are many papers on all the known active compromises to Bitcoin that happen on a regular basis yet they assume that they can't happen.
 
 # Q&A section KERI operational security
+
+## *Q: What is the main component of KERI's security?
+**Key management** is the main component, because every attack on KERI starts with key compromise. There are no other attacks possible because KERI has consistent logs that are cryptographical verfiable to the `root-of-trust`, also know as the `public private key pair` used to create the identifier.\
+_(@henkvancann)_
+
+#### **Q: How does KERI guarantee the consistency and security of its logs?
+KERI's Key event log (KEL) is a cryptographically verifiable hash chained non-repudiably signed data structure.\
+(_SamMSmith_)
 
 ## **Q: How can it be one solution, fit for all SSI problems? 
 KERI uses plain old digital signatures from `PKI`, intentionally, so that it may be truly universally applied. KERI solves that hard problem of PKI, that is, key rotation in a standard way. Without a standard way of addressing key rotation, there is no interoperability between systems, they break when you rotate keys because no one knows how to verify the key rotation was done properly. `KERI` solves that problem.\
@@ -140,8 +167,11 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 #### Liveliness
 If you need liveliness of fungible trust, like cryptocurrencies, you can't use KERI for this.\ 
 In KERI we have compact security for the sake of liveliness, whick means there is no public ledger with total ordering of state. In KERI after duplicity is detected, you don't trust that identifier anymore. That means in KERI you don't have fungible trust. And that is a good thing for trust.
+(_SamMSmith_)
 
-{TBW prio 2}
+#### *Q: Does KERI protect a controller against stupid mistakes?
+If a controller of a public identifier has a KEL published and with the same authorotative keypair produces another KEL and does not check it's inconstent with the first one? No, KERI does not protect against that level of stupidity.
+By comparison, public ledger based identity systems do protect against this stupidity.
 (_SamMSmith_)
 
 ## ***Q: KERI is inventing its own key representation and signature format. Why did you do that?
@@ -408,6 +438,12 @@ In KERI the closest to 1. is DID:Key. Instead of having multiple DID methods, KE
 
 Look for more info in the KERI slidedeck ["KERI for the DIDified"]({to do}).
 
+## ***Q: Identifiers aren’t self-managing or self-certifying. That’s just not a thing?!
+_Identifiers are managed by systems and humans using systems. Identifiers are not actors. That sort of slippery language is the kind of meaningless hyperbole that borders on disingenuous._
+
+KERI's creator is using semantics from several different disciplines and then making _new_ semantics when there is not a good fit. So it all sound like new semantics. _But only a few are truly new to KERI._ 
+But since we can't know what the set of new and not new is for any expert exactly, we can't know what to spend more effort on defining vs what to assume. That is why an [adaptive discussion](#q-as-an-ssi-expert-i-totally-can-get-stuck-in-the-semantics-of-keri-how-to-overcome-this) works much more efficiently.
+
 # Q&A section Event logs
 
 ## *Q: What is a Key Event Log?
@@ -446,6 +482,9 @@ _(SamMSmith)_
 
 ## *Q: Why should we care about Duplicity?
 Duplicity becomes a basis for distrust in a controller or its witnesses. _(SamMSmith)_
+
+## **Q: What is the main benefit we get from duplicity detection?
+Duplicity detection **buys validators protection** without the need of anything more than a duplicity detection network.
 
 # Q&A section Key rotation
 
@@ -488,6 +527,12 @@ The analogy is the difference between a _two-way_ - and a _three-way handshake_:
 _(@henkvancann)_
 
 # Q&A section Witness
+
+## **Q: Once duplicity is detected for a certain identifier and controller, does the witness service, representing the controller, need to be replaced?
+_For example after a dead key attack_
+
+No. The service can be the same. KERI includes a cryptographic commitment to the identifiers of the nodes in the service. The compromised controller will have its own nodes and service but they are not the same as the original ones. As soon as you have a compromised controller than you also have a duplicitous service. For a validator to back up his choice of which service to choose is not hard, because it can be easily verified which service belongs to the original KEL.
+
 ## **Q: Witnesses have no skin in the game, it’s a `nothing at stake` situation, no?
 The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) has a section called the Duplicity Game.  I suggest reading through that first. Or see the [part of the SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-keri-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar that tackles this.\
 (_SamMSmith_)
@@ -534,6 +579,13 @@ The backside of this is that more and more controllers will become duplicitious 
 
 ## *Q: What is KAACE?
 The primary purpose of the KA2CE algorithm is to protect the controller’s ability to promulgate the authoritative copy of its key event history despite external attack. This includes maintaining a sufficient degree of availability such that any validator may obtain an authoritative copy on demand.
+
+## **Q: Each DLT has a strategy that has been vetted and tested, often with billions of dollars at stake. With KERI, the witness strategy seems disturbingly variable?
+
+The witness strategy is variable by design. To which extend this disturbs depends on assertions.
+
+KERI doesn't give similar guarantees then a DLT. For an identifier system you don't need all that a DLT gives, you can do an identifier system without a DLT. All you need is what KERI gives. And then we define what KERI gives both the similarities and the unsimilaries In excruciating detail. And it is not true that a witness structure must do what a DLT does. It's much much simpler, which has been explained [here](#q-the-guarantees-stated-about-keri-are-inappropriate-without-a-particular-witness-structure).
+(_SamMSmith_)
 
 # Q&A section Watchers
 
@@ -640,7 +692,7 @@ _(@Or13)_
 Harm that can be done to the a `controller`: Unavailability, loss of control authority, externally forced duplicity\
 Harm that can be done to a `validator`: _Inadvertent acceptance_ of verifiable - but forged or duplicitous events 
 
-Breaking the promise of global consistemcy by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.\
+Breaking the promise of global consistency by a controller is a provable liability. However, global consistency may only matter after members of that community need to interact, not before.\
 (_SamMSmith_)
 
 ## *Q: How secure is the KERI infrastructure?
@@ -692,3 +744,21 @@ _Question: how does FIFO prevent effective DOS attacks?_
 By loadbalancing the incoming messages. If you dont have any loadbalancing, the messages are going to be processed First In First Out. Only when an attacker has full bandwith available to overload the buffer, they could frustrate the process to get honest messages in.
 As soon as you’re able to balance the receipt of messages in the buffer, you’ll be able to get the right messages (from honest senders) through.
 (_@henkvancann_)
+
+## ### ***Q: I don’t feel KERI is capable of delivering on all the promises made. It’s trivial to have a witness strategy that fails to meet those promises. 
+_Which is not true for bitcoin. Nobody gets to alter the witness strategy of bitcoin without a HUGE amount of demonstrable proof, politicking, and advocacy. Most of my problems with innovative DLTs or other distributed systems are that I struggle to internalize **how they actually guarantee anything**._
+
+If you are very familiar with `PoW` and therefore Bitcoin and Ethereum but not _non-PoW_ `Byzantine Agreement` (`BA`), that where the cutting edge is for understanding the security model of KERI.\ 
+_Non-PoW_ `Byzantine Agreement` (`BA`) and therefore KAACE on KERI witnesses which are a simplified variant of BA and under the hood look nothing like proof of work. Actually KERI with witnesses and KAACE looks the most like Stellar an open permission-less `Byzantine Agreement` algorithm. If these concepts are unfamiliar to you, yu might as a result have no intuition about why KERI could work because you then have little familiarity with distributed consensus mechanisms that provide PoW like guarantees, but are not `PoW`.\
+Actually BA came years before PoW so its the other way around (PoW provides BA like guarantees) but thats a quibble.  So anyone trying to grasp how KERI security is guaranteed should first learn how _non-PoW_ BA works before he/she could begin to believe why KERI could even work at all. Once you see this, then the dominos will start to fall.
+
+#### ***Q: The guarantees stated about KERI are inappropriate without a particular witness structure?
+_...and then you have to evaluate the witness strategy, which means KERI on its own doesn’t have the guarantees that the KERI creator keeps claiming._
+
+A KERI witness structure never needs to provide total ordering (where total ordering is precisely defined in the literature for distributed consensus algorithms as providing one ordering for the union of transactions from multiple sets of transactions from  multiple sets of clients where each set of transactions is ordered independently by each client that generates it. I.e. all the transactions from all the clients are combined into one set with one ordering = one total ordering. Most people can't define this correctly whenever asked. 
+
+Byzantine fault tolerant total ordering is the hard problem of distributed consensus. **Safe agreement which is all that KERI provides is much much simpler.** So almost any witness structure is much simpler and will still work good enough. And its not the witness structure alone but the witness and watcher structure:
+- Witness for controllers
+- Watchers for validators 
+Both are simpler consensus mechanisms compared to DLT algorithms. Distributed consensus describes a family of algorithms of which BFT Total Ordering distributed consensus is a subset. Pretty much all cloud databases that have redundant copies use some form of distributed consensus for synchronizing the copies of the database. They all use some form of authentication for securing that consensus but they are not in any real sense of the term  using Byzantine Fault tolerant total ordering distributed consensus. Setting up  witness pools and watcher pools in KERI is of comparable complexity to spinning up a redundant Postgres or CouchDB cluster. So KERI's guarantees come from nothing much more complicated than that. Nobody thinks that a CouchDB cluster is too complex to understand but few actually know the algorithmic details of its low level of distributed consensus.\
+(_SamMSmith_)

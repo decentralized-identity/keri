@@ -64,8 +64,10 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Autonomic Identifier](./Glossary.md#autonomic-identifier)
       - [Autonomic Namespace](./Glossary.md#autonomic-namespace)
       - [Autonomic idenity system](./Glossary.md#autonomic-idenity-system)
+      - [Byzantine Agreement](./Glossary.md#byzantine-agreement)
       - [Content-addressable hash](./Glossary.md#content-addressable-hash)
       - [Controller](./Glossary.md#controller)
+      - [Control Authority](./Glossary.md#control-authority)
       - [Correlation](./Glossary.md#correlation)
       - [Cryptocurrency](./Glossary.md#cryptocurrency)
       - [Decentralized Identity](./Glossary.md#decentralized-identity)
@@ -84,6 +86,7 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Key](./Glossary.md#key)
       - [Key Event Log](./Glossary.md#key-event-log)
       - [Key Event Receipt Log](./Glossary.md#key-event-receipt-log)
+      - [Namespace](./Glossary.md#namespace)
       - [Non-Establishment Event](./Glossary.md#non-establishment-event)
       - [Payload](./Glossary.md#payload)
       - [Public Key Infrastructure](./Glossary.md#public-key-infrastructure)
@@ -94,10 +97,12 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Self Certifying Identifier](./Glossary.md#self-certifying-identifier)
       - [Self Sovereign Identity](./Glossary.md#self-sovereign-identity)
       - [Spanning layer](./Glossary.md#spanning-layer)
+      - [Transaction Event Log](./Glossary.md#transaction-event-log)
       - [Transfer](./Glossary.md#transfer)
       - [Trust-over-IP](./Glossary.md#trust-over-ip)
       - [Validator](./Glossary.md#validator)
       - [Verifiable Credential](./Glossary.md#verifiable-credential)
+      - [Verifiable Data Storage](./Glossary.md#verifiable-data-structure)
       - [W3C DID](./Glossary.md#w3c-did)
       - [(Digital Identity) Wallet](./Glossary.md#-digital-identity--wallet)
 
@@ -130,6 +135,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Agencies](#qa-key-agencies)
 - [Virtual Credentials](#virtual-credentials)
 ## PART TWO
+- [Q&A section KERI security considerations](./Q-and-A-Security.md#qa-section-keri-security-considerations)
 - [KERI operational security](./Q-and-A-Security.md#qa-section-KERI-operational-security)
 - [Identifiers](./Q-and-A-Security.md#qa-section-identifiers)
 - [Event logs](./Q-and-A-Security.md#qa-section-event-logs)
@@ -158,6 +164,11 @@ BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0
 did:un:BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0/path/to/resource?name=secure#really 
 <- this is _a call to resolve_ the identifier on the web
 ```
+Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
+Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
+
+<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
+_(@henkvancann)_
 
 #### *Q: How is KERI an overlay?
 It does not require the current internet and it's protocols to change, nor Trust over IP (`ToIP`) system or current blockchains to change. KERI can be added to it and, nevertheless, KERI can function all encompassing.
@@ -168,14 +179,11 @@ Because there is no secure universal trust layer for the internet, currently (20
 KEI is both privacy preserving and context-independent extensible. This means KERI is interoperable accross areas of application on the internet. It does so securely, with minimal sufficient means.
 > Sam Smith: KERI essentially repairs internet.
 
+## **Q: What problem does KERI specifically solve?
+In the decentralized identity space KERI solves the **portability** of Self Sovereign Identifiers. Currently you can't move the indentifiers you control from one platform or one infrastructure to another. And that makes your self-sovereign identifiers not truly self sovereign. KERI fixes this.
 
-## *Q: What does KERI look like?
-Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
-Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
-
-<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
-
-_(@henkvancann)_
+## *Q: Why would KERI suddenly be a game changer in the decentralized identity field?
+Because we've been reconfiguring and rethinking the security guarantees behind decentralized identity systems since 2015. To overcome the lack of portability in the current decentralized identity systems, we've introduced a few new concepts that some people in the decentralized identity ecosystem have trouble to get their head around. Especially the blockchain oriented part of the community.
 
 ## *Q: How does KERI match DIDs?
 There is a whole section to answer this simple question that has many-sided answers: [KERI and DIDs](#qa-KERI-and-dids).
@@ -365,6 +373,7 @@ Yes, a wallet is very much needed. A wallet holds your public private key pairs 
 A wallet needs to be adapted to KERI to be able to carry KERI identifiers.\
 {TBW}\
 (_SamMSmith_) / _(CharlesCunningham)_ / _(@henkvancann)_
+
 ## *Q: How can I backup the KERI identifiers in my wallet?
 {TBW}
 ## Can I receive crypto money in my KERI wallet?
@@ -446,7 +455,26 @@ Timeliness is even better because it can service both properties needed in one g
 So therefore the non-interactive mechanism to replay attack prevention has been suggested in KERI implemented by Date-time-stamp (monotonic).\
 The time window can be fairly large because you use monotonicity. 
 
+#### How can I use KERI to filter connections with the outside world? Any public enquiry should be filtered upfront.
+_My e-mail address or phone number are publicly available and anyone can contact me, I'd like more privacy._\
+_I you want to talk to me, you send a message to my public identifier._
+
+First use a public identifier and then set up a private pairwise connection.\
+You don't need to a strong correlation of your public identifier to you as an entity, but only to your "local" reputation, expressed by the KEL itself.\
+The correlation in KERI is never public, always private. _Spam_ goes away because of the provable assestation.\
+(_SamMSmith_) and (_@Chunningham_)
+
 # Q&A section Private Key Management
+
+## **Q: What difference does the Autonomic Architecture of the KERI Identity System make?
+<img src="../images/autonomic-architecture.png" alt="Autonomic Architecture" border="0" width="400">
+
+The controller uses her `private key` to authoritatively and non-repudiably sign statements about the operations on the keys and their binding to the identifier, storing those in an ordered key event log (`KEL`). One of the important realizations that make autonomic identity systems possible is that the key event log must only be ordered in the context of a single identifier, not globally. __So, a ledger is not needed for recording operations on identifiers that are not public.__ The key event log can be shared with and verified by anyone who cares to see it.
+
+The controller also uses the private key to sign statements that authenticate herself and authorize use of the identifier. A digital signature also provides the means of cryptographically responding to challenges to prove her control of the identifier. These self-authentication and self-authorization capabilities make the identifier self-certifying and self-managing, meaning that there is no external third party, not even a ledger, needed for the controller to manage and use the identifier and prove to others the integrity of the bindings between herself and the identifier. Thus anyone (any entity) can create and establish control over an identifier namespace in a manner that is independent, interoperable, and portable without recourse to any central authority. Autonomic identity systems rely solely on self-sovereign authority.\
+(_@windley_)
+
+More in [The Architecture of Identity Systems](https://www.windley.com/archives/2020/09/the_architecture_of_identity_systems.shtml)
 
 ## **Q: How multi-tasking is the key infrastructure?
 KERI has `univalent`, `bivalent` and `multivalent` infrastructures.\
