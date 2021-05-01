@@ -47,15 +47,24 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Ambient verifiability](./Glossary.md#ambient-verifiability)
       - [Agent](./Glossary.md#agent)
       - [Agency](./Glossary.md#agency)
+      - Append only Event logs
+      - [Autonomic Computing Systems](./Glossary.md#autonomic-computing-systems)
       - [Autonomic Identifier](./Glossary.md#autonomic-identifier)
       - [Autonomic Namespace](./Glossary.md#autonomic-namespace)
       - [Autonomic idenity system](./Glossary.md#autonomic-idenity-system)
       - [Byzantine Agreement](./Glossary.md#byzantine-agreement)
+      - BFT
+      - Binding
+      - [Certificate Transparency](./Glossary.md#certificate-transparency)
       - [Content-addressable hash](./Glossary.md#content-addressable-hash)
       - [Controller](./Glossary.md#controller)
       - [Control Authority](./Glossary.md#control-authority)
+      - Consensus mechanisms 
       - [Correlation](./Glossary.md#correlation)
+      - Crypto libraries
       - [Cryptocurrency](./Glossary.md#cryptocurrency)
+      - Cryptographic commitments
+      - Cryptographic strength
       - [Decentralized Identity](./Glossary.md#decentralized-identity)
       - [Derivation code](./Glossary.md#derivation-code)
       - [Duplicity](./Glossary.md#duplicity)
@@ -64,17 +73,26 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [End verifiable log](./Glossary.md#end-verifiable-log)
       - [Entity](./Glossary.md#entity)
       - [External consistency](./Glossary.md#external-consistency)
+      - [GNU Privacy Guard](./Glossary.md#pgp-and-gpg)
       - [Inception Event](./Glossary.md#inception-event)
       - [Inconsistency](./Glossary.md#inconsistency)
+      - [Identifier system](./Glossary.md#identifier-system)
       - [Identity](./Glossary.md#identity)
       - [Internal inconsistency](./Glossary.md#internal-inconsistency)
       - [KERI Agreement Algorithm for Control Establishment](./Glossary.md#keri-agreement-algorithm-for-control-establishment)
       - [Key](./Glossary.md#key)
       - [Key Event Log](./Glossary.md#key-event-log)
       - [Key Event Receipt Log](./Glossary.md#key-event-receipt-log)
+      - [Key management](./Glossary.md#key-management)
+      - [Key Rotation](./Glossary.md#key-rotation)
+      - Liveness
+      - [Loci-of-control](./Glossary.md#loci-of-control)
       - [Namespace](./Glossary.md#namespace)
       - [Non-Establishment Event](./Glossary.md#non-establishment-event)
+      - One way functions
       - [Payload](./Glossary.md#payload)
+      - [Pre-rotation](./Glossary.md#pre-rotation)
+      - [Pretty Good Privacy](#pgp-and-gpg)
       - [Public Key Infrastructure](./Glossary.md#public-key-infrastructure)
       - [Root of trust](./Glossary.md#root-of-trust)
       - [Seal](./Glossary.md#seal)
@@ -82,16 +100,24 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Self Addressing Identifier](./Glossary.md#self-addressing-identifier)
       - [Self Certifying Identifier](./Glossary.md#self-certifying-identifier)
       - [Self Sovereign Identity](./Glossary.md#self-sovereign-identity)
+      - Signatures
+      - Source-of-truth
       - [Spanning layer](./Glossary.md#spanning-layer)
+      - Total Ordering
       - [Transaction Event Log](./Glossary.md#transaction-event-log)
       - [Transfer](./Glossary.md#transfer)
+      - Trust Domains
       - [Trust-over-IP](./Glossary.md#trust-over-ip)
       - [Validator](./Glossary.md#validator)
       - [Verifiable Credential](./Glossary.md#verifiable-credential)
-      - [Verifiable Data Storage](./Glossary.md#verifiable-data-structure)
+      - [Verifiable Data Structure](./Glossary.md#verifiable-data-structure)
       - [W3C DID](./Glossary.md#w3c-did)
       - [(Digital Identity) Wallet](./Glossary.md#-digital-identity--wallet)
-
+      - Web-of-trust
+      - [WebAssembly](./Glossary.md#webassembly)
+      - [Witness](./Glossary.md#witness)
+      - [Zero Trust](./Glossary.md#zero-trust)
+      
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## Knowledge you should be confidently applying
@@ -111,7 +137,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 - [Q&A section KERI security considerations](#qa-section-keri-security-considerations)
 - [KERI operational security](#qa-section-keri-operational-security)
 - [Identifiers](#qa-section-identifiers)
-- [Event logs](#qa-section-event-logs)
+- [Event logs](#qa-section-event-logs
 - [Inconsistency and duplicity](#qa-inconsistency-and-duplicity)
 - [Key rotation](#qa-key-rotation)
 - [KEL and KELR](#qa-section-kel-and-kerl)
@@ -745,7 +771,7 @@ By loadbalancing the incoming messages. If you dont have any loadbalancing, the 
 As soon as you’re able to balance the receipt of messages in the buffer, you’ll be able to get the right messages (from honest senders) through.
 (_@henkvancann_)
 
-## ### ***Q: I don’t feel KERI is capable of delivering on all the promises made. It’s trivial to have a witness strategy that fails to meet those promises. 
+## ***Q: I don’t feel KERI is capable of delivering on all the promises made. It’s trivial to have a witness strategy that fails to meet those promises. 
 _Which is not true for bitcoin. Nobody gets to alter the witness strategy of bitcoin without a HUGE amount of demonstrable proof, politicking, and advocacy. Most of my problems with innovative DLTs or other distributed systems are that I struggle to internalize **how they actually guarantee anything**._
 
 If you are very familiar with `PoW` and therefore Bitcoin and Ethereum but not _non-PoW_ `Byzantine Agreement` (`BA`), that where the cutting edge is for understanding the security model of KERI.\ 

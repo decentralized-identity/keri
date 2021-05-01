@@ -1,12 +1,100 @@
-# Definitions
+```
+"What if PBFT and Stellar had a baby?
+that was missing liveness and total ordering 
+but had safety and was completely decentralized, portable, and permission-less? 
+It would be named KERI."
+SamMSmith
+```
 
-## Abbreviations
+# Definitions
+This Glossary makes the distinction between definition well known in the Self Sovereign Identity space and those that are totally new and KERI specific.
+
+### KERI specific abbreviations
+In alphabetic order:\
+KAACE = [KERI Agreement Algorithm for Control Establishment](#keri-agreement-algorithm-for-control-establishment)
+KEL = [Key Event Log](#key-event-log)\
+KERL = [Key Event Receipt Log](#key-event-receipt-log)\
+KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
+KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-docs)
+
+### KERI specific definitions in alphabetic order:
+
+#### Ambient Verifiability 
+(new term to better describe end verifiable end state)\
+{TBW prio 1}
+#### Composable derivation codes on cryptographic material primitives 
+(new invention)\
+{TBW prio 1}
+
+#### Composable text and binary representation streaming protocol 
+(new invention)\
+{TBW prio 1}
+
+#### Generic classes self certifying identifiers 
+(new invention)\
+{TBW prio 1}
+
+#### KERI Agreement Algorithm for Control Establishment
+Also KAACE or KA2CE. A newly invented algorithm but it is a simplification of PBFT class algorithms, separation of control of distributed consensus using distinct promulgation (`witness`) and confirmation (`watcher`) networks (new invention) but many non-BFT consensus algorithms do something similar and one BFT algorithm Stellar does something similar but not the same.\
+What if PBFT and Stellar had a baby that was missing liveness and total ordering but had safety and was completely decentralized, portable, and permission less? It would be named KERI.\
+(_SamMSmith_)
+
+#### Key Event Log
+Also `KEL`. Hash-chained Key Events, these are blockchains in a narrow definition, but not in the sense of ordering (not ordered) or global consensus mechanisms (not needed).
+_(SamMSmith)_ \
+A KEL is KERI's `VDS`: the proof of key state of its identifier.
+
+#### Key Event Receipt Infrastructure
+Also `KERI`.  KERI is a new approach to decentralized identifiers and decentralized key management that promises significant benefits for `SSI` (self-sovereign identity) and `ToIP` (Trust over IP) infrastructure.\
+(_@drummondreed_)
+
+KERI is an identifier system that fixes the internet. It's a fully decentralized permission-less key management architecture. It solves the `secure attribution problem` to its identifiers and allows portability.\
+(_@henkvancann_)
+
+While attribution has always been a non-exact science, we could come as close to attribution as “beyond a reasonable doubt”, those days are over with KERI.\
+KERI provides a trust spanning layer for the internet, because **the protocol solves the secure attribution problem** in a general, portable, fully decentralized way. There are more types of trust IN KERI but they all depend on the most important _attributional_ trust.\
+From KERI we've learned that _secure attribution_ is the essential problem for _any_ `identifier system` to solve.\
+(_@henkvancann_)
+
+KERI is also a Keltic woman's name.
+
+#### Key Event Receipt Log
+Also `KERL`. Signed Key Events, keeping track of establishment events. To begin with the inception event and any number of rotation events. We call that the _establishment subsequence_. \
+(_@henkvancann_)
+
+<img src="../images/inception-rotation.png" alt="inception and any number of rotation events" border="0" width="200" style="float:left">
+_(SamMSmith)_
+
+#### Keridemlia
+It is a contraction of KERI and [Kademlia](https://en.wikipedia.org/wiki/Kademlia). It's the distributed database of Witness IP-addresses based on a Distributed Hash Tabel. It also does the CNAME - stuff that DNS offers for KERI: the mapping between an identifier and it's controller AID stored in the KEL to its current wittness AID and the wittness AID to the IP address.\
+(_@henkvancann_)
+
+#### Key Event State
+Also KES. Includes the mapping CNAME like, it also contain the witness data\
+The KES is never signed by the controller of the AID\
+{TBW prio 2}
+
+#### KERI Implementation/Improvement Docs
+Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
+
+#### Nested cooperative delegated identifiers 
+(new invention)\
+{TBW prio 1}
+
+#### Pre-rotation 
+It is a new invention in KERI. Pre-rotation is a _cryptographical commitment (a hash)_ to the _next_ private key in the rotation-scheme.\
+The pre-rotation scheme provides secure verifiable rotation that mitigates successful exploit of a given set of signing private keys from a set of (public, private) key-pairs when that exploit happens sometime **after** its creation _and_ its first use to issue a `self-certifying identifier`. In other words, it assumes that the private keys remains private **until after** issuance of the associated identifier.\
+[Source: chapter Pre-rotation in whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+
+### Abbreviations
 In alphabetic order:\
 ACDC = Authentic Chained Data Container Task Force\
 AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
 BA = [Byzantine Agreement](#byzantine-agreement)\
+BFT\
+CT = [Certificate Transparency](#certificate-transparency)\
 DEL = [Duplicitous Event Log](#duplicitous-event-log)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DIF = Decentralized Identity Foundation\
@@ -14,14 +102,12 @@ DDO = DID Document, look up W3D DID standardization for more info\
 DHT = Distributed Hash Table\
 DIF = Decentralized Identity Foundation, https://identity.foundation.   \
 DKMI = Decentralized Key Mangement Infrastructure\
+GPG = [GNU Privacy Guard](#pgp-and-gpg)\
 HSM = Hardware Security Module\
 IPv4 = standard Internet Protocol, version 4\
-KAACE = [KERI Agreement Algorithm for Control Establishment](#keri-agreement-algorithm-for-control-establishment)
-KEL = [Key Event Log](#key-event-log)\
-KERL = [Key Event Receipt Log](#key-event-receipt-log)\
-KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
-KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-docs)
+
 LOA = [Levels Of Assurance](#levels-of-assurance)\
+PGP = [Pretty Good Privacy](#pgp-and-gpg)\
 PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PoA = Proof of Authority\
 PoW = Proof of Work\
@@ -35,8 +121,7 @@ VC = Verifiable Credential, look up W3D DID standardization for more info\
 VDS = [Verifiable Data Structure](#verifiable-data-structure)
 WASM = [WebAssembly](#WebAssembly)
 
-
-Definitions in alphabetic order:
+### Definitions in alphabetic order:
 
 #### Authentic Chained Data Container Task Force
 The purpose of the Authentic Chained Data Container (ACDC) Task Force  is to draft a TSS (ToIP Standard Specification) that defines the standard requirements for the semantics of Authentic Provenance Chaining of Authentic Data Containers. [See more](https://wiki.trustoverip.org/display/HOME/ACDC+%28Authentic+Chained+Data+Container%29+Task+Force)
@@ -49,6 +134,9 @@ A representative for an _identity_. MAY require the use of a _wallet_. MAY suppo
 
 #### Agency
 Agents can be people, edge computers and the functionality within [`wallets`](#digital-identity-wallet). The service an agent offers is agency.
+
+#### Autonomic Computing Systems 
+Self managing computing systems using algorithmic governance, from the 90's way way way before DAOs. KERI creator Sma Smith worked at funded Navy research in the 90's on _autonomic surviveable systems_ as in  "self-healing" systems: "We called them autonomic way back then".
 
 #### Autonomic Identifier
 An identifier that is self-certifying and self-sovereign
@@ -68,8 +156,15 @@ There's nobody that can intervene with the establishment of the authenticity of 
 Byzantine Agreement is Byzantine fault tolerance of distributed computing systems that enable them to come to consensus despite arbitrary behavior from a fraction of the nodes in the network. `BA` consensus makes no assumptions about the behavior of nodes in the system. Practical Byzantine Fault Tolerance (pBFT) is the prototypical model for `Byzantine agreement`, and it can reach consensus fast and efficiently while concurrently decoupling consensus from resources (i.e., financial stake in `PoS` or electricity in `PoW`).\
 [More](https://blockonomi.com/stellar-consensus-protocol/)
 
+#### Certificate Transparency
+Certificate Transparency (CT) is an Internet security standard and open source framework for monitoring and auditing digital certificates. The standard creates a system of public logs that seek to eventually record all certificates issued by publicly trusted certificate authorities, allowing efficient identification of mistakenly or maliciously issued certificates. As of 2021, Certificate Transparency is mandatory for all SSL/TLS certificates.\
+More on [wikipedia](https://en.wikipedia.org/wiki/Certificate_Transparency)
+
 #### Claim
 An assertion of the truth of something, typically one which is disputed or in doubt. A set of claims might convey personally identifying information: ½name, address, date of birth and citizenship, for example. ([Source](https://www.identityblog.com/?p=352)).
+
+#### Consensus mechanisms  
+How groups of entitities come to decisions. In general to learn about consensus mechanisms read any textbook on decision making, automated reasoning, multi-objective decision making, operations research etc.
 
 #### Content-addressable hash
 Content addressing is a way to find data in a network using its content rather than its location. The way we do is by taking the content of the content and hashing it. Try uploading an image to IPFS and get the hash using the below button. In the IPFS ecosystem, this hash is called Content Identifier, or CID.
@@ -89,11 +184,21 @@ In identity systems Control Authority is _who controls what_ and that is the pri
 
 How these events are ordered and their dependence on previous operations is important. The record of these operations is the ***source of truth*** for the identity system.
 
+#### Cooperative control systems 
+Decentralized algorithmic governance from way way back in the 90s.\
+A subject dealing with the problem of controlling a multi-agent robotic system to fulfill a common goal, such as search, exploration, surveillance, and rescue operations.
+The slides of a 2009 lecture to get to the idea [here](http://www.eeci-institute.eu/pdf/M010/Eeci-sp09_L6_coopctrl.pdf)
+
+
 #### Correlation
 An identifier used to indicate that external parties have observed how wallet contents are related. For example, when a public key is reused, it conveys that some common entity is controlling both identifiers. Tracking correlation allows for software to warn when some new information might be about to be exposed, for example: "Looks like you are about to send crypo currency, from an account you frequently use to a new account you just created."
 
 #### Cryptocurrency
 A digital asset designed to work as a medium of exchange wherein individual coin ownership records are stored in a digital ledger or computerized database using strong cryptography to secure transaction record entries, to control the creation of additional digital coin records. See [more](https://en.wikipedia.org/wiki/Cryptocurrency)
+
+#### Cryptographic commitment scheme
+A commitment scheme is a cryptographic primitive that allows one to commit to a chosen value (or chosen statement) while keeping it hidden to others, with the ability to reveal the committed value later. Commitment schemes are designed so that a party cannot change the value or statement after they have committed to it: that is, commitment schemes are _binding_.\
+More on [wikipedia](https://en.wikipedia.org/wiki/Commitment_scheme)
 
 #### Decentralized Identity
 DID; Decentralized identity is a technology that uses cryptography to allow individuals to create and control their own unique identifiers. They can use these identifiers to obtain `Verifiable Credentials` from trusted organisations and, subsequently, present elements of these credentials as proof of claims about themselves. In this model, the individual takes ownership of their own identity and need not cede control to centralized service providers or companies.
@@ -151,6 +256,22 @@ External logs that are _inconsitent_, have at least two reported copies of the l
 "First seen" in KERI is the first **verified** event, accepted in the `KEL`. It has no effect on the timing of what has arrived in escrow for example; in escrow there can be garbage.
 Every 'first seen' event is propagated world wide within micro-seconds to the watchers. Only in this microseconds windows that you could have a live key conprise attack. If that happens, this where you have to look after this duplicity-attack a bit more in depth to handle it safely. E.g. a valid key rotation.
 
+#### Identifier System
+The properties of an _identifier system_:
+1. Completeness. Every unique object must be assigned an identifier.
+2. Uniqueness. Each identifier is a unique sequence.
+3. Exclusivity. Each identifier is assigned to a unique object, and to no other object.
+4. Authenticity. The objects that receive identification must be verified as the objects that they are intended to be.
+5. Aggregation. There must be a mechanism to aggregate all of the data, and only that data, that is properly associated with the identifier (i.e., to bundle all of the data that belong to the uniquely identified object).
+6. Permanence. The identifiers and the associated data must be permanent.
+7. Reconciliation. There should be a mechanism whereby the data associated with a unique, identified object in one resource can be merged with the data held in another resource, for the same unique object. This process, which requires comparison, authentication, and merging, is known as reconciliation.
+8. Immutability. In addition to being permanent (i.e., never destroyed or lost), the identifier must never change (
+9. Security. The identifier system should be as little vulnerable to malicious attack as possible.
+10. Documentation and quality assurance. Protocols must be written for establishing the identifier system, for assigning identifiers, for protecting the system, and for monitoring the system. 
+11. Centrality. The subject's identifier is the central "key" to which every event for the subject is attached.
+12. Autonomy. An identifier system has a life of its own.
+By (_@henkvancann_) based on this [source](https://www.sciencedirect.com/topics/computer-science/identifier-system)
+
 #### Inception Event
 Is a type of Establishment Event, it's the first event that establishes an identifier. \
 (_SamMSmith_)
@@ -177,13 +298,6 @@ In KERI we are protected against Internal inconsistency by the hash chain datast
 #### Javascript Object Signing and Encryption
 Or JOSE. JOSE is a framework intended to provide a method to securely transfer claims (such as authorization information) between parties. The JOSE framework provides a collection of specifications to serve this purpose. Related: `JWK`, `JWT`. [More info](https://jose.readthedocs.io/en/latest/)
 
-#### KERI Agreement Algorithm for Control Establishment
-{TBW}
-
-#### Keridemlia
-It is a contraction of KERI and [Kademlia](https://en.wikipedia.org/wiki/Kademlia). It's the distributed database of Witness IP-addresses based on a Distributed Hash Tabel. It also does the CNAME - stuff that DNS offers for KERI: the mapping between an identifier and it's controller AID stored in the KEL to its current wittness AID and the wittness AID to the IP address.\
-(_@henkvancann_)
-
 #### Key
 A mechanism for granting or restricing access to something. MAY be used to issue and prove, MAY be used to transfer and control over _identity_ and _cryptocurrency_. [More](https://en.wikipedia.org/wiki/Key_(cryptography))
 
@@ -193,30 +307,36 @@ A data structure that consist of a header (Key Event header), a configuration se
 
 <img src="../images/Key-Event.png" alt="Key Event (message)" border="0" width="400">
 
-#### Key Event Log
-Hash-chained Key Events, these are blockchains in a narrow definition, but not in the sense of ordering (not ordered) or global consensus mechanisms (not needed).
-_(SamMSmith)_ \
-A KEL is KERI's `VDS`: the proof of key state of its identifier.
 
-#### Key Event Receipt Log
-Signed Key Events, keeping track of establishment events. To begin with the inception event and any number of rotation events. We call that the _establishment subsequence_. \
+#### Key management
+Refers to management of cryptographic keys in a cryptosystem. This includes dealing with the generation, exchange, storage, use, crypto-shredding (destruction) and replacement of keys (also [rotation](#key-rotation)). It includes cryptographic protocol design, key servers, user procedures, and other relevant protocols.
+
+Successful key management is critical to the _security_ of a cryptosystem. It is the more challenging side of cryptography in a sense that it involves aspects of social engineering such as system policy, user training, organizational and departmental interactions, and coordination between all of these elements, in contrast to pure mathematical practices that can be automated.
+
+More on [wikipedia](https://en.wikipedia.org/wiki/Key_management)
+#### Key rotation
+The mechanism to replace, change or refresh the authoritative controlling keys of an identifier. It prevents future key compromise.
 (_@henkvancann_)
-
-<img src="../images/inception-rotation.png" alt="inception and any number of rotation events" border="0" width="200" style="float:left">
-
-_(SamMSmith)_
-
-#### Key Event State
-Includes the mapping CNAME like, it also contain the witness data\
-The KES is never signed by the controller of the AID\
-{TBW}
-
-#### KERI Implementation/Improvement Docs
-Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
 #### Level of Assurance
 LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
+
+#### Loci-of-control
+Locus of control is the degree to which people believe that they, as opposed to external forces (beyond their influence), have control over the outcome of events in their lives.\
+More on [wikipedia](https://en.wikipedia.org/wiki/Locus_of_control)
+
+In SSI loci-of-control was decribed by Tim Bouma in 2019:
+<img src="../images/loci-of-control.png" alt="Loci of Control" border="0" width="600">
+
+In KERI this is further developed:
+- Key Event Promulgation Service = from the `controller`'s point.
+- key event confirmation service = from the `validator`'s point.
+
+The separation of promulgation and confirmation into two separate _loci-of-control_, one the controller’s, and the other the validator’s simplifies the interaction space between these two parties.\
+The design principle of separating the loci-of-control between controllers and validators removes one of the major drawbacks of total ordered distributed consensus algorithms, that is, shared governance over the pool of nodes that provide the consensus algorithm.
+
+The primary purpose of the KA2CE algorithm is to protect the controller’s ability to promulgate the authoritative copy of its key event history despite external attack. This includes maintaining a sufficient degree of availability such that any validator may obtain an authoritative copy on demand. 
 
 ####  MultiCodec 
 Is a self-describing multiformat, it wraps other formats with a tiny bit of self-description. A multicodec identifier is both a varint and the code identifying data. See more at [GitHub Multicodec](https://github.com/multiformats/multicodec)
@@ -230,6 +350,10 @@ An example element in this namespace may be identified with the following:
 utah.wasatch.heber.84032.main.150S.
 ```
 See also [AN](#autonomic-namespace).
+
+#### Non-BFT fault tolerant distributed consensus algorithms 
+See any textbook on distributed systems such as https://www.amazon.com/dp/B00E3UR9H0/ref=rdr_kindle_ext_tmb
+{TBW prio 2}
 
 #### Non-Establishment Event
 To be able to do something with the identifier, it anchors data to the key event sequence. So you can do things like issue or revoke a verifiable credential or engage in a transaction in which you give a commitment of some form to some other entity and you can anchor that commitment to the KER log and make it verifiable that way.
@@ -254,6 +378,12 @@ Now payload in `KERI`. The payload of an item in an `Event Log` is one the follo
 - a root hash of a Merkletree
 - a public key
 Note that the KERI never puts raw data or privacy sensitive data in a `KEL` or `KERL`.
+
+#### PGP and GPG
+Pretty Good Privacy (PGP) is an encryption program that provides cryptographic privacy and authentication for data communication. PGP is used for signing, encrypting, and decrypting texts, e-mails, files, directories, and whole disk partitions and to increase the security of e-mail communications. Phil Zimmermann developed PGP in 1991.\
+More on [wikipedia](https://en.wikipedia.org/wiki/Pretty_Good_Privacy)\
+GNU Privacy Guard (GnuPG or GPG) is a free-software replacement for Symantec's PGP cryptographic software suite. It is compliant with RFC 4880, the IETF standards-track specification of OpenPGP. Modern versions of PGP are interoperable with GnuPG and other OpenPGP-compliant systems.\ 
+More on [wikipedia](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
 
 #### Prefix
 A prefix that is composed of a basic Base-64 (URL safe) derivation code prepended to Base-64 encoding of a basic public digital signing key.\
@@ -285,7 +415,7 @@ A type of `Establishment event` that allows to change to authoritative public ke
 _(SamMSmith)_
 #### Seal
 A seal is a cryptographic anchor that provides evidence of authenticity; we have:
-1. Digist Seal (a digest of external data)
+1. Digest Seal (a digest of external data)
 2. Root Seal (the hash tree root of external data)
 3. Event Seal (includes the identifier prefix, sequence number, and digest of an event in a key event log)
 4. Event location Seal (includes the prefix, sequence number, ilk and prior digest from an event)
@@ -294,6 +424,17 @@ Seals deliver authenticity proofs in KERI.
 
 #### Secret
 Information controlled by an identity. MAY be used to derive _key_s.
+
+#### Secure Attribution
+In short: "whodunit?!" in cyberspace.
+
+`Controller` makes statements to the `Validator`, who in turn validates them. Secure attribution means making and proving statements. The Controller fully "_owns_" the statement: content and attribution via digital signatures. 
+_Secure attribution of a statement_ is a way of proving that **the statement is an authentic statement of the `controller`**. _Secure_ means a **`Validator` may cryptographically verify**.
+
+#### Security Overlay
+Ro Security _Control_ Overlay. A fully specified set of security controls, control enhancements, and supplemental guidance derived from tailoring a security baseline to fit the user’s specific environment and mission.\
+ The overlay specification may be more stringent or less stringent than the original security control baseline specification and can be applied to multiple information systems.\
+[Source](https://csrc.nist.gov/glossary/term/Security_Control_Overlay)
 
 #### Self Addressing Identifier
 `SAI`, This is a self certfifying identifier (`SCI`) that has been attached to a certain context or infrastructure at the time of its inception. The inception configuration together with public key and it's `derivation`, forms a digest (hash) plus it's own `derivation code` that constitutes the Prefix of a self-addressing ID.
@@ -348,7 +489,11 @@ It's a term related to the effort of a foundation. The Trust over IP Foundation 
 <img src="../images/trust-over-ip-stack.png" alt="Trust over IP stack" border="0" width="600">
 
 #### Validator
-a _validator_ is anybody that wants to estblish control-authority over an identifier, created by the controller of the identifier. Validators verify the log, they apply duplicity detection or they leverage somebody else's duplicity detection or apply any other logic so they can say "Yes these are events I can trust".
+Known definitions of validator are: 
+- _Validator of any VDS_ 
+- _Validator as a node in distributed consensus or participant_
+
+A _validator_ in KERI is anybody that wants to estblish control-authority over an identifier, created by the controller of the identifier. Validators verify the log, they apply duplicity detection or they leverage somebody else's duplicity detection or apply any other logic so they can say "Yes, these are events I can trust".
 
 During validation of virtual credentials for example, a `verifier` checks to see if a `verifiable credential` (VC) has been signed by the controller of this VC using the applicable verification method.
 
@@ -372,3 +517,16 @@ The main goal of WebAssembly is to enable high-performance applications on web p
 In our context it is software and sometimes hardware that serves as a key store and functionality. Keys can be private keys and public keys, hashes and pointers. Functionality can be signing, invoices (receive), send, virtual credentials, delegation, etc. This is the [`agency`](#agency) part of a wallet. \
 [More about digital ID Wallets](https://www.thalesgroup.com/en/markets/digital-identity-and-security/government/identity/digital-identity-services/digital-id-wallet)\
 [More about cryto Wallets](https://cryptocurrencyfacts.com/what-is-a-cryptocurrency-wallet/).
+
+#### Witness
+
+Witness legal term
+Witness of cryptographic accumulators
+Witnesses as lightweight nodes in simplified distributed consensus algorithms (ftp://ftp.cse.ucsc.edu/pub/darrell/IPCCC-Paris-2015.pdf)
+    Dozens of papers that use the term Witness in a similar role to KERI  for example https://ieeexplore.ieee.org/document/8644609
+
+#### Zero trust
+In short, a Zero Trust approach trusts no one.\
+Zero Trust is a shift of network defenses toward a more comprehensive IT security model that allows organizations to restrict access controls to networks, applications, and environment without sacrificing performance and user experience. As more organizations do more computing outside their perimeter in the cloud, security teams find it increasingly difficult to trust or identify who and what should be allowed or trusted with access to their networks. As a result, an increasing number of organizations are adopting Zero Trust as an element or a component of their trust network architecture and enterprise security strategy.
+
+Zero Trust is a security concept that requires all users, even those inside the organization’s enterprise network, to be authenticated, authorized, and continuously validating security configuration and posture, before being granted or keeping access to applications and data. This approach leverages advanced technologies such as multifactor authentication, identity and access management (IAM), and next-generation endpoint security technology to verify the user’s identity and maintain system security.
