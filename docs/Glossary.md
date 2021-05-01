@@ -7,7 +7,7 @@ SamMSmith
 ```
 
 # Definitions
-This Glossary makes the distinction between definition well known in the Self Sovereign Identity space and those that are totally new and KERI specific.
+This Glossary makes the distinction between definitions well known in the Self Sovereign Identity space and those that are totally new and KERI specific.
 
 ### KERI specific abbreviations
 In alphabetic order:\
@@ -15,7 +15,8 @@ KAACE = [KERI Agreement Algorithm for Control Establishment](#keri-agreement-alg
 KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
-KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-docs)
+KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-docs)\
+TEL = [Transaction Event Log](#transaction-event-log)\
 
 ### KERI specific definitions in alphabetic order:
 
@@ -86,6 +87,13 @@ It is a new invention in KERI. Pre-rotation is a _cryptographical commitment (a 
 The pre-rotation scheme provides secure verifiable rotation that mitigates successful exploit of a given set of signing private keys from a set of (public, private) key-pairs when that exploit happens sometime **after** its creation _and_ its first use to issue a `self-certifying identifier`. In other words, it assumes that the private keys remains private **until after** issuance of the associated identifier.\
 [Source: chapter Pre-rotation in whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
 
+#### Transaction Event Log
+Also `TEL`: An externally anchored transactions via cryptographic commitments in a `KEL`.\
+The set of transactions that determine registry state form a log called a Transaction Event Log (TEL). The TEL provides a cryptographic proof of registry state by reference to the corresponding controlling KEL.
+Any validator may therefore cryptographically verify the authoritative state of the registry.
+<img src="../images/TEL-and-KEL.png" alt="TEL and KEL" border="0" width="600">
+
+
 ### Abbreviations
 In alphabetic order:\
 ACDC = Authentic Chained Data Container Task Force\
@@ -105,7 +113,6 @@ DKMI = Decentralized Key Mangement Infrastructure\
 GPG = [GNU Privacy Guard](#pgp-and-gpg)\
 HSM = Hardware Security Module\
 IPv4 = standard Internet Protocol, version 4\
-
 LOA = [Levels Of Assurance](#levels-of-assurance)\
 PGP = [Pretty Good Privacy](#pgp-and-gpg)\
 PKI = [Public Key Infrastructure](#public-key-infrastructure)\
@@ -116,9 +123,8 @@ SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SASCI = [Self Addressing self certifying Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
 SSI = [Self Sovereign Identity](#self-sovereign-identity)\
-TEL = [Transaction Event Log](#transaction-event-log)
 VC = Verifiable Credential, look up W3D DID standardization for more info\
-VDS = [Verifiable Data Structure](#verifiable-data-structure)
+VDS = [Verifiable Data Structure](#verifiable-data-structure)\
 WASM = [WebAssembly](#WebAssembly)
 
 ### Definitions in alphabetic order:
@@ -469,12 +475,6 @@ An all encompassing layer horizontal layer in a software architecture. Each trus
 
 #### Subject
 A digital subject: A person or thing represented or existing in the digital realm which is being described or dealt with. ([Source](https://www.identityblog.com/?p=352)).
-
-#### Transaction Event Log
-Also `TEL`: An externally anchored transactions via cryptographic commitments in a `KEL`.\
-The set of transactions that determine registry state form a log called a Transaction Event Log (TEL). The TEL provides a cryptographic proof of registry state by reference to the corresponding controlling KEL.
-Any validator may therefore cryptographically verify the authoritative state of the registry.
-<img src="../images/TEL-and-KEL.png" alt="TEL and KEL" border="0" width="600">
 
 #### Transfer
 The process of changing the _controller_ of _cryptocurrency_, _identity_ or _verifiable credential_. MAY require the use of a _key_.
