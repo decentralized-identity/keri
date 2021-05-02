@@ -82,16 +82,15 @@ _(SamMSmith)_
 It is a contraction of KERI and [Kademlia](https://en.wikipedia.org/wiki/Kademlia). It's the distributed database of Witness IP-addresses based on a Distributed Hash Tabel. It also does the CNAME - stuff that DNS offers for KERI: the mapping between an identifier and it's controller AID stored in the KEL to its current wittness AID and the wittness AID to the IP address.\
 (_@henkvancann_)
 
-#### Key Event State
-Also KES. Includes the mapping CNAME like, it also contain the witness data\
-The KES is never signed by the controller of the AID\
-{TBW prio 2}
-
 #### KERI Implementation/Improvement Docs
 Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
 #### Nested cooperative delegated identifiers 
-(new invention)\
+In KERI delegations are cooperative, this means that both the delegator and delegate must contribute to a delegation. The delegator creates a cryptographic commitment in either a rotation or interaction event via a seal a a delegated establishment event. The delegate creates a cryptographic commitment in its establishment event via a seal to the delegating event. Each commitment is signed respectively by the committer ... This cooperative delegation together with special superseding recovery rules for events enables cooperative recovery.
+
+This superseding rule may be recursively applied to multiple levels of delegation, thereby enabling recovery of any set of keys signing or pre-rotated in any lower levels by a superseding rotation delegation at the next higher level. This cascades the security of the key management infrastructure of higher levels to lower levels. This is a _distinctive_ security feature of the cooperative delegation of identifiers in KERI.
+
+(new invention) More in chapter _Nested Delegation Recovery_ of the [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)\
 {TBW prio 1}
 
 #### Pre-rotation 
@@ -113,7 +112,7 @@ AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
 BA = [Byzantine Agreement](#byzantine-agreement)\
-BFT\
+BFT = [Byzantine Fault Tolerance](#byzantine-fault-tolerance)\
 CT = [Certificate Transparency](#certificate-transparency)\
 DID = [Decentralized Identity](#decentralized-identity) or Digital Identity dependent of the context.\
 DIF = Decentralized Identity Foundation\
@@ -125,6 +124,7 @@ GPG = [GNU Privacy Guard](#pgp-and-gpg)\
 HSM = Hardware Security Module\
 IPv4 = standard Internet Protocol, version 4\
 LOA = [Levels Of Assurance](#levels-of-assurance)\
+PBFT = [practical Byzantine Fault Tolerance](#byzantine-fault-tolerance)\
 PGP = [Pretty Good Privacy](#pgp-and-gpg)\
 PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PoA = Proof of Authority\
@@ -133,6 +133,7 @@ PR = Pull Request; github terminology\
 SAI = [Self Addressing Identifier](#self-addressing-identifier)\
 SASCI = [Self Addressing self certifying Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
+SOT = [Source-of-truth](#source-of-truth)\
 SSI = [Self Sovereign Identity](#self-sovereign-identity)\
 VC = Verifiable Credential, look up W3D DID standardization for more info\
 VDS = [Verifiable Data Structure](#verifiable-data-structure)\
@@ -152,6 +153,12 @@ A representative for an _identity_. MAY require the use of a _wallet_. MAY suppo
 #### Agency
 Agents can be people, edge computers and the functionality within [`wallets`](#digital-identity-wallet). The service an agent offers is agency.
 
+#### Append only event logs
+Append-only is a property of computer data storage such that new data can be appended to the storage, but where **existing data is immutable**.
+
+A blockchain is an example of an append-only log. The events can be transactions. Bitcoin is a well-known Append only log where the events are [totally ordered](#total-ordering) and signed transfers of control over unspent transaction output.\
+More on [Wikipedia](https://en.wikipedia.org/wiki/Append-only)
+
 #### Autonomic Computing Systems 
 Self managing computing systems using algorithmic governance, from the 90's way way way before DAOs. KERI creator Sma Smith worked at funded Navy research in the 90's on _autonomic surviveable systems_ as in  "self-healing" systems: "We called them autonomic way back then".
 
@@ -169,9 +176,26 @@ In the design of an identity system you need to answer a few questions.
 
 There's nobody that can intervene with the establishment of the authenticity of a control operation because you can verify all the way back to the root-of-trust.
 
+#### Binding
+In short, the technique of connecting two data elements together. In the context of KERI it is the association of data or an identifier with another identifier or a subject (a person, organization or machine), thereby lifting the privacy of the subject through that connection, i.e. binding.
+
 #### Byzantine Agreement (non `PoW`)
 Byzantine Agreement is Byzantine fault tolerance of distributed computing systems that enable them to come to consensus despite arbitrary behavior from a fraction of the nodes in the network. `BA` consensus makes no assumptions about the behavior of nodes in the system. Practical Byzantine Fault Tolerance (pBFT) is the prototypical model for `Byzantine agreement`, and it can reach consensus fast and efficiently while concurrently decoupling consensus from resources (i.e., financial stake in `PoS` or electricity in `PoW`).\
 [More](https://blockonomi.com/stellar-consensus-protocol/)
+
+#### Byzantine Fault Tolerance
+Also `BFT`. A **Byzantine fault** (also _interactive consistency, source congruency, error avalanche, Byzantine agreement problem, Byzantine generals problem,_ and _Byzantine failure_) is a condition of a computer system, **particularly distributed computing systems**, where components may fail and there is imperfect information on whether a component has failed. The term takes its name from an allegory, the "Byzantine Generals Problem", developed to describe a situation in which, in order to avoid catastrophic failure of the system, the system's actors must agree on a concerted strategy, but some of these actors are _unreliable_.\
+In a Byzantine fault, a component such as a server can inconsistently appear both failed and functioning to failure-detection systems, presenting different symptoms to different observers. It is difficult for the other components to declare it failed and shut it out of the network, because they **need to first reach a consensus** regarding which component has failed in the first place.\
+Byzantine fault tolerance (BFT) is the **dependability** of a fault-tolerant computer system to such conditions.
+
+A system has Byzantine Fault Tolerance (BFT) when _it can keep functioning correctly as long as two-thirds of the network agree or reaches consensus_. BFT is a property or characteristic of a system that can resist up to one-third of the nodes failing or acting maliciously.
+
+The pBFT model primarily focuses on providing a **practical Byzantine state machine replication** that tolerates Byzantine faults (malicious nodes) through an assumption that there are independent node failures and manipulated messages propagated by specific, independent nodes.\
+The algorithm is designed to work in asynchronous systems and is optimized to be high-performance with an impressive overhead runtime and only a slight increase in latency.
+More on wikipedia about
+- [Byzantine Fault](https://en.wikipedia.org/wiki/Byzantine_fault)
+- [pBFT](https://en.bitcoinwiki.org/wiki/PBFT)
+An article that explains practical BFT [here](https://blockonomi.com/practical-byzantine-fault-tolerance/), a complete beginners guide.
 
 #### Certificate Transparency
 Certificate Transparency (CT) is an Internet security standard and open source framework for monitoring and auditing digital certificates. The standard creates a system of public logs that seek to eventually record all certificates issued by publicly trusted certificate authorities, allowing efficient identification of mistakenly or maliciously issued certificates. As of 2021, Certificate Transparency is mandatory for all SSL/TLS certificates.\
@@ -182,6 +206,10 @@ An assertion of the truth of something, typically one which is disputed or in do
 
 #### Consensus mechanisms  
 How groups of entitities come to decisions. In general to learn about consensus mechanisms read any textbook on decision making, automated reasoning, multi-objective decision making, operations research etc.
+
+A fundamental problem in distributed computing and multi-agent systems is to achieve overall system reliability in the presence of a number of faulty processes. This often requires coordinating processes to reach consensus, or agree on some data value that is needed during computation.
+
+More on [wikipedia](https://en.wikipedia.org/wiki/Consensus_(computer_science)) or in this [2018 report](https://cryptoresearch.report/crypto-research/consensus-mechanisms/) from cryptocurrency field.
 
 #### Content-addressable hash
 Content addressing is a way to find data in a network using its content rather than its location. The way we do is by taking the content of the content and hashing it. Try uploading an image to IPFS and get the hash using the below button. In the IPFS ecosystem, this hash is called Content Identifier, or CID.
@@ -210,12 +238,28 @@ The slides of a 2009 lecture to get to the idea [here](http://www.eeci-institute
 #### Correlation
 An identifier used to indicate that external parties have observed how wallet contents are related. For example, when a public key is reused, it conveys that some common entity is controlling both identifiers. Tracking correlation allows for software to warn when some new information might be about to be exposed, for example: "Looks like you are about to send crypo currency, from an account you frequently use to a new account you just created."
 
+#### Crypto libraries
+Cryptography libraries deal with cryptography algorithms and have API function calls to each of the supported features. Criteria to chose one or the other:
+- Open Source (most of them are)
+- Compliant with standards
+- Key operations include key generation algorithms, key exchange agreements and public key cryptography standards.
+- Supported cryptographic hash functions
+- Implementations of message authentication code (MAC) algorithms
+- Implementations of block ciphers
+- Hardware-assisted support
+- Code size and code to comment ratio
+See a [comparison here](https://en.wikipedia.org/wiki/Comparison_of_cryptography_libraries) at Wikipedia.
+
 #### Cryptocurrency
 A digital asset designed to work as a medium of exchange wherein individual coin ownership records are stored in a digital ledger or computerized database using strong cryptography to secure transaction record entries, to control the creation of additional digital coin records. See [more](https://en.wikipedia.org/wiki/Cryptocurrency)
 
 #### Cryptographic commitment scheme
 A commitment scheme is a cryptographic primitive that allows one to commit to a chosen value (or chosen statement) while keeping it hidden to others, with the ability to reveal the committed value later. Commitment schemes are designed so that a party cannot change the value or statement after they have committed to it: that is, commitment schemes are _binding_.\
 More on [wikipedia](https://en.wikipedia.org/wiki/Commitment_scheme)
+
+#### Cryptogrpahic strength
+The term "cryptographically strong" is often used to describe an encryption algorithm, and implies, in comparison to some other algorithm (which is thus cryptographically weak), greater resistance to attack. But it can also be used to describe hashing and unique identifier and filename creation algorithms.\
+More on [Wikipedia](https://en.wikipedia.org/wiki/Strong_cryptography)
 
 #### Decentralized Identity
 DID; Decentralized identity is a technology that uses cryptography to allow individuals to create and control their own unique identifiers. They can use these identifiers to obtain `Verifiable Credentials` from trusted organisations and, subsequently, present elements of these credentials as proof of claims about themselves. In this model, the individual takes ownership of their own identity and need not cede control to centralized service providers or companies.
@@ -342,6 +386,14 @@ Key Transparency can be used as a _public key discovery service_ to authenticate
 LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
 
+#### Liveness
+A liveness property in concurrent systems states that "something good will eventually occur".\
+Liveness refers to a set of properties of concurrent systems, that require a system to make progress despite the fact that its concurrently executing components ("processes") may have to "take turns" in critical sections, parts of the program that cannot be simultaneously run by multiple processes.\
+Liveness guarantees are important properties in operating systems and distributed systems.\
+Unlike liveness properties, [safety properties](#safety) can be violated by a finite execution of a distributed system. All properties can be expressed as the intersection of safety and liveness properties.\
+{TBW prio 2 how is liveness important in distributed systems? how does KERI guarantee liveness}\
+More on [wikipedia](https://en.wikipedia.org/wiki/Liveness)
+
 #### Loci-of-control
 Locus of control is the degree to which people believe that they, as opposed to external forces (beyond their influence), have control over the outcome of events in their lives.\
 More on [wikipedia](https://en.wikipedia.org/wiki/Locus_of_control)
@@ -390,6 +442,10 @@ In general, we call a theory “normative” if it, in some sense, tells you wha
 A theory is called non-normative if it does not do that. In general, the purpose of non-normative theories is not to give answers, but rather to describe possibilities or predict what might happen as a result of certain actions.
 [Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
 
+#### One way functions
+In computer science, a one-way function is a function that is easy to compute on every input, but hard to invert given the image of a random input. Here, "easy" and "hard" are to be understood in the sense of computational complexity theory, specifically the theory of polynomial time problems.\
+More on [Wikipedia](https://en.wikipedia.org/wiki/One-way_function)
+
 #### Payload
 The term 'payload' is used to distinguish between the 'interesting' information in a chunk of data or similar, and the overhead to support it. It is borrowed from transportation, where it refers to the part of the load that 'pays': for example, a tanker truck may carry 20 tons of oil, but the fully loaded vehicle weighs much more than that - there's the vehicle itself, the driver, fuel, the tank, etc. It costs money to move all these, but the customer only cares about (and pays for) the oil, hence, 'pay-load'. [source](https://softwareengineering.stackexchange.com/questions/158603/what-does-the-term-payload-mean-in-programming).
 
@@ -433,6 +489,11 @@ A root of trust is a foundational component or process in the identity system th
 #### Rotation Event
 A type of `Establishment event` that allows to change to authoritative public key. So we start with a `root-of-trust` in public private key pair that get down to the identifier, and then we can rotate authoritatively to other keypairs given signed rotation messages. The infrastructure that we need, keeps track of these rotations, or `Key Event Receipt Infrastructure`.
 _(SamMSmith)_
+
+#### Safety property
+A safety property of a concurrent system states that "something bad does not occur". If a safety property is violated there is always a finite execution that shows the violation (the "bad" event occurring). A [liveness property](#liveness) cannot be violated in a finite execution of a distributed system because the "good" event might still occur at some later time.\
+More on [wikipedia](https://en.wikipedia.org/wiki/Safety_property)
+
 #### Seal
 A seal is a cryptographic anchor that provides evidence of authenticity; we have:
 1. Digest Seal (a digest of external data)
@@ -483,12 +544,29 @@ SSI is a new model for Internet-scale digital identity based on an emerging set 
 Decentralisation of the `root-of-trust` and `verifiable credentials` come into play and delivers  “user-centric identity”: more control and self-determination of individuals, individuals machines and combinations of these, that identify as one.\
 _(@henkvancann)_
 
+#### Signatures
+There are Digital and Electronic signatures.\
+A _digital_ signature is a mathematical scheme for verifying the authenticity of digital messages or documents. A valid digital signature, where the prerequisites are satisfied, gives a recipient very strong reason to believe that the message was created by a known sender (authentication), and that the message was not altered in transit (integrity).
+
+_Electronic_ signatures are a legal concept _distinct_ from **digital signatures, a cryptographic mechanism** often used to implement electronic signatures. While an electronic signature can be as simple as a name entered in an electronic document, digital signatures are increasingly used in e-commerce and in regulatory filings to implement electronic signatures in a cryptographically protected way. 
+
+An electronic signature, or e-signature, refers to data in electronic form, which is logically associated with other data in electronic form and which is used by the signatory to sign. This type of signature has the same legal standing as a handwritten signature as long as it adheres to the requirements of the specific regulation under which it was created (e.g., eIDAS in the European Union, NIST-DSS in the USA or ZertES in Switzerland).
+
+Some more on _Wikipedia_ about [digital signatures](https://en.wikipedia.org/wiki/Digital_signature) and [electronic signatures](https://en.wikipedia.org/wiki/Digital_signature) and the distinction between the two.
+
 #### Spanning layer
 An all encompassing layer horizontal layer in a software architecture. Each trust layer only spans platform specific applications. It bifurcates the internet trust map. There is no spanning trust layer.
 <img src="../images/spanning_layer.png" alt="spanning layer" border="0" width="800">
 
+#### Source-of-truth
+Also SOT. The source of truth is a trusted data source that gives a complete picture of the data object as a whole.
+
 #### Subject
 A digital subject: A person or thing represented or existing in the digital realm which is being described or dealt with. ([Source](https://www.identityblog.com/?p=352)).
+
+#### Total ordering
+One useful property of many distributed consensus algorithms is a total (global) ordering of events from multiple sources. This allows all transactions on the associated ledger to have a unique ordering with respect to one another. In the case of key management, for example, the total ordering property makes it easy to establish the ordering of key inception and rotation events.
+
 
 #### Transfer
 The process of changing the _controller_ of _cryptocurrency_, _identity_ or _verifiable credential_. MAY require the use of a _key_.
@@ -497,6 +575,10 @@ The process of changing the _controller_ of _cryptocurrency_, _identity_ or _ver
 And identifier of which you can rotate its controlling private key. When the private key for a transferable identifier become exposed to potential compromise then control over the identifier may be transferred to a new key-pair to maintain security.
 
 The main innovation of KERI is that it provides a universal decentralized mechanism that supports *both* non-transferable and more importantly transferable self-certifying identifiers.
+
+#### Trust domains
+A trust domain is a domain that the system trusts to authenticate users. In other words, if a user or application is authenticated by a trusted domain, this authentication is accepted by all domains that trust the authenticating domain.
+{TBW prio 2}
 
 #### Trust-over-IP
 It's a term related to the effort of a foundation. The Trust over IP Foundation is an independent project hosted at Linux Foundation to enable the trustworthy exchange and verification of data between any two parties on the Internet. [More](https://trustoverip.org/about/faq/).
@@ -532,12 +614,18 @@ In our context it is software and sometimes hardware that serves as a key store 
 [More about digital ID Wallets](https://www.thalesgroup.com/en/markets/digital-identity-and-security/government/identity/digital-identity-services/digital-id-wallet)\
 [More about cryto Wallets](https://cryptocurrencyfacts.com/what-is-a-cryptocurrency-wallet/).
 
-#### Witness
+#### Web of trust
+In cryptography, a web of trust is a concept used in `PGP`, `GnuPG`, and other `OpenPGP`-compatible systems to establish the authenticity of the binding between a public key and its owner. Its decentralized trust model is an alternative to the centralized trust model of a public key infrastructure (`PKI`), which relies exclusively on a certificate authority (or a hierarchy of such). As with computer networks, there are many independent webs of trust, and any user (through their identity certificate) can be a part of, and a link between, multiple webs. The web of trust concept was first put forth by PGP creator Phil Zimmermann in 1992 in the manual for PGP.
+<img src="../images/web-of-trust.png" alt="Web of trust illustration" border="0" width="400">
 
+More on [Wikipedia](https://en.wikipedia.org/wiki/Web_of_trust)
+
+#### Witness
 Witness legal term
 Witness of cryptographic accumulators
 Witnesses as lightweight nodes in simplified distributed consensus algorithms (ftp://ftp.cse.ucsc.edu/pub/darrell/IPCCC-Paris-2015.pdf)
     Dozens of papers that use the term Witness in a similar role to KERI  for example https://ieeexplore.ieee.org/document/8644609
+{TBW prio 1}
 
 #### Zero trust
 In short, a Zero Trust approach trusts no one.\

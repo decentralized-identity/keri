@@ -47,24 +47,24 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Ambient verifiability](./Glossary.md#ambient-verifiability)
       - [Agent](./Glossary.md#agent)
       - [Agency](./Glossary.md#agency)
-      - Append only Event logs
+      - [Append only Event logs](./Glossary.md#append-only-event-logs)
       - [Autonomic Computing Systems](./Glossary.md#autonomic-computing-systems)
       - [Autonomic Identifier](./Glossary.md#autonomic-identifier)
       - [Autonomic Namespace](./Glossary.md#autonomic-namespace)
       - [Autonomic idenity system](./Glossary.md#autonomic-idenity-system)
       - [Byzantine Agreement](./Glossary.md#byzantine-agreement)
-      - BFT
-      - Binding
+      - [Byzantine Fault Tolerance](./Glossary.md#byzantine-fault-tolerance)
+      - [Binding](./Glossary.md#binding)
       - [Certificate Transparency](./Glossary.md#certificate-transparency)
       - [Content-addressable hash](./Glossary.md#content-addressable-hash)
       - [Controller](./Glossary.md#controller)
       - [Control Authority](./Glossary.md#control-authority)
-      - Consensus mechanisms 
+      - [Consensus mechanisms](./Glossary.md#consensus-mechanisms)
       - [Correlation](./Glossary.md#correlation)
-      - Crypto libraries
+      - [Crypto(graphy) libraries](./Glossary.md#crypto-libraries)
       - [Cryptocurrency](./Glossary.md#cryptocurrency)
-      - Cryptographic commitments
-      - Cryptographic strength
+      - [Cryptographic commitments](./Glossary.md#cryptographic-commitment-scheme)
+      - [Cryptographic strength](./Glossary.md#cryptographic-strength)
       - [Decentralized Identity](./Glossary.md#decentralized-identity)
       - [Derivation code](./Glossary.md#derivation-code)
       - [Duplicity](./Glossary.md#duplicity)
@@ -86,35 +86,36 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Key management](./Glossary.md#key-management)
       - [Key Rotation](./Glossary.md#key-rotation)
       - [Key transparency](./Glossary.md##key-transparency)
-      - Liveness
+      - [Liveness](./Glossary.md##liveness)
       - [Loci-of-control](./Glossary.md#loci-of-control)
       - [Namespace](./Glossary.md#namespace)
       - [Non-Establishment Event](./Glossary.md#non-establishment-event)
-      - One way functions
+      - [One way functions](./Glossary.md#one-way-functions)
       - [Payload](./Glossary.md#payload)
       - [Pre-rotation](./Glossary.md#pre-rotation)
       - [Pretty Good Privacy](#pgp-and-gpg)
       - [Public Key Infrastructure](./Glossary.md#public-key-infrastructure)
       - [Root of trust](./Glossary.md#root-of-trust)
+      - [Safety (property)](./Glossary.md##safety)
       - [Seal](./Glossary.md#seal)
       - [Secret](./Glossary.md#secret)
       - [Self Addressing Identifier](./Glossary.md#self-addressing-identifier)
       - [Self Certifying Identifier](./Glossary.md#self-certifying-identifier)
       - [Self Sovereign Identity](./Glossary.md#self-sovereign-identity)
-      - Signatures
-      - Source-of-truth
+      - [(Digital) Signatures](./Glossary.md#signatures)
+      - [Source-of-truth](./Glossary.md#source-of-truth)
       - [Spanning layer](./Glossary.md#spanning-layer)
-      - Total Ordering
+      - Total Ordering(./Glossary.md#
       - [Transaction Event Log](./Glossary.md#transaction-event-log)
       - [Transfer](./Glossary.md#transfer)
-      - Trust Domains
+      - Trust Domains(./Glossary.md#
       - [Trust-over-IP](./Glossary.md#trust-over-ip)
       - [Validator](./Glossary.md#validator)
       - [Verifiable Credential](./Glossary.md#verifiable-credential)
       - [Verifiable Data Structure](./Glossary.md#verifiable-data-structure)
       - [W3C DID](./Glossary.md#w3c-did)
       - [(Digital Identity) Wallet](./Glossary.md#-digital-identity--wallet)
-      - Web-of-trust
+      - Web-of-trust(./Glossary.md#)
       - [WebAssembly](./Glossary.md#webassembly)
       - [Witness](./Glossary.md#witness)
       - [Zero Trust](./Glossary.md#zero-trust)
