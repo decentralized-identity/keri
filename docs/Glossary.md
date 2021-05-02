@@ -25,18 +25,26 @@ TEL = [Transaction Event Log](#transaction-event-log)\
 _Ambient_ means all around, abundantly available. It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certifcate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
 
 #### Composable derivation codes on cryptographic material primitives 
-(new invention)\
-{TBW prio 1}
+KERI's design both requires - and benefits from - a universal compact encoding for all cryptographic material items with stable self-framing textual derivation codes.\ 
+(new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)\
+
 
 #### Composable text and binary representation streaming protocol 
-(new invention)\
-{TBW prio 1}
+This compact encoding scheme fully supports both textual and binary streaming applications of attached crypto material of all types. This approach includes composability in both the textual and binary streaming domains. The primitives may be the minimum possible but still composable size. Making composablity a guaranteed property allows future extensible support of new compositions of streaming formats based on pre-existing core primitives and compositions of core primitives. This enables optimized stream processing in both the binary and text domains. \
+(new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)\
 
 #### Duplicitous event log
 Or DEL. This is a record of _inconsistent_ event messages produced by a given controller or witness with respect to a given `KERL`. The duplicitous events are indexed to the corresponding event in a KERL. A duplicitous event is represented by a set of two or more provably mutually inconsistent event messages with respect to a KERL. Each `juror` keeps a duplicitous event log (DEL) for each controller and all designated witness with respect to a KERL. Any validator may confirm duplicity by examining a DEL.
 
-#### Generic classes self certifying identifiers 
-(new invention)\
+#### Generic classes self-certifying identifiers 
+
+The KERI design approach is to build composable primitives instead of custom functionality that is so typical of other DKMI approaches:
+- transferable identifiers
+- non-transferable identifiers
+- delegated identifiers
+Consequently when applied recursively, _delegation_ may be used to compose arbitrarily complex trees of hierarchical (delegative) key management event streams. This is a most powerful capability that may provide an essential building block for a generic universal decentralized key management infrastructure (DKMI) that is also compatible with the demands of generic event streaming applications.\
+(new invention) More in the [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
+
 {TBW prio 1}
 
 #### KERI Agreement Algorithm for Control Establishment
