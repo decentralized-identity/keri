@@ -85,6 +85,7 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Key Event Receipt Log](./Glossary.md#key-event-receipt-log)
       - [Key management](./Glossary.md#key-management)
       - [Key Rotation](./Glossary.md#key-rotation)
+      - [Key transparency](./Glossary.md##key-transparency)
       - Liveness
       - [Loci-of-control](./Glossary.md#loci-of-control)
       - [Namespace](./Glossary.md#namespace)

@@ -22,8 +22,8 @@ TEL = [Transaction Event Log](#transaction-event-log)\
 ### KERI specific definitions in alphabetic order:
 
 #### Ambient Verifiability 
-(new term to better describe end verifiable end state)\
-{TBW prio 1}
+It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certifcate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
+
 #### Composable derivation codes on cryptographic material primitives 
 (new invention)\
 {TBW prio 1}
@@ -323,6 +323,12 @@ More on [wikipedia](https://en.wikipedia.org/wiki/Key_management)
 #### Key rotation
 The mechanism to replace, change or refresh the authoritative controlling keys of an identifier. It prevents future key compromise.
 (_@henkvancann_)
+
+#### Key Transparency 
+Makes it possible for users to know about all the public keys that are in the user's account, preventing the server from adding public keys to a user's account without detection. Key Transparency does this by using piece of blockchain technology called a Merkle Tree.\
+More on [Stackexchange](https://security.stackexchange.com/questions/149125/how-does-key-transparency-work) how key transparency works.
+
+Key Transparency can be used as a _public key discovery service_ to authenticate users and provides a mechanism to keep the service accountable.
 
 #### Level of Assurance
 LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
