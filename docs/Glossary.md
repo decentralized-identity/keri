@@ -17,7 +17,7 @@ KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
 KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-docs)\
-TEL = [Transaction Event Log](#transaction-event-log)\
+TEL = [Transaction Event Log](#transaction-event-log)
 
 ### KERI specific definitions in alphabetic order:
 
@@ -26,12 +26,12 @@ _Ambient_ means all around, abundantly available. It is a new term to better des
 
 #### Composable derivation codes on cryptographic material primitives 
 KERI's design both requires - and benefits from - a universal compact encoding for all cryptographic material items with stable self-framing textual derivation codes.\ 
-(new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)\
+(new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)
 
 
 #### Composable text and binary representation streaming protocol 
 This compact encoding scheme fully supports both textual and binary streaming applications of attached crypto material of all types. This approach includes composability in both the textual and binary streaming domains. The primitives may be the minimum possible but still composable size. Making composablity a guaranteed property allows future extensible support of new compositions of streaming formats based on pre-existing core primitives and compositions of core primitives. This enables optimized stream processing in both the binary and text domains. \
-(new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)\
+(new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)
 
 #### Duplicitous event log
 Or DEL. This is a record of _inconsistent_ event messages produced by a given controller or witness with respect to a given `KERL`. The duplicitous events are indexed to the corresponding event in a KERL. A duplicitous event is represented by a set of two or more provably mutually inconsistent event messages with respect to a KERL. Each `juror` keeps a duplicitous event log (DEL) for each controller and all designated witness with respect to a KERL. Any validator may confirm duplicity by examining a DEL.
@@ -616,7 +616,7 @@ In our context it is software and sometimes hardware that serves as a key store 
 
 #### Web of trust
 In cryptography, a web of trust is a concept used in `PGP`, `GnuPG`, and other `OpenPGP`-compatible systems to establish the authenticity of the binding between a public key and its owner. Its decentralized trust model is an alternative to the centralized trust model of a public key infrastructure (`PKI`), which relies exclusively on a certificate authority (or a hierarchy of such). As with computer networks, there are many independent webs of trust, and any user (through their identity certificate) can be a part of, and a link between, multiple webs. The web of trust concept was first put forth by PGP creator Phil Zimmermann in 1992 in the manual for PGP.
-<img src="../images/web-of-trust.png" alt="Web of trust illustration" border="0" width="400">
+<img src="../images/web-of-trust.png" alt="Web of trust illustration" border="0" width="500">
 
 More on [Wikipedia](https://en.wikipedia.org/wiki/Web_of_trust)
 
