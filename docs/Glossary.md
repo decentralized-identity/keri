@@ -22,7 +22,7 @@ TEL = [Transaction Event Log](#transaction-event-log)\
 ### KERI specific definitions in alphabetic order:
 
 #### Ambient Verifiability 
-It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certifcate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
+_Ambient_ means all around, abundantly available. It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certifcate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
 
 #### Composable derivation codes on cryptographic material primitives 
 (new invention)\
