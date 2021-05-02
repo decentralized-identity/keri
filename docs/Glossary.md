@@ -9,6 +9,13 @@ SamMSmith
 # Definitions
 This Glossary makes the distinction between definitions well known in the Self Sovereign Identity space and those that are totally new and KERI specific.
 
+```
+KERI protocol solves one problem. **Secure Attribution**. 
+It by itself does not solve all the other layered on top problems that verifiable credential's need to be solved. 
+But one can't solve any of the verifiable credentials problems at least with any degree of security if one does not first solve the secure attribution problem. 
+Given one has solved secure attribution one can layer on other things like transaction event logs to solve other problems. 
+```
+
 ### KERI specific abbreviations
 In alphabetic order:\
 DEL = [Duplicitous Event Log](#duplicitous-event-log)\
@@ -104,6 +111,13 @@ The set of transactions that determine registry state form a log called a Transa
 Any validator may therefore cryptographically verify the authoritative state of the registry.
 <img src="../images/TEL-and-KEL.png" alt="TEL and KEL" border="0" width="600">
 
+```
+So KERI introduces for the first time many entirely new innovative concepts that are derived from many well known concepts. 
+Each new invention is by itself worthy of its own white paper.
+This results in new terminology. Some are entirely new words used in entirely new ways. Others are adaptations of existing
+terms but defined more precisiely for the KERI innovative use.
+```
+We move forward with **Not KERI specific Terminology**.
 
 ### Abbreviations
 In alphabetic order:\
