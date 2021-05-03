@@ -1,10 +1,6 @@
 # Q&A about KERI's Security model and Guarantees
 
-
-| --- |KERI logo| --- --- --- --- --- --- --- --- --- --- |
-| -------- | -------- | --------------------------------- |
-|     |![](../images/Keri_logo_color_on_white.png)|     |
-
+<img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="400">
 
 This document is part two of [Q-and-A](./Q-and-A.md). Both files shares a common [Glossary](./Glossary.md) that has:
 - an alphabethically ordered list of **abbreviations**
@@ -166,7 +162,7 @@ We've done our best to protect the privacy of the Github by investigating the im
 ## **Q: As an SSI expert I totally can get stuck in the semantics of KERI. How to overcome this?
 If we could sit down with every expert and walk through his concerns, it would change. Our biggest problem is that when we write technical stuff, we are writing for an _imagined technical audience_ that cares about the same things at the same technical level that we care about.
 
-In other words our default audience is ourselves (in the KERI team). It reminds us what we thought at the time of writing.
+In other words our default audience is ourselves (in the KERI team). It reminds us what we thought at the time of writing.\
 Even if we are writing for a known audience, we can't adapt in real time, because its not interactive so we usually only get it half right, just half convincing, which is as good as nothing in internet security.
 
 But when we **talk to people one-on-one** we can _adapt_ what we say to match their level of understanding and what they care about. _In real time_. We can go as deep as needed but no deeper or a broad as needed but no broader. 
@@ -197,10 +193,10 @@ DLT based systems may provide more or less secure solutions but not portable one
 The KERI solution requires highly nuanced understanding of the underlying properties of distributed security systems. \
 Which means broad and deep understanding of distributed systems, distributed consensus algorithms, cryptographic systems and distributed key management systems.\
 
-KERI creator Sam Smith: "Six years ago when I started in the identity space I already had 20+ years in the first two, a couple of years in the second two and then have spend much of the last six years deepening my understanding in the last two and innovating across all four. I can't begin to replicate that experience/knowledge base in a few thousand pages much less a few hundred pages of writing.
+KERI creator Sam Smith: "Six years ago when I started in the identity space I already had 20+ years in the first two, a couple of years in the second two and then have spend much of the last six years deepening my understanding in the last two and innovating across all four. I can't begin to replicate that experience/knowledge base in a few thousand pages much less a few hundred pages of writing."
 
 ## **Q; Where does KERI's creator come from?
-Sam Smith spent years doing sponsored research in a multi-disciplinary field where every meeting he went to was filled with PhDs from big name universities. But because I represented a small name university, in order to compete I had to study both more widely and more deeply than my competition. This penchant for deep diving every time I encounter something new has served me well throughout my career but for the fact that I often use multi-disciplinary terminology too freely to be easily understood." 
+Sam Smith spent years doing sponsored research in a multi-disciplinary field where every meeting he went to was filled with PhDs from big name universities. But because I represented a small name university, in order to compete I had to study both more widely and more deeply than my competition. This penchant for deep diving every time I encounter something new has served me well throughout my career but for the fact that I often use multi-disciplinary terminology too freely to be easily understood."\
 Sometimes Smith moves forward too enthusiastically, creating a trail of new questions.
 
 Smith: "My shortest explanations of KERI happen when I talk to those with both broad and deep experience/knowledge. And my longest happen when I talk to those with either deep but narrow or broad but shallow experience/knowledge."
