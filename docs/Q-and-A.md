@@ -337,6 +337,17 @@ You use the KERI Duplicity detection to determine the authoritive key is used at
 Since March 2021 KERI is a seperate DIF working group and it would possible to create a dedicated project within the working group to research smart contracting with KERI.
 _(@henkvancann)_
 
+## *Q How does KERI relate to the decentralized identity field?
+The concepts in KERI come from many different fields. KERI creator Sam Smith: "The problem KERI faces is that the decentralized identity community is unusually insular and narrow compared to most of the fields I am used to working in. Decentralized Identity experts focus very much on their field, which makes communications about out-of-the-box concepts hard. There also is very little standardization of terminology. 
+
+Which I find odd when people complain about KERI's use of terminology. Just ask anyone to define "identity".
+
+This is exacerbated by the recent addition of many who come from the blockchain space who have either a very shallow or narrow understanding of distributed consensus algorithms in spite of spending all their time developing for that space. 
+Its clear that many if not most have never bothered to read an introductory textbook on the subject and couldn't define `liveness` or `safety` or `total ordering` accurately.
+
+So KERI has an audience that acts as if they understand distributed consensus but have at best a less than rigorous understanding and at worst a largely erroneous understanding.
+"
+
 # Q&A section Why the internet is broken
 
 ## *Q: Why would the internet be broken?

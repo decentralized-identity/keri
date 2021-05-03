@@ -175,6 +175,36 @@ But when we **talk to people one-on-one** we can _adapt_ what we say to match th
 KERI is confusing because it is new and can' be assumed. Whole books exists and hundreds of papers on "eventual consistency" algorithms (which CouchDB uses) but they are just assumed away. Because KERI is new, I can't just assume it away. **But KERI is not magic or scary or anywhere as near as difficult as BFT** 
 BA which is assumed away or PoW which is also assumed away. Conversely, most people make assumptions about the security guarantees of DLT that are false. There are many papers on all the known active compromises to Bitcoin that happen on a regular basis yet they assume that they can't happen.
 
+## **Q: Why would KERI's creator be fit to fulfil the KERI claims?
+Much of Sam Smith's career he has been spend working in a multidisciplinary field that used to be called Computational Intelligence (because A.I. was a hype term) which included as sub fields, Intelligent Control Systems, Automated Reasoning Systems, and Distributed Cooperative Control Systems, to name a few.\
+All of which used some form of machine learning as a subset. Smith then branched out into IoT distributed systems that employed machine learning for self-healing routing algorithms and simultaneously spent many years working on open standard communications protocols including designing and developing two new protocols largely on my own. One was a highly scalable performant end-to-end secure internet protocol called RAET (Circa 2014). This gives him a uniquely well suited experience base to solve the problem that KERI solves.
+
+## **Q: Why are KERI security claims struggling to get appreciation?
+KERI solves a really really hard problem that many of the experts in the Decentralized Identity field do not have the background to easily understand. They are going to have to invest some effort to either acquire that background or be patient enough to walk through lengthy tutorials.
+There is no short cut. 
+KERI creator Sam Smith: "There were a dozen people at IIW April 2021 that sat through three hours of the KERI security sessions where I patiently walked through it. But we only covered half a dozen of the meta security issues and could easily spend another three hours covering
+several more and many more covering the micro security issues. But most will never take that much time."
+
+Lots of experts in the Decentralized Identity field have extremely deep understanding of legacy IT tech but have a very shallow understanding of crypto, real key management, and distributed consensus. So they are not yet equipped well enough to design decentralized identity systems,
+despite their 30+ years of working in the identity space. The future of distributed security is based on something called `zero trust computing` and many of these same experts in the Decentralized Identity field have a best a passing familiarity with what zero trust means.
+
+## **Q: Why would the world be a better place with KERI than without?
+We know of no general solution to the portable secure attribution problem before KERI. The DNS/CA system is a general solution to the attribution problem but its not portable and its not secure. (it was meant to be secure but failed, it was never meant to be portable)
+DLT based systems may provide more or less secure solutions but not portable ones. The combination of portability and security is really really hard. 
+
+## **Q; What does it take to get it, even for experts?
+The KERI solution requires highly nuanced understanding of the underlying properties of distributed security systems. \
+Which means broad and deep understanding of distributed systems, distributed consensus algorithms, cryptographic systems and distributed key management systems.\
+
+KERI creator Sam Smith: "Six years ago when I started in the identity space I already had 20+ years in the first two, a couple of years in the second two and then have spend much of the last six years deepening my understanding in the last two and innovating across all four. I can't begin to replicate that experience/knowledge base in a few thousand pages much less a few hundred pages of writing.
+
+## **Q; Where does KERI's creator come from?
+Sam Smith spent years doing sponsored research in a multi-disciplinary field where every meeting he went to was filled with PhDs from big name universities. But because I represented a small name university, in order to compete I had to study both more widely and more deeply than my competition. This penchant for deep diving every time I encounter something new has served me well throughout my career but for the fact that I often use multi-disciplinary terminology too freely to be easily understood." 
+Sometimes Smith moves forward too enthusiastically, creating a trail of new questions.
+
+Smith: "My shortest explanations of KERI happen when I talk to those with both broad and deep experience/knowledge. And my longest happen when I talk to those with either deep but narrow or broad but shallow experience/knowledge."
+
+
 # Q&A section KERI operational security
 
 ## *Q: What is the main component of KERI's security?
