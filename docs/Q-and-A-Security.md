@@ -2,7 +2,7 @@
 
 <img src="../images/Keri_logo_color_on_white.png" alt="KERI logo" border="0" width="400">
 
-This document is part two of [Q-and-A](./Q-and-A.md). Both files shares a common [Glossary](./Glossary.md) that has:
+This document is part two of [Q-and-A](./Q-and-A.md). Both files shares a common [Glossary](./Glossary.md), KERI specific and more generic decentralized Identity ones, that has:
 - an alphabethically ordered list of **abbreviations**
 - an alphabethically ordered list of **definitions**
 

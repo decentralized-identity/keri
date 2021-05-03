@@ -29,10 +29,10 @@ TEL = [Transaction Event Log](#transaction-event-log)
 ### KERI specific definitions in alphabetic order:
 
 #### Ambient Verifiability 
-_Ambient_ means all around, abundantly available. It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certifcate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
+_Ambient_ means all around, abundantly available. It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certificate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
 
 #### Composable derivation codes on cryptographic material primitives 
-KERI's design both requires - and benefits from - a universal compact encoding for all cryptographic material items with stable self-framing textual derivation codes.\ 
+KERI's design both requires - and benefits from - a universal compact encoding for all cryptographic material items with stable self-framing textual derivation codes.\
 (new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)
 
 
@@ -193,7 +193,8 @@ There's nobody that can intervene with the establishment of the authenticity of 
 #### Binding
 In short, the technique of connecting two data elements together. In the context of KERI it is the association of data or an identifier with another identifier or a subject (a person, organization or machine), thereby lifting the privacy of the subject through that connection, i.e. binding.
 
-#### Byzantine Agreement (non `PoW`)
+#### Byzantine Agreement
+_(non `PoW`)_
 Byzantine Agreement is Byzantine fault tolerance of distributed computing systems that enable them to come to consensus despite arbitrary behavior from a fraction of the nodes in the network. `BA` consensus makes no assumptions about the behavior of nodes in the system. Practical Byzantine Fault Tolerance (pBFT) is the prototypical model for `Byzantine agreement`, and it can reach consensus fast and efficiently while concurrently decoupling consensus from resources (i.e., financial stake in `PoS` or electricity in `PoW`).\
 [More](https://blockonomi.com/stellar-consensus-protocol/)
 
@@ -223,7 +224,7 @@ How groups of entitities come to decisions. In general to learn about consensus 
 
 A fundamental problem in distributed computing and multi-agent systems is to achieve overall system reliability in the presence of a number of faulty processes. This often requires coordinating processes to reach consensus, or agree on some data value that is needed during computation.
 
-More on [wikipedia](https://en.wikipedia.org/wiki/Consensus_(computer_science)) or in this [2018 report](https://cryptoresearch.report/crypto-research/consensus-mechanisms/) from cryptocurrency field.
+More on [wikipedia](https://en.wikipedia.org/wiki/Consensus_(computer_science)) or in this [2018 report](https://cryptoresearch.report/crypto-research/consensus-mechanisms/) from the cryptocurrency field.
 
 #### Content-addressable hash
 Content addressing is a way to find data in a network using its content rather than its location. The way we do is by taking the content of the content and hashing it. Try uploading an image to IPFS and get the hash using the below button. In the IPFS ecosystem, this hash is called Content Identifier, or CID.
@@ -262,6 +263,7 @@ Cryptography libraries deal with cryptography algorithms and have API function c
 - Implementations of block ciphers
 - Hardware-assisted support
 - Code size and code to comment ratio
+Composable derivation codes o
 See a [comparison here](https://en.wikipedia.org/wiki/Comparison_of_cryptography_libraries) at Wikipedia.
 
 #### Cryptocurrency
@@ -396,15 +398,15 @@ More on [Stackexchange](https://security.stackexchange.com/questions/149125/how-
 
 Key Transparency can be used as a _public key discovery service_ to authenticate users and provides a mechanism to keep the service accountable.
 
-#### Level of Assurance
-LOA; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
+#### Levels of Assurance
+Also `LOA`; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
 KERI has the same LOAs for entropy and trust in human behaviour preservering the security of keypairs and preservering their own privacy. It has high LOAs for the cryptographical bindings of controllers and identifiers. Also the validation of witnesses and watchtowers has high a LOA.
 
 #### Liveness
 A liveness property in concurrent systems states that "something good will eventually occur".\
 Liveness refers to a set of properties of concurrent systems, that require a system to make progress despite the fact that its concurrently executing components ("processes") may have to "take turns" in critical sections, parts of the program that cannot be simultaneously run by multiple processes.\
 Liveness guarantees are important properties in operating systems and distributed systems.\
-Unlike liveness properties, [safety properties](#safety) can be violated by a finite execution of a distributed system. All properties can be expressed as the intersection of safety and liveness properties.\
+Unlike liveness properties, [safety properties](#safety-properties) can be violated by a finite execution of a distributed system. All properties can be expressed as the intersection of safety and liveness properties.\
 {TBW prio 2 how is liveness important in distributed systems? how does KERI guarantee liveness}\
 More on [wikipedia](https://en.wikipedia.org/wiki/Liveness)
 
@@ -472,7 +474,7 @@ Note that the KERI never puts raw data or privacy sensitive data in a `KEL` or `
 #### PGP and GPG
 Pretty Good Privacy (PGP) is an encryption program that provides cryptographic privacy and authentication for data communication. PGP is used for signing, encrypting, and decrypting texts, e-mails, files, directories, and whole disk partitions and to increase the security of e-mail communications. Phil Zimmermann developed PGP in 1991.\
 More on [wikipedia](https://en.wikipedia.org/wiki/Pretty_Good_Privacy)\
-GNU Privacy Guard (GnuPG or GPG) is a free-software replacement for Symantec's PGP cryptographic software suite. It is compliant with RFC 4880, the IETF standards-track specification of OpenPGP. Modern versions of PGP are interoperable with GnuPG and other OpenPGP-compliant systems.\ 
+GNU Privacy Guard (GnuPG or GPG) is a free-software replacement for Symantec's PGP cryptographic software suite. It is compliant with RFC 4880, the IETF standards-track specification of OpenPGP. Modern versions of PGP are interoperable with GnuPG and other OpenPGP-compliant systems.\
 More on [wikipedia](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
 
 #### Prefix
@@ -487,9 +489,9 @@ Including the derivation code in the prefix binds the derivation process along w
 #### Public Key Infrastructure
 A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption.
 
-<img src="../images/pubprivkey-caveat.png" alt="Public Private Key caveat to KERI" border="0" width="400"> \
+<img src="../images/pubprivkey-caveat.png" alt="Public Private Key caveat to KERI" border="0" width="400">
 
-[Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
+More on [Wikipedia](https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
 #### Race condition
 A race condition or race hazard is the condition of an electronics, software, or other system where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. It becomes a bug when one or more of the possible behaviors is undesirable. [Source](https://en.wikipedia.org/wiki/Race_condition).
@@ -566,7 +568,7 @@ _Electronic_ signatures are a legal concept _distinct_ from **digital signatures
 
 An electronic signature, or e-signature, refers to data in electronic form, which is logically associated with other data in electronic form and which is used by the signatory to sign. This type of signature has the same legal standing as a handwritten signature as long as it adheres to the requirements of the specific regulation under which it was created (e.g., eIDAS in the European Union, NIST-DSS in the USA or ZertES in Switzerland).
 
-Some more on _Wikipedia_ about [digital signatures](https://en.wikipedia.org/wiki/Digital_signature) and [electronic signatures](https://en.wikipedia.org/wiki/Digital_signature) and the distinction between the two.
+Some more on _Wikipedia_ about [digital signatures](https://en.wikipedia.org/wiki/Digital_signature) and [electronic signatures](https://en.wikipedia.org/wiki/Electronic_signature) and the distinction between the two.
 
 #### Spanning layer
 An all encompassing layer horizontal layer in a software architecture. Each trust layer only spans platform specific applications. It bifurcates the internet trust map. There is no spanning trust layer.
