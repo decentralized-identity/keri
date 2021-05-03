@@ -193,14 +193,18 @@ DLT based systems may provide more or less secure solutions but not portable one
 The KERI solution requires highly nuanced understanding of the underlying properties of distributed security systems. \
 Which means broad and deep understanding of distributed systems, distributed consensus algorithms, cryptographic systems and distributed key management systems.\
 
-KERI creator Sam Smith: "Six years ago when I started in the identity space I already had 20+ years in the first two, a couple of years in the second two and then have spend much of the last six years deepening my understanding in the last two and innovating across all four. I can't begin to replicate that experience/knowledge base in a few thousand pages much less a few hundred pages of writing."
-
-## **Q; Where does KERI's creator come from?
-Sam Smith spent years doing sponsored research in a multi-disciplinary field where every meeting he went to was filled with PhDs from big name universities. But because I represented a small name university, in order to compete I had to study both more widely and more deeply than my competition. This penchant for deep diving every time I encounter something new has served me well throughout my career but for the fact that I often use multi-disciplinary terminology too freely to be easily understood."\
-Sometimes Smith moves forward too enthusiastically, creating a trail of new questions.
-
-Smith: "My shortest explanations of KERI happen when I talk to those with both broad and deep experience/knowledge. And my longest happen when I talk to those with either deep but narrow or broad but shallow experience/knowledge."
-
+## **Q; What's that background of KERI's creator Samuel Smith?
+ Sam spent years doing sponsored research in a multi-disciplinary field where every meeting he went to was filled with PhDs from big name universities.
+ He represented a small name university, in order to compete he had to study both more widely and more deeply than his competition. 
+ This penchant for deep diving every time he encounter something new has served him well throughout his career.\
+ Smith has built up thorough understanding of 
+ 1. distributed systems, 
+ 2. distributed consensus algorithms, 
+ 3. cryptographic systems and 
+ 4. distributed key management systems.
+ Six years ago when he started in the identity space, he already had 20+ years in the first two, a couple of years in the second two and then have spent much of the last six years deepening my understanding in the last two and innovating across all four.\
+ It is comprehensible that Sam can't begin to replicate that experience/knowledge base in a few thousand pages, much less a few hundred pages of writing.\
+More on Sam Smith's career on [LinkedIN](https://www.linkedin.com/in/samuel-m-smith/)
 
 # Q&A section KERI operational security
 
