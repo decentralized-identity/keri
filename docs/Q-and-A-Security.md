@@ -176,7 +176,8 @@ KERI is confusing because it is new and can' be assumed. Whole books exists and 
 BA which is assumed away or PoW which is also assumed away. Conversely, most people make assumptions about the security guarantees of DLT that are false. There are many papers on all the known active compromises to Bitcoin that happen on a regular basis yet they assume that they can't happen.
 
 ## **Q: Why would KERI's creator be fit to fulfil the KERI claims?
-Much of Sam Smith's career he has been spend working in a multidisciplinary field that used to be called Computational Intelligence (because A.I. was a hype term) which included as sub fields, Intelligent Control Systems, Automated Reasoning Systems, and Distributed Cooperative Control Systems, to name a few.\
+Much of Sam Smith's career he has spent working in a multidisciplinary field that used to be called Computational Intelligence (because A.I. was a hype term) which included as sub fields, Intelligent Control Systems, Automated Reasoning Systems, and Distributed Cooperative Control Systems, to name a few.
+
 All of which used some form of machine learning as a subset. Smith then branched out into IoT distributed systems that employed machine learning for self-healing routing algorithms and simultaneously spent many years working on open standard communications protocols including designing and developing two new protocols largely on my own. One was a highly scalable performant end-to-end secure internet protocol called RAET (Circa 2014). This gives him a uniquely well suited experience base to solve the problem that KERI solves.
 
 ## **Q: Why are KERI security claims struggling to get appreciation?
