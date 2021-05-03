@@ -224,9 +224,10 @@ KERI uses plain old digital signatures from `PKI`, intentionally, so that it may
 `KERI` does one thing, it establishes control authority using verifiable portable proofs that are `KEL`s.\
 
 #### Liveliness
-If you need liveliness of fungible trust, like cryptocurrencies, you can't use KERI for this.\ 
-In KERI we have compact security for the sake of liveliness, whick means there is no public ledger with total ordering of state. In KERI after duplicity is detected, you don't trust that identifier anymore. That means in KERI you don't have fungible trust. And that is a good thing for trust.
-(_SamMSmith_)
+We want fungible trust, that is what KERI provides:_ fungible trust on key management or key state_. It does not provide trust for double spend proofing.\
+If you need liveliness of fungible value, like cryptocurrencies, you can't use KERI for this.\ 
+In KERI we have compact security for the sake of liveliness, which means there is no public ledger with total ordering of state. In KERI after duplicity is detected, you don't trust that identifier anymore.
+(_@henkvancann_)
 
 #### *Q: Does KERI protect a controller against stupid mistakes?
 If a controller of a public identifier has a KEL published and with the same authorotative keypair produces another KEL and does not check it's inconstent with the first one? No, KERI does not protect against that level of stupidity.
@@ -251,9 +252,12 @@ Have a look at the [Kid0001Comment](https://github.com/henkvancann/keri/blob/mas
 
 `Multicodec` is a draft standard, a rather chaotic mix of binary and text-based entries in a crowd-sourced registry/table. Most implementers are doing a subset of the Multicodec chart anyways, making it even more unstable for interoperability purposes.
 
-To go in further detail why multicodec can't do for KERI: the length of item not included in encoding table - incompatible structure (Multicodec assumes enveloped data structure) Moreover we need KERI's composability (via concatenation) for framing events.
+To go in further detail why multicodec can't do for KERI: the length of item not included in encoding table - incompatible structure (Multicodec assumes enveloped data structure). Moreover we need KERI's composability (via concatenation) for framing events.
+[KID0001comment](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md) explains in detail why _composability_ is so important and why Multi-codec is therefore not usable. 
+
 #### DID and VC layers are the appopriate layers for interoperability
 - streaming support > interop at signature layer?
+
 #### The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling
 KERI can't use enveloped data formats:
  - enveloped data format -> signatures have to put on/outside the payload
@@ -281,11 +285,10 @@ The upside is that KERI could be much better than things built on JOSE. The down
 ...
 
 I predict a few years from now we will have:
-
-A. JOSE / JWS / JWK / jose based DIDs\
-B. `Multicodec` / IPFS / IPLD / DAG_CBOR / JWS / JWK / ipld based DIDs\
-C. Linked Data / JSON-LD / CBOR-LD / linked data based DIDs\
-D. KERI / KERI keys / KERI signatures / keri event log based DIDs
+1. JOSE / JWS / JWK / jose based DIDs\
+2. `Multicodec` / IPFS / IPLD / DAG_CBOR / JWS / JWK / ipld based DIDs\
+3. Linked Data / JSON-LD / CBOR-LD / linked data based DIDs\
+4. KERI / KERI keys / KERI signatures / keri event log based DIDs
 
 There will be some overlap, for example KERI based DID Documents will likely support JWKs if they want to be useful with any legacy system, but internally KERI will use a different key representation. Similarly sidetree based dids will likely support linked data proofs but will only rely on JWS / JWK for internal operations.
 
@@ -298,7 +301,13 @@ From an engineering management and interopability perspective, I would have deci
 ...  We should target interop between KERI and Sidetree at the DID Core and VC Data Model layer.\
 **End of (@OR13)'s plea.**
 
-The DID and VC layers are the appopriate layers for interopability. The performance/security goals of KERI drive its design which makes incompatible with Linked Data tooling.\
+#### The answer to why KERI is incompatible with Linked-Data tooling
+Linked-data is an _adoption dead end_. KERI believes that immutable JSON Schema are a better solution than mutable `schema.org` schema. And that when and if backend semantic inference is useful that Labeled Property Graphs (LPG) are a more powerful, easier to use, and more adoptable (already more adopted) alternative to RDF graphs.
+
+Linked data is a euphemism for the semantic web, which, considering how much effort went into it early on, has proven to be a failure. Encumbering VCs with linked data is a failure waiting to happen (for both technical and adoption reasons) especially when there are much better alternatives.
+
+For more detail, read the [VC Spec Enhancement Proposal](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/VC_Enhancement_Strategy.md)
+
 (_SamMSmith_)
 
 ## **Q: How does KERI keep identifiers secure?
