@@ -339,9 +339,7 @@ It's not tracking balance, it's tracking key state.
 (_SamMSmith_)
 
 ## **Q: According to the SSI Book KERI will never be able to substitute the internet conventional PKI infra. Right?
-[SSI Book](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/144): "As powerful as this (read KERI-like) solution appears, completely self-certifying identifiers have _one major Achilles heel_: the controller’s identifier needs to change every time the public key is rotated. As we will explain further in _Chapter 10_ on decentralized key management, key rotation—switching from one public/private key pair to a different one—is a fundamental security best practice in all types of PKI. Thus the inability for self-certifying identifiers alone to support key rotation has effectively prevented their adoption as an alternative to conventional PKI.\
-
-
+[SSI Book](https://livebook.manning.com/book/self-sovereign-identity/chapter-8/v-9/144): "As powerful as this (read KERI-like) solution appears, completely self-certifying identifiers have _one major Achilles heel_: the controller’s identifier needs to change every time the public key is rotated. As we will explain further in [chapter 10](#https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/10-ssi-key-management.pdf) on decentralized key management, key rotation—switching from one public/private key pair to a different one—is a fundamental security best practice in all types of PKI. Thus the inability for self-certifying identifiers alone to support key rotation has effectively prevented their adoption as an alternative to conventional PKI.\
 {TBW prio 1}
 
 ## **Q: How are KERI witnesses and watchers incentivized to spread KELs and KERLs and make them available?
