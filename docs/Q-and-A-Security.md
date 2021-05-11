@@ -395,6 +395,12 @@ In many system unilateral delegation is a single point of failure. if a delegate
 Keys are in different infrastructures in KERI. Both the delegator and the delegatee have keys they manage. If one of them get compromised or lost, we still can recover. Each level of delegation allows delegation of the level above.
 _(@henkvancann)_
 
+## **Q: Did the simplification of _Delegated Events using Hetero Attachments_ come at any cost? 
+
+[The Issue](https://github.com/decentralized-identity/keri/issues/146) around simplification of Delegated Events using Hetero Attachments has been created in May 2021. Since delegated KELs were cross anchored, we loosened that to the same way non-delegated events do it: {revisited the recording}  Delegated events have to go down this path too, whether they're cross anchored or not. And the cross anchoring has a dead-lock risk, so we wanted to get rid of that. The only thing I was worried about is whether key rotation kept working the same way as before the simplification. And after my round of testing it did. So the simplification does not come at a cost, it's an outrght improvement because we got rid of the cross anchoring.\
+(_SamMSmith_)
+
+
 # Q&A section Identifiers
 
 ## **Q: How is a KERI identifier different than a regular identifier in DID methods?
