@@ -395,11 +395,13 @@ In many system unilateral delegation is a single point of failure. if a delegate
 Keys are in different infrastructures in KERI. Both the delegator and the delegatee have keys they manage. If one of them get compromised or lost, we still can recover. Each level of delegation allows delegation of the level above.
 _(@henkvancann)_
 
-## **Q: Did the simplification of _Delegated Events using Hetero Attachments_ come at any cost? 
+## **Q: Did the simplification of _Delegated Events using Hetero Attachments_ come at any cost?
+In short, no.
 
-[The Issue](https://github.com/decentralized-identity/keri/issues/146) around simplification of Delegated Events using Hetero Attachments has been created in May 2021. Since delegated KELs were cross anchored, we loosened that to the same way non-delegated events do it: {revisited the recording}  Delegated events have to go down this path too, whether they're cross anchored or not. And the cross anchoring has a dead-lock risk, so we wanted to get rid of that. The only thing I was worried about is whether key rotation kept working the same way as before the simplification. And after my round of testing it did. So the simplification does not come at a cost, it's an outrght improvement because we got rid of the cross anchoring.\
+[The Issue](https://github.com/decentralized-identity/keri/issues/146) around _simplification of Delegated Events using Hetero Attachments_ has been created in May 2021. Since delegated KELs were cross anchored, we loosened that to the same way non-delegated events do it: an idempotent authorisation from one event log to the other. Delegated events have to go down this path too, whether they're cross anchored or not. And the cross anchoring has a dead-lock risk, so we wanted to get rid of that. The advantage of not having performance risk on blocked processes on both event logs is huge. All the attacks that we (in a validator role, ed.) could think of, were still protected by duplicity detection. So using the same duplicity detection mechanism they use for non-delegated events, they're still protected for delegated events when they're trying to validate them (the latter, ed.). Since they have to do it for non-delegated events, the additional security of a cross anchor doesn't change their code. The validators still have to going to do it the hard way for non-delegated events, so removing the extra security for a delegated event, didn't do anything. Relaxing the original cross anchoring, doesn't hurt us in any way.\
+The only thing I was worried about is whether we were still able to recover pre-rotated keys in a `delegate`, that that kept working the same way as before the simplification. And after my round of testing, it did. 
+So the simplification does not come at a cost, it's an outrght improvement because we got rid of the cross anchoring.\
 (_SamMSmith_)
-
 
 # Q&A section Identifiers
 
