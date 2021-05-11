@@ -1,4 +1,4 @@
-# KERI Project Agenda
+- [ ] # KERI Project Agenda
 
 [![hackmd-github-sync-badge](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ/badge)](https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ)
 
@@ -30,14 +30,54 @@ Publicity [website](https://keri.one/)
 - [delegator/delegate coordination for delegated events](https://github.com/decentralized-identity/keri/issues/82)
 - [use cases document](https://github.com/decentralized-identity/keri/issues/53)
 
+## Agenda May 11
+
+keri-dht-py checkin  https://github.com/decentralized-identity/keri-dht-py
+
+[TEL design comparison](https://github.com/decentralized-identity/keripy/issues/133) \
+As a follow up from the TEL discussions [Simplify Delegated Events using Hetero Attachments](https://github.com/decentralized-identity/keri/issues/146) was created.
+
+Issues: 
+Omnibus changes to KERI events: 
+- anchor field in inceptions icp and dip
+- change w wt wa wr to b bt ba br in in inception and rotation events
+- simplified delegation  also simplifies delegation exchange
+- remove VRC event type
+- Query Messages
+    - FN
+    - KRAM
+
+- Key State Message
+
+## Agenda May 4 
+
+Updates on TrustFrame?
+Witness code status
+Roadmap for changing events (add a to icp change w# to b#)
+Misconceptions? and answers to them by/for Joe Andrieu
+LPG vs RDF
+https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/VC_Enhancement_Strategy.md
+
+
 ## Agenda April 27
+
+and minutes of the meeting interwoven.
 
 - IIW Restrospective
     - Feedback impressions takeaways?
+        - Surprised do you understand KERI? Misconceptions about KERI
+        - KERI has nothing to with credentials, not!
+        - Henk is reworking sessions "Security Considerations #1,#2,#3" into this [pull request](https://github.com/decentralized-identity/keri/pull/141)
+        - Surprised about sessions with ADPL similar (BARE encoding)
+        - Jello Sessions (3) 
+        - How to reduce size of VCs to make them QR code Data matrix small enough
+        - Still thinking about VC not data flows
     -  Sessions Held:
-        -  KERI Q&A
+        -  KERI Q&A for noobs
         -  KERI TEL
-        -  
+        -  GLEIF #1 and #2
+        -  Supply chains
+        -  DIDCOMM and KERI
         -  Security Considerations #1,#2,#3
         -  CESR Composable Event Streaming Representation
         -  ADPL and KEL interop
@@ -47,9 +87,13 @@ Publicity [website](https://keri.one/)
 - [Restore External Content Anchoring to Inception Event #140](https://github.com/decentralized-identity/keri/issues/140)
 - [Revised KSN key state notification message #130](https://github.com/decentralized-identity/keri/issues/130)
 
+Backer - B ? Endorser is the way to explain Backer - instead of W refering to Witness -> Decision made to change to Endorser 'B' ! Nobody strongly objected.
+
 Roadmap:
-   Witness support code in KERIpy. ready to test build demo.
-   Added repo for keri-dht-py Conrad Rosenbrock contributor.
+   Witness support code in KERIpy. ready to test build demo. Next week or two.
+   Added repo for keri-dht-py Conrad Rosenbrock (a former colleague of Sam) contributor.
+   
+
 
 ## Agenda April 20
 
