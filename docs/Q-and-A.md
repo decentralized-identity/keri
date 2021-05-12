@@ -347,12 +347,6 @@ Its clear that many if not most have never bothered to read an introductory text
 So KERI has an audience that acts as if they understand distributed consensus but have at best a less than rigorous understanding and at worst a largely erroneous understanding.
 "
 
-## *Q: Wouldn’t we still need public blockchains to hash proof?
-_At least at certain intervals to ensure my data is not erased by the central registry..._
-
-The registry is logically centralized (in that there is a consensus between participants) but there is no central registry (needed, ed.), which gatekeeps access to the data.\
-(_@Chunningham_)
-
 # Q&A section Why the internet is broken
 
 ## *Q: Why would the internet be broken?
@@ -589,6 +583,17 @@ _that you send to witnesses, who observe them and attest to the particular line 
 Because total linear ordering is not needed for a given identifier's event sequencing. Only linear order of that identifier's history. The history's from other events do not have to be ordered with respect to each other. So the secure ordering of a given identifier's history is a completely different class of problem than the secure total ordering of comingled history from multiple identifiers. The security demands are less for the former case. So the equivalent security may be obtained in other ways. While the latter as a side effect of total ordering gives local ordering (per identifier) for free. But securing total ordering may be much harder to do. So one has to be careful, because it's no longer an apples to apples comparison. 
 (_SamMSmith_)
 
+## *Q: Wouldn’t we still need public blockchains to hash proof?
+_At least at certain intervals to ensure my data is not erased by the central registry..._
+
+The registry is logically centralized (in that there is a consensus between participants) but there is no central registry (needed, ed.), which gatekeeps access to the data.\
+(_@Chunningham_)
+
+## *Q: How do I explain the significance of KERI to someone? 
+_Could I say that the Transactions Per Second of a KERI-based system will always beat the TPS of a blockchain-based system.\
+Is that a fair statement? Is there some "order of magnitude" characterization of that inherent advantage?_
+
+
 # Q&A section Root of trust
 
 ## **Q: What do I need to trust in KERI?
@@ -642,7 +647,6 @@ Post-quantum cryptography deals with techniques that maintain their cryptographi
 Strong one-way hash functions, such as 256 bit (32 byte) Blake2, Blake3 and SHA3, with 128 bits of pre-quantum strength maintain that strength post-quantum.\
 [Source: whitepaper page 65](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
 
-
 ## *Q: What happens if I or other people are offline?
 Any controller can install a Service/Agent Log, controlled by them.
 
@@ -653,16 +657,45 @@ Any subject / controller can start creating KERI events in a KERI event log. Dep
 The more entities are getting used to play the different KERI specific roles the more rapid and easy will the bootstrapping / flooding of KERI on the internet evolve.
 {TBW prio 1}
 
-
 ## *Q: Is there a KERI course or webinar available?
 The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-KERI-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.\
 There is lots of course material available on [prosapien.com](https://www.prosapien.com).\
 _(@henkvancann)_
 
+## *Q: Is KERI fast enough? How does its speed relate to blockchains like Bitcoin and Indy and payment processors like VISA?
+In short, KERI is three to four orders of magnitude faster than its functional equivalents.
+
+An important note is KERI is not a crypto-currency. It's a Key Event Receipt Infrastructure that operates at a lower level than most crypto currencies and Decentralized Identity systems, hence you can rebuild those systems with KERI.\
+A second note is that speed and scalabilty is often a trade-off with several other parameters like security, decentralization, useability. Nevertheless we'll try to answer the question in general terms and correct in orders of magnitude.
+
+A public blockchain like Bitcoin or Ethereum has a transaction speed in the single digits up to the hunderds transactions per second (TPS). Permissioned blockchains can deliver transaction speed in one to two orders of magnitudes higher.
+
+KERI is permission-less, scalable, secure and has transactions of events in order of magnitude four times higher than public blockchains (10.000 times more) and in the range of VISA credit card transactions. KERIs speed is mainly dependent of the number of controllers that have to mutually verify their KELs.
+
+The problem with blockchain based solution like Indy is that they do not offer concurrent processing in their code. They will hit a performance and scalability cieling within the range of the thousands of (event-) transactions.
+
+Based on [IIW32 recordings](https://eu01web.zoom.us/rec/play/ymi1tW8_oy1ejYDnhtP6lw9DFSqmwWW32Vs-Savd_s-5dWuIOPOY9zZlhkoyDUQjqBA5eR12TK_8eX2m.5e_aDMp-J1c_t551?continueMode=true) of session 
+_KERI: Centralized Registry with Decentralized Control (KEL & TEL ) + DEMO_\
+_(@henkvancann)_ 
+
 ## *Q: Could KERI work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
 Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/KERI/issues/54) key and identifier management with `KERI` that answers this question profoundly.\
 (_SamMSmith_)
 
+## *Q: Can a holder revoke a virtual credential (VC) instead of the issuer/controller?
+
+There a two sorts of issuances of credentials. 
+- **A public statement** (e.g. provenance of data) or 
+- **the presentation of an authorisation**
+The former doesn't have a holder. So we focus on the main use of `VC`s: the latter: the presentation of an authorisation.
+
+Usually holders don't revoke a credential, they just decide to not use them anymore.
+You could install a Policy and a set of Rules to give holders to exercise power to some extent over the revocation:
+1. _Policy_: a holder can ask the entity that has authoritative control over the `VC`s to revoke it.
+2. _Rules_: for a TEL , for example cooperative delegation through delegated identifiers to participate in a revocation event, where both the holder and the issuer have to participate, but you could change the rules so that either party could revoke.\
+Based on [IIW32 recordings](https://eu01web.zoom.us/rec/play/ymi1tW8_oy1ejYDnhtP6lw9DFSqmwWW32Vs-Savd_s-5dWuIOPOY9zZlhkoyDUQjqBA5eR12TK_8eX2m.5e_aDMp-J1c_t551?continueMode=true) of session 
+_KERI: Centralized Registry with Decentralized Control (KEL & TEL ) + DEMO_\
+_(@henkvancann)_ 
 
 # Q&A section Agencies
 
