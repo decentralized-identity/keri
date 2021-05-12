@@ -176,7 +176,7 @@ Much of Sam Smith's career he has spent working in a multidisciplinary field tha
 
 All of which used some form of machine learning as a subset. Smith then branched out into IoT distributed systems that employed machine learning for self-healing routing algorithms and simultaneously spent many years working on open standard communications protocols including designing and developing two new protocols largely on my own. One was a highly scalable performant end-to-end secure internet protocol called RAET (Circa 2014). This gives him a uniquely well suited experience base to solve the problem that KERI solves.
 
-## **Q: Why are KERI security claims struggling to get appreciation?
+## **Q: Why are KERI security claims struggling to get appreciation in the Decentralized Identity space?
 KERI solves a really really hard problem that many of the experts in the Decentralized Identity field do not have the background to easily understand. They are going to have to invest some effort to either acquire that background or be patient enough to walk through lengthy tutorials.
 There is no short cut. 
 KERI creator Sam Smith: "There were a dozen people at IIW April 2021 that sat through three hours of the KERI security sessions where I patiently walked through it. But we only covered half a dozen of the meta security issues and could easily spend another three hours covering
@@ -184,6 +184,17 @@ several more and many more covering the micro security issues. But most will nev
 
 Lots of experts in the Decentralized Identity field have extremely deep understanding of legacy IT tech but have a very shallow understanding of crypto, real key management, and distributed consensus. So they are not yet equipped well enough to design decentralized identity systems,
 despite their 30+ years of working in the identity space. The future of distributed security is based on something called `zero trust computing` and many of these same experts in the Decentralized Identity field have a best a passing familiarity with what zero trust means.
+
+## **Q: What is KERI's most important critique on the Decentralized Identity space?
+Altough the Decentralized Identity space is young, it's already pretty biased and sometimes narrow minded. Apart from that the solutions in the space have fundamental flaws. We will argue for both claims.
+
+DID expert tend to not read and re-invent what KERI is all about. [See here](https://github.com/decentralized-identity/keri/blob/master/docs/Q-and-A.md#critical-stance-welcomed-just-dont-try-to-rewrite-history-nor-be-lazy) how the KERI community would like to be handled.
+
+Fundamental flaws:
+- Any KERI user gets to decide, e.g. over transaction events. The root-of-trust and the key state is at a lower level always in KERI. You don't comingle those. Which is probably the biggest design flaw of most what we see in the Decentralized Identity commun where they comingle control state and key state with transaction state with means they are locked together.
+- The number of DID methods seems to explode all with their own securtiy characteristics, which makes interoperability a chain as strong as the weakest link.
+- The DID community has embraced (public) blockchains to get rid of the middle men. Apart from **the question whether that could be a succcesful approach** we see that for those experts it's particularly hard to wrap their heads around the KERI security concept, which is scalable to VISA speed, doesn't need a blockchain and can be used to re-design 95+% of all the DID methods by using KERI under the hood.
+_(@henkvancann)_
 
 ## **Q: Why would the world be a better place with KERI than without?
 We know of no general solution to the portable secure attribution problem before KERI. The DNS/CA system is a general solution to the attribution problem but its not portable and its not secure. (it was meant to be secure but failed, it was never meant to be portable)
@@ -678,6 +689,14 @@ Your witnesses in KERI are _not_ under the control of any intermediairy per defi
 This how a `validator` can reconcile with a fallback mechanism (eg. key rotation). KERI does not guarantee liveness of the keystate (example where you have liveliness of key compromise: a btc address and its authorotative key). 
 
 Instead, KERI is a key compromise discovery mechanism. And if there is a compromise, you can send a signal. KERI is all about end verifiability of digital signatures. Digital signatures are legal contracts and it's dependent on the ecosystem governance framework how to avoid liability of the controller for the right key state. KERI does not answer that question. The liable controller can add on several layers in / with KERI to reduce the risk of the controllers liability. The risk that succesfull attacks can occur, can be deminished because they can add extra protection mechanisms.
+
+## *Q: What is the scenario for a Verifier to check the key status?
+A verifier that gets a VC checks the issuer. with the public key.\
+So it's approximately equivalent to resolving a DID in most cases.\
+_(CharlesCunningham)_ and _(RobertMitwicki)_
+
+## *Q: What is the scenario for a Verifier to check the key status?
+_KERI has a content centric approach_: it's what we get and not where we get it. So as soon as you have the KEL (get it from anywhere, what matters is the consistency of that log. The public key is stored in the KEL. 
 
 # Q&A KERI and blockchain settled DIDs
 
