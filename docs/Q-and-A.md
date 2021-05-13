@@ -95,6 +95,7 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Internal inconsistency](./Glossary.md#internal-inconsistency)
       - [KERI Agreement Algorithm for Control Establishment](./Glossary.md#keri-agreement-algorithm-for-control-establishment)
       - [Key](./Glossary.md#key)
+      - [Key Compromise](./Glossary.md#key-compromise)
       - [Key Event Log](./Glossary.md#key-event-log)
       - [Key Event Receipt Log](./Glossary.md#key-event-receipt-log)
       - [Key management](./Glossary.md#key-management)

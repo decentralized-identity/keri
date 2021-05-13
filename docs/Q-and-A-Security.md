@@ -77,6 +77,7 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Internal inconsistency](./Glossary.md#internal-inconsistency)
       - [KERI Agreement Algorithm for Control Establishment](./Glossary.md#keri-agreement-algorithm-for-control-establishment)
       - [Key](./Glossary.md#key)
+      - [Key Compromise](./Glossary.md#key-compromise)
       - [Key Event Log](./Glossary.md#key-event-log)
       - [Key Event Receipt Log](./Glossary.md#key-event-receipt-log)
       - [Key management](./Glossary.md#key-management)
@@ -220,8 +221,16 @@ More on Sam Smith's career on [LinkedIN](https://www.linkedin.com/in/samuel-m-sm
 # Q&A section KERI operational security
 
 ## *Q: What is the main component of KERI's security?
-**Key management** is the main component, because every attack on KERI starts with key compromise. There are no other attacks possible because KERI has consistent logs that are cryptographical verfiable to the `root-of-trust`, also know as the `public private key pair` used to create the identifier.\
-_(@henkvancann)_
+**Key management** is the main component, because every attack on KERI starts with `key compromise`. In KERI that is [strictly defined](./Glossary.md#key-compromise) and has a few caveats. There are no other attacks possible because KERI has consistent logs that are cryptographical verfiable to the `root-of-trust`, also know as the `public private key pair` used to create the identifier.\
+
+So when we say “key compromise” in KERI we really mean compromise of **one of these three things**: 
+Three infrastructures that are included in “key management” systems that must be protected.
+1.  Key pair creation and storage
+2. Event signing
+3. Event signature verification.
+
+The second two may be protected with threshold structures making them difficult to attack. KERI prerotation also protects event signing in the sense that a side channel attack on the signing keys is recoverable via the pre-rotation keys. Event signing is a form of key compromise.  The third one event signature verification is the one someone is most likely to take issue with and so should be caveated. One can attack someone’s event signing infrastructure (code) and fool someone into believing that an invalid signature is a valid signature.  But it is difficult to attack everyone’s event signature verification infrastructure in any general way so its not usually a very worthwhile attack. You are attacking the validator not the controller.  So usually it is assumed that signature verification just works. So a really world class security expert would take exception with the additional statement  “no other other attacks are possible” vs simply saying that all attacks must start with with key compromise.  Usually stating that something is impossible is a bad idea. Everything is possible eventually.\
+(_SamMSmith_)
 
 #### **Q: How does KERI guarantee the consistency and security of its logs?
 KERI's Key event log (KEL) is a cryptographically verifiable hash chained non-repudiably signed data structure.\
