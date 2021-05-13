@@ -612,7 +612,7 @@ The word 'Receipt' explains it all: the sender signs off the verification of the
 The analogy is the difference between a _two-way_ - and a _three-way handshake_: Did I, the recepient, only verify that the sender's message was valid (two-way using KEL, arrow left to right) or did the sender _sign off the receipt_ of that verification by the recipient (three-way in KERL, arrow right to left)
 _(@henkvancann)_
 
-## Can a KEL grow too big, so that performance is becoming an issue?
+## Can a KEL grow too big, so that performance becomes an issue eventually?
 In short, No, KERI has several fall-back options to deal with lingering enlargements of KELs or declining performance, if ever actual.
 
 A few relevant features of KELs within KERI, supposing we have a _big_ KEL, which means a long chain of hashed data:
@@ -624,7 +624,7 @@ A few relevant features of KELs within KERI, supposing we have a _big_ KEL, whic
 - Public KEL can be associated with public entities like humans, organisations and devices and therefore accumulate value on the identifier through interactions. 
 - For security garuantee there is no difference between a big KEL and a small KEL. Both need to be internally consistent and verifiable to the root-of-trust.
 
-**Now suppose a KEL of a long-lived public identifier gets too big**, even if that is not very likely to happen. What are our options:
+#### Now suppose a KEL of a long-lived public identifier gets too big, even if that is not very likely to happen. What are our options:
 1. Create a new identifier, do a new association (or binding) to a public entity and spread the news in a reputational way. Abandon the old identifier but keep it live for future verifications of old events. 
 Optional:
 2. Gather all Interaction events of the _old_ KEL, which starts to grow too big, anchor with a single Merkle-root hash to the _new_ identifier
