@@ -612,6 +612,25 @@ The word 'Receipt' explains it all: the sender signs off the verification of the
 The analogy is the difference between a _two-way_ - and a _three-way handshake_: Did I, the recepient, only verify that the sender's message was valid (two-way using KEL, arrow left to right) or did the sender _sign off the receipt_ of that verification by the recipient (three-way in KERL, arrow right to left)
 _(@henkvancann)_
 
+## Can a KEL grow too big, so that performance is becoming an issue?
+In short, No, KERI has several fall-back options to deal with lingering enlargements of KELs or declining performance, if ever actual.
+
+A few relevant features of KELs within KERI, supposing we have a _big_ KEL, which means a long chain of hashed data:
+- A KEL will always be order of magnitude smaller than public blockchains, because they are more specialised structures that do not need to contain total ordering
+- Once a KEL has been verfied by a user, it can be archived by this user.
+- The core key events in KERI like inception, rotation and delegation are worst case still irrelevant to the scale of volume of a KEL.
+- The seals of Interaction Events don't need to be put in the KEL one by one, you could put a whole bunch of Transaction-seals in a _sparse Merkle tree_ and only register the Merkle root in the KEL.
+- Private KEL are small per design, because in private interactions the identifier have no public value attached to them
+- Public KEL can be associated with public entities like humans, organisations and devices and therefore accumulate value on the identifier through interactions. 
+- For security garuantee there is no difference between a big KEL and a small KEL. Both need to be internally consistent and verifiable to the root-of-trust.
+
+**Now suppose a KEL of a long-lived public identifier gets too big**, even if that is not very likely to happen. What are our options:
+1. Create a new identifier, do a new association (or binding) to a public entity and spread the news in a reputational way. Abandon the old identifier but keep it live for future verifications of old events. 
+Optional:
+2. Gather all Interaction events of the _old_ KEL, which starts to grow too big, anchor with a single Merkle-root hash to the _new_ identifier
+
+(@henkvancann) based on [IIW32](https://eu01web.zoom.us/rec/play/ymi1tW8_oy1ejYDnhtP6lw9DFSqmwWW32Vs-Savd_s-5dWuIOPOY9zZlhkoyDUQjqBA5eR12TK_8eX2m.5e_aDMp-J1c_t551?continueMode=true) recording of session _KERI: Centralized Registry with Decentralized Control (KEL & TEL ) + DEMO_\
+
 # Q&A section Witness
 
 ## **Q: Once duplicity is detected for a certain identifier and controller, does the witness service, representing the controller, need to be replaced?
