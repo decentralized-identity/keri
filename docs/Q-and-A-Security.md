@@ -648,7 +648,12 @@ The [KERI slide deck](https://github.com/SmithSamuelM/Papers/blob/master/present
 {TBW prio 2}
 
 ## ***Q: What is the difference between Key Event Receipt Infrastructure (KERI), and distributed hash tables (DHTs)?
-{TBW prio 3}
+The data structures behind KERI are a special form of DHTs, but KERI is more than that (non-exhaustive list):
+- a solid key management protocol
+- verifiable DHT to the root-of-trust
+- a direct and an indirect method of interaction about key event state
+- duplicity detection
+- various recovery mechanisms from duplicity, key loss or key compromise
 
 ## **Q: As long as witnesses keep lying together no one will ever be able to prove them wrong? 
 Witnesses do not make any statement about the content of what is being proved. KERI does not
