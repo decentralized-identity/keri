@@ -186,7 +186,7 @@ Lots of experts in the Decentralized Identity field have extremely deep understa
 despite their 30+ years of working in the identity space. The future of distributed security is based on something called `zero trust computing` and many of these same experts in the Decentralized Identity field have a best a passing familiarity with what zero trust means.
 
 ## **Q: What is KERI's most important critique on the Decentralized Identity space?
-Altough the Decentralized Identity space is young, it's already pretty biased and sometimes narrow minded. Apart from that the solutions in the space have fundamental flaws. We will argue for both claims.
+Altough the Decentralized Identity space is young, it's already pretty biased and sometimes narrow minded. The solutions in the DID space also have fundamental flaws. We will argue for both claims.
 
 DID expert tend to not read and re-invent what KERI is all about. [See here](https://github.com/decentralized-identity/keri/blob/master/docs/Q-and-A.md#critical-stance-welcomed-just-dont-try-to-rewrite-history-nor-be-lazy) how the KERI community would like to be handled.
 
