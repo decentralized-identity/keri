@@ -503,6 +503,31 @@ You don't need to a strong correlation of your public identifier to you as an en
 The correlation in KERI is never public, always private. _Spam_ goes away because of the provable assestation.\
 (_SamMSmith_) and (_@Chunningham_)
 
+## *Q: How does KERI handle double claims?
+In short, it doesn't because **KERI is context free**, for  a reason and that is _privacy_. So you could make double claims.
+
+#### ***Q: How can I implement a mechanism in KERI that tracks double claims?
+KERI's purpose isn't to solve transaction state, other than key state. KERI doesn't care about the semantics about what is anchored in KERI. So if you want to solve a double claim problem in a given transaction context, then you create a transaction event log (TEL) for that context, where you could enforce priority in that TEL that you make claim then that claim has an identifier. You attach some semantics to your _transaction set_: which types of claims in this specific context. This is transaction context specific and allows to control it.\
+This fits nicely in the thin layering model of KERI because the authority for making any claim in a TEL can be establish back to the KEL.
+(_SamMSmith_)
+
+Transaction state is a more local consideration. One layer up (TELs are where they live, and a specific context/network/cloud/etc can set up its own ordered ledger of txns using TELs; claims to authoritative txn state limited by such opt-in/perimeter-bound txn consensus). 
+Claims need an identifier to be assigned semantics. If claims or semantics are human readable we need case-based reasoning and very sophisticated AI with natural-language processors.\
+(_@bumblefudge_)
+
+Each layer in KERI is responsible for its own duplicity detection!\
+(@stevetodd)
+
+#### **Q: What choices do I have implementing claims in KERI and offer double claim detection to verifiers?
+If a controller _choses_ to hash its claims, the controller choses for _hiding_ (and the ability to double claim!), which is perfectly fine with KERI because KERI is privacy preserving.
+
+Alternatively, suppose the controller choses to implement the solution mentioned above and create specific type of transaction context, and offers means of detect duplicity in statements (in this case double claims in transaction event log, also TEL),  e.g. "Are you for - or against nuclear power" and the allowed options are _Yes_ or _No_. In this case especially time is relevant. Certain contradictory claims about a topic can be made within a certain time span. One could change his/her mind about about a certain topic, and anchor this change of mind in a KERI transaction event log (also TEL).
+
+It's up to verifiers to judge this softer verion of duplicity at the context level within TELs, which means: how quickly can one change one's mind and still be thrustworthy.
+
+If a verifier with the help of AI were to find out a controller is strechting honesty to swabbing about a topic, for example creating two TELs with semantically the same context but obfuscated by few typos and alternative formulation (example: "Like nucleair power?" Y/N) then trust is down to near zero.\
+(@henkvancann)
+
 # Q&A section Private Key Management
 
 ## **Q: What difference does the Autonomic Architecture of the KERI Identity System make?
