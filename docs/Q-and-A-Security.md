@@ -426,6 +426,7 @@ So the simplification does not come at a cost, it's an outrght improvement becau
 
 # Q&A section Identifiers
 
+
 ## **Q: How is a KERI identifier different than a regular identifier in DID methods?
 A self-sovereign identifier that is not self-certifying is dependent of infrastructure and is not fully autonomous and not fully porteable. KERI uses autonomic identifiers, fully cryptographically derivable and portable.
 _(@henkvancann)_
@@ -538,6 +539,13 @@ _Identifiers are managed by systems and humans using systems. Identifiers are no
 
 KERI's creator is using semantics from several different disciplines and then making _new_ semantics when there is not a good fit. So it all sound like new semantics. _But only a few are truly new to KERI._ 
 But since we can't know what the set of new and not new is for any expert exactly, we can't know what to spend more effort on defining vs what to assume. That is why an [adaptive discussion](#q-as-an-ssi-expert-i-totally-can-get-stuck-in-the-semantics-of-keri-how-to-overcome-this) works much more efficiently.
+
+## **Q: How does a Sybil attack present itself in KERI and what is the damage that can be done.
+In short: A Sybil in KERI has at most the power of DDOS attack.
+
+KERI distributed hash table (DHT) is most vulnerable to Sybil attacking/corrupting a portion of a table. They can't rewrite the cache so a Sybil attack cannot invalidate KERI, but they can DDOS the pipeline of KELs with invalid KELs so the user never get a valid KEL to process.
+KERIdemlia would, for example, be DDOS-able if it were used to index KERI nodes; KERI verifying data before replicating it slows down DHT formation, but keeps the DHT safer from Sybil attacks via user-permissioning or micro “reputation system”.\
+Sidenote: user-permissioning of watchers is where most of this verification happens at scale
 
 # Q&A section Event logs
 
