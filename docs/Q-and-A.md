@@ -551,7 +551,21 @@ _(@henkvancann)_
 {TBW prio 1}
 
 ## **Q: How to delegate control over my private keys that control my identifiers?
+In KERI you would never hand over control over your private keys, but always create delegated keys (a kind of "sub"keys lower in the hierarchy). Delegated keys are a secondary root-of-trust within KERI.
+_(@henkvancann)_
 {TBW prio 3}
+
+## *Q: How can I create a private key for my two years old son?
+_The associated identifier receives and holds value, and that nobody can control except for my son, when he's able to manage the keys_
+
+At some point in time somebody always has authoritative control of identifiers, or simply put "controls the key" or "has the private key" to the value. But one can organize Guardianship. 
+[A Deeper Understanding of Implementing Guardianship](https://sovrin.org/a-deeper-understanding-of-implementing-guardianship/) at SovrinFoundation and Aries RFC they’ve informed us with an overview at last IIW ([notes](https://docs.google.com/document/d/1O46cj79KGulbDrHbdHa2Ttfnohgi-IiAZITGIRo3wOM/edit)).
+
+#### *Q: How can I create a private key for my sixteen years old daugther that is not an adult?
+This has to do with temporary guardianship. You need to implement a legal construct like the ones mentioned above.
+
+A set of related, and widely supported within the DID community, ideas by TNO The Netherlands in a [whitepaper](https://www.researchgate.net/publication/348325716_Decentralized_SSI_Governance_the_missing_link_in_automating_business_decisions) 'Decentralized SSI Governance, the missing link in automating business decisions', that we collectively refer to as “decentralized SSI governance”
+
 
 # Q&A section Blockchain
 
