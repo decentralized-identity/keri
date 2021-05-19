@@ -530,6 +530,16 @@ If a verifier with the help of AI were to find out a controller is strechting ho
 
 # Q&A section Private Key Management
 
+## **Q: Why hasn't `PGP` and `GPG` never really caught on well?
+The first reason is that people are not interested in key management if it doesn't concern money. Only since we have crypto curencies the management of private keys has taken off. And for decentralised identities we can go with the flow of that success. Hierarchical deterministic keys are now wide spread among the early adopters of crypto currencies. They are based on 24-word so called seeds (also called 'menonomic phrase') and password, with the aid of (hardware) wallets. And the only reason why it has been such a great success compared to the decennia old `PGP`, seems to be that loss of crypto money is much stronger felt than the loss or exposure of private personal data.
+
+A second reason is the method of verification and attestion in the PGP web-of-trust doesn't scale and it's difficult to use. The userinterface of `GPG` isn't up to our beyond 2010 standards at all.
+
+#### **Q: Can I use a PGP public private key pair for KERI?
+In theory we could list a PGP public key in the KERI [KID0001](https://github.com/henkvancann/keri/blob/master/kids/kid0001.md) - Prefixes, Derivation and derivation reference tables. However it's not very practical, because PGP itself is a conglomerate format that has its own derivation code on board for different cryptographical functions. The PGP public key contains protocol semantic and that's one layer higher up in the key datastructure than what we need for KERI. KERI has it's own derivation code and the minimalization design principle dictates that it makes no sense to support PGP, because as an inception key pair for KERI it has no added value, but redundancy on board.\
+(@henkvancann)
+{TBW 3}
+
 ## **Q: What difference does the Autonomic Architecture of the KERI Identity System make?
 <img src="../images/autonomic-architecture.png" alt="Autonomic Architecture" border="0" width="400">
 
