@@ -59,6 +59,17 @@ Also KAACE or KA2CE. A newly invented algorithm but it is a simplification of PB
 What if PBFT and Stellar had a baby that was missing liveness and total ordering but had safety and was completely decentralized, portable, and permission less? It would be named KERI.\
 (_SamMSmith_)
 
+#### Key compromise
+
+Basically there are three infrastructures that are included in “key management” systems that must be protected.
+1.  Key pair creation and storage
+2. Event signing
+3. Event signature verification.
+
+So when we say “key compromise” we really mean compromise of **one of those three things**.  
+
+More in the security sections of [Universal Identifier Theory](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/IdentifierTheory_web.pdf)
+
 #### Key Event Log
 Also `KEL`. Hash-chained Key Events, these are blockchains in a narrow definition, but not in the sense of ordering (not ordered) or global consensus mechanisms (not needed).
 _(SamMSmith)_ \
@@ -541,7 +552,7 @@ Ro Security _Control_ Overlay. A fully specified set of security controls, contr
 The binding in a Self-Addressing Identifier between inception data and private key can be created by replacing the public key in the identifier prefix with a content digest (hash) of the inception statement (that includes the public key). So it's a further step of commitment to identifier information and also another level of hiding information at face value by one-way encryption beyond the inception statement. However all the information is end-verifiable.
 
 #### Self Certifying Identifier
-In brief: A self-certifying identifier cryptographically binds an identifier to a key-pair.\
+In short, A self-certifying identifier cryptographically binds an identifier to a public private key pair.\
 It is an identifier that can be proven to be the one and only identifier tied to a public key using cryptography alone.\
 A controller issues an own Identifier by binding a generated public private keypair to an identifier. After this a controller is able to sign the identifier and create a certificate. Also called a _cryptonym_. The simplest form of a self-certifying identifier includes either the public key or a unique fingerprint of the public key as a `prefix` in the identifier.
 
