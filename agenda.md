@@ -4,7 +4,7 @@
 
 ## Weekly Meeting Page
 
-This page is for agendas and minutes of the weekly KERI-related work-item meetings of the Identifiers and Discovery (ID) Working Group, who are collaborating on topics related to DIDs and other identifiers. Meeting agendas are listed in reverse chronological order. Meetings will be recorded. This is an IPR-protected meeting, so please refrain from making substantial contributions orally on calls or on github before joining both DIF and the WG. You can get more information from the chairs or at [membership@identity.foundation](mailto:membership@identity.foundation). DIF membership info can be found [here](https://link.medium.com/PCtPmbHJV7).
+This page is for agendas and minutes of the weekly KERI-related work-item meetings of the [KERI Working Group](https://identity.foundation/keri/), who are collaborating on topics related to DIDs and other identifiers. Meeting agendas are listed in reverse chronological order. Meetings will be recorded. This is an IPR-protected meeting, so please refrain from making substantial contributions orally on calls or on github before joining both DIF and the WG. You can get more information from the chairs or at [membership@identity.foundation](mailto:membership@identity.foundation). DIF membership info can be found [here](https://link.medium.com/PCtPmbHJV7).
 
 Meeting Time: Every Tuesday, 10 am ET / 8 am MT (see DIF [google calendar](https://bit.ly/dif-calendar))
 
@@ -24,20 +24,219 @@ Publicity [website](https://keri.one/)
 
 
 ## Future/Pending Topics
-
 - direct-mode interop updates post breaking changes
 - non-interactive authentication mechanism for query protocol KRAM (Keri Request Authentication Mechanism)
 - [delegator/delegate coordination for delegated events](https://github.com/decentralized-identity/keri/issues/82)
 - [use cases document](https://github.com/decentralized-identity/keri/issues/53)
+- [Daniel Hardman et al.'s VC attack surface article](https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/final-documents/alice-attempts-abuse-verifiable-credential.pdf) - use this to structure a future discussion on KERI-based VC architecture review? Does TELs+VCs offer a defensible architecture?
+    - Decentralized reputation systems might still be the key to sealing out the duplicity and realworld misincentives 
+
+
+## Agenda June 8
+- Implementors update 
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+- Announcement work on IETF spec
+
+- Resolution to move WG to ToIP
+
+
+## Agenda June 1
+- Implementors update 
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+Rules for recovery delegated identifiers:
+https://github.com/decentralized-identity/keri/issues/148
+
+## Agenda May 25
+- Implementors update 
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+
+- Main Event
+
+- Community Questions
+    - SCID length varies? Padding 1/2 shorter than padding 0?
+    - https://blockchainbird.org/a/keri-degibberish/ is prototype, useful?
+    - NOTE: does keri.one have a link to Sam's [interview with Tim Bouma](https://www.listennotes.com/podcasts/definitely-identity/definitely-identity-episode-LZ5qFATv9BW/) yet?
+
+## Agenda May 18
+
+- Community questions (10 minutes)
+    - double claim / double spend 
+        - Sam: KERI doesn't worry so much on global double-spend -- this KERI layer just handles key state, transaction state is a more local considerations one layer up (TELs are where they live, and a specific context/network/cloud/etc can set up its own ordered ledger of txns using TELs; claims to authoritative txn state limited by such opt-in/perimeter-bound txn consensus)
+            - Sam: Claims need an identifier to be assigned semantics; 
+            - Sam: [Case-based reasoning](https://en.wikipedia.org/wiki/Case-based_reasoning) sidebar: how to make claims human-readable (short answer: very big AI w/ natural-language processors)
+            - Steve: Each layer is responsible for its own duplicity detection
+        - https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#q-how-does-keri-handle-double-claims
+    - Sybil attack
+        - KERI DHT is most vulnerable to Sybils attacking/corrupting a portion of a table
+            - vanilla Kahdemlia would, for example, be DDOS-able if used to index KERI nodes; KERI verifying data before replicating it slows down DHT formation, but keeps the DHT safer from Sybils via user-permissioning or micro "reputation system"
+                - sidebar: user-permissioning of watchers is where most of this verification happens at scale
+            - https://github.com/henkvancann/keri/blob/master/docs/Q-and-A-Security.md#q-how-does-a-sybil-attack-present-itself-in-keri-and-what-is-the-damage-that-can-be-done
+    - inception (PKI) for 5- and 18-
+         - Guardianship group at SovrinFoundation and Aries RFC they've influenced overviewed at last IIW ([notes](https://docs.google.com/document/d/1O46cj79KGulbDrHbdHa2Ttfnohgi-IiAZITGIRo3wOM/edit?usp=sharing))
+         - https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#q-how-can-i-create-a-private-key-for-my-two-years-old-son
+         - https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#q-how-can-i-create-a-private-key-for-my-sixteen-years-old-daugther-that-is-not-an-adult
+         - https://github.com/henkvancann/keri/blob/master/docs/Q-and-A.md#q-how-do-i-organise-guardianship-over-keys-meant-for-somebody-else-to-control-at-a-later-stage-under-specific-circumstances
+     - DID method update
+        - TELs emulate/feature-match VCs, but that's in progress
+        - DID:Indy method includes a KERI tunnel (uses KERI to tunnel between indy ledgers): earlier-stage, GLEIF is organizing the PoC for that (a ways out)
+            - Namespace agnostic (TrustFrame working on URN namespace, for ex.)
+            - keystate determines control authority-- equivalents/alsoKnownAs/aliasing across namespaces are deterministic, so always up to date with rotation events
+            - TomJones: what about equivalentId
+                - Chunningham: prefix changes; no need for equivalentId - 
+                - TomJones: will KERI return the "realId" in short time? What's the lag on that deterministic prefix matching? Sam: It doesn't *compute* keystate so much as verify full identifiers against prefixes (solves secure attribution problem, as it were, by miniaturizing it to prefix-identifier relationship)
+        - DID:keri work secondary to KERI protocol; no 
+    
+ - PROPOSAL bi-weekly introductory video & Q&A
+     - Input docs: Steve's blog post drafts ([1](https://docs.google.com/document/d/1Ck5TmetCO5lefNJ4XuHQoVkYC3IePN0yE0REPn267Z0/edit?usp=sharing) | [2](https://docs.google.com/document/d/1oNj9xZc8w6caj6bSnO-CP00s2DtHcdqKZwlKzGs15Rs/edit?usp=sharing) | [3](https://docs.google.com/document/d/1k8qc5BfNGEAyo_zIUSn7_u6ipioA-Svoydkm3JqBRo8/edit?usp=sharing))
+    - Sam: Explaining PKI to crypto/ADPL group 
+        - Sam: Self-describing verifiable data structure --> self-describing, verifiable identifiers as building blocks, 
+            - KERI: Security contexts :: JSON: APIs
+        - Sam: new kind of data; verifiable data structures that can REPLACE json blobs 
+        - Sam: If priv/pub keypairs are "passwords done right", then KERI data is JSON done right :D   
+
+ <details>
+<summary>Proposal details</summary>
+I’d like to set up a bi-weekly meeting for novices about the decentralized ID landscape, most probably resulting in my advice to study KERI. Maybe even outside DIF via social media.
+A presentation I had to prepare and record last week is the reason for my proposal. 
+The target group: 'young entrepreneurs'. The topic was autonomic IDs in relation to blockchains, cryptography and crypto currencies. What I found out is that we, Decentralized ID prophets, let alone KERI adepts inside, live on a small island in a big ocean far away from anyone else.
+I had trimmed down 3 levels of complexity and the organisers were still looking at me like a group of cows over a fence. I could hear them think "what has he been smoking?!".
+The Why of our mission could resonate among people, for sure, as long as we don’t spoil their appetite too much with the How. It’s a challenge to build bridges and find the right wording, symbols and analogies to get the message across. We are always trying to be complete and correct to the core, which is often not very effective communicating with ordinary professionals. I think we need add another wave length / channel that people are able to receive.
+Why am I proposing this? What’s in it for KERI? What do I cautiously ask from you?
+What if we could have a session for novices every fortnight and better prepare novices. Maybe we chase away less people with the terminology and the complexity that's common in ‘nerdsville’. And we could tempt them to join DIF, IIW, the KERI WG or other workgroups. Or we could get the word out faster via people who kind of get what we’re doing. 
+I am willing to run this show at a convenient time for Europe. It’s my pleasure / contribution and I’ll learn a lot how to reach ordinary people with an important message: autonomic IDs -> our last resort to regain digital freedom. 
+It would be great if I could now again have one or two of the KERI team members on the show, once in while.
+Just my 2 cents, maybe discuss this briefly in the upcoming KERI meeting? 
+ </details>
+ 
+- Implementors update (10 minutes)
+    - keripy
+        - To verify receipts from TEL backers or KEL witnesses we need to determine a list of backers at a given point in time (specific event).  Is there any better method than to replay the log to that point and collect state?
+            - work backwards, not forwards in time
+            - PR (in py) forthcoming from Sam on how to calculate witness list when replaying in either direction
+            - For performance optimization, create table of backer list at each sn then instead of calculating list by replaying just look it up. 
+                - trade-off of performance vs storage: lookups would happen often enough that it's worth the cost! 
+    - keriox
+        - status/completeness of code base? TrustFrame team curious about when thorough review 
+        - Chunningham: current status: almost no PRs since IIW, so breaking changes still broken if any; HCF?
+            - moved from Ursa to Rust-crypto
+        - HCF: crypto lib switch was last major change; on our fork, we're trying to catch up with TEL changes, hoping to have fully functional demo soon
+        - Shivam: JS is almost up to date, still working with the bitstring thing mentioned last week; 
+        
+    - kerijs
+    - kerigo
+    - kerijava
+
+An optional status from implementors who may have updates or questions for the community.
+
+- Main event (Part One) the issue game
+    - [Issues](https://github.com/decentralized-identity/keri/issues)
+
+We have a variety of issues open in KERI core, the goal for the community would be to come to a consensus on which can be closed, if they are still actionable what is the desired outcome and who is leading the effort, we are a community after all.
+
+- Main event (Part Two) Confirm the "Omnibus changes to KERI"
+    - anchor field in inceptions icp and dip
+    - change `w` `wt` `wa` `wr` to `b` `bt`  `ba` `br` in inception and rotation events
+    - simplified delegation also simplifies delegation exchange (Issue [#146](https://github.com/decentralized-identity/keri/issues/146))
+        - delegator's identifier removed from rotation event (still linked in other direction)
+    - remove VRC event type
+    - Query Messages
+        - FN
+        - KRAM
+    - Key State Message
+
+## Agenda May 11
+
+Community Questions:
+[Revisit 124](https://github.com/decentralized-identity/keri/issues/124) Solution needs proposing given the feedback in comments.
+New "BigInt" issue from Shivam - open to community help regarding Nodejs bitfield support.
+
+next week: checking on [keri-dht-py](https://github.com/decentralized-identity/keri-dht-py)
+
+[TEL design comparison](https://github.com/decentralized-identity/keripy/issues/133) \
+
+Main event: Phil's tour of the TEL prototype
+- disclaimer: example here is from a PUBLIC VC 
+    - Sam: this is a special-case TEL, not a general-purpose starting point. this is public-registry use-case specific!
+- TELS w/ and w/o backers-- two modes
+    - if backerless at inception, stays backerless
+    - if backed, pointer to KEL of controling AID is used to resolve backerlist
+- Robert: how would private VCs work? 
+    - Sam: BBS+ is gaining steam, hopefully will be hardened and standardized by the time we get there
+    - Sam: AnonCreds work today off the shelf, so we can just tunnel indy dids for those VCs (RSA-based)
+    - Sam: Full-private mode is like direct-mode: don't publish, only share TEL with trusted parties
+    - Robert: Enterprises/consortia could run KERI infras as permissioned network... 
+        - Sam: Private/permissioned network could host TELs and share them manually/directly without publishing them
+- Robert: TELS with non-VC data objects?
+- Henk: Wait did "witness" just sneak back into the discussion? Are witnesses !== backers?
+    - Sam: TrustFrame alignment: backer is the broader category, witness is a subset that uses KAACE, watcher pools use KAACE too; DLT oracles coming soon (backer but not *witness*? witness but not *backer*?
+    - Sam/Henk: So it's a synomym in the KERI domain, but legacy in code requires the mixed use of all these terms: *witness*, *enabler* and *backer*. *Backer* instead of *Enabler* because we'd already reserved the letter `e` for something else, and now we're able to use the letter `b` for witness/enabler/backer.
+        - XLR sidebar: "user-permissioned" network (Sam's term): nodes pick their own trusted nodes bottom-up, and misconfiguring or making bad choices (i.e. trusting bad defaults, which is what happened), consensus can break down (this actually happened recently!)
+        - KERI works the same way, luckily we aren't as worried about double-spend (this allows side-networks and private networks to move in and out of global consensus which isn't as dangerous without double-spend req)
+        - nuancing the concept of "permissioned": BTC upgrade protocol issues are a good example of how different layers of code governance can introduce permissioning problems (cf recent [upgrade hiccups](https://www.coindesk.com/taproot-speedy-trial-code-merged-into-bitcoin-core))
+
+
+[Simplify Delegated Events using Hetero Attachments](https://github.com/decentralized-identity/keri/issues/146) was created.
+
+Issues: 
+Omnibus changes to KERI events post-IIW; coming soon to KeriPy: 
+- anchor field in inceptions icp and dip
+- change `w` `wt` `wa` `wr` to `b` `bt`  `ba` `br` in inception and rotation events
+- simplified delegation also simplifies delegation exchange (Issue [#146](https://github.com/decentralized-identity/keri/issues/146))
+    - delegator's identifier removed from rotation event (still linked in other direction)
+        - shifts security model a bit in accepting more kinds of authN; delegation event now idempotent (rather than a blocking event)
+        - seal as attachment rather than passing by reference, after getting full event signed by delegator; exchange (two signals each way) commits both
+- remove VRC event type
+- Query Messages
+    - FN
+    - KRAM
+- Key State Message
+
+
+## Agenda May 4 
+
+Updates on TrustFrame?
+Witness code status
+Roadmap for changing events (add a to icp change w# to b#)
+Misconceptions? and answers to them by/for Joe Andrieu
+LPG vs RDF
+https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/VC_Enhancement_Strategy.md
+
 
 ## Agenda April 27
 
+and minutes of the meeting interwoven.
+
 - IIW Restrospective
     - Feedback impressions takeaways?
+        - Surprised do you understand KERI? Misconceptions about KERI
+        - KERI has nothing to with credentials, not!
+        - Henk is reworking sessions "Security Considerations #1,#2,#3" into this [pull request](https://github.com/decentralized-identity/keri/pull/141)
+        - Surprised about sessions with ADPL similar (BARE encoding)
+        - Jello Sessions (3) 
+        - How to reduce size of VCs to make them QR code Data matrix small enough
+        - Still thinking about VC not data flows
     -  Sessions Held:
-        -  KERI Q&A
+        -  KERI Q&A for noobs
         -  KERI TEL
-        -  
+        -  GLEIF #1 and #2
+        -  Supply chains
+        -  DIDCOMM and KERI
         -  Security Considerations #1,#2,#3
         -  CESR Composable Event Streaming Representation
         -  ADPL and KEL interop
@@ -47,9 +246,13 @@ Publicity [website](https://keri.one/)
 - [Restore External Content Anchoring to Inception Event #140](https://github.com/decentralized-identity/keri/issues/140)
 - [Revised KSN key state notification message #130](https://github.com/decentralized-identity/keri/issues/130)
 
+Backer - B ? Endorser is the way to explain Backer - instead of W refering to Witness -> Decision made to change to Endorser 'B' ! Nobody strongly objected.
+
 Roadmap:
-   Witness support code in KERIpy. ready to test build demo.
-   Added repo for keri-dht-py Conrad Rosenbrock contributor.
+   Witness support code in KERIpy. ready to test build demo. Next week or two.
+   Added repo for keri-dht-py Conrad Rosenbrock (a former colleague of Sam) contributor.
+   
+
 
 ## Agenda April 20
 
