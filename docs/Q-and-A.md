@@ -48,7 +48,7 @@ Beware: A Q&A is always *work in progress*. Tips & help welcome.
 
 
 ### Disclaimer
-None of the respondents in the **open** repo and presentations have been explicitly named as a source, except for ***Samuel M. Smith Ph.D.*** and ***@henkvancann***. If there is no reference added to the answers, then it's Samuel M. Smith who answered the question. Most of the editing is done by @henkvancann, which might have introduced ommission, errors, language glitches and such. Sorry for that, feel free to correct by submitting a pull request (PR).\
+Some of the respondents in the **open** repo and presentations have been explicitly named as a source, like *Samuel M. Smith Ph.D.*, *Charles Cunningham*, and *Orie Steel*. If there is no reference added to the answers, then it's a mixture of sources and edits in the question. Most of the editing is done by @henkvancann, which might have introduced ommission, errors, language glitches and such. Sorry for that, feel free to correct by submitting a pull request (PR).\
 For practical reasons educational images uploaded by Github members have been downloaded. We de-personalised them by giving images a new name. Under these new names these images have been uploaded to github and used in the Q&A to clarify the questions and answers.
 
 KERI's content is licensed under the [CC by SA 4.0. license](https://creativecommons.org/licenses/by-sa/4.0/). Parts of the video offered on SSI Meetup webinar 58 have been captured and uploaded to Github to support the answers to general questions about digital identity and more in depth answers to question about KERI.
@@ -61,15 +61,24 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [Ambient verifiability](./Glossary.md#ambient-verifiability)
       - [Agent](./Glossary.md#agent)
       - [Agency](./Glossary.md#agency)
+      - [Append only Event logs](./Glossary.md#append-only-event-logs)
+      - [Autonomic Computing Systems](./Glossary.md#autonomic-computing-systems)
       - [Autonomic Identifier](./Glossary.md#autonomic-identifier)
       - [Autonomic Namespace](./Glossary.md#autonomic-namespace)
       - [Autonomic idenity system](./Glossary.md#autonomic-idenity-system)
       - [Byzantine Agreement](./Glossary.md#byzantine-agreement)
+      - [Byzantine Fault Tolerance](./Glossary.md#byzantine-fault-tolerance)
+      - [Binding](./Glossary.md#binding)
+      - [Certificate Transparency](./Glossary.md#certificate-transparency)
       - [Content-addressable hash](./Glossary.md#content-addressable-hash)
       - [Controller](./Glossary.md#controller)
       - [Control Authority](./Glossary.md#control-authority)
+      - [Consensus mechanisms](./Glossary.md#consensus-mechanisms)
       - [Correlation](./Glossary.md#correlation)
+      - [Crypto(graphy) libraries](./Glossary.md#crypto-libraries)
       - [Cryptocurrency](./Glossary.md#cryptocurrency)
+      - [Cryptographic commitments](./Glossary.md#cryptographic-commitment-scheme)
+      - [Cryptographic strength](./Glossary.md#cryptographic-strength)
       - [Decentralized Identity](./Glossary.md#decentralized-identity)
       - [Derivation code](./Glossary.md#derivation-code)
       - [Duplicity](./Glossary.md#duplicity)
@@ -78,33 +87,53 @@ We've done our best to protect the privacy of the Github by investigating the im
       - [End verifiable log](./Glossary.md#end-verifiable-log)
       - [Entity](./Glossary.md#entity)
       - [External consistency](./Glossary.md#external-consistency)
+      - [GNU Privacy Guard](./Glossary.md#pgp-and-gpg)
       - [Inception Event](./Glossary.md#inception-event)
       - [Inconsistency](./Glossary.md#inconsistency)
+      - [Identifier system](./Glossary.md#identifier-system)
       - [Identity](./Glossary.md#identity)
       - [Internal inconsistency](./Glossary.md#internal-inconsistency)
-      - [KERI Agreement Algorithm for Control Establishment](./Glossary.md#KERI-agreement-algorithm-for-control-establishment)
+      - [KERI Agreement Algorithm for Control Establishment](./Glossary.md#keri-agreement-algorithm-for-control-establishment)
       - [Key](./Glossary.md#key)
+      - [Key Compromise](./Glossary.md#key-compromise)
       - [Key Event Log](./Glossary.md#key-event-log)
       - [Key Event Receipt Log](./Glossary.md#key-event-receipt-log)
+      - [Key management](./Glossary.md#key-management)
+      - [Key Rotation](./Glossary.md#key-rotation)
+      - [Key transparency](./Glossary.md##key-transparency)
+      - [Liveness](./Glossary.md##liveness)
+      - [Loci-of-control](./Glossary.md#loci-of-control)
       - [Namespace](./Glossary.md#namespace)
       - [Non-Establishment Event](./Glossary.md#non-establishment-event)
+      - [One way functions](./Glossary.md#one-way-functions)
       - [Payload](./Glossary.md#payload)
+      - [Pre-rotation](./Glossary.md#pre-rotation)
+      - [Pretty Good Privacy](#pgp-and-gpg)
       - [Public Key Infrastructure](./Glossary.md#public-key-infrastructure)
       - [Root of trust](./Glossary.md#root-of-trust)
+      - [Safety (property)](./Glossary.md##safety)
       - [Seal](./Glossary.md#seal)
       - [Secret](./Glossary.md#secret)
       - [Self Addressing Identifier](./Glossary.md#self-addressing-identifier)
       - [Self Certifying Identifier](./Glossary.md#self-certifying-identifier)
       - [Self Sovereign Identity](./Glossary.md#self-sovereign-identity)
+      - [(Digital) Signatures](./Glossary.md#signatures)
+      - [Source-of-truth](./Glossary.md#source-of-truth)
       - [Spanning layer](./Glossary.md#spanning-layer)
+      - [Total Ordering](./Glossary.md#total-ordering)
       - [Transaction Event Log](./Glossary.md#transaction-event-log)
       - [Transfer](./Glossary.md#transfer)
+      - [Trust Domains](./Glossary.md#trust-domains)
       - [Trust-over-IP](./Glossary.md#trust-over-ip)
       - [Validator](./Glossary.md#validator)
       - [Verifiable Credential](./Glossary.md#verifiable-credential)
-      - [Verifiable Data Storage](./Glossary.md#verifiable-data-structure)
+      - [Verifiable Data Structure](./Glossary.md#verifiable-data-structure)
       - [W3C DID](./Glossary.md#w3c-did)
       - [(Digital Identity) Wallet](./Glossary.md#-digital-identity--wallet)
+      - [Web-of-trust](./Glossary.md#web-of-trust)
+      - [WebAssembly](./Glossary.md#webassembly)
+      - [Witness](./Glossary.md#witness)
+      - [Zero Trust](./Glossary.md#zero-trust)
 
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -226,8 +255,7 @@ _(@henkvancann)_
 - Layer 3 (transaction layer): Since KERI focuses on the more fundamental part of authentication for the internet, you won't find matching functionality for usual trust-over-IP transaction like VCs or money. VCs (layer 3) relate to KERI only as content hashpointers in KELs, there are no native structures for VCs present in KERI.
 - Layer 4 (application layer): Same: KERI is non-existing in this layer.
 
-To summarize: **Once we talk DID, we already talk about layers above KERI.**
-
+To summarize: **Once we talk DID, we already talk about layers above KERI.**\
 _(@henkvancann)_
 
 [W3C DID](https://www.w3.org/TR/did-core/):
@@ -308,6 +336,17 @@ You use the KERI Duplicity detection to determine the authoritive key is used at
 
 Since March 2021 KERI is a seperate DIF working group and it would possible to create a dedicated project within the working group to research smart contracting with KERI.
 _(@henkvancann)_
+
+## *Q How does KERI relate to the decentralized identity field?
+The concepts in KERI come from many different fields. KERI creator Sam Smith: "The problem KERI faces is that the decentralized identity community is unusually insular and narrow compared to most of the fields I am used to working in. Decentralized Identity experts focus very much on their field, which makes communications about out-of-the-box concepts hard. There also is very little standardization of terminology. 
+
+Which I find odd when people complain about KERI's use of terminology. Just ask anyone to define "identity".
+
+This is exacerbated by the recent addition of many who come from the blockchain space who have either a very shallow or narrow understanding of distributed consensus algorithms in spite of spending all their time developing for that space. 
+Its clear that many if not most have never bothered to read an introductory textbook on the subject and couldn't define `liveness` or `safety` or `total ordering` accurately.
+
+So KERI has an audience that acts as if they understand distributed consensus but have at best a less than rigorous understanding and at worst a largely erroneous understanding.
+"
 
 # Q&A section Why the internet is broken
 
@@ -464,7 +503,42 @@ You don't need to a strong correlation of your public identifier to you as an en
 The correlation in KERI is never public, always private. _Spam_ goes away because of the provable assestation.\
 (_SamMSmith_) and (_@Chunningham_)
 
+## *Q: How does KERI handle double claims?
+In short, it doesn't because **KERI is context free**, for  a reason and that is _privacy_. So you could make double claims.
+
+#### ***Q: How can I implement a mechanism in KERI that tracks double claims?
+KERI's purpose isn't to solve transaction state, other than key state. KERI doesn't care about the semantics about what is anchored in KERI. So if you want to solve a double claim problem in a given transaction context, then you create a transaction event log (TEL) for that context, where you could enforce priority in that TEL that you make claim then that claim has an identifier. You attach some semantics to your _transaction set_: which types of claims in this specific context. This is transaction context specific and allows to control it.\
+This fits nicely in the thin layering model of KERI because the authority for making any claim in a TEL can be establish back to the KEL.
+(_SamMSmith_)
+
+Transaction state is a more local consideration. One layer up (TELs are where they live, and a specific context/network/cloud/etc can set up its own ordered ledger of txns using TELs; claims to authoritative txn state limited by such opt-in/perimeter-bound txn consensus). 
+Claims need an identifier to be assigned semantics. If claims or semantics are human readable we need case-based reasoning and very sophisticated AI with natural-language processors.\
+(_@bumblefudge_)
+
+Each layer in KERI is responsible for its own duplicity detection!\
+(@stevetodd)
+
+#### **Q: What choices do I have implementing claims in KERI and offer double claim detection to verifiers?
+If a controller _choses_ to hash its claims, the controller choses for _hiding_ (and the ability to double claim!), which is perfectly fine with KERI because KERI is privacy preserving.
+
+Alternatively, suppose the controller choses to implement the solution mentioned above and create specific type of transaction context, and offers means of detect duplicity in statements (in this case double claims in transaction event log, also TEL),  e.g. "Are you for - or against nuclear power" and the allowed options are _Yes_ or _No_. In this case especially time is relevant. Certain contradictory claims about a topic can be made within a certain time span. One could change his/her mind about about a certain topic, and anchor this change of mind in a KERI transaction event log (also TEL).
+
+It's up to verifiers to judge this softer verion of duplicity at the context level within TELs, which means: how quickly can one change one's mind and still be thrustworthy.
+
+If a verifier with the help of AI were to find out a controller is strechting honesty to swabbing about a topic, for example creating two TELs with semantically the same context but obfuscated by few typos and alternative formulation (example: "Like nucleair power?" Y/N) then trust is down to near zero.\
+(@henkvancann)
+
 # Q&A section Private Key Management
+
+## **Q: Why hasn't `PGP` and `GPG` never really caught on well?
+The first reason is that people are not interested in key management if it doesn't concern money. Only since we have crypto curencies the management of private keys has taken off. And for decentralised identities we can go with the flow of that success. Hierarchical deterministic keys are now wide spread among the early adopters of crypto currencies. They are based on 24-word so called seeds (also called 'menonomic phrase') and password, with the aid of (hardware) wallets. And the only reason why it has been such a great success compared to the decennia old `PGP`, seems to be that loss of crypto money is much stronger felt than the loss or exposure of private personal data.
+
+A second reason is the method of verification and attestion in the PGP web-of-trust doesn't scale and it's difficult to use. The userinterface of `GPG` isn't up to our beyond 2010 standards at all.
+
+#### **Q: Can I use a PGP public private key pair for KERI?
+In theory we could list a PGP public key in the KERI [KID0001](https://github.com/henkvancann/keri/blob/master/kids/kid0001.md) - Prefixes, Derivation and derivation reference tables. However it's not very practical, because PGP itself is a conglomerate format that has its own derivation codes on board for different cryptographical functions. That means the PGP public key already has protocol semantic on board and that's one layer higher up than what we need for KERI in the key datastructure design. KERI has it's own derivation codes and the minimalization design principle dictates that it makes no sense to support PGP, because as an inception key pair for KERI it has no added value, and it has redundancy on board.\
+(@henkvancann)
+{TBW 3}
 
 ## **Q: What difference does the Autonomic Architecture of the KERI Identity System make?
 <img src="../images/autonomic-architecture.png" alt="Autonomic Architecture" border="0" width="400">
@@ -512,7 +586,28 @@ _(@henkvancann)_
 {TBW prio 1}
 
 ## **Q: How to delegate control over my private keys that control my identifiers?
+In KERI you would never hand over control over your private keys, but always create delegated keys (a kind of "sub"keys lower in the hierarchy). Delegated keys are a secondary root-of-trust within KERI.
+_(@henkvancann)_
 {TBW prio 3}
+
+## *Q: How can I create a private key for my two years old son?
+_And start a KERI public identifier for him. The associated identifier receives and holds value, and that nobody can control except for my son, when he's able to manage the keys._
+
+At some point in time somebody always has authoritative control of identifiers, or simply put "controls the key" or "has the private key" to the value. But one can organize Guardianship. 
+[A Deeper Understanding of Implementing Guardianship](https://sovrin.org/a-deeper-understanding-of-implementing-guardianship/) at SovrinFoundation and [Aries RFCs](https://github.com/hyperledger/aries-rfcs/blob/master/concepts/0289-toip-stack/README.md) they’ve informed us with an overview at last IIW ([notes](https://docs.google.com/document/d/1O46cj79KGulbDrHbdHa2Ttfnohgi-IiAZITGIRo3wOM/edit)).
+
+The Sovrin Guardianship Working group site is [here](https://sovrin.org/guardianship/)
+
+#### *Q: How can I create a private key for my sixteen years old daugther that is not an adult?
+_And start a KERI public identifier for her._
+
+It is a legal issue, there can only be one person holding keys. Either the parent or the child holds the key.\
+The problem has to do with temporary guardianship. You need to implement an additional legal construct like the ones mentioned above. After that a set of governers have control authority.
+
+Other constructions like multisign or sharing schemes (e.g. Shamir SSS) introduce more parties and more complexity and are not advised.
+
+#### **Q: How do I organise guardianship over keys meant for somebody else to control at a later stage under specific circumstances?
+A set of related, and widely supported within the DID community, ideas by TNO The Netherlands in a [whitepaper](https://www.researchgate.net/publication/348325716_Decentralized_SSI_Governance_the_missing_link_in_automating_business_decisions) 'Decentralized SSI Governance, the missing link in automating business decisions', that we collectively refer to as “decentralized SSI governance”.
 
 # Q&A section Blockchain
 
@@ -544,6 +639,17 @@ _that you send to witnesses, who observe them and attest to the particular line 
 
 Because total linear ordering is not needed for a given identifier's event sequencing. Only linear order of that identifier's history. The history's from other events do not have to be ordered with respect to each other. So the secure ordering of a given identifier's history is a completely different class of problem than the secure total ordering of comingled history from multiple identifiers. The security demands are less for the former case. So the equivalent security may be obtained in other ways. While the latter as a side effect of total ordering gives local ordering (per identifier) for free. But securing total ordering may be much harder to do. So one has to be careful, because it's no longer an apples to apples comparison. 
 (_SamMSmith_)
+
+## *Q: Wouldn’t we still need public blockchains to hash proof?
+_At least at certain intervals to ensure my data is not erased by the central registry..._
+
+The registry is logically centralized (in that there is a consensus between participants) but there is no central registry (needed, ed.), which gatekeeps access to the data.\
+(_@Chunningham_)
+
+## *Q: How do I explain the significance of KERI to someone? 
+_Could I say that the Transactions Per Second of a KERI-based system will always beat the TPS of a blockchain-based system.\
+Is that a fair statement? Is there some "order of magnitude" characterization of that inherent advantage?_
+
 
 # Q&A section Root of trust
 
@@ -598,7 +704,6 @@ Post-quantum cryptography deals with techniques that maintain their cryptographi
 Strong one-way hash functions, such as 256 bit (32 byte) Blake2, Blake3 and SHA3, with 128 bits of pre-quantum strength maintain that strength post-quantum.\
 [Source: whitepaper page 65](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
 
-
 ## *Q: What happens if I or other people are offline?
 Any controller can install a Service/Agent Log, controlled by them.
 
@@ -609,16 +714,45 @@ Any subject / controller can start creating KERI events in a KERI event log. Dep
 The more entities are getting used to play the different KERI specific roles the more rapid and easy will the bootstrapping / flooding of KERI on the internet evolve.
 {TBW prio 1}
 
-
 ## *Q: Is there a KERI course or webinar available?
 The [SSI Meetup](https://ssimeetup.org/key-event-receipt-infrastructure-KERI-secure-identifier-overlay-internet-sam-smith-webinar-58/) webinar on KERI took place in May 2020 and is a good lesson and source of information.\
 There is lots of course material available on [prosapien.com](https://www.prosapien.com).\
 _(@henkvancann)_
 
+## *Q: Is KERI fast enough? How does its speed relate to blockchains like Bitcoin and Indy and payment processors like VISA?
+In short, KERI is three to four orders of magnitude faster than its functional equivalents.
+
+An important note is KERI is not a crypto-currency. It's a Key Event Receipt Infrastructure that operates at a lower level than most crypto currencies and Decentralized Identity systems, hence you can rebuild those systems with KERI.\
+A second note is that speed and scalabilty is often a trade-off with several other parameters like security, decentralization, useability. Nevertheless we'll try to answer the question in general terms and correct in orders of magnitude.
+
+A public blockchain like Bitcoin or Ethereum has a transaction speed in the single digits up to the hunderds transactions per second (TPS). Permissioned blockchains can deliver transaction speed in one to two orders of magnitudes higher.
+
+KERI is permission-less, scalable, secure and has transactions of events in order of magnitude four times higher than public blockchains (10.000 times more) and in the range of VISA credit card transactions. KERIs speed is mainly dependent of the number of controllers that have to mutually verify their KELs.
+
+The problem with blockchain based solution like Indy is that they do not offer concurrent processing in their code. They will hit a performance and scalability cieling within the range of the thousands of (event-) transactions.
+
+Based on [IIW32 recordings](https://eu01web.zoom.us/rec/play/ymi1tW8_oy1ejYDnhtP6lw9DFSqmwWW32Vs-Savd_s-5dWuIOPOY9zZlhkoyDUQjqBA5eR12TK_8eX2m.5e_aDMp-J1c_t551?continueMode=true) of session 
+_KERI: Centralized Registry with Decentralized Control (KEL & TEL ) + DEMO_\
+_(@henkvancann)_ 
+
 ## *Q: Could KERI work for edge computers that need self sovereign identity? How to (selectively) share control over the `SCI`/`SAI` with the owners of the device?
 Delegation could be used. There is an [issue about IoT](https://github.com/decentralized-identity/KERI/issues/54) key and identifier management with `KERI` that answers this question profoundly.\
 (_SamMSmith_)
 
+## *Q: Can a holder revoke a virtual credential (VC) instead of the issuer/controller?
+
+There a two sorts of issuances of credentials. 
+- **A public statement** (e.g. provenance of data) or 
+- **the presentation of an authorisation**
+The former doesn't have a holder. So we focus on the main use of `VC`s: the latter: the presentation of an authorisation.
+
+Usually holders don't revoke a credential, they just decide to not use them anymore.
+You could install a Policy and a set of Rules to give holders to exercise power to some extent over the revocation:
+1. _Policy_: a holder can ask the entity that has authoritative control over the `VC`s to revoke it.
+2. _Rules_: for a TEL , for example cooperative delegation through delegated identifiers to participate in a revocation event, where both the holder and the issuer have to participate, but you could change the rules so that either party could revoke.\
+Based on [IIW32 recordings](https://eu01web.zoom.us/rec/play/ymi1tW8_oy1ejYDnhtP6lw9DFSqmwWW32Vs-Savd_s-5dWuIOPOY9zZlhkoyDUQjqBA5eR12TK_8eX2m.5e_aDMp-J1c_t551?continueMode=true) of session 
+_KERI: Centralized Registry with Decentralized Control (KEL & TEL ) + DEMO_\
+_(@henkvancann)_ 
 
 # Q&A section Agencies
 
