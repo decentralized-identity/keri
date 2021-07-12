@@ -466,7 +466,7 @@ The main innovation of KERI is that it provides a universal decentralized mechan
 In general, we call a theory “normative” if it, in some sense, tells you what you should do - what action you should take. If it includes a usable procedure for determining the optimal action in a given scenario. [Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
 
 #### Non-normative
-A theory is called non-normative if it does not do that. In general, the purpose of non-normative theories is not to give answers, but rather to describe possibilities or predict what might happen as a result of certain actions.
+A theory is called non-normative if it does not do what has described under 'Normative'. In general, the purpose of non-normative theories is not to give answers, but rather to describe possibilities or predict what might happen as a result of certain actions.
 [Souce](https://www.quora.com/What-is-the-difference-between-normative-and-non-normative?share=1).
 
 #### One way functions
