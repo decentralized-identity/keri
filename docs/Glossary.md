@@ -2,7 +2,7 @@
 
 ## Abbreviations
 In alphabetic order:\
-ACDC = Authentic Chained Data Container Task Force
+ACDC = Authentic Chained Data Container Task Force\
 AID = [Autonomic Identifier](#autonomic-identifier)\
 AIS = [Autonomic Identity System](#autonomic-identity-system)\
 AN = [Autonomic Namespace](#autonomic-namespace)\
@@ -12,7 +12,7 @@ DID = [Decentralized Identity](#decentralized-identity) or Digital Identity depe
 DIF = Decentralized Identity Foundation\
 DDO = DID Document, look up W3D DID standardization for more info\
 DHT = Distributed Hash Table\
-DIF = Decentralized Identity Foundation, https://identity.foundation\
+DIF = Decentralized Identity Foundation, https://identity.foundation.   \
 DKMI = Decentralized Key Mangement Infrastructure\
 HSM = Hardware Security Module\
 IPv4 = standard Internet Protocol, version 4\
@@ -45,7 +45,7 @@ The purpose of the Authentic Chained Data Container (ACDC) Task Force  is to dra
 Verifiable by anyone, anywhere, at anytime. E.g. Ambient Duplicity Detection describes the possibility of detecting duplicity by anyone, anywhere, anytime.
 
 #### Agent
-A representative for an _identity_. MAY require the use of a_wallet_. MAY support _transfer_
+A representative for an _identity_. MAY require the use of a _wallet_. MAY support _transfer_
 
 #### Agency
 Agents can be people, edge computers and the functionality within [`wallets`](#digital-identity-wallet). The service an agent offers is agency.
@@ -105,24 +105,27 @@ Or DEL. This is a record of _inconsistent_ event messages produced by a given co
 
 #### Derivation code
 To properly extract and use the `public key` embedded in a self-certifying identifier we need to know the cryptographic _signing scheme_ used by the key pair. KERI includes this very compactly in the identifier, by replacing the pad character (a character used to fill a void to able to always end up with a fixed length public key) with a special character that encodes the derivation process. Call this the derivation code.
-```
-For example suppose that the 44 character Base-64 with trailing pad charac- ter for the public key is as follows:
-_F5pxRJP6THrUtlDdhh07hJEDKrJxkcR9m5u1xs33bhp=_
-If B is the value of the derivation code then the resultant self-contained string is as follows:
-_BF5pxRJP6THrUtlDdhh07hJEDKrJxkcR9m5u1xs33bhp_
-```
+
+
+> For example suppose that the 44 character Base-64 with trailing pad character for the public key is as follows:
+`F5pxRJP6THrUtlDdhh07hJEDKrJxkcR9m5u1xs33bhp=`
+
+>If B is the value of the derivation code then the resultant self-contained string is as follows:
+`BF5pxRJP6THrUtlDdhh07hJEDKrJxkcR9m5u1xs33bhp`
+
 All crypto material appears in `KERI` in a fully qualified representation that includes a derivation code prepended to the crypto-material.
 <img src="../images/derivation-code.png" alt="Derivation Code" border="0" width="600">
 
 #### Duplicity
-In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe **external inconsistency**. Publication of two or more versions of a `KEL` log, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
+In `KERI` consistency is is used to described data that is internally consistent and cryptographically verifiably so. Duplicity is used to describe **external inconsistency**. Publication of two or more versions of a `KEL`, each of which is internally consistent is duplicity. Given that signatures are non-repudiable any duplicity is detectable and provable given possession of any two mutually inconsistent versions of a `KEL`.  
 
 In common language 'duplicity' has a slightly different connotation: 'two-facedness', 'dishonesty', 'deceitfulness', 'deviousness,'two-facedness', 'falseness'.
+
 #### End verifiable
 If a log is end verifiable, this means that the log may be verified by any end user that receives a copy. No trust in intervening infrastructure is needed to verify the log and validate the content. 
 
 #### Entropy
-Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm.[More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
+Unpredictable information. Often used as a _secret_ or as input to a _key_ generation algorithm. [More](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 
 The term entropy is also used to describe the degree of unpredictability of a message. Entropy is then measured in bits. The degree or strength of randomness determines how difficult it would be for someone else to reproduce the same large random number. This is called _collision resistance_. 
 
@@ -161,8 +164,9 @@ Is a type of Establishment Event, it's the first event that establishes an ident
 The inception data must include the public key, the identifier derivation from that public key, and may include other configuration data. The identifier derivation may be simply represented by the `derivation code`. A statement that includes the inception data with attached signature made with the private key comprises a cryptographic commitment to the derivation and configuration of the identifier that may be cryptographically verified by any entity that receives it. \
 A KERI inception statement is completely self-contained. No additional infrastructure is needed or more importantly must be trusted in order to verify the derivation and initial configuration (inception) of the identifier. The initial trust basis for the identifier is simply the signed inception statement.\
 (_SamMSmith_)
+
 #### Inconsistency
-If a reason, idea, opinion, etc. is inconsistent, different parts of it do not agree, or it does not agree with something else. Data inconsistency occurs when similar data is kept in different formats in more than onFBTe file. When this happens, it is important to match the data between files. 
+If a reason, idea, opinion, etc. is inconsistent, different parts of it do not agree, or it does not agree with something else. Data inconsistency occurs when similar data is kept in different formats in more than one file. When this happens, it is important to match the data between files. 
 
 #### Identity
 A unique entity. Typically represented with a unique identifier.
@@ -228,7 +232,7 @@ utah.wasatch.heber.84032.main.150S.
 See also [AN](#autonomic-namespace).
 
 #### Non-Establishment Event
-To be able to do something with the identifier, it anchors data to the key event sequence. So you can so things like issue or revoke a verifiable credential or engage in a transaction in which you give a commitment of some form to some other entity and you can anchor that commitment to the KER log and make it verifiable that way.
+To be able to do something with the identifier, it anchors data to the key event sequence. So you can do things like issue or revoke a verifiable credential or engage in a transaction in which you give a commitment of some form to some other entity and you can anchor that commitment to the KER log and make it verifiable that way.
 
 #### Non-transferable identifier
 And identifier of which you can't rotate its controlling private key. When the private key for a non-transferable identifier become exposed to potential compromise then the identifier must be abandoned by the controller as it is no longer secure.  
@@ -254,15 +258,17 @@ Note that the KERI never puts raw data or privacy sensitive data in a `KEL` or `
 #### Prefix
 A prefix that is composed of a basic Base-64 (URL safe) derivation code prepended to Base-64 encoding of a basic public digital signing key.\
 Including the derivation code in the prefix binds the derivation process along with the public key to the resultant identifier. 
-```
-An example of the prefix with a one character derivation code and a 32 byte public key encoded into a 44 character Based-64 string follows:
-BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0.
-```
+
+>An example of the prefix with a one character derivation code and a 32 byte public key encoded into a 44 character Based-64 string follows:
+`BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0`
+
 <img src="../images/prefix.png" alt="Prefix derivation" border="0" width="700">
 
 #### Public Key Infrastructure
 A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption.
-<img src="../images/pubprivkey-caveat.png" alt="Public Private Key caveat to KERI" border="0" width="400"> 
+
+<img src="../images/pubprivkey-caveat.png" alt="Public Private Key caveat to KERI" border="0" width="400"> \
+
 [Wikipedia].(https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
 #### Race condition
@@ -279,9 +285,11 @@ A type of `Establishment event` that allows to change to authoritative public ke
 _(SamMSmith)_
 #### Seal
 A seal is a cryptographic anchor that provides evidence of authenticity; we have:
-1. Digist Event Seal
-2. Hash tree root Seal
-3. Event Seal
+1. Digist Seal (a digest of external data)
+2. Root Seal (the hash tree root of external data)
+3. Event Seal (includes the identifier prefix, sequence number, and digest of an event in a key event log)
+4. Event location Seal (includes the prefix, sequence number, ilk and prior digest from an event)
+
 Seals deliver authenticity proofs in KERI.
 
 #### Secret
