@@ -4,7 +4,7 @@ Key Event Receipt Infrastructure - the spec and implementation of the KERI proto
 ![KERI Logo](images/Keri_logo_color_on_white.png)
 
 ## Starting Points
-* For an overview and introduction, see the explanatory **slideshow** [here](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) or the public-facing <a href=https://identity.foundation/working-groups/keri.html</a>.
+* For an overview and introduction, see the explanatory **slideshow** [here](https://github.com/SmithSamuelM/Papers/blob/master/presentations/KERI2_Overview.web.pdf) or the public-facing <a href=https://identity.foundation/working-groups/keri.html>website</a>.
 * A partial draft of the spec (still pending substantial editorial reduction) is available in the [KIDs](kids/) directory.
 * The most recent version of the **whitepaper** is [here](https://github.com/decentralized-identity/keri/blob/master/kids/KERI_WP.pdf). It contains an overview of the functional requirements and design of the KERI protocol, but should not be taken as authoritative as a specification and predates the experimental implementation.
 * Definitions, **Questions and Answers** categorized by topic [here](./docs/Q-and-A.md).
