@@ -167,7 +167,7 @@ did:un:BDKrJxkcR9m5u1xs33F5pxRJP6T7hJEbhpHrUtlDdhh0/path/to/resource?name=secure
 Currently `KERI` is just code, that can be tested and executed in a terminal on the command line. Private key management of KERI will look like `wallets`.\
 Key Event Logs (`KEL`) and Key Event Receipt Log (`KERL`) are files with lots of encrypted stuff in there.\
 
-<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">
+<img src="../images/key-event-log-muggles.png" alt="key event log" border="0" width="400">\
 _(@henkvancann)_
 
 #### *Q: How is KERI an overlay?
@@ -302,7 +302,7 @@ However, KERI is suitable:
 ## *Q: Are smart contracts possible with KERI?
 Yes, KERI gives you the security. And by supplying secure state machines. But you have to gather the right transactions yourself.
 
-Ledgers co-mingle secure state machines into one another, Ledger are total ordering. We don’t need totla ordering in KERI. The absence of a ledger  gives us the ability to create totally private smart contracts between Bob and Alice.
+Ledgers co-mingle secure state machines into one another, Ledger are total ordering. We don’t need total ordering in KERI. The absence of a ledger  gives us the ability to create totally private smart contracts between Bob and Alice.
 
 You use the KERI Duplicity detection to determine the authoritive key is used at a certain point in time. 
 
@@ -461,7 +461,7 @@ _I you want to talk to me, you send a message to my public identifier._
 
 First use a public identifier and then set up a private pairwise connection.\
 You don't need to a strong correlation of your public identifier to you as an entity, but only to your "local" reputation, expressed by the KEL itself.\
-The correlation in KERI is never public, always private. _Spam_ goes away because of the provable assestation.\
+The correlation in KERI is never public, always private. _Spam_ goes away because of the provable attestation.\
 (_SamMSmith_) and (_@Chunningham_)
 
 # Q&A section Private Key Management
@@ -478,7 +478,7 @@ More in [The Architecture of Identity Systems](https://www.windley.com/archives/
 
 ## **Q: How multi-tasking is the key infrastructure?
 KERI has `univalent`, `bivalent` and `multivalent` infrastructures.\
-<img src="../images/key-infra-valence.png" alt="Key Infrastruction Valence levels" border="0" width="600">
+<img src="../images/key-infra-valence.png" alt="Key Infrastruction Valence levels" border="0" width="600">\
 You need Key-pair Generation and Key-Event-Signing Infrastructure. And KERI doesn't care how you do it.\
 From `bivalent` delegation {fill out?!} comes into play. But in fact you can have `multivalent` infrastructures, all with their own security garantuees and its own key management policies.\
 It's all one KERI codebase to do all these infrastructures.\
