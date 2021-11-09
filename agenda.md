@@ -52,6 +52,363 @@ Publicity [website](https://keri.one/)
     - kerijava
     - keridht
 
+## Agenda Nov 09
+
+- Implementors update
+    - keripy
+    - keriox
+        - PR for parsing signed reciepts
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+- Other topics?
+    - work item proposals:
+        - from slack (Michal), future use cases feasible to work with:
+            - blockchainless solutions based on keri architecture principles
+            - authentic interactions on microledgers
+            - general-purpose TELs
+            - "KERI for mortals"
+        - From Jolocom
+            - did:keri method resolver/spec - ID working group?
+                - [current dif spec](https://identity.foundation/keri/did_methods/)
+            - general structure of components to bring into a spec eventually
+                - continue work on a KERI-achitected (but not necessarily compatible with gleif-keri) spec? yes
+        - from discussion
+            - proposal to do work elsewhere or depending on ietf work
+                - seems reasonable that DIF work can depend on IETF work
+                - IETF guarentees patent disclosure on drafts/published items
+                    - a draft without disclosed patents is safe
+                - several KERI component concepts have already been posted as IETF drafts
+                - KERI itself is WIP
+
+- Issue review
+    - [keri main](https://github.com/decentralized-identity/keri/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+## Agenda Nov 02
+
+- Implementors update
+    - keripy
+    - keriox
+    - kerijs
+        - issuance and revocation in VDR (Verifiable Data Registry) model implementation
+    - kerigo
+    - kerijava
+    - keridht
+
+- Other topics?
+    - Discuss objections, if any, to last week's proposal
+    - work item discussion
+        - Propose work items:
+            - CESR or CESR-like encoding for cryptographic material
+                - [CBB encoding](https://github.com/decentralized-identity/crypto-wg/blob/main/work_items/cbb_data_encoding.md) already accepted by DIF AppCry WG - Steve has taken up editor role there, issues and PRs from this group welcome!
+                    - relationship to multicodec... up in the air?
+            - compound data representations, events, attachment model, transport representation
+                - HCF? Robert's proposal (a month or two ago) to break out pieces organically over time as specifications for them become useful/needed for specific use-cases; relationship to TOIP ACDC group?
+                - Steve also working on [CBB protocol](https://github.com/decentralized-identity/crypto-wg/blob/main/work_items/cbb_service_protocol.md)
+                - Spruce also working on ["policy as code" CDDL-like thing](https://github.com/decentralized-identity/crypto-wg/blob/main/work_items/cbb_policy_as_code.md)
+            - authentic log/microledger structure and validation rules
+                - too early maybe? requires the two above?
+            - potential use-cases for KERI-like systems beyond identifiers
+                - TELs and TEL-like VCs
+                - timestamp services, other consensus or witnessing services
+        - steve: whats the desired outcome?
+            - how similiar to alternative?
+            - applied crypto wg would provide tools for generating/analysing the pieces
+            - most parties want to be interoperable
+        - what does everyone want?
+            - interoperability with gleif?
+                - what exactly does that mean?
+                    - log/event/attachment formats are mutually understandable
+                    - transport of log events among participants
+                    - overall architecture of actors/roles (witnesses/watchers/controllers)
+                - a mirror spec does not resolve any IPR issues
+
+- Issue review
+    - [keri main](https://github.com/decentralized-identity/keri/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+## Agenda Oct 26
+
+- Implementors update
+    - keripy
+    - keriox
+    - kerijs
+        - Shivam (over DM): Currently, I am working with VIR (Verifiable issuance registry) and VDR (Verifiable Data Registry), working on code for handling this locally, will PR when stable
+    - kerigo
+    - kerijava
+    - keridht
+
+- Other topics?
+    - Proposal:
+        - from last week:
+            - define the boundaries of Keri work item IP
+                - what goes?
+                - Identify a cutoff date for contributions, everything contributed before this date is covered
+                    - after that date, close the work item for contributions and open a new work item which can reference the old
+                - what is the new work Item, what is proposed
+                    - use the existing code bases as reference for new spec development
+            - move Keri to a work Item under ID WG or Applied Crypto WG
+                - preferences? governance? process?
+        - process:
+            - community notification
+                - send out notification of the proposal to the wider community, allow time for consideration but non-response is non-objection
+                    - notification: Hello KERI DIF Community, The KERI working group has discussed a proposal to scale back the scope of the work to a Work Item under another DIF working group[1]. This proposal entails:
+                        1 Defining a new working item scope, including existing implementations
+                        2 petitioning/accepting the initiation of said new work item into an existing DIF working group
+                        3 Archiving the specification activities (and repo) of the KERI working group
+                    - Any parties with objections to or suggestions for this proposal are invited to respond to this email (whether only to the chair or replying-all) before the next working group call on Nov 02. Thanks for any input
+                        [1] (Notes for these calls can be found here)[https://hackmd.io/eBKWws_uRZyq3aOTEKfHlQ]
+                    -  
+                - have a github issue for discussion, email out a statement with link
+                - charles will send it out
+                - next call (02/11) consider objections then assume consensus
+            - destination wg consultation
+                - consult these WGs to find who is more suitable/amenable
+            - Identify a cutoff time to archive the wg and start the work item
+            - define the proposed work item focus/goals
+                - ivan: off the top of my head, i'd propose some goals for the work item including:
+                    - real-world use cases
+                    - explanations of how to swap out serialization/encoding for others
+                    - using didcomm as a transport
+                    - TEL stuff
+                    - etc...  
+                - implications on implementations hosted on DIF repos
+                    - implementations housed under dif are only safe from patent action insofar as they don't take influence from squishy, fluid ideas from outside sources (ratified/published specs incur much less risk)
+                    - else be susceptible to potential (currently secret) patent violation claims down the line
+                    - end goal of all DIF/JDF processes is a patent-claim-free spec which is safe to use
+                        - (parties desiring this should join DIF)
+
+- Issue review
+    - [keri main](https://github.com/decentralized-identity/keri/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+
+## Agenda Oct 19
+
+- Implementors update
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+- Other topics?
+    - proposals for next call
+        - maintain the existing spec work under dif as a work item in a different group
+            - drawing a clean boundary around the IP protected work
+            - preferrably also maintain an interop profile to meet
+    - Joachim's agenda proposals
+        - Legal protection and clean version of DIF-KERI
+            - moving the work outside of DIF might compromise it's IPR status/make it vulnerable to patent trolling/other forms of legal attack :(
+            - identifying parts of the spec to manage separately could help
+            - IETF's IPR policy is not that work items be free of patents, but that those patents are open and non-discriminant
+                - so IETF work items can be patented, while those of DIF are protected from patents
+            - if any contributor can decide they have patent rights they'd need to exclude, they should declare ASAP
+                - has anyone declared that? no, given contributors signing of the DIF membership agreement
+                - technically true that you could do that at a late stage
+                - it seems that all parties are aligned on KERI being an open, free spec
+        - Scale back WG to work item
+            - KERI WG is significant overhead
+            - Charles the only active co-chair
+            - retire WG
+        - Define Keri work item moving forward (to-do for us as WG)
+        - propose defined Keri work item to either DIF Applied Crypto WG or DIF ID WG (where it actually derived from)
+            - microledger spec? AppCry WG already considering a microledger/prov-log item with both KERI and non-KERI members participating
+                - Steve: designing a KERI-agnostic, more widely-useful provenance log, looking at both KERI and non-KERI use cases (with Dave Huseby from CryptID); 
+                - KERI is not a general method for provenance logs, it has details specific to it's purpose
+            - Iván: interop targets? shoot for IETF overarching KERI-profile spec after it's done, to preserve IPR along the way?
+            - did:un/did:keri ?
+
+- Issue review
+    - [keri main](https://github.com/decentralized-identity/keri/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+## Agenda Oct 5
+
+- Implementors update
+    - keripy
+    - keriox
+        - PR #80 merged
+    - kerijs
+        - testing weighted threshold logic for signatures on events, PR incoming
+    - kerigo
+    - kerijava
+    - keridht
+
+- Other topics?
+    - Once work begins at another SDO/venue, what is this groups approach?
+        - proposal: contact all wg members and request input/attendance for:
+            - where/if to move sub-spec work (applied crypto wg?)
+            - where to continue implementation discussion
+            - where to continue/source more spec work
+        - Robert: actual venue for work is immaterial, orgs would mainly like to continue work, code is a bit more relevant than the spec itself (re: adoption/progress)
+            - most parties seem to not mind the IPR situation
+            - extraction/expansion of the microledger concept is a valuable outcome, generalises the existing work
+            - suggest moving that kind of work (CESR, microledger) to applied-crypto WG
+            - Authentic Data concept is of greater impact than specific examples of such e.g. SSI, KERI
+            - Not all the parallel KERI work is under ToIP, just the ACDC-relevant sub-specs like CESR
+                - the overall KERI work continues under the gleif group
+        - Joachim: steering commitee is considering this issue
+            - goal is a clean and fair arrangement which allows all parties to continue the work together
+        - Robert: not quite an admin issue but a personal one
+            - unlikely that any groups will apply for or enforce any patents on KERI
+            - implementation work and spec work are not necessarily bound together
+        - impl and spec work can proceed independantly (e.g. impls at DIF, spec work at applied crypto wg and/or IETF)
+    - DID method rubric podcast
+        - will be put in contact with a rep for Joe
+    - Robert: there now exists a [microledger implementation](https://github.com/THCLab/microledger)
+        - will try to pursue this in SENS: JPC-19
+
+- Issue review
+    - [keri main](https://github.com/decentralized-identity/keri/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+## Agenda Sept 28
+
+- Implementors update
+    - keripy
+    - keriox
+        - [PR #80](https://github.com/decentralized-identity/keriox/pull/80): Delegation update to implement hetero attachments and simplify delegated events
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+- Other topics?
+    - IIW is in 2 weeks
+        - demos?
+            - interop might be tough to organize at this time
+            - issuance/verification/revocation(?) of verifiable data chains possible
+        - inclusion of a self-addressing identifier within the data container it was made with, as a means of a "bound" identifier for that container
+            - calculated using a default constant value for the digest field
+    - updates from the gleif stream via AC/DC work
+        - verifiable data containers may have their own identifiers
+            - identifiers assigned arbitrarily have no cryptographically verifiable basis
+            - a self-addressing identifier bound to the containers contents
+            - included in the serialized form
+    - microledger progress
+
+- Issue review
+    - [keri main](https://github.com/decentralized-identity/keri/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+## Agenda Sept 21
+
+- Implementors update
+    - keripy
+    - keriox
+        - merged async streaming PR
+        - fix in progress for delegation after delegation seals are removed from interaction events
+        - FFI bindings: wasm
+            - sled doesnt run in a wasm environment (system time/WASI not sufficiently implemented yet)
+            - Ivan: the DB/Store could be implemented in other ways for wasm, e.g. hash tables
+            - Robert: in a browser env, lack of keys available to import securely can limit usage
+                - Ivan: there are ways, key management entirely within wasm, or other means
+            - Can pass browser implementations of relevant key management APIs to the wasm context, to use within wasm
+                - Ivan: this doesnt fully secure the call-stack from potential mismanagement/manipulation
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+- Other topics?
+    - Update call between this group and the gleif group
+        - pending clarity on potential IPR issue of sharing progress/work
+        - information that falls under the categories defined in the WG charter being shared by parties that havent signed the IPR release with parties within the WG is an issue
+    - microledger (robert)
+        - data model providing a data provenance log with hashes linking the log events together (e.g. a KERI KEL, GIT, Ceramic Stream, Textile.io Thread, etc.)
+        - applied crypto WG is working on a generalized version to share between "applications" implementing specific types of provenance logs
+
+- Issue review
+    - [keri main](https://github.com/decentralized-identity/keri/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
+## Agenda Sept 14
+
+- Implementors update
+    - keripy
+    - keriox
+        - reviewed PR #79
+    - kerijs
+        - KERL replay logic
+        - event format fixes
+    - kerigo
+    - kerijava
+    - keridht
+
+- Other topics?
+    - kickoff meeting of Decentralized ID management working group (robert)
+        - under [CEN (european standards committee)](https://cencenelec.eu)
+        - over 30 participants
+        - EIDAS 2.0 from ETSI being proposed
+        - focus on interface for sovereign wallets for interop
+        - standard aimed at being agnostic (no assumption of DLT or blockchain)
+        - most participants not in favour of implicit DLT basis
+        - different systems provide different features/guarentees of data persistance/mutability/assurance which cannot be assumed by any spec
+        - all participants desire stronger sovereignty for clients in terms of PKI/wallet infrastructure
+        - [StandICT](https://standict.eu) (?) provides grants for open standardization efforts up to 10000 eur
+    - topic(s) at IIW
+        - potential discussion of various microledger techniques and systems (robert)
+            - all towards "zero trust data management": systems with direct commitments to data
+        - GLEIF will present their progress on KERI integration/usage
+    - Joe Andreiu podcast
+        - either Oct 27 or Nov 3, 20:30 CET
+        - lets suggest Oct 27 for now
+    - Update from Sam
+        - keripy work has continued, focusing on issuing VCs
+        - proposal for a call with the DIF group to provide specific updates
+            - IPR concern with having external contributors discuss details of external work
+            - lets ask balasz
+        - goal of submitting a package of specs to the IETF towards the end of october
+
+- Issue review
+    - [keri main](https://github.com/decentralized-identity/keri/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+    - keripy
+    - keriox
+    - kerijs
+    - kerigo
+    - kerijava
+    - keridht
+
 ## Agenda Sept 07
 
 - Implementors update
