@@ -11,13 +11,14 @@ This Glossary makes the distinction between definitions well known in the Self S
 
 ```
 KERI protocol solves one problem. **Secure Attribution**. 
-It by itself does not solve all the other layered on top problems that verifiable credential's need to be solved. 
+It by itself does not solve all the other layered-on-top problems that verifiable credentials need to be solved. 
 But one can't solve any of the verifiable credentials problems at least with any degree of security if one does not first solve the secure attribution problem. 
-Given one has solved secure attribution one can layer on other things like transaction event logs to solve other problems. 
+Given one has solved secure attribution, one can layer on other things like transaction event logs to solve other problems. 
 ```
 
 ### KERI specific abbreviations
 In alphabetic order:\
+CESR = [Composable Event Streaming Representation](#composable-event-streaming-representation)\
 DEL = [Duplicitous Event Log](#duplicitous-event-log)\
 KAACE = [KERI Agreement Algorithm for Control Establishment](#keri-agreement-algorithm-for-control-establishment)
 KEL = [Key Event Log](#key-event-log)\
@@ -29,16 +30,16 @@ TEL = [Transaction Event Log](#transaction-event-log)
 ### KERI specific definitions in alphabetic order:
 
 #### Ambient Verifiability 
-_Ambient_ means all around, abundantly available. It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certificate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
+_Ambient_ means all around, abundantly available. It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end-verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certificate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
 
 #### Composable derivation codes on cryptographic material primitives 
 KERI's design both requires - and benefits from - a universal compact encoding for all cryptographic material items with stable self-framing textual derivation codes.\
 (new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)
 
-
-#### Composable text and binary representation streaming protocol 
+#### Composable Event Streaming Representation
 This compact encoding scheme fully supports both textual and binary streaming applications of attached crypto material of all types. This approach includes composability in both the textual and binary streaming domains. The primitives may be the minimum possible but still composable size. Making composablity a guaranteed property allows future extensible support of new compositions of streaming formats based on pre-existing core primitives and compositions of core primitives. This enables optimized stream processing in both the binary and text domains. \
 (new invention) More info in [KID0001](https://github.com/decentralized-identity/keri/blob/master/kids/kid0001Comment.md)
+and [CESR explained](https://medium.com/happy-blockchains/cesr-one-of-sam-smiths-inventions-is-as-controversial-as-genius-d757f36b88f8)
 
 #### Duplicitous event log
 Or DEL. This is a record of _inconsistent_ event messages produced by a given controller or witness with respect to a given `KERL`. The duplicitous events are indexed to the corresponding event in a KERL. A duplicitous event is represented by a set of two or more provably mutually inconsistent event messages with respect to a KERL. Each `juror` keeps a duplicitous event log (DEL) for each controller and all designated witness with respect to a KERL. Any validator may confirm duplicity by examining a DEL.
@@ -59,8 +60,14 @@ Also KAACE or KA2CE. A newly invented algorithm but it is a simplification of PB
 What if PBFT and Stellar had a baby that was missing liveness and total ordering but had safety and was completely decentralized, portable, and permission less? It would be named KERI.\
 (_SamMSmith_)
 
-#### Key compromise
+#### KERI Implementation/Improvement Docs
+Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
 
+#### Keridemlia
+It is a contraction of KERI and [Kademlia](https://en.wikipedia.org/wiki/Kademlia). It's the distributed database of Witness IP-addresses based on a Distributed Hash Tabel. It also does the CNAME - stuff that DNS offers for KERI: the mapping between an identifier and it's controller AID stored in the KEL to its current wittness AID and the wittness AID to the IP address.\
+(_@henkvancann_)
+
+#### Key compromise
 Basically there are three infrastructures that are included in “key management” systems that must be protected.
 1.  Key pair creation and storage
 2. Event signing
@@ -96,20 +103,12 @@ Also `KERL`. Signed Key Events, keeping track of establishment events. To begin 
 <img src="../images/inception-rotation.png" alt="inception and any number of rotation events" border="0" width="200" style="float:left">
 _(SamMSmith)_
 
-#### Keridemlia
-It is a contraction of KERI and [Kademlia](https://en.wikipedia.org/wiki/Kademlia). It's the distributed database of Witness IP-addresses based on a Distributed Hash Tabel. It also does the CNAME - stuff that DNS offers for KERI: the mapping between an identifier and it's controller AID stored in the KEL to its current wittness AID and the wittness AID to the IP address.\
-(_@henkvancann_)
-
-#### KERI Implementation/Improvement Docs
-Or KIDs. These docs are modular so teams of contributors can independently work and create PRs of individual KIDs; KIDs answer the question "how we do it". We add commentary to the indivudual KIDs that elaborate on the _why_. It has been split from the _how_ to not bother implementors with the _why_.
-
 #### Nested cooperative delegated identifiers 
-In KERI delegations are cooperative, this means that both the delegator and delegate must contribute to a delegation. The delegator creates a cryptographic commitment in either a rotation or interaction event via a seal a a delegated establishment event. The delegate creates a cryptographic commitment in its establishment event via a seal to the delegating event. Each commitment is signed respectively by the committer ... This cooperative delegation together with special superseding recovery rules for events enables cooperative recovery.
+In KERI delegations are cooperative, this means that both the delegator and delegate must contribute to a delegation. The delegator creates a cryptographic commitment in either a rotation or interaction event via a seal in a delegated establishment event. The delegate creates a cryptographic commitment in its establishment event via a seal to the delegating event. Each commitment is signed respectively by the committer ... This cooperative delegation together with special superseding recovery rules for events enables cooperative recovery.
 
 This superseding rule may be recursively applied to multiple levels of delegation, thereby enabling recovery of any set of keys signing or pre-rotated in any lower levels by a superseding rotation delegation at the next higher level. This cascades the security of the key management infrastructure of higher levels to lower levels. This is a _distinctive_ security feature of the cooperative delegation of identifiers in KERI.
 
 (new invention) More in chapter _Nested Delegation Recovery_ of the [whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)\
-{TBW prio 1}
 
 #### Pre-rotation 
 It is a new invention in KERI. Pre-rotation is a _cryptographical commitment (a hash)_ to the _next_ private key in the rotation-scheme.\
@@ -117,7 +116,7 @@ The pre-rotation scheme provides secure verifiable rotation that mitigates succe
 [Source: chapter Pre-rotation in whitepaper](https://github.com/SmithSamuelM/Papers/blob/master/whitepapers/KERI_WP_2.x.web.pdf)
 
 #### Transaction Event Log
-Also `TEL`: An externally anchored transactions via cryptographic commitments in a `KEL`.\
+Also `TEL`: An externally anchored transactions log via cryptographic commitments in a `KEL`.\
 The set of transactions that determine registry state form a log called a Transaction Event Log (TEL). The TEL provides a cryptographic proof of registry state by reference to the corresponding controlling KEL.
 Any validator may therefore cryptographically verify the authoritative state of the registry.
 <img src="../images/TEL-and-KEL.png" alt="TEL and KEL" border="0" width="600">
@@ -155,7 +154,7 @@ PKI = [Public Key Infrastructure](#public-key-infrastructure)\
 PoA = Proof of Authority\
 PoW = Proof of Work\
 PR = Pull Request; github terminology\
-SAI = [Self Addressing Identifier](#self-addressing-identifier)\
+SAID = [Self Addressing Identifier](#self-addressing-identifier)\
 SASCI = [Self Addressing self certifying Identifier](#self-addressing-identifier)\
 SCI = [Self Certifying Identifier](#self-certifying-identifier)\
 SOT = [Source-of-truth](#source-of-truth)\
@@ -225,7 +224,8 @@ An article that explains practical BFT [here](https://blockonomi.com/practical-b
 
 #### Certificate Transparency
 Certificate Transparency (CT) is an Internet security standard and open source framework for monitoring and auditing digital certificates. The standard creates a system of public logs that seek to eventually record all certificates issued by publicly trusted certificate authorities, allowing efficient identification of mistakenly or maliciously issued certificates. As of 2021, Certificate Transparency is mandatory for all SSL/TLS certificates.\
-More on [wikipedia](https://en.wikipedia.org/wiki/Certificate_Transparency)
+Certificate Transparency was a response to the 2011 attack on DigiNotar and other Certificate Authorities. These attacks showed that the lack of transparency in the way CAs operated was a significant risk to the Web Public Key Infrastructure. It led to the creation of this ambitious project to improve security online by bringing accountability to the system that protects HTTPS. More on [certificate.transparency.dev](https://certificate.transparency.dev/) and [Wikipedia](https://en.wikipedia.org/wiki/Certificate_Transparency).\
+(_@henkvancann_)
 
 #### Claim
 An assertion of the truth of something, typically one which is disputed or in doubt. A set of claims might convey personally identifying information: ½name, address, date of birth and citizenship, for example. ([Source](https://www.identityblog.com/?p=352)).
@@ -404,10 +404,12 @@ The mechanism to replace, change or refresh the authoritative controlling keys o
 (_@henkvancann_)
 
 #### Key Transparency 
-Makes it possible for users to know about all the public keys that are in the user's account, preventing the server from adding public keys to a user's account without detection. Key Transparency does this by using piece of blockchain technology called a Merkle Tree.\
-More on [Stackexchange](https://security.stackexchange.com/questions/149125/how-does-key-transparency-work) how key transparency works.
-
-Key Transparency can be used as a _public key discovery service_ to authenticate users and provides a mechanism to keep the service accountable.
+Key Transparency provides a lookup service for generic records and a public, tamper-proof audit log of all record changes. While being publicly auditable, individual records are only revealed in response to queries for specific IDs.\
+Key Transparency can be used as a _public key discovery service_ to authenticate users and provides a mechanism to keep the service accountable.\
+Key Transparency empowers account owners to reliably see what public keys have been associated with their account, and it can be used by senders to see how long an account has been active and stable before trusting it. [Source](https://github.com/google/keytransparency/)\
+Key Transparency does this by using piece of blockchain technology called a Merkle Tree.\
+More on [Stackexchange](https://security.stackexchange.com/questions/149125/how-does-key-transparency-work) how key transparency works.\
+(_@henkvancann_)
 
 #### Levels of Assurance
 Also `LOA`; Identity and other trust decisions are often not binary. They are judgement calls. Any time that judgement is not a simple “Yes/No” answer, you have the option for levels of assurance.
@@ -545,7 +547,7 @@ Ro Security _Control_ Overlay. A fully specified set of security controls, contr
 [Source](https://csrc.nist.gov/glossary/term/Security_Control_Overlay)
 
 #### Self Addressing Identifier
-`SAI`, This is a self certfifying identifier (`SCI`) that has been attached to a certain context or infrastructure at the time of its inception. The inception configuration together with public key and it's `derivation`, forms a digest (hash) plus it's own `derivation code` that constitutes the Prefix of a self-addressing ID.
+`SAID`, This is a self certifying identifier (`SCI`) that has been attached to a certain context or infrastructure at the time of its inception. The inception configuration together with public key and it's `derivation`, forms a digest (hash) plus it's own `derivation code` that constitutes the Prefix of a self-addressing ID.
 
 <img src="../images/sai_sci.png" alt="Self Adressing, self certifying Identifier" border="0" width="800">
 
@@ -568,7 +570,7 @@ The root-of-trust is fully cryptographic, there is no infrastructure associated 
 It is information given out by a party involved. It is empowering the individual to help governments doing their job.  With SSI a criminal can’t cheat without being caught. SSI reduces the state's expense per individual.  SSI makes tough investigation easier and false judgements rarer. The mechanism verifies automaticly and handles broken cases gracefully.
 
 SSI is a new model for Internet-scale digital identity based on an emerging set of protocols, cutting edge cryptography and open standards. Technological and social movements have come together that make SSI possible. ([Source](https://livebook.manning.com/book/self-sovereign-identity/chapter-1/v-8/14)).\
-Decentralisation of the `root-of-trust` and `verifiable credentials` come into play and delivers  “user-centric identity”: more control and self-determination of individuals, individuals machines and combinations of these, that identify as one.\
+Decentralisation of the `root-of-trust` and `verifiable credentials` come into play and delivers  “user-centric identity”: more control and self-determination of individuals, machines and combinations of these, that identify as one.\
 _(@henkvancann)_
 
 #### Signatures
