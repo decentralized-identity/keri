@@ -25,9 +25,11 @@ KEL = [Key Event Log](#key-event-log)\
 KERL = [Key Event Receipt Log](#key-event-receipt-log)\
 KERI = [Key Event Receipt Infrastructure](#key-event-receipt-infrastructure)\
 KID = [KERI Implementation/Improvement Docs](#keri-implementation-Improvement-docs)\
-TEL = [Transaction Event Log](#transaction-event-log)
+TEL = [Transaction Event Log](#transaction-event-log)\
+[Jump to General Abbreviations](#general-abbreviations)\
+[Jump to General definitions in alphabetic order](#general-definitions-in-alphabetic-order)
 
-### KERI specific definitions in alphabetic order:
+### KERI specific definitions in alphabetic order
 
 #### Ambient Verifiability 
 _Ambient_ means all around, abundantly available. It is a new term to better describe [end-verifiable](#end-verifiable) end state. The _combination_ of end-verifiable logs served by ambient infrastructure _enables_ ambient verifiability, that is, **anyone can verify anywhere at anytime**. This approach exhibits some of the features of [certificate transparency](#certificate-transparency) and [key transparency](#key-transparency) with end-verifiable event logs but differs in that each identifier has its own chain of events that are rooted in a [self-certifying identifier](#self-certifying-identifier).
@@ -129,7 +131,7 @@ terms but defined more precisiely for the KERI innovative use.
 ```
 We move forward with **Not KERI specific Terminology**.
 
-### Abbreviations
+### General abbreviations
 In alphabetic order:\
 ACDC = Authentic Chained Data Container Task Force\
 AID = [Autonomic Identifier](#autonomic-identifier)\
@@ -161,9 +163,11 @@ SOT = [Source-of-truth](#source-of-truth)\
 SSI = [Self Sovereign Identity](#self-sovereign-identity)\
 VC = Verifiable Credential, look up W3D DID standardization for more info\
 VDS = [Verifiable Data Structure](#verifiable-data-structure)\
-WASM = [WebAssembly](#WebAssembly)
+WASM = [WebAssembly](#WebAssembly)\
+[Jump to KERI Specific Abbreviations](#keri-specific-abbreviations)\
+[Jump to KERI specific definitions in alphabetic order](#keri-specific-definitions-in-alphabetic-order)
 
-### Definitions in alphabetic order:
+### General definitions in alphabetic order
 
 #### Authentic Chained Data Container Task Force
 The purpose of the Authentic Chained Data Container (ACDC) Task Force  is to draft a TSS (ToIP Standard Specification) that defines the standard requirements for the semantics of Authentic Provenance Chaining of Authentic Data Containers. [See more](https://wiki.trustoverip.org/display/HOME/ACDC+%28Authentic+Chained+Data+Container%29+Task+Force)
