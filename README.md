@@ -1,4 +1,7 @@
-# KERI
+
+
+
+# KERI (Archived at DIF)
 Key Event Receipt Infrastructure - the spec and implementation of the KERI protocol
 
 ![KERI Logo](images/Keri_logo_color_on_white.png)
